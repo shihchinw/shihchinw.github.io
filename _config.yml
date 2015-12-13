@@ -2,7 +2,8 @@
 title: Shih-Chin
 description: "Study Notes About Computer Graphics"
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://shihchin.com" # the base hostname & protocol for your site
+url:              http://shihchin.com
+shorturl:         shihchin.com
 twitter_username: shihchinw
 github_username:  shihchinw
 
