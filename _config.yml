@@ -1,0 +1,51 @@
+# Site settings
+title: Shih-Chin
+description: "Study Notes About Computer Graphics"
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://shihchin.com" # the base hostname & protocol for your site
+twitter_username: shihchinw
+github_username:  shihchinw
+
+
+# Handling Reading
+exclude:      ["less","node_modules","Gruntfile.js","package.json","README.md"]
+keep_files:   [".git", ".svn"]
+encoding:     "utf-8"
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+
+# Plugins
+whitelist: []
+gems: [jekyll-paginate]
+
+# Conversion
+markdown:    kramdown
+highlighter: rouge
+lsi:         false
+excerpt_separator: "\n\n"
+incremental: false
+
+# Outputting
+permalink:      pretty
+paginate:       10
+paginate_path:  /page:num
+timezone:       Asia/Taipei
+
+# Markdown Processors
+kramdown:
+    input: GFM
+    auto_ids: true
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Shih-Chin"
+  -
+    scope:
+      path: "projects"
+      type: "pages" # previously `page` in Jekyll 2.2.
+    values:
+      layout: "project" # overrides previous default layout
