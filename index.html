@@ -26,6 +26,12 @@ header-img: "images/header/index.jpg"
             {% if forloop.last != true %}, {% endif %}
         {% endfor %}</small>
     {% endif %}
+    {% if page.comments %}
+        <small class="comment-count">
+            <span class="fa-stack fa-sm"><i class="fa fa-comments fa-stack-1x"></i></span>
+            <a href="{{ post.url | prepend: site.baseurl }}#disqus_thread" data-disqus-identifier="{{ post.url }}"></a>
+        </small>
+    {% endif %}
 </div>
 <hr>
 {% endfor %}
