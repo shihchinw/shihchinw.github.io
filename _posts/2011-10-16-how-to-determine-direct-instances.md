@@ -26,7 +26,7 @@ We all don't wanna parse the strings of all dag paths to figure out these direct
 
 In order to distinguish the original from these nodes qualified by isInstanced(), we need to examine the identifications of their parent transforms further.
 
-<pre class="prettyprint lang-cpp linenums">
+{% highlight python linenos %}
 import maya.OpenMaya as om
 dagIter = om.MItDag(om.MItDag.kBreadthFirst)
 dagPath = om.MDagPath()
@@ -46,7 +46,7 @@ while not dagIter.isDone():
             print dagIter.fullPathName()
  
     dagIter.next()
-</pre>
+{% endhighlight %}
 
 Here is the result:
 <samp>|group2|pCube1

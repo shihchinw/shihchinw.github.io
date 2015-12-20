@@ -25,7 +25,7 @@ Suppose we have MObject(s) of target mesh and edge components (optional) selecte
 4. Append these edges to a selection list.
 5. Finally, set the selection list as an active one with `MGlobal.setActiveSelectionList`.
 
-<pre class="prettyprint linenums">
+{% highlight python linenos %}
 def selectHardEdge(angleInDegree, dpItem, moComp=om.cvar.MObject_kNullObj):
     """
     \param dpItem The dag Path of given object.
@@ -58,7 +58,7 @@ def selectHardEdge(angleInDegree, dpItem, moComp=om.cvar.MObject_kNullObj):
         itEdge.next()
  
     om.MGlobal.setActiveSelectionList(selResult)
-</pre>
+{% endhighlight %}
 
 <span class="red">__Note:__</span> If we use OpenMaya.MObject.kNullObj as the default value of moComp, we would get following error message:
 <samp class="error"># Error: NotImplementedError: Wrong number of arguments for overloaded function ‘new_MItMeshEdge’.

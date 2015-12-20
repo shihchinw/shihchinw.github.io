@@ -10,7 +10,7 @@ published: True
 
 ScriptJob is a very convenient approach for us to register a routine for certain event. However, when we want to inject a check routine for an opened file and to be capable of canceling the open operation of the invalid file. We will find that ScriptJob only contains <span class="orange">_NewSceneOpened, PostSceneRead and SceneOpened, ..._</span>, and none of these events can abort the current operation within our registered routine. Fortunately, the `MSceneMessage` from API could help us achieve our purpose:
 
-<pre class="prettyprint linenums">
+{% highlight python linenos %}
 from maya.OpenMaya import MSceneMessage, MScriptUtil
 
 def isValidFile(fileObj):
@@ -26,7 +26,7 @@ cbId = MSceneMessage.addCheckFileCallback(MSceneMessage.kBeforeOpenCheck, foo)
 
 # Remove the callback binding
 MSceneMessage.removeCallback(cbId)
-</pre>
+{% endhighlight %}
 
 Here we register a callback function '_foo_' for the event `MSceneMessage.kBeforeOpenCheck`. After the registration, the foo would be invoked right before the file opening and the value pointed by retCodePtr is used to indicate whether to open that file afterwards.
 
