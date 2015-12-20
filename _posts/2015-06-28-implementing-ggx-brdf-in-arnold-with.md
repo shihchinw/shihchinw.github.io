@@ -5,6 +5,7 @@ date: '2015-06-28T15:20:00.000+08:00'
 categories: []
 tags: [Arnold, BRDF, Importance Sampling]
 published: True
+cover-img: "images/rlShaders/rlGgx_lucy.png"
 header-img: "images/header/posts/2015-06-28-implementing-ggx-brdf-in-arnold-with.jpg"
 
 ---

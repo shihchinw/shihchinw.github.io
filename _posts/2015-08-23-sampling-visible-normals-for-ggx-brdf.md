@@ -5,6 +5,7 @@ date: '2015-08-23T22:49:00.003+08:00'
 categories: []
 tags: [Arnold, BRDF, Importance Sampling]
 published: True
+cover-img: "images/rlShaders/ggx_sampling_comparison.jpg"
 header-img: "images/header/posts/2015-08-23-sampling-visible-normals-for-ggx-brdf.jpg"
 
 ---

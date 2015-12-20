@@ -5,6 +5,7 @@ date: '2015-10-27T00:14:00.000+08:00'
 categories: []
 tags: [Arnold, BSSRDF, Importance Sampling]
 published: True
+cover-img: "images/rlShaders/rlSssNd_buddha.jpg"
 header-img: "images/header/posts/2015-10-27-bssrdf-importance-sampling-of-normalized-diffusion.jpg"
 
 ---

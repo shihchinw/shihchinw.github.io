@@ -4,6 +4,7 @@ title: Using Min Pixel Width with Care in Arnold
 categories: []
 tags: [Arnold]
 published: True
+cover-img: "images/arnold/mtoa_hair_mpw_opaque_cmp_1k.jpg"
 
 ---
 

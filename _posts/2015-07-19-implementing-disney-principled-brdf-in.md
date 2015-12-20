@@ -5,6 +5,7 @@ date: '2015-07-19T16:05:00.000+08:00'
 categories: []
 tags: [Arnold, BRDF, Importance Sampling]
 published: True
+cover-img: "images/rlShaders/rlDisney_bunny_row.jpg"
 header-img: "images/header/posts/2015-07-19-implementing-disney-principled-brdf-in.jpg"
 
 ---

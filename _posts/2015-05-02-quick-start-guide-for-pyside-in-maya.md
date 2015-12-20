@@ -5,6 +5,7 @@ date: '2015-05-02T18:34:00.000+08:00'
 categories: []
 tags: [Maya, Python, PySide]
 published: True
+cover-img: "images/pyside/pyside_maya_workflow.png"
 
 ---
 

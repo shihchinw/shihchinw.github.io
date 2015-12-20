@@ -5,6 +5,7 @@ date: '2015-02-22T16:39:00.000+08:00'
 categories: []
 tags: [Arnold, Maya]
 published: True
+cover-img: "images/arnold/mtoa_tips.png"
 header-img: "images/arnold/mtoa_tips.png"
 
 ---
