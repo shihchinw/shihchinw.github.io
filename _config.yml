@@ -1,12 +1,10 @@
 # Site settings
-title: Shih-Chin
+title: "Shih-Chin"
 description: "Study Notes About Computer Graphics"
-baseurl: "" # the subpath of your site, e.g. /blog
-url:              http://shihchin.com
+url:              http://www.shihchin.com
 shorturl:         shihchin.com
 twitter_username: shihchinw
 github_username:  shihchinw
-
 
 # Handling Reading
 exclude:      ["less","node_modules","Gruntfile.js","package.json","README.md"]
