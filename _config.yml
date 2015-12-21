@@ -24,7 +24,7 @@ excerpt_separator: "\n\n"
 incremental: false
 
 # Outputting
-permalink:      pretty
+permalink:      /:year/:month/:title.html
 paginate:       5
 paginate_path:  /page:num
 timezone:       Asia/Taipei
