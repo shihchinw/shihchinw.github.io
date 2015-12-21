@@ -34,6 +34,14 @@ kramdown:
     input: GFM
     auto_ids: true
 
+pages_list:
+    Computer Graphics: "/pages/computer-graphics"
+    Global Illumination: "/pages/global-illumination"
+    Arnold: "/pages/arnold"
+    Maya: "/pages/maya"
+    Tags: "/tags"
+    About: "/about"
+
 defaults:
   -
     scope:
