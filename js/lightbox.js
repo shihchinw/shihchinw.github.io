@@ -1,5 +1,5 @@
 /*!
- * Lightbox v2.8.1
+ * Lightbox v2.8.2
  * by Lokesh Dhakar
  *
  * More info:
@@ -48,7 +48,8 @@
     positionFromTop: 50,
     resizeDuration: 700,
     showImageNumberLabel: true,
-    wrapAround: false
+    wrapAround: false,
+    disableScrolling: false
   };
 
   Lightbox.prototype.option = function(options) {
@@ -191,9 +192,14 @@
     var top  = $window.scrollTop() + this.options.positionFromTop;
     var left = $window.scrollLeft();
     this.$lightbox.css({
-      top: top + 'px',
+      // top: top + 'px',
       left: left + 'px'
     }).fadeIn(this.options.fadeDuration);
+
+    // Disable scrolling of the page while open
+    if (this.options.disableScrolling) {
+      $('body').addClass('lb-disable-scrolling');
+    }
 
     this.changeImage(imageNumber);
   };
@@ -263,6 +269,13 @@
         }
       }
       self.sizeContainer($image.width(), $image.height());
+      var window_height = windowHeight;
+      var img_height = $image.height();
+      var scroll_offset  = $(window).scrollTop();
+      var view_offset = window_height/2 - img_height/2;
+      var top_distance = scroll_offset + view_offset;
+
+      self.$lightbox.css('top', top_distance+'px');
     };
 
     preloader.src          = this.album[imageNumber].link;
@@ -272,7 +285,7 @@
   // Stretch overlay to fit the viewport
   Lightbox.prototype.sizeOverlay = function() {
     this.$overlay
-      .width($(window).width())
+      .width($(document).width())
       .height($(document).height());
   };
 
@@ -438,6 +451,9 @@
     $('select, object, embed').css({
       visibility: 'visible'
     });
+    if (this.options.disableScrolling) {
+      $('body').removeClass('lb-disable-scrolling');
+    }
   };
 
   return new Lightbox();
