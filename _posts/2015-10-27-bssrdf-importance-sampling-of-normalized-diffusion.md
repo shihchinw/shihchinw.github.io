@@ -1,7 +1,6 @@
 ---
 layout: post
 title: BSSRDF Importance Sampling of Normalized Diffusion
-date: '2015-10-27T00:14:00.000+08:00'
 categories: []
 tags: [Arnold, BSSRDF, Importance Sampling]
 published: True
