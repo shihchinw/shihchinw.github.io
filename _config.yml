@@ -14,7 +14,7 @@ markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 
 # Plugins
 whitelist: []
-gems: [jekyll-paginate]
+gems: [jekyll-paginate, jekyll-sitemap]
 
 # Conversion
 markdown:    kramdown
