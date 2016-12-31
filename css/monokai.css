@@ -1,4 +1,4 @@
-.highlight pre { background-color: #2E2E2E; color: white; font-size: 0.8em; padding: 5px;}
+.highlight pre { background-color: #2E2E2E; color: white; font-size: 0.85em; padding: 2px; border: none; }
 .highlight .lineno { color: #9E9E9E; margin-right: 0.5em; }
 .highlight .c { color: #969687 } /* Comment */
 .highlight .err { color: #960050; background-color: #1e0010 } /* Error */

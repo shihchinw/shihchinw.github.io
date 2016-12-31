@@ -18,7 +18,7 @@ gems: [jekyll-paginate, jekyll-sitemap]
 
 # Conversion
 markdown:    kramdown
-highlighter: pygments
+highlighter: rouge
 lsi:         false
 excerpt_separator: "\n\n"
 incremental: false
