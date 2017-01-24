@@ -162,6 +162,12 @@
         text-decoration: underline;
     }
 
+    .container a:hover, a:focus {
+        /* color: #0085a1; */
+        background: #A6DCF3;
+        text-decoration: none;
+    }
+
     samp {
         display: block;
         background-color: rgba(0, 55, 0, 1);
@@ -204,14 +210,27 @@
         font-size: 80%;
     }
 
+    blockquote {
+        color: #806565;
+    }
+
     blockquote a {
         color: #337ab7;
     }
 
-    span.blue { color: #3D85C6; }
-    span.orange { color: #F18B20; }
-    span.red { color: #DC1111; }
-    span.green { color: #6AA84F; }
+    span.blue {
+        border-bottom: 1px solid #a6dcf3;
+        box-shadow: inset 0 -6px 0 #a6dcf3;
+    }
+    span.orange {
+        border-bottom: 1px solid #ffd8ae;
+        box-shadow: inset 0 -6px 0 #ffd8ae;
+    }
+    span.red { color: #dc1111; }
+    span.green {
+        border-bottom: 1px solid #cdf9bb;
+        box-shadow: inset 0 -6px 0 #cdf9bb;
+    }
 
     .tag-box {
         list-style: none;

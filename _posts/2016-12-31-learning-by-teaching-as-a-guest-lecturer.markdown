@@ -51,13 +51,13 @@ As a guest lecturer with production experiences, I think the most valuable thing
 
 There is a gap from research papers to production tools. To implement a production software we need to take more care of a lot things such as parallelism, memory footprint, maintenance, etc. Additionally, since most of our software are used by artists, we definitely need to pay attention to their requirements. _Soft skills are really matters_. Before diving into actual development, we have to make sure we truly understand what artists want. 
 
-As a software engineer in an animation studio, any production problem can be solved either by artists or programmers. Don't obsess over using fancy programming languages or technologies. Sometimes, artists' solutions are more effective than our own. We should <span class="orange">_open up our mind to any possibility, put ourselves in others' shoes_</span>. Respect each others, work together closely to solve the problem at hand in an efficient and creative way.
+As a software engineer in an animation studio, any production problem can be solved either by artists or programmers. Don't obsess over using fancy programming languages or technologies. Sometimes, artists' solutions are more effective than our own. We should <span class="blue">_open up our mind to any possibility, put ourselves in others' shoes_</span>. Respect each others, work together closely to solve the problem at hand in an efficient and creative way.
 
 # Inspired by Others
 
 I enjoy talking to passionate people from different backgrounds and ages. They always show me a new way to examine a problem. As for the students who studies Computer Graphics for the first time, their questions can help me find out the blind spots of my understanding. This make me re-think the problem in a direction forward fundamental ideas. It opens up my mind not only to discover the relation between different topics but also to digest more core ideas behind certain findings.
 
-Frankly speaking, the one who learns the most valuable things from this teaching experience is myself. In my lectures, I often said I still have lots of things I don't know very well. If they have figured out something new afterwards, please don't hesitate to share with we. Just like I said to the students in my first lecture: I'm not a teacher. <span class="orange">_I just a tour guide who wants to share the beauty of Computer Graphics I've seen in my journey. Please join me and have FUN!_</span>
+Frankly speaking, the one who learns the most valuable things from this teaching experience is myself. In my lectures, I often said I still have lots of things I don't know very well. If they have figured out something new afterwards, please don't hesitate to share with we. Just like I said to the students in my first lecture: I'm not a teacher. <span class="blue">_I just a tour guide who wants to share the beauty of Computer Graphics I've seen in my journey. Please join me and have FUN!_</span>
 
 # Footnotes
 
