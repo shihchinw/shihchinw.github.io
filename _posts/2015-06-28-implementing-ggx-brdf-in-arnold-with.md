@@ -170,14 +170,14 @@ In comparison to aiStandard, GGX has stronger tails than Beckmann which is used 
 <figcaption class="figure-caption">Roughness 0.0 to 1.0</figcaption>
 </figure>
 
-<a href="/images/rlShaders/rlGgx_buddha_cmp.png" data-lightbox="results">
-![Buddha](/images/rlShaders/rlGgx_buddha_cmp.png)</a>
+<a href="/images/rlShaders/rlGgx_buddha_cmp.jpg" data-lightbox="results">
+![Buddha](/images/rlShaders/rlGgx_buddha_cmp.jpg)</a>
 
 The results of the custom BRDF composed of GGX for glossy and Oren Nayar for diffuse.
 
-<a href="/images/rlShaders/rlGgx_lucy.png" data-lightbox="results"><img src="/images/rlShaders/rlGgx_lucy.png"></a>
+<a href="/images/rlShaders/rlGgx_lucy.jpg" data-lightbox="results"><img src="/images/rlShaders/rlGgx_lucy.jpg"></a>
 
-<a href="/images/rlShaders/rlGgx_lucy_in_grace_cathedral.png" data-lightbox="results"><img src="/images/rlShaders/rlGgx_lucy_in_grace_cathedral.png"></a>
+<a href="/images/rlShaders/rlGgx_lucy_in_grace_cathedral.jpg" data-lightbox="results"><img src="/images/rlShaders/rlGgx_lucy_in_grace_cathedral.jpg"></a>
 
 
 # References
