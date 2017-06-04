@@ -12,16 +12,6 @@
     
     
     <item>
-      <title>About</title>
-      <link>http://shihchin.com/page/about.html</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://shihchin.com/page/about.html</guid>
-      <description>Hi, I&amp;rsquo;m Shih-Chin. This website contains my study notes about computer graphics and rendering. The source code on my github is developed in my spare time just for learning purposes and not related to the production project I&amp;rsquo;ve been working on at my day job.
-I enjoy learning new things. I&amp;rsquo;m so lucky to live in this era, there are so many fantastic open courses on-line which make me appreciate the beauty of each subject.</description>
-    </item>
-    
-    <item>
       <title>Arnold</title>
       <link>http://shihchin.com/page/arnold.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
