@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Shih-Chin</title>
+    <link>http://www.shihchin.com/tags/python.html</link>
+    <description>Recent content in Python on Shih-Chin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright © Shih-Chin</copyright>
+    <lastBuildDate>Sat, 02 May 2015 18:34:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.shihchin.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Quick Start Guide for PySide in Maya</title>
+      <link>http://www.shihchin.com/2015/05/quick-start-guide-for-pyside-in-maya.html</link>
+      <pubDate>Sat, 02 May 2015 18:34:00 +0000</pubDate>
+      
+      <guid>http://www.shihchin.com/2015/05/quick-start-guide-for-pyside-in-maya.html</guid>
+      <description>The goal of tool-making is to make users do certain works more efficiently. A functional tool with poor designed interface would not be fully utilized by users, because users aren&amp;rsquo;t willing to use that tool if the interaction makes them feel frustrated.
+Developing is a Iterative Process Although there are a few principles about user interface design, but it doesn&amp;rsquo;t mean that we can simply apply those principles and get our jobs done.</description>
+    </item>
+    
+    <item>
+      <title>Insert checking routine right before file opening in Maya</title>
+      <link>http://www.shihchin.com/2012/12/insert-checking-routine-right-before-file-opening-in-maya.html</link>
+      <pubDate>Tue, 25 Dec 2012 22:58:00 +0000</pubDate>
+      
+      <guid>http://www.shihchin.com/2012/12/insert-checking-routine-right-before-file-opening-in-maya.html</guid>
+      <description>ScriptJob is a very convenient approach for us to register a routine for certain event. However, when we want to inject a check routine for an opened file and to be capable of canceling the open operation of the invalid file. We will find that ScriptJob only contains NewSceneOpened, PostSceneRead and SceneOpened, &amp;hellip;, and none of these events can abort the current operation within our registered routine. Fortunately, the MSceneMessage from API could help us achieve our purpose:</description>
+    </item>
+    
+    <item>
+      <title>How to select hard edges from a mesh in Maya?</title>
+      <link>http://www.shihchin.com/2011/10/how-to-select-hard-edges-from-a-mesh-in-maya.html</link>
+      <pubDate>Sun, 23 Oct 2011 13:02:00 +0000</pubDate>
+      
+      <guid>http://www.shihchin.com/2011/10/how-to-select-hard-edges-from-a-mesh-in-maya.html</guid>
+      <description>A hard edge (aka crease edge or feature edge) is:
+ shared by two polygons. and the dihedral angle (i.e the angle between two polygons) is above user-specified threshold.  To find these edges in Maya, the intuitive approach is to traverse all the edges by MItMeshEdge and examining the dot product of two adjacent faces&amp;rsquo; normals.
+Suppose we have MObject(s) of target mesh and edge components (optional) selected by user, and we want to replace current selection with the hard edges from these input.</description>
+    </item>
+    
+    <item>
+      <title>How to determine direct instances in Maya?</title>
+      <link>http://www.shihchin.com/2011/10/how-to-determine-direct-instances-in-maya.html</link>
+      <pubDate>Sun, 16 Oct 2011 14:47:00 +0000</pubDate>
+      
+      <guid>http://www.shihchin.com/2011/10/how-to-determine-direct-instances-in-maya.html</guid>
+      <description>&lt;p&gt;Any instanced node in Maya has multiple parent transforms, therefore, the basic idea to determine the instanced node is to check the number of its parent nodes. However, if we have &lt;span class=&#34;blue&#34;&gt;&lt;em&gt;both instanced shapes and some other transform nodes from the same hierarchy&lt;/em&gt;&lt;/span&gt;, it gets a little harder to handle this situation just by MEL.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Retrieve file list from a directory tree</title>
+      <link>http://www.shihchin.com/2011/09/retrieve-file-list-from-a-directory-tree.html</link>
+      <pubDate>Mon, 19 Sep 2011 14:53:00 +0000</pubDate>
+      
+      <guid>http://www.shihchin.com/2011/09/retrieve-file-list-from-a-directory-tree.html</guid>
+      <description>&lt;p&gt;There is a simple way to traverse a directory tree with python - &lt;code&gt;os.walk&lt;/code&gt; (os.path.walk is deprecated in 3.0, therefore, we had better avoid to use it!)
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

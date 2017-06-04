@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Importance Sampling on Shih-Chin</title>
+    <link>http://www.shihchin.com/tags/importance-sampling.html</link>
+    <description>Recent content in Importance Sampling on Shih-Chin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright © Shih-Chin</copyright>
+    <lastBuildDate>Tue, 27 Oct 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.shihchin.com/tags/importance-sampling/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>BSSRDF Importance Sampling of Normalized Diffusion</title>
+      <link>http://www.shihchin.com/2015/10/bssrdf-importance-sampling-of-normalized-diffusion.html</link>
+      <pubDate>Tue, 27 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.shihchin.com/2015/10/bssrdf-importance-sampling-of-normalized-diffusion.html</guid>
+      <description>Highly scattering materials like milk or skin can&amp;rsquo;t be precisely modeled by BRDF only, because light would scatter multiple times before exiting the material at different locations. Bidirectional surface scattering distribution function (BSSRDF) is used to describe radiance transfer across the surface boundary with diffusion profile for multiple scattering events.
+To solve subsurface light transport efficiently, there are several approaches to model and evaluate the diffusion profile. Recently, Burley [5] has proposed an artist-friendly diffusion profile with only two exponential functions and the most attracting thing is that it&amp;rsquo;s not only intuitive for artists to use but also faster to evaluate.</description>
+    </item>
+    
+    <item>
+      <title>Sampling Visible Normals for GGX BRDF</title>
+      <link>http://www.shihchin.com/2015/08/sampling-visible-normals-for-ggx-brdf.html</link>
+      <pubDate>Sun, 23 Aug 2015 22:49:00 +0000</pubDate>
+      
+      <guid>http://www.shihchin.com/2015/08/sampling-visible-normals-for-ggx-brdf.html</guid>
+      <description>The standard approach proposed by Walter et al. [1] for importance sampling of GGX BRDF is to use the PDF proportional to distribution of microfacet normal $D(\omega)$. However, $D(\omega)$ is not view-dependent, thus it would waste lots of samples when the incoming direction is near grazing angles In addition, the small value of $D(\omega)\vert m\cdot n\vert$ at grazing angle would make the sample value as high as hundreds to millions in some situations and cause fireflies in render results.</description>
+    </item>
+    
+    <item>
+      <title>Implementing Disney Principled BRDF in Arnold</title>
+      <link>http://www.shihchin.com/2015/07/implementing-disney-principled-brdf-in-arnold.html</link>
+      <pubDate>Sun, 19 Jul 2015 16:05:00 +0000</pubDate>
+      
+      <guid>http://www.shihchin.com/2015/07/implementing-disney-principled-brdf-in-arnold.html</guid>
+      <description>Disney &amp;ldquo;principled&amp;rdquo; BRDF [1] is a very interesting shading model. It can achieve various physically plausible appearances with only one color parameter and ten scalar parameters! This shading model is designed not only to catch most of the measured data from MERL, but also to follow the principles below:
+  Intuitive rather than physical. As few parameters as possible. Parameters are zero to one over their plausible range. Parameters are allowed to be pushed beyond their plausible range where it makes sense.</description>
+    </item>
+    
+    <item>
+      <title>Implementing GGX BRDF in Arnold with Multiple Importance Sampling</title>
+      <link>http://www.shihchin.com/2015/06/implementing-ggx-brdf-in-arnold-with-multiple-importance-sampling.html</link>
+      <pubDate>Sun, 28 Jun 2015 15:20:00 +0000</pubDate>
+      
+      <guid>http://www.shihchin.com/2015/06/implementing-ggx-brdf-in-arnold-with-multiple-importance-sampling.html</guid>
+      <description>Monte Carlo path tracing has a slow convergence rate close to $O(1/\sqrt n)$, it needs to quadruple the number of samples to halve the error. Many mainstream production renderers have deployed multiple importance sampling (MIS) technique to reduce the variance of sampling result (i.e. the noise in image). If we want to make our custom material shader efficiently execute along with the entire render scene in Arnold, we shall definitely consider exploiting the power of MIS.</description>
+    </item>
+    
+  </channel>
+</rss>

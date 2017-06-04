@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Shih-Chin</title>
+    <link>http://www.shihchin.com/tags.html</link>
+    <description>Recent content in Tags on Shih-Chin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright © Shih-Chin</copyright>
+    <lastBuildDate>Fri, 25 Dec 2015 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www.shihchin.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Arnold</title>
+      <link>http://www.shihchin.com/tags/arnold.html</link>
+      <pubDate>Fri, 25 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.shihchin.com/tags/arnold.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>BRDF</title>
+      <link>http://www.shihchin.com/tags/brdf.html</link>
+      <pubDate>Sun, 23 Aug 2015 22:49:00 +0000</pubDate>
+      
+      <guid>http://www.shihchin.com/tags/brdf.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>BSSRDF</title>
+      <link>http://www.shihchin.com/tags/bssrdf.html</link>
+      <pubDate>Fri, 25 Dec 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.shihchin.com/tags/bssrdf.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CMake</title>
+      <link>http://www.shihchin.com/tags/cmake.html</link>
+      <pubDate>Sat, 01 Jun 2013 10:25:00 +0000</pubDate>
+      
+      <guid>http://www.shihchin.com/tags/cmake.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Coding</title>
+      <link>http://www.shihchin.com/tags/coding.html</link>
+      <pubDate>Sat, 15 Dec 2012 12:15:00 +0000</pubDate>
+      
+      <guid>http://www.shihchin.com/tags/coding.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Importance Sampling</title>
+      <link>http://www.shihchin.com/tags/importance-sampling.html</link>
+      <pubDate>Tue, 27 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.shihchin.com/tags/importance-sampling.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Maya</title>
+      <link>http://www.shihchin.com/tags/maya.html</link>
+      <pubDate>Sat, 02 May 2015 18:34:00 +0000</pubDate>
+      
+      <guid>http://www.shihchin.com/tags/maya.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Maya API</title>
+      <link>http://www.shihchin.com/tags/maya-api.html</link>
+      <pubDate>Tue, 21 Apr 2015 23:01:00 +0000</pubDate>
+      
+      <guid>http://www.shihchin.com/tags/maya-api.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PySide</title>
+      <link>http://www.shihchin.com/tags/pyside.html</link>
+      <pubDate>Sat, 02 May 2015 18:34:00 +0000</pubDate>
+      
+      <guid>http://www.shihchin.com/tags/pyside.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>http://www.shihchin.com/tags/python.html</link>
+      <pubDate>Sat, 02 May 2015 18:34:00 +0000</pubDate>
+      
+      <guid>http://www.shihchin.com/tags/python.html</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Study</title>
+      <link>http://www.shihchin.com/tags/study.html</link>
+      <pubDate>Tue, 24 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.shihchin.com/tags/study.html</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
