@@ -1,0 +1,76 @@
+baseurl = "http://www.shihchin.com"
+title = "Shih-Chin"
+
+languageCode = "en-us"
+copyright = "Copyright © Shih-Chin"
+googleAnalytics = "UA-71352938-1" # delete or comment to disable Google Analytics JS generation
+disqusShortname = "shihchinw" #delete or comment to disable Disqus comments
+
+contentDir = "content"
+layoutDir = "layouts"
+publishDir = "public"
+preserveTaxonomyNames = true
+canonifyurls = true
+uglyurls = true
+
+[permalinks]
+  post = "/:year/:month/:title/"
+
+[author]
+  name = "Shih-Chin"
+
+[params]
+  dateForm = "Mon, Jan 2, 2006"
+  description = "Study Notes about Computer Graphics"
+  author = "Shih-Chin"
+  email = "shihchin.weng@gmail.com"
+  showReadTime = false
+  indexImage = "images/header/index.jpg"
+  paginate = 7
+  paginatePath = "page"
+
+[taxonomies]
+  tag = "tags"
+
+[[params.social]]
+  title = "twitter"
+  url = "https://twitter.com/shihchinw"
+
+[[params.social]]
+  title = "github"
+  url = "https://github.com/shihchinw"
+
+[[menu.main]]
+  name = "home"
+  url = "/"
+  weight = -200
+
+[[menu.main]]
+  name = "Computer Graphics"
+  url = "/page/computer-graphics.html"
+  weight = -180
+
+[[menu.main]]
+  name = "Global Illumination"
+  url = "/page/global-illumination.html"
+  weight = -170
+
+[[menu.main]]
+  name = "Arnold"
+  url = "/page/arnold.html"
+  weight = -160
+
+[[menu.main]]
+  name = "Maya"
+  url = "/page/maya.html"
+  weight = -150
+
+[[menu.main]]
+  name = "Posts"
+  url = "/post.html"
+  weight = -140
+
+[[menu.main]]
+  name = "About"
+  url = "/page/about.html"
+  weight = -100

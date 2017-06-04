@@ -2,8 +2,8 @@ This is my website on github pages.
 
 It uses following open resources:
 
-* [Jekyll](http://jekyllrb.com)
-* [Clean-Blog Theme](https://github.com/IronSummitMedia/startbootstrap-clean-blog-jekyll)
+* [Hugo](http://gohugo.io/)
+* [Clean-Blog Theme](http://themes.gohugo.io/startbootstrap-clean-blog/)
 * [LightBox2](http://lokeshdhakar.com/projects/lightbox2/)
 * [TwentyTwenty](https://github.com/zurb/twentytwenty)
 * [MathJax](https://www.mathjax.org)
