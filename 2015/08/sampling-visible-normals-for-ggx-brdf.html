@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Sampling Visible Normals for GGX BRDF -- Shih-Chin</title>
+
+    
+
+    
+    <link href="http://shihchin.com/css/bootstrap.css" rel="stylesheet">
+
+    
+    <link href="http://shihchin.com/css/clean-blog.css" rel="stylesheet">
+
+    
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:400,400italic|Open+Sans:400italic,600italic,400,600|Coda:800)' media='screen' rel='stylesheet' type='text/css'/>
+
+    
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="http://shihchin.com/css/prettyprint.css">
+    
+
+    <link rel="stylesheet" href="http://shihchin.com/css/lightbox.css">
+
+    
+    
+    
+
+    
+    <script type='text/x-mathjax-config'>
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+            },
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: {
+                equationNumbers: { autoNumber: "AMS" },
+                extensions: ["AMSmath.js", "AMSsymbols.js"]
+            },
+            "HTML-CSS": {
+                preferredFont: "TEX",
+                scale : 85
+            }
+        });
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+
+    <link rel="stylesheet" type="text/css" href="http://shihchin.com/css/foundation.css">
+    <link rel="stylesheet" type="text/css" href="http://shihchin.com/css/twentytwenty.css">
+    <link rel="stylesheet" type="text/css" href="http://shihchin.com/css/header-anchor.css">
+    <link rel="shortcut icon" type="image/png" href="http://shihchin.com/favicon.png">
+
+    <style>
+    .intro-header .overlay {
+        background: rgba(0, 0, 0, 0.47);
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        top: 0;
+    }
+
+    p + ul { margin-top: -24px; }
+    p + ol { margin-top: -24px; }
+    h1 + p, h2 + p, h3 + p { margin-top: 15px; }
+
+    .summary-content {
+        text-align: justify;
+        margin: 5px 0px 5px 0px;
+    }
+
+    a.read-more-link {
+        text-decoration: none;
+        color: #FF9800;
+        font-weight: bolder;
+        margin-left: 5px;
+    }
+
+    code > div > .table {
+        margin-bottom: 0px;
+        padding: 0px;
+    }
+
+    code > div > .table > tbody > tr > td {
+        border-top: none;
+        padding: 0px;
+    }
+
+    .container .img-responsive {
+        padding: 5px;
+        margin: auto;
+        -moz-box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .twentytwenty-container .img-responsive {
+        padding: 0px;
+        margin: 0px auto;
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-radius: 0px;
+    }
+
+    .figure .img-responsive {
+        padding: 0px;
+        margin: auto;
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-radius: 0px;
+        margin-top: 0px;
+        margin-bottom: 5px;
+    }
+
+    .figure {
+        padding: 5px;
+        margin: auto;
+        -moz-box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        display: table;
+    }
+
+    figure figcaption {
+         
+        text-align: center;
+        font-size: 14px;
+         
+        color: #808080;
+    }
+
+    .container li a {
+        text-decoration: underline;
+    }
+
+    .container a:hover, a:focus {
+         
+        background: #A6DCF3;
+        text-decoration: none;
+    }
+
+    samp {
+        display: block;
+        background-color: rgba(0, 55, 0, 1);
+        font-size: 0.8em;
+        text-align: left;
+        color: rgba(0, 255, 0, 1);
+        padding: 5px;
+        white-space: pre-wrap;
+        border-radius: 5px;
+        margin: 10px 0px;
+    }
+
+    samp.error {
+        color: red;
+    }
+
+    blockquote p:first-child, blockquote ul:first-child, blockquote ol:first-child {
+        margin-top: 0;
+    }
+
+    .container blockquote {
+         
+        background: #FFF1E5;
+        padding: 8px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+         
+        text-align: justify;
+        line-height: 1.5;
+        border: dashed;
+        border-color: rgb(228, 201, 196);
+    }
+
+    .container blockquote.feedback {
+        white-space: pre-wrap;
+    }
+
+    blockquote time {
+        font-size: 80%;
+    }
+
+    blockquote {
+        color: #806565;
+    }
+
+    blockquote a {
+        color: #337ab7;
+    }
+
+    span.blue {
+        border-bottom: 1px solid #a6dcf3;
+        box-shadow: inset 0 -6px 0 #a6dcf3;
+    }
+    span.orange {
+        border-bottom: 1px solid #ffd8ae;
+        box-shadow: inset 0 -6px 0 #ffd8ae;
+    }
+    span.red { color: #dc1111; }
+    span.green {
+        border-bottom: 1px solid #cdf9bb;
+        box-shadow: inset 0 -6px 0 #cdf9bb;
+    }
+
+    .tag-box {
+        list-style: none;
+        margin: 0;
+        padding: 4px 0;
+        overflow: hidden;
+    }
+    .tag-box.inline li {
+        float: left;
+    }
+    .tag-box li {
+        padding: 4px 6px;
+        margin: 2px;
+        background-color: #e6e6e6;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+    }
+    .tag-box li a {
+        text-decoration: none;
+    }
+    </style>
+
+</head>
+
+<body onload="PR.prettyPrint()">
+
+    
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://shihchin.com">Shih-Chin</a>
+            </div>
+            
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-right">
+        
+        <li>
+            <a href="http://shihchin.com/">home</a>
+        </li>
+        
+        <li>
+            <a href="http://shihchin.com/page/computer-graphics.html">Computer Graphics</a>
+        </li>
+        
+        <li>
+            <a href="http://shihchin.com/page/global-illumination.html">Global Illumination</a>
+        </li>
+        
+        <li>
+            <a href="http://shihchin.com/page/arnold.html">Arnold</a>
+        </li>
+        
+        <li>
+            <a href="http://shihchin.com/page/maya.html">Maya</a>
+        </li>
+        
+        <li>
+            <a href="http://shihchin.com/post.html">Posts</a>
+        </li>
+        
+        <li>
+            <a href="http://shihchin.com/page/about.html">About</a>
+        </li>
+        
+      </ul>
+</div>
+
+
+        </div>
+        
+    </nav>
+
+
+    
+    
+    <header class="intro-header" style="background-image: url('http://shihchin.com/images/header/posts/2015-08-23-sampling-visible-normals-for-ggx-brdf.jpg')">
+    
+      <div class="overlay">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="post-heading">
+                <h1>Sampling Visible Normals for GGX BRDF</h1>
+                <h2 class="subheading"></h2>
+                <span class="meta">
+                 
+Posted by Shih-Chin on Sun, Aug 23, 2015
+
+
+               </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  
+
+<p>The standard approach proposed by Walter et al. [<a href="#ref.1">1</a>] for importance sampling of GGX BRDF is to use the PDF proportional to distribution of microfacet normal $D(\omega)$. However, $D(\omega)$ is not <strong>view-dependent</strong>, thus it would waste lots of samples when the incoming direction is near grazing angles In addition, the small value of $D(\omega)\vert m\cdot n\vert$ at grazing angle would make the sample value <em>as high as hundreds to millions</em> in some situations and cause fireflies in render results.</p>
+
+<p>In order to tackle these problems, Heitz and d&rsquo;Eon [<a href="#ref.3">3</a>] proposed a new method by sampling from the distribution of <span class="orange"><strong>visible</strong></span> normals. Due to the consideration of view direction, their approach can significantly reduce the amount of wasted samples and make the sample weight in proper range to avoid the fireflies.</p>
+
+<h1 id="revisit-the-distribution-of-normals-d-omega">Revisit the Distribution of Normals $D(\omega)$</h1>
+
+<figure class="figure">
+<img src="http://shihchin.com/images/rendering/microsurface.png">
+<figcaption class="figure-caption">Microsurface configuration. Image from Heitz [2]</figcaption>
+</figure>
+
+<p>Suppose the area of macro surface is $1m^2$ and its normal is $\omega_g$. The normal of each microfacet point $p_m$ on the micro-surface $\mathcal{M}$ is $\omega_m(p_m)$ and the distribution of normals is:</p>
+
+<div>$$D(\omega)=\int_\mathcal{M}{\delta_\omega (\omega_m(p_m)) dp_m}$$</div>
+
+<blockquote>
+<p>The unit stated in Heitz [<a href="#ref.2">2</a>] is $m^2/sr$ instead of $1/sr$, it&rsquo;s different from the one stated in Walter et al. [<a href="#ref.1">1</a>]</p>
+</blockquote>
+
+<p>$D(\omega)$ describes the area of points $\mathcal{M}′⊂\mathcal{M}$ whose normals lie in the given solid angle $\omega$. Additionaly, it relates the integral from microsurface space to the space the normals which is the unit sphere $\omega$:</p>
+
+<div>$$microsurface\ area=\int_\mathcal{M}{dp_m}=\int_\Omega{D(\omega_m)d\omega_m}$$</div>
+
+<p>and the projected area along the geometry normal $\omega_g$ is:</p>
+
+<div>$$\int_\Omega{(\omega_m⋅\omega_g )D(\omega_m )d\omega_m}=\int_\mathcal{M}{(\omega_m (p_m )⋅\omega_g )dp_m}=1$$</div>
+
+<h1 id="the-distribution-of-visible-normals-d-omega-o-omega">The Distribution of Visible Normals $D_{\omega_o}(\omega)$</h1>
+
+<figure class="figure">
+<img src="http://shihchin.com/images/rendering/distributtion_of_visible_normals.png">
+<figcaption class="figure-caption">Distribution of visible normals. Image from Heitz [2]</figcaption>
+</figure>
+
+<p>When we consider the projected area along the outgoing direction $\omega_o$, we have to add a <span style="color: #009933;"><strong>masking</strong></span> function $\color{#009933}{G_1(\omega_o, \omega_m)}$ to exclude the occlusion part (i.e. the black parts in the figure above):</p>
+
+<div>$$\int_\omega{\color{#009933}{G_1(\omega_o, \omega_m)}\langle\omega_o, \omega_m\rangle D(\omega_m)d\omega_m}=\color{#0099FF}{\cos{\theta_o}}$$</div>
+
+<p>With these information, the outgoing radiance from the microsurface can be formulated as:</p>
+
+<div>$$\begin{eqnarray}
+L(\omega_o,\mathcal{M}) &=& \frac{\int_\mathcal{M}{projected\ area(p_m)L(\omega_o,p_m)dp_m}}{\color{#0099FF}{\int_\mathcal{M}{projected\ area(p_m)dp_m}}} \nonumber \\
+&=& \frac{1}{\color{#0099FF}{\cos{\theta_o}}}\int_\Omega{G_1(\omega_o,\omega_m)\langle\omega_o,\omega_m\rangle D(\omega_m)L(\omega_o, \omega_m)d\omega_m} \nonumber \\
+&=&\int_\Omega{\color{#FF3399}{D_{\omega_o}(\omega_m)}L(\omega_o, \omega_m)d\omega_m} \nonumber \\
+\end{eqnarray}$$</div>
+
+<p>where the distribution of visible normals is $\color{#FF3399}{D_{\omega_o}(\omega_m)}=\frac{1}{\cos{\theta_o}}G_1(\omega_o,\omega_m)\langle\omega_o, \omega_m\rangle D(\omega_m)$.</p>
+
+<h1 id="importance-sampling-of-d-omega-o-omega">Importance Sampling of $D_{\omega_o}(\omega)$</h1>
+
+<p>For the anisotropic case, the $D(\omega_m)$ should be replaced with $D(\omega_m,\alpha_x,\alpha_y)$ and the distribution of visible normals becomes:</p>
+
+<div>$$D_{\omega_o}(\omega_m,\alpha_x,\alpha_y)=\frac{1}{\cos{\theta_o}}G_1(\omega_o,\omega_m)\langle \omega_o, \omega_m \rangle D(\omega_m,\alpha_x,\alpha_y)$$</div>
+
+<p>Since it&rsquo;s not easy to perform importance sampling with $D_{\omega_o}(\omega_m,\alpha_x,\alpha_y)$ directly, Heitz and d&rsquo;Eon [<a href="#ref.3">3</a>] proposed a novel technique based on Heitz&rsquo;s discovery [<a href="#ref.2">2</a>] of <span class="orange"><strong>stretch invariance property in slope space</strong></span> to accomplish the task.</p>
+
+<h2 id="normal-vector-in-slope-space">Normal Vector in Slope Space</h2>
+
+<p>Suppose the microsurface is a heightfield, given a normal $\omega_m(x_m, y_m,z_m)$, its coordinate in slope space can be defined as:</p>
+
+<div>$$\tilde{m}(\omega_m)=(x_\tilde{m},y_\tilde{m})=\left(−\frac{x_m}{z_m},−\frac{y_m}{z_m}\right)$$</div>
+
+<p>and the distribution of slopes $P^{22}(\tilde{m})$ is necessarily normalized (all the possibilities must sum to 1):</p>
+
+<div>$$\int_{−\infty}^\infty{\int_{−\infty}^\infty{P^{22}(\tilde{m})dx_\tilde{m}}dy_\tilde{m}}=1$$</div>
+
+<p>recall that $\int_\omega{(\omega_m\cdot\omega_g)D(\omega_m)d\omega_m}=1$, we get the following relationship:</p>
+
+<div>$$\begin{eqnarray}
+(\omega_m⋅\omega_g)D(\omega_m)d\omega_m&=&P^{22}(\tilde{m})d\tilde{m} \nonumber \\
+(\omega_m⋅\omega_g)D(\omega_m)&=&\left\|\frac{\partial \tilde{m}}{\partial \omega_m}\right\| P^{22}(\tilde{m}) \nonumber \\
+\end{eqnarray}$$</div>
+
+<p>likewise, the relationship involved with masking is (cf. Heitz [2] p.82):</p>
+
+<div>$$D_{\omega_i}(\omega_m)=\left\|\frac{\partial \tilde{m}}{\partial \omega_m}\right\| P_{\omega_i}^{22}(\tilde{m})$$</div>
+
+<p>where $P_{\omega_i}^{22}(\tilde{m})$ is the distribution of <span class="orange"><strong>visible</strong></span> slopes, and it shows that if we sample the slopes from $P_{\omega_i}^{22}(\tilde{m})$ and transform them to normal $\omega_m$, the resulting PDF is $D_{\omega_i}(\omega_m)$.</p>
+
+<h2 id="stretch-invariance">Stretch Invariance</h2>
+
+<p>Suppose the distribution of slopes $P^{22}$ depends on the roughness $\alpha_x,\alpha_y$, Heitz calls $P^{22}$ is stretch invariant if changing its roughness would only stretch the distribution but keep its shape identical:</p>
+
+<figure class="figure">
+<img src="http://shihchin.com/images/rendering/stretch_invariant.png">
+<figcaption class="figure-caption">Illustration of stretch invariance. Image from Heitz [2]</figcaption>
+</figure>
+
+<p>In 1D case, stretch x-axis by a factor of 2 would compress the distribution by 2 and also notice that the height of distribution has been scaled by 2. Suppose the distribution is $D(x, \alpha)$, the stretch invariance can be described as $D(x, \alpha)=\frac{1}{\lambda}D(\frac{x}{\lambda},\frac{\alpha}{\lambda})$.</p>
+
+<p>Extend this relationship to 2D, we get:</p>
+
+<div>$$P^{22}(x_\tilde{m},y_\tilde{m},\alpha_x,\alpha_y)=\frac{1}{\lambda_x \lambda_y} P^{22}\left(\frac{x_\tilde{m}}{\lambda_x},\frac{y_\tilde{m}}{\lambda_y},\frac{\alpha_x}{\lambda_x},\frac{\alpha_y}{\lambda_y}\right)$$</div>
+
+<p>In Heitz and d&rsquo;Eon [3], they showed that the distribution of visible slopes also has the following relationship:</p>
+
+<div>$$P_{\omega_i}^{22}(x_\tilde{m},y_\tilde{m},\alpha_x,\alpha_y)=\frac{1}{\lambda_x \lambda_y} P_{S^{\lambda_x \lambda_y} (\omega_i)}^{22}\left(\frac{x_\tilde{m}}{\lambda_x},\frac{y_\tilde{m}}{\lambda_y},\frac{\alpha_x}{\lambda_x},\frac{\alpha_y}{\lambda_y}\right)$$</div>
+
+<p>With stretch invariance property, any anisotropic distribution can be stretched into an isotropic one whose masking probability $G$ is the same. Then the samples can be generated with the help of the stretched isotropic distribution in following steps:</p>
+
+<ol>
+<li>apply stretch invariant property to make $P_{\omega_i}^{22}$ <span style="color: #FF3399;"><strong>isotropic</strong></span></li>
+<li>sample the slope coordinate $x_\tilde{m}$ according to the marginal PDF $P_{\omega_i}^{2−}(x_\tilde{m},\color{#FF3399}{1,1})$</li>
+<li>sample $y_\tilde{m}$ with given $x_\tilde{m}$ and conditional PDF $P_{\omega_i}^{2\vert 2}(y_\tilde{m}\vert x_\tilde{m},\color{#FF3399}{1,1})$</li>
+<li>rotate along the z axis by $\phi$ in canonical frame</li>
+<li>inversely stretch the slope coordinate $(x_m, y_m)$</li>
+<li>compute normal from slope coordinate $\omega_m=\frac{(−x_m,−y_m,1)}{\sqrt{x_m^2+y_m^2+1}}$</li>
+</ol>
+
+<blockquote>
+<p>The implementation details can be found in the <a href="https://hal.inria.fr/hal-00996995v2/file/supplemental1.pdf">supplemental document</a> of the Heitz and d&rsquo;Eon [3].</p>
+</blockquote>
+
+<h1 id="experimental-results">Experimental Results</h1>
+
+<p><a href="http://shihchin.com/images/rlShaders/ggx_sampling_comparison.jpg" data-lightbox="results"> <img src="http://shihchin.com/images/rlShaders/ggx_sampling_comparison.jpg" alt="Sampling Comparison" />
+</a></p>
+
+<p><img src="http://shihchin.com/images/rlShaders/ggx_ndf_sample_cmp.jpg" alt="Comparison" /></p>
+
+<p><img src="http://shihchin.com/images/rlShaders/ggx_ndf_sample_cmp2.jpg" alt="Comparison" /></p>
+
+<p>When $\cos{\theta_o}=1.5 (\theta_o\approx 85.94^\circ)$, the new method saves 310 wasted samples! The remaining 61 back-facing samples are about $1\sim3^\circ$ below the macrosurface. However, the mysterious situation happens at $\cos{\theta_o}=\pi/4$. In current implementation, there still are 52 invalid samples whose maximum $\theta_i$ is about $3\pi/4$!! From the debugging traces, I found all those invalid samples come with a random number <code>rx</code> that is near to 0 or 1. To my best guess, this weird result may be caused by numerical errors and needs further investigation.</p>
+
+<p>As usual, the implementation can be found on my <a href="https://github.com/shihchinw/rlShaders/blob/master/src/rlDisney.cpp">github</a>.</p>
+
+<h1 id="references">References</h1>
+
+<ol>
+<li>Walter, Bruce, et al. &ldquo;<a href="http://www.cs.cornell.edu/~srm/publications/EGSR07-btdf.html">Microfacet models for refraction through rough surfaces.</a>&rdquo; EGSR&rsquo;07.</li>
+<li>Heitz, Eric. &ldquo;<a href="http://jcgt.org/published/0003/02/03/">Understanding the Masking-Shadowing Function in Microfacet-Based BRDFs.</a>&rdquo; JCGT&rsquo;14. [<a href="http://jcgt.org/published/0003/02/03/presentation.pdf">slides</a>]</li>
+<li>Heitz, Eric, and Eugene d&rsquo;Eon. &ldquo;<a href="https://hal.inria.fr/hal-00996995">Importance Sampling Microfacet‐Based BSDFs using the Distribution of Visible Normals.</a>&rdquo; EGSR&rsquo;14. [<a href="https://hal.inria.fr/hal-00996995v2/file/supplemental1.pdf">source code</a>][<a href="https://hal.inria.fr/hal-00996995v2/file/slides.pdf">slides</a>]</li>
+</ol>
+
+                  
+    <hr>
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'shihchinw';
+    var disqus_identifier = 'http:\/\/shihchin.com\/2015\/08\/sampling-visible-normals-for-ggx-brdf.html';
+    var disqus_title = 'Sampling Visible Normals for GGX BRDF';
+    var disqus_url = 'http:\/\/shihchin.com\/2015\/08\/sampling-visible-normals-for-ggx-brdf.html';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+    
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  <ul class="list-inline text-center">
+                    
+                      <li>
+                        <a href="mailto:shihchin.weng@gmail.com">
+                          <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                      </li>
+                    
+                    
+                    <li>
+                      <a href="https://twitter.com/shihchinw">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://github.com/shihchinw">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                  </ul>
+                  <p class="copyright text-muted">Copyright © Shih-Chin</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="http://shihchin.com/js/jquery.min.js"></script>
+
+    
+    <script src="http://shihchin.com/js/bootstrap.min.js"></script>
+
+    
+    <script src="http://shihchin.com/js/clean-blog.js"></script>
+
+    
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-71352938-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+    <script src="http://shihchin.com/js/lightbox.js"></script>
+
+    <script src="http://shihchin.com/js/jquery.event.move.js"></script>
+    <script src="http://shihchin.com/js/jquery.twentytwenty.js"></script>
+    
+
+    <script>
+        $(window).load(function(){
+          $(".twentytwenty-container[data-orientation!='vertical']").twentytwenty({default_offset_pct: 0.7});
+          $(".twentytwenty-container[data-orientation='vertical']").twentytwenty({default_offset_pct: 0.3, orientation: 'vertical'});
+        });
+
+        
+        $(function() {
+          return $("h1, h2, h3, h4, h5, h6").each(function(i, el) {
+            var $el, icon, id;
+            $el = $(el);
+            id = $el.attr('id');
+            icon = '<i class="fa fa-link"></i>';
+            if (id) {
+              return $el.append($("<a />").addClass("header-link").attr("href", "#" + id).html(icon));
+            }
+          });
+        });
+    </script>
+</body>
+
+</html>
+

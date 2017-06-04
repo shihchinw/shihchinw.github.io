@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Learning by Teaching, as a Guest Lecturer -- Shih-Chin</title>
+
+    
+
+    
+    <link href="http://shihchin.com/css/bootstrap.css" rel="stylesheet">
+
+    
+    <link href="http://shihchin.com/css/clean-blog.css" rel="stylesheet">
+
+    
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:400,400italic|Open+Sans:400italic,600italic,400,600|Coda:800)' media='screen' rel='stylesheet' type='text/css'/>
+
+    
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="http://shihchin.com/css/prettyprint.css">
+    
+
+    <link rel="stylesheet" href="http://shihchin.com/css/lightbox.css">
+
+    
+    
+    
+
+    
+    <script type='text/x-mathjax-config'>
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+            },
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: {
+                equationNumbers: { autoNumber: "AMS" },
+                extensions: ["AMSmath.js", "AMSsymbols.js"]
+            },
+            "HTML-CSS": {
+                preferredFont: "TEX",
+                scale : 85
+            }
+        });
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+
+    <link rel="stylesheet" type="text/css" href="http://shihchin.com/css/foundation.css">
+    <link rel="stylesheet" type="text/css" href="http://shihchin.com/css/twentytwenty.css">
+    <link rel="stylesheet" type="text/css" href="http://shihchin.com/css/header-anchor.css">
+    <link rel="shortcut icon" type="image/png" href="http://shihchin.com/favicon.png">
+
+    <style>
+    .intro-header .overlay {
+        background: rgba(0, 0, 0, 0.47);
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        top: 0;
+    }
+
+    p + ul { margin-top: -24px; }
+    p + ol { margin-top: -24px; }
+    h1 + p, h2 + p, h3 + p { margin-top: 15px; }
+
+    .summary-content {
+        text-align: justify;
+        margin: 5px 0px 5px 0px;
+    }
+
+    a.read-more-link {
+        text-decoration: none;
+        color: #FF9800;
+        font-weight: bolder;
+        margin-left: 5px;
+    }
+
+    code > div > .table {
+        margin-bottom: 0px;
+        padding: 0px;
+    }
+
+    code > div > .table > tbody > tr > td {
+        border-top: none;
+        padding: 0px;
+    }
+
+    .container .img-responsive {
+        padding: 5px;
+        margin: auto;
+        -moz-box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .twentytwenty-container .img-responsive {
+        padding: 0px;
+        margin: 0px auto;
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-radius: 0px;
+    }
+
+    .figure .img-responsive {
+        padding: 0px;
+        margin: auto;
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-radius: 0px;
+        margin-top: 0px;
+        margin-bottom: 5px;
+    }
+
+    .figure {
+        padding: 5px;
+        margin: auto;
+        -moz-box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        display: table;
+    }
+
+    figure figcaption {
+         
+        text-align: center;
+        font-size: 14px;
+         
+        color: #808080;
+    }
+
+    .container li a {
+        text-decoration: underline;
+    }
+
+    .container a:hover, a:focus {
+         
+        background: #A6DCF3;
+        text-decoration: none;
+    }
+
+    samp {
+        display: block;
+        background-color: rgba(0, 55, 0, 1);
+        font-size: 0.8em;
+        text-align: left;
+        color: rgba(0, 255, 0, 1);
+        padding: 5px;
+        white-space: pre-wrap;
+        border-radius: 5px;
+        margin: 10px 0px;
+    }
+
+    samp.error {
+        color: red;
+    }
+
+    blockquote p:first-child, blockquote ul:first-child, blockquote ol:first-child {
+        margin-top: 0;
+    }
+
+    .container blockquote {
+         
+        background: #FFF1E5;
+        padding: 8px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+         
+        text-align: justify;
+        line-height: 1.5;
+        border: dashed;
+        border-color: rgb(228, 201, 196);
+    }
+
+    .container blockquote.feedback {
+        white-space: pre-wrap;
+    }
+
+    blockquote time {
+        font-size: 80%;
+    }
+
+    blockquote {
+        color: #806565;
+    }
+
+    blockquote a {
+        color: #337ab7;
+    }
+
+    span.blue {
+        border-bottom: 1px solid #a6dcf3;
+        box-shadow: inset 0 -6px 0 #a6dcf3;
+    }
+    span.orange {
+        border-bottom: 1px solid #ffd8ae;
+        box-shadow: inset 0 -6px 0 #ffd8ae;
+    }
+    span.red { color: #dc1111; }
+    span.green {
+        border-bottom: 1px solid #cdf9bb;
+        box-shadow: inset 0 -6px 0 #cdf9bb;
+    }
+
+    .tag-box {
+        list-style: none;
+        margin: 0;
+        padding: 4px 0;
+        overflow: hidden;
+    }
+    .tag-box.inline li {
+        float: left;
+    }
+    .tag-box li {
+        padding: 4px 6px;
+        margin: 2px;
+        background-color: #e6e6e6;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+    }
+    .tag-box li a {
+        text-decoration: none;
+    }
+    </style>
+
+</head>
+
+<body onload="PR.prettyPrint()">
+
+    
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://shihchin.com">Shih-Chin</a>
+            </div>
+            
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-right">
+        
+        <li>
+            <a href="http://shihchin.com/">home</a>
+        </li>
+        
+        <li>
+            <a href="http://shihchin.com/page/computer-graphics.html">Computer Graphics</a>
+        </li>
+        
+        <li>
+            <a href="http://shihchin.com/page/global-illumination.html">Global Illumination</a>
+        </li>
+        
+        <li>
+            <a href="http://shihchin.com/page/arnold.html">Arnold</a>
+        </li>
+        
+        <li>
+            <a href="http://shihchin.com/page/maya.html">Maya</a>
+        </li>
+        
+        <li>
+            <a href="http://shihchin.com/post.html">Posts</a>
+        </li>
+        
+        <li>
+            <a href="http://shihchin.com/page/about.html">About</a>
+        </li>
+        
+      </ul>
+</div>
+
+
+        </div>
+        
+    </nav>
+
+
+    
+    
+    <header class="intro-header">
+    
+      <div class="overlay">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="post-heading">
+                <h1>Learning by Teaching, as a Guest Lecturer</h1>
+                <h2 class="subheading"></h2>
+                <span class="meta">
+                 
+Posted by Shih-Chin on Sat, Dec 31, 2016
+
+
+               </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  
+
+<p>I was privileged to be a guest lecturer to give five lectures about Computer Graphics at National Cheng Kung University (NCKU) in Taiwan. When I prepared
+the course materials, I deeply realized again that the best way to learn a topic is to teach someone else (especially to a person who never heard about Computer Graphics before). In order to avoid teaching wrong ideas, I had carefully reviewed what I known from ground up and derived each mathematical equation in the textbooks. This post is about what I&rsquo;ve learned in those few months.</p>
+
+<h1 id="blind-spots">Blind Spots</h1>
+
+<p>In my re-studying process, I found I had several blind spots in my knowledge base. There were few assumptions I took for granted that I didn&rsquo;t deeply think over it before:</p>
+
+<ol>
+<li>Is quaternion (or unit quaternion) a representation for rotation?</li>
+<li>Why is there a magic <sup>1</sup>&frasl;<sub>2</sub> scale when we use quaternion for rotation?</li>
+<li>What is the singularity of rotation?</li>
+<li>What are the problems of rotation interpolation in matrix form?</li>
+<li>Why is radiance so important in light transport process?</li>
+</ol>
+
+<p>To be honest, I still can&rsquo;t answer all the questions in very detailed. Since my time is limited while the knowledge is boundless. Take rotation for example, after I saw a <a href="http://rotations.berkeley.edu/">website</a> about rotations from Berkeley, I just realized I didn&rsquo;t know much about rotation at all. If we want to <strong>truly</strong> understand every details about it, we might need to study <span class="green"><em>group theory</em></span>. As for Global Illumination, even though I had implemented a simple ray tracer for my thesis, I still find there are always new things I didn&rsquo;t know very well in the past and feel extremely excited to study new things to fill my knowledge gap.</p>
+
+<h1 id="coherent-explanations-topic-selection">Coherent Explanations &amp; Topic Selection</h1>
+
+<p>Making slides is a great way to build a coherent explanation for a topic. It helps me organize the order of each subject properly. The other important thing is how to combine several ideas into a theme. In my personal experience, a lecture without a theme is just like sailing in the ocean without a compass. It makes me think what are the most important ideas about Physically-Based Rendering (PBR) and Global Illumination (GI), and how to introduce those concepts gradually to make students understand the whole concept without being lost in the wild.</p>
+
+<p>About the homeworks, we didn&rsquo;t ask students to implement a software rasterizer, which is the the conventional arrangement of many Computer Graphics courses in Taiwan. It is because I think we have few chances to implement the rasterization algorithm at work (but I still think it is a great exercise to learn how to become a graphics programmer).</p>
+
+<p>Most of the time we are trying to make something like skin, hair or cloth look more photo-realistic or <strong>physically plausible</strong>. That&rsquo;s why I decided to emphasize on the reflection model and the implementation challenges in production environment. I hope I could bring a little different course materials to shrink the gap between school and industry.</p>
+
+<p>For PBR &amp; GI, I chose to introduce following subjects:</p>
+
+<ul>
+<li>Bidirectional Reflectional Distribution Function (BRDF)</li>
+<li>Microfacet BRDF model</li>
+<li>Disney artist friendly BRDF</li>
+<li>Ray tracing frameworks for Global Illumination</li>
+<li>Difficult lighting conditions and challenges for production renderer</li>
+</ul>
+
+<h1 id="research-papers-software-developments">Research Papers &amp; Software Developments</h1>
+
+<p>As a guest lecturer with production experiences, I think the most valuable things I could provide is the connections between research papers and production software developments. In spite of lots mathematical equations or theories, I showed several demo reels of cutting-edge CG software and explained the difficulties behind the implementations. One of the most interesting things came from our dialog in class:</p>
+
+<blockquote>
+<p>Me: Why is this software or demo awesome?
+Students: &hellip; (silence)
+Me: Please raise your hand if you can&rsquo;t find any awesomeness at all.
+(more than half of class students raised their hands)
+Me: Please let me explain why it is awesome. The devil is in the details!!
+(after few minutes&hellip;)
+Students: WOW~ WOW~!!</p>
+</blockquote>
+
+<p>There is a gap from research papers to production tools. To implement a production software we need to take more care of a lot things such as parallelism, memory footprint, maintenance, etc. Additionally, since most of our software are used by artists, we definitely need to pay attention to their requirements. <em>Soft skills are really matters</em>. Before diving into actual development, we have to make sure we truly understand what artists want.</p>
+
+<p>As a software engineer in an animation studio, any production problem can be solved either by artists or programmers. Don&rsquo;t obsess over using fancy programming languages or technologies. Sometimes, artists&rsquo; solutions are more effective than our own. We should <span class="blue"><em>open up our mind to any possibility, put ourselves in others&rsquo; shoes</em></span>. Respect each others, work together closely to solve the problem at hand in an efficient and creative way.</p>
+
+<h1 id="inspired-by-others">Inspired by Others</h1>
+
+<p>I enjoy talking to passionate people from different backgrounds and ages. They always show me a new way to examine a problem. As for the students who studies Computer Graphics for the first time, their questions can help me find out the blind spots of my understanding. This make me re-think the problem in a direction forward fundamental ideas. It opens up my mind not only to discover the relation between different topics but also to digest more core ideas behind certain findings.</p>
+
+<p>Frankly speaking, the one who learns the most valuable things from this teaching experience is myself. In my lectures, I often said I still have lots of things I don&rsquo;t know very well. If they have figured out something new afterwards, please don&rsquo;t hesitate to share with we. Just like I said to the students in my first lecture: I&rsquo;m not a teacher. <span class="blue"><em>I just a tour guide who wants to share the beauty of Computer Graphics I&rsquo;ve seen in my journey. Please join me and have FUN!</em></span></p>
+
+<h1 id="footnotes">Footnotes</h1>
+
+<p>Here are my slides for the course, hope it would help someone who wants to learn about Computer Graphics. Enjoy!</p>
+
+<ol>
+<li><a href="http://shihchin.com/slides/2016_CG@NCKU/2016.05.10-Computer_Animation.pdf">Computer Animation</a></li>
+<li><a href="http://shihchin.com/slides/2016_CG@NCKU/2016.05.24-Physical-Based_Rendering.pdf">Physically-Based Rendering</a></li>
+<li><a href="http://shihchin.com/slides/2016_CG@NCKU/2016.05.31-Global_Illumination_PartI.pdf">Global Illumination Part 1</a></li>
+<li><a href="http://shihchin.com/slides/2016_CG@NCKU/2016.06.07-Global_Illumination_PartII.pdf">Global Illumination Part 2</a></li>
+<li><a href="http://shihchin.com/slides/2016_CG@NCKU/2016.05.10-Self-Study_Tips.pdf">Self-Study Tips</a></li>
+</ol>
+
+                  
+    <hr>
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'shihchinw';
+    var disqus_identifier = 'http:\/\/shihchin.com\/2016\/12\/learning-by-teaching-as-a-guest-lecturer.html';
+    var disqus_title = 'Learning by Teaching, as a Guest Lecturer';
+    var disqus_url = 'http:\/\/shihchin.com\/2016\/12\/learning-by-teaching-as-a-guest-lecturer.html';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+    
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  <ul class="list-inline text-center">
+                    
+                      <li>
+                        <a href="mailto:shihchin.weng@gmail.com">
+                          <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                      </li>
+                    
+                    
+                    <li>
+                      <a href="https://twitter.com/shihchinw">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://github.com/shihchinw">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                  </ul>
+                  <p class="copyright text-muted">Copyright © Shih-Chin</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="http://shihchin.com/js/jquery.min.js"></script>
+
+    
+    <script src="http://shihchin.com/js/bootstrap.min.js"></script>
+
+    
+    <script src="http://shihchin.com/js/clean-blog.js"></script>
+
+    
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-71352938-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+    <script src="http://shihchin.com/js/lightbox.js"></script>
+
+    <script src="http://shihchin.com/js/jquery.event.move.js"></script>
+    <script src="http://shihchin.com/js/jquery.twentytwenty.js"></script>
+    
+
+    <script>
+        $(window).load(function(){
+          $(".twentytwenty-container[data-orientation!='vertical']").twentytwenty({default_offset_pct: 0.7});
+          $(".twentytwenty-container[data-orientation='vertical']").twentytwenty({default_offset_pct: 0.3, orientation: 'vertical'});
+        });
+
+        
+        $(function() {
+          return $("h1, h2, h3, h4, h5, h6").each(function(i, el) {
+            var $el, icon, id;
+            $el = $(el);
+            id = $el.attr('id');
+            icon = '<i class="fa fa-link"></i>';
+            if (id) {
+              return $el.append($("<a />").addClass("header-link").attr("href", "#" + id).html(icon));
+            }
+          });
+        });
+    </script>
+</body>
+
+</html>
+

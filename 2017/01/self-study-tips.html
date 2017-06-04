@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Self-Study Tips -- Shih-Chin</title>
+
+    
+
+    
+    <link href="http://shihchin.com/css/bootstrap.css" rel="stylesheet">
+
+    
+    <link href="http://shihchin.com/css/clean-blog.css" rel="stylesheet">
+
+    
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:400,400italic|Open+Sans:400italic,600italic,400,600|Coda:800)' media='screen' rel='stylesheet' type='text/css'/>
+
+    
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="http://shihchin.com/css/prettyprint.css">
+    
+
+    <link rel="stylesheet" href="http://shihchin.com/css/lightbox.css">
+
+    
+    
+    
+
+    
+    <script type='text/x-mathjax-config'>
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ['\\(','\\)'] ]
+            },
+            processEscapes: true,
+            processEnvironments: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            TeX: {
+                equationNumbers: { autoNumber: "AMS" },
+                extensions: ["AMSmath.js", "AMSsymbols.js"]
+            },
+            "HTML-CSS": {
+                preferredFont: "TEX",
+                scale : 85
+            }
+        });
+    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+
+    <link rel="stylesheet" type="text/css" href="http://shihchin.com/css/foundation.css">
+    <link rel="stylesheet" type="text/css" href="http://shihchin.com/css/twentytwenty.css">
+    <link rel="stylesheet" type="text/css" href="http://shihchin.com/css/header-anchor.css">
+    <link rel="shortcut icon" type="image/png" href="http://shihchin.com/favicon.png">
+
+    <style>
+    .intro-header .overlay {
+        background: rgba(0, 0, 0, 0.47);
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        top: 0;
+    }
+
+    p + ul { margin-top: -24px; }
+    p + ol { margin-top: -24px; }
+    h1 + p, h2 + p, h3 + p { margin-top: 15px; }
+
+    .summary-content {
+        text-align: justify;
+        margin: 5px 0px 5px 0px;
+    }
+
+    a.read-more-link {
+        text-decoration: none;
+        color: #FF9800;
+        font-weight: bolder;
+        margin-left: 5px;
+    }
+
+    code > div > .table {
+        margin-bottom: 0px;
+        padding: 0px;
+    }
+
+    code > div > .table > tbody > tr > td {
+        border-top: none;
+        padding: 0px;
+    }
+
+    .container .img-responsive {
+        padding: 5px;
+        margin: auto;
+        -moz-box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .twentytwenty-container .img-responsive {
+        padding: 0px;
+        margin: 0px auto;
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-radius: 0px;
+    }
+
+    .figure .img-responsive {
+        padding: 0px;
+        margin: auto;
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-radius: 0px;
+        margin-top: 0px;
+        margin-bottom: 5px;
+    }
+
+    .figure {
+        padding: 5px;
+        margin: auto;
+        -moz-box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        display: table;
+    }
+
+    figure figcaption {
+         
+        text-align: center;
+        font-size: 14px;
+         
+        color: #808080;
+    }
+
+    .container li a {
+        text-decoration: underline;
+    }
+
+    .container a:hover, a:focus {
+         
+        background: #A6DCF3;
+        text-decoration: none;
+    }
+
+    samp {
+        display: block;
+        background-color: rgba(0, 55, 0, 1);
+        font-size: 0.8em;
+        text-align: left;
+        color: rgba(0, 255, 0, 1);
+        padding: 5px;
+        white-space: pre-wrap;
+        border-radius: 5px;
+        margin: 10px 0px;
+    }
+
+    samp.error {
+        color: red;
+    }
+
+    blockquote p:first-child, blockquote ul:first-child, blockquote ol:first-child {
+        margin-top: 0;
+    }
+
+    .container blockquote {
+         
+        background: #FFF1E5;
+        padding: 8px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+         
+        text-align: justify;
+        line-height: 1.5;
+        border: dashed;
+        border-color: rgb(228, 201, 196);
+    }
+
+    .container blockquote.feedback {
+        white-space: pre-wrap;
+    }
+
+    blockquote time {
+        font-size: 80%;
+    }
+
+    blockquote {
+        color: #806565;
+    }
+
+    blockquote a {
+        color: #337ab7;
+    }
+
+    span.blue {
+        border-bottom: 1px solid #a6dcf3;
+        box-shadow: inset 0 -6px 0 #a6dcf3;
+    }
+    span.orange {
+        border-bottom: 1px solid #ffd8ae;
+        box-shadow: inset 0 -6px 0 #ffd8ae;
+    }
+    span.red { color: #dc1111; }
+    span.green {
+        border-bottom: 1px solid #cdf9bb;
+        box-shadow: inset 0 -6px 0 #cdf9bb;
+    }
+
+    .tag-box {
+        list-style: none;
+        margin: 0;
+        padding: 4px 0;
+        overflow: hidden;
+    }
+    .tag-box.inline li {
+        float: left;
+    }
+    .tag-box li {
+        padding: 4px 6px;
+        margin: 2px;
+        background-color: #e6e6e6;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+    }
+    .tag-box li a {
+        text-decoration: none;
+    }
+    </style>
+
+</head>
+
+<body onload="PR.prettyPrint()">
+
+    
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://shihchin.com">Shih-Chin</a>
+            </div>
+            
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-right">
+        
+        <li>
+            <a href="http://shihchin.com/">home</a>
+        </li>
+        
+        <li>
+            <a href="http://shihchin.com/page/computer-graphics.html">Computer Graphics</a>
+        </li>
+        
+        <li>
+            <a href="http://shihchin.com/page/global-illumination.html">Global Illumination</a>
+        </li>
+        
+        <li>
+            <a href="http://shihchin.com/page/arnold.html">Arnold</a>
+        </li>
+        
+        <li>
+            <a href="http://shihchin.com/page/maya.html">Maya</a>
+        </li>
+        
+        <li>
+            <a href="http://shihchin.com/post.html">Posts</a>
+        </li>
+        
+        <li>
+            <a href="http://shihchin.com/page/about.html">About</a>
+        </li>
+        
+      </ul>
+</div>
+
+
+        </div>
+        
+    </nav>
+
+
+    
+    
+    <header class="intro-header">
+    
+      <div class="overlay">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="post-heading">
+                <h1>Self-Study Tips</h1>
+                <h2 class="subheading"></h2>
+                <span class="meta">
+                 
+Posted by Shih-Chin on Tue, Jan 24, 2017
+
+
+               </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  
+
+<p>When I decided to be a guest lecturer at NCKU last year, I kept asking myself what is the most important thing I wish I&rsquo;d learned in school. I carefully reviewed my current skill sets and found most of my skills were developed at work. Besides sharing knowledge about Computer Graphics, I think there is a more fundamental competency we need to develop in school, that is <span class="green"><strong>continuous learning</strong></span>.</p>
+
+<p>However, when we graduate from school, there is no longer a teacher around us showing how to resolve our problems at hand. Most of the time, we have to learn new things on our own, we need to learn <span class="green"><strong>self-study</strong></span>.</p>
+
+<h1 id="fundamental-skills-for-self-study">Fundamental Skills for Self-Study</h1>
+
+<p><img src="http://shihchin.com/images/self-study/exp_growth.png" style="box-shadow: none;" alt="Exponential Growth"/></p>
+
+<p><strong>Life is limited, while knowledge is boundless</strong>. It&rsquo;s impossible for us to learn all things in the universe. In order to adapt the rapid growth of technology, <em>how do we learn effectively and efficiently?</em></p>
+
+<p>In my humble opinion, the fundamental skills of self-study are:</p>
+
+<ul>
+<li><span class="blue">Information retrieval</span></li>
+<li><span class="blue">Effective note-taking</span></li>
+<li><span class="blue">Active reading</span></li>
+<li><span class="blue">Time-management</span></li>
+<li><span class="blue">Critical thinking</span></li>
+</ul>
+
+<p>After years of improvements, I finally found the most efficient workflow for myself (YMMV). I have used such workflow for years, and hope these few tools might be also useful for your own personal workflow.</p>
+
+<p><img src="http://shihchin.com/images/self-study/study_workflow.jpg" style="box-shadow: none;" alt="Study Workflow"/></p>
+
+<h1 id="information-retrieval-feedly-https-feedly-com-twitter-https-twitter-com">Information Retrieval: <a href="https://feedly.com/">Feedly</a> + <a href="https://twitter.com/">Twitter</a></h1>
+
+<p>It is time consuming to read all posts from one site to another. We need a news catcher to collect relevant information. <a href="https://feedly.com/">Feedly</a> is a great RSS reader to collect interesting articles. While <a href="https://twitter.com/">Twitter</a> is a great channel for community news. We could easily learn the industrial or academic news instantly if we follow other graphics developers, researchers, studios, etc. on Twitter. (A rule of thumb: <span class="blue">follow the ones who inspire us!</span>)</p>
+
+<p>I read Twitter every morning when I eat breakfast. If I find anything interested on Twitter, I would share it with my colleagues as soon as I get to the office. Then we will do a short brainstorming and discuss how could we apply those ideas to our project. This activity make us free our minds temporarily from the daily development and think our problems in different perspectives.</p>
+
+<h1 id="staging-area-of-ideas-evernote-https-evernote-com">Staging Area of Ideas: <a href="https://evernote.com/">Evernote</a></h1>
+
+<p><a href="http://shihchin.com/images/self-study/my_evernote.jpg" data-lightbox="tools"><img src="http://shihchin.com/images/self-study/my_evernote.jpg" alt="A glimpse of my Evernote"></a></p>
+
+<p>I usually <span class="red">don&rsquo;t</span> read every details of each post on Feedly. I only skim over the headline, pictures, figures and few paragraphs at first. If I find that post might be helpful in the future. I will capture the contents to <a href="https://evernote.com/">Evernote</a>. For me, Evernote is like a staging area of ideas. I review my notebooks on Evernote for inspirations every now and then. When I want to organize notes for certain topic, I will read the relevant articles carefully and make notes in Microsoft <a href="https://www.onenote.com/">OneNote</a>.</p>
+
+<h1 id="effective-note-taking-onenote-https-www-onenote-com">Effective Note-Taking: <a href="https://www.onenote.com/">OneNote</a></h1>
+
+<p><a href="http://shihchin.com/images/self-study/my_onenote.jpg" data-lightbox="tools">
+<img src="http://shihchin.com/images/self-study/my_onenote.jpg" alt="A glimpse of my OneNote"></a></p>
+
+<p>In order to make personal knowledge maps, I tried several tools and finally found my best fit is OneNote. It works like a personal Wiki. We can easily create lots of notes with cross references, and insert mathematical equations, images, videos in a very handy way. Additionally, all the notes are synced between different devices. I could easily review anytime anywhere. Most importantly, it&rsquo;s <strong><a href="https://www.onenote.com/download">FREE</a></strong> for download!!</p>
+
+<h1 id="active-reading">Active Reading</h1>
+
+<p>Active reading is a vital skill for us to read research papers. When I was a graduate student, I thought I had to work hard and read all the details. Consequently, I found I was exhausted and did not really understand the papers very well. This problem had bothered me for years and I kept looking for books about research methods and studying skills. Fortunately, I found a fantastic book name <strong><a href="https://www.amazon.com/How-Read-Book-Intelligent-Touchstone/dp/0671212095">&ldquo;How To Read A Book&rdquo;</a></strong> and finally found a systematic way to develop my reading skills effectively.</p>
+
+<p><img src="http://shihchin.com/images/self-study/how_to_read_a_book.jpg" alt="How to read a book" /></p>
+
+<p>In self-study, our goal is <strong>reading for understanding</strong> instead of reading for information. What we want is to learn something we didn&rsquo;t know before from a book. At first, we need to resolve two problems:</p>
+
+<ol>
+<li>How do we know whether this book is helpful us or not?</li>
+<li>What exactly is I want to learn from this book?</li>
+</ol>
+
+<p>Inspectional reading is systematically skimming <span class="blue"><strong>in a limited time</strong></span>. What we are looking for are clues to a book’s general theme or idea. Our purpose is to discover if the book requires a more careful reading or not. Based on these information, we could decide a reading strategy for each book.</p>
+
+<blockquote>
+<p>“Some books are to be tasted, others to be swallowed, and  some few to be <strong>chewed and digested</strong>.” by Francis Bacon.</p>
+</blockquote>
+
+<p>Essentially, <span class="blue"><strong><em>reading is learning from one who is absent. If you ask a book a question, you must answer it yourself!</em></strong> </span> In active reading, there are four basic questions we should ask:</p>
+
+<ol>
+<li>What is the book all about?</li>
+<li>What is being said in detail, and how?</li>
+<li>Is the book true in whole or part?</li>
+<li>What is the significance?</li>
+</ol>
+
+<p>When we read a difficult book, we usually have lots of troubles with understanding the contents. In such situation, I used to read page to page repeatedly. This approach did not work very well but did make me feel frustrated instead. Fortunately, the suggestions from the book make me capable of understanding difficult contents progressively:</p>
+
+<blockquote>
+<ul>
+<li>&ldquo;In tackling a difficult book for the first time, read it through without ever stopping to look up or ponder the things you do not understand right away.&rdquo;</li>
+<li>&ldquo;<strong>If you let yourself get stalled, you are lost!</strong> You will miss the forest for the trees.&rdquo;</li>
+<li>&ldquo;Do <strong>NOT</strong> try to understand every word or page of a difficult book the first time through.&rdquo;</li>
+</ul>
+</blockquote>
+
+<p>It is not an easy task to improve reading skills. For more comprehensive details about reading skill development, I highly recommend reading <span class="blue">&ldquo;How To Read A Book&rdquo;.</span> It has dramatically changed my life in self-studying, hope it could change yours too!</p>
+
+<h1 id="growth-mindset">Growth Mindset</h1>
+
+<p>Self-study is to study by ourselves. Persistent learning needs passion and patience. It&rsquo;s inevitable that we will get stuck in a certain subject for a long time. It would make us depressed especially when there is no one could give us a direct support. To overcome the depression and keep learning, we need to cultivate a growth mindset to <span class="blue">believe our abilities could be developed</span>.</p>
+
+<p><center><iframe src="https://embed.ted.com/talks/carol_dweck_the_power_of_believing_that_you_can_improve" width="640" height="360" frameborder="0" scrolling="no" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></center></p>
+
+<p>Take myself for example, the concept of <em>&lsquo;tensor&rsquo;</em> has confused me for at least three years. I read several textbooks, watched a few video lectures and still didn&rsquo;t get a lucid picture of it until I recently watched an on-line course named <a href="https://www.youtube.com/playlist?list=PLYL2pEY_heMKtza2YyrOvMfJV1xj8kvxK">&ldquo;Differential Geometry and General Relativity&rdquo;</a> (in Mandarin). Since I&rsquo;ve got stuck for years, thus the joy of breakthrough is super exhilarating!</p>
+
+<p>In my opinion, the key ingredients of continuous learning are intrinsic motivation and growth mindset. I keep studying simply because I enjoy exploring different fields of knowledge. This intrinsic motivation makes me patiently learn the subject little by little without caring the relative speed in comparison with others.</p>
+
+<p><span class="green"><strong>Learning is more like hiking, <span class="red">NOT</span> car racing</strong>.</span> We don&rsquo;t have to go fast, we can walk at our own pace and enjoy everything in the journey.</p>
+
+<h1 id="time-management">Time-Management</h1>
+
+<p>I used to be a workaholic and slightly neglected the relationship with my family. In the past three years, my mother had a big surgery of heart valve replacement first, then my father had got acute pneumonia last year. I almost lost my parents in such tough situations. At that time, I spent most of my time staying in hospital, taking care of them and sharing memorable moments of our family. Fortunately (thank god!), they were both getting very well in the end, and they are capable of keeping their health in good condition now.</p>
+
+<p>This experience makes me focus more on productivity. It&rsquo;s because that after I read the book <a href="https://www.amazon.com/How-Will-Measure-Your-Life/dp/0062102419">&ldquo;How Will You Measure Your Life?&rdquo;</a>, I realized that personal development is indeed important, but I should avoid sacrificing too much family life for it. <em>Being productive is about doing things efficiently and effectively</em>. A productive life makes us able to arrange more time to get along with our close partner, family and friends.</p>
+
+<p>In my humble opinion, time-management is essentially about <span class="blue">how do we prioritize the core values of our lives</span>. For practical guidelines of time-management, a speech of Prof. Randy Pausch is very inspirational:</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/oTugjssqOT0" frameborder="0" allowfullscreen></iframe>
+
+<p>For more tips of productivity, there are many valuable suggestions about <a href="https://www.quora.com/What-are-the-best-day-to-day-time-saving-tips">&ldquo;What are the best day-to-day time-saving tips?&rdquo;</a> on Quora.</p>
+
+<h1 id="critical-thinking">Critical Thinking</h1>
+
+<p>Critical thinking is beyond the scope of this post. But here are few materials I found useful:</p>
+
+<ul>
+<li><a href="http://philosophy.hku.hk/think/critical/">Critical thinking web</a>, maintained by Joe Lau</li>
+<li><a href="https://www.amazon.com/Rulebook-Arguments-Hackett-Student-Handbooks/dp/0872209547">A Rulebook for Arguments</a> by Anthony Weston</li>
+<li><a href="https://www.amazon.com/Art-Thinking-Clearly-Rolf-Dobelli/dp/0062219693">The Art of Thinking Clearly</a> by Rolf Dobelli</li>
+<li><a href="http://ed.ted.com/lessons/how-to-choose-your-news-damon-brown">How to choose your news (TEDEd)</a> by Damon Brown</li>
+</ul>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>It&rsquo;s always fun to learn new things around us. Even though there are lots of things I can&rsquo;t study from scratch easily. I used to feel frustrated when I got stuck for a long time. Now I see those difficulties as regular challenges. Each challenge is an opportunity to grow and develop. To me, learning is not about racing with others; it&rsquo;s about exploring the unknown.</p>
+
+<p>Hope this post would help someone interested in self-studying. For more information about my self-study tips, please see my <a href="http://shihchin.com/slides/2016_CG@NCKU/2016.05.10-Self-Study_Tips.pdf">slides</a>. <em>May the force be with you!</em> :)</p>
+
+<h1 id="references">References</h1>
+
+<ul>
+<li><a href="https://www.amazon.com/How-Read-Book-Intelligent-Touchstone/dp/0671212095">How to Read a Book</a>, by Mortimer J. Adler &amp; Charles Van Doren.</li>
+<li><a href="http://blog.liyiwei.org/?page_id=653">Advice</a> from Prof. Li-Yi Wei.</li>
+<li><a href="https://medium.freecodecamp.com/being-a-developer-after-40-3c5dd112210c#.vh3zhebkt">Being A Developer After 40</a> by Adrian Kosmaczewski.</li>
+<li><a href="https://www.coursera.org/learn/learning-how-to-learn">Learning How to Learn: Powerful mental tools to help you master tough subjects</a>, by Dr. Terrence Sejnowski &amp; Dr. Barbara Oakley.</li>
+<li><a href="https://www.quora.com/What-are-the-best-day-to-day-time-saving-tips">What are the best day-to-day time-saving tips?</a> on Quora.</li>
+</ul>
+
+                  
+    <hr>
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'shihchinw';
+    var disqus_identifier = 'http:\/\/shihchin.com\/2017\/01\/self-study-tips.html';
+    var disqus_title = 'Self-Study Tips';
+    var disqus_url = 'http:\/\/shihchin.com\/2017\/01\/self-study-tips.html';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+    
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  <ul class="list-inline text-center">
+                    
+                      <li>
+                        <a href="mailto:shihchin.weng@gmail.com">
+                          <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                      </li>
+                    
+                    
+                    <li>
+                      <a href="https://twitter.com/shihchinw">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://github.com/shihchinw">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                  </ul>
+                  <p class="copyright text-muted">Copyright © Shih-Chin</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="http://shihchin.com/js/jquery.min.js"></script>
+
+    
+    <script src="http://shihchin.com/js/bootstrap.min.js"></script>
+
+    
+    <script src="http://shihchin.com/js/clean-blog.js"></script>
+
+    
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-71352938-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+    <script src="http://shihchin.com/js/lightbox.js"></script>
+
+    <script src="http://shihchin.com/js/jquery.event.move.js"></script>
+    <script src="http://shihchin.com/js/jquery.twentytwenty.js"></script>
+    
+
+    <script>
+        $(window).load(function(){
+          $(".twentytwenty-container[data-orientation!='vertical']").twentytwenty({default_offset_pct: 0.7});
+          $(".twentytwenty-container[data-orientation='vertical']").twentytwenty({default_offset_pct: 0.3, orientation: 'vertical'});
+        });
+
+        
+        $(function() {
+          return $("h1, h2, h3, h4, h5, h6").each(function(i, el) {
+            var $el, icon, id;
+            $el = $(el);
+            id = $el.attr('id');
+            icon = '<i class="fa fa-link"></i>';
+            if (id) {
+              return $el.append($("<a />").addClass("header-link").attr("href", "#" + id).html(icon));
+            }
+          });
+        });
+    </script>
+</body>
+
+</html>
+

@@ -2,42 +2,42 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Maya on Shih-Chin</title>
-    <link>http://www.shihchin.com/tags/maya.html</link>
+    <link>http://shihchin.com/tags/maya.html</link>
     <description>Recent content in Maya on Shih-Chin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright © Shih-Chin</copyright>
     <lastBuildDate>Sat, 02 May 2015 18:34:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.shihchin.com/tags/maya/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://shihchin.com/tags/maya/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Quick Start Guide for PySide in Maya</title>
-      <link>http://www.shihchin.com/2015/05/quick-start-guide-for-pyside-in-maya.html</link>
+      <link>http://shihchin.com/2015/05/quick-start-guide-for-pyside-in-maya.html</link>
       <pubDate>Sat, 02 May 2015 18:34:00 +0000</pubDate>
       
-      <guid>http://www.shihchin.com/2015/05/quick-start-guide-for-pyside-in-maya.html</guid>
+      <guid>http://shihchin.com/2015/05/quick-start-guide-for-pyside-in-maya.html</guid>
       <description>The goal of tool-making is to make users do certain works more efficiently. A functional tool with poor designed interface would not be fully utilized by users, because users aren&amp;rsquo;t willing to use that tool if the interaction makes them feel frustrated.
 Developing is a Iterative Process Although there are a few principles about user interface design, but it doesn&amp;rsquo;t mean that we can simply apply those principles and get our jobs done.</description>
     </item>
     
     <item>
       <title>Render Tips for Arnold in Maya</title>
-      <link>http://www.shihchin.com/2015/02/render-tips-for-arnold-in-maya.html</link>
+      <link>http://shihchin.com/2015/02/render-tips-for-arnold-in-maya.html</link>
       <pubDate>Sun, 22 Feb 2015 16:39:00 +0000</pubDate>
       
-      <guid>http://www.shihchin.com/2015/02/render-tips-for-arnold-in-maya.html</guid>
+      <guid>http://shihchin.com/2015/02/render-tips-for-arnold-in-maya.html</guid>
       <description>All photo-realistic ray-tracers are trying to solve the rendering equation. Although they are all categorized as ray-tracer instead of rasterizer, the infrastructure of each implementations are quite different (i.e. uni-directional vs. bi-directional, pure path tracing vs. works with photon-map or irradiance caching, etc).
 Arnold is an un-bias uni-directional path tracer with a remarkable importance sampling mechanism and great memory management to achieve amazing performance excellence. However, if we blindly increase the number of ray samples for every render scene, we would not always get a cleaner imagery.</description>
     </item>
     
     <item>
       <title>Building AbcExport/AbcImport on Windows</title>
-      <link>http://www.shihchin.com/2013/06/building-abcexport/abcimport-on-windows.html</link>
+      <link>http://shihchin.com/2013/06/building-abcexport/abcimport-on-windows.html</link>
       <pubDate>Sat, 01 Jun 2013 10:25:00 +0000</pubDate>
       
-      <guid>http://www.shihchin.com/2013/06/building-abcexport/abcimport-on-windows.html</guid>
+      <guid>http://shihchin.com/2013/06/building-abcexport/abcimport-on-windows.html</guid>
       <description>Alembic is a popular data format for geometry cache nowadays, however, there are no simple workflow to build the AbcImport/AbcExport on windows. In this post, I tried to demonstrate a building flow as simple as possible.
 Here is the pre-built binaries for Maya 2013 x64.
 Prerequisites  Boost  open vc10 command prompt cd c:\boost\boost_1_xx_00 bootstrap.bat b2 toolset=msvc-10.0 address-model=64 link=static threading=multi &amp;ndash;with-program_options &amp;ndash;with-thread  HDF5 Ilmbase Zlib glut (optional)  Since I usually build maya plugin with /MD, thus all the static third-party libraries I used are built with /MD.</description>
@@ -45,10 +45,10 @@ Prerequisites  Boost  open vc10 command prompt cd c:\boost\boost_1_xx_00 bootstr
     
     <item>
       <title>Building PySide for Maya 2012 on Windows</title>
-      <link>http://www.shihchin.com/2012/05/building-pyside-for-maya-2012-on-windows.html</link>
+      <link>http://shihchin.com/2012/05/building-pyside-for-maya-2012-on-windows.html</link>
       <pubDate>Sun, 27 May 2012 00:26:00 +0000</pubDate>
       
-      <guid>http://www.shihchin.com/2012/05/building-pyside-for-maya-2012-on-windows.html</guid>
+      <guid>http://shihchin.com/2012/05/building-pyside-for-maya-2012-on-windows.html</guid>
       <description>&lt;p&gt;One of my friend received some tools developed in PySide for Maya recently. He tried to copy the latest pre-built binaries of PySide into Maya&amp;rsquo;s site-packages but got an import error. Therefore, we have to build the PySide for Maya from the ground up and this post is about the entire building process we&amp;rsquo;ve been through. Hope this note might be helpful for people who want to use PySide in Maya. :)&lt;/p&gt;
 
 &lt;p&gt;BTW, the PySide for Maya 2012 built by vc9 can be downloaded &lt;a href=&#34;https://docs.google.com/open?id=0BwFItFJF_4j3Wm1kMDVXcWIxbW8&#34;&gt;here&lt;/a&gt;, enjoy it!
