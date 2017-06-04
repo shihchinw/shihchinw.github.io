@@ -1,10 +1,10 @@
-baseurl = "http://www.shihchin.com"
+baseurl = "http://shihchin.com"
 title = "Shih-Chin"
 
 languageCode = "en-us"
 copyright = "Copyright © Shih-Chin"
-googleAnalytics = "UA-71352938-1" # delete or comment to disable Google Analytics JS generation
-disqusShortname = "shihchinw" #delete or comment to disable Disqus comments
+googleAnalytics = "UA-71352938-1"
+disqusShortname = "shihchinw"
 
 contentDir = "content"
 layoutDir = "layouts"
@@ -72,5 +72,5 @@ uglyurls = true
 
 [[menu.main]]
   name = "About"
-  url = "/page/about.html"
+  url = "/about/"
   weight = -100
