@@ -338,9 +338,10 @@
 <li><a href="#physically-based-shading">Physically-Based Shading</a></li>
 <li><a href="#light-transport">Light Transport</a>
 <ul>
-<li><a href="#ray-tracing">Ray Tracing</a></li>
+<li><a href="#monte-carlo-sampling-analysis">Monte Carlo Sampling &amp; Analysis</a></li>
 <li><a href="#importance-sampling">Importance Sampling</a></li>
 <li><a href="#photon-mapping">Photon Mapping</a></li>
+<li><a href="#volume-rendering">Volume Rendering</a></li>
 </ul></li>
 <li><a href="#programming">Programming</a>
 <ul>
@@ -376,12 +377,14 @@
 <li><cite><a href="https://www.allegorithmic.com/pbr-guide">The Comprehensive PBR Guide</a></cite> Vol 1 &amp; 2, from allegorithmic.</li>
 <li><cite><a href="http://cgg.mff.cuni.cz/~jaroslav/gicourse2010/">Global Illumination Across Industries</a></cite>. SIG&rsquo;10.</li>
 <li><cite><a href="http://dl.acm.org/authorize?6945594">Raytracers and workflow: a production perspective</a></cite>. SIG&rsquo;14.</li>
+<li><cite><a href="https://sites.google.com/site/raytracingapi">The Quest for the Ray Tracing API</a></cite>. SIG&rsquo;16.</li>
+<li><cite><a href="https://jo.dreggn.org/path-tracing-in-production/">Path Tracing in Production</a></cite>. SIG&rsquo;17.</li>
 </ul>
 
 <h1 id="textbooks">Textbooks</h1>
 
 <ul>
-<li><cite><a href="http://www.pbrt.org/contents.php">Physically Based Rendering 2/e</a></cite>. Matt Pharr and Greg Humphreys.</li>
+<li><cite><a href="http://www.pbrt.org/contents.php">Physically Based Rendering 3/e</a></cite>. Matt Pharr, Wenzel Jakob and Greg Humphreys.</li>
 <li><cite><a href="http://sites.edm.uhasselt.be/agibook/">Advanced Global Illumination</a></cite>. Philip Dutre, Kavita Bala and Phillips Bekaert.</li>
 <li><cite><a href="http://graphics.ucsd.edu/~henrik/papers/book/">Realistic Image Synthesis Using Photon Mapping</a></cite>. Henrik Wann Jensen.</li>
 </ul>
@@ -391,24 +394,28 @@
 <ul>
 <li><cite>Practical Physically Based Shading in Film and Game Production</cite>: <a href="http://renderwonk.com/publications/s2010-shading-course/">SIG&rsquo;10</a>, <a href="http://blog.selfshadow.com/publications/s2012-shading-course/">SIG&rsquo;12</a></li>
 <li><cite>Physically Based Shading in Theory and Practice</cite>:
-<a href="http://blog.selfshadow.com/publications/s2013-shading-course/">SIG&rsquo;13</a>, <a href="http://blog.selfshadow.com/publications/s2014-shading-course/">SIG&rsquo;14</a>, <a href="http://blog.selfshadow.com/publications/s2015-shading-course/">SIG&rsquo;15</a></li>
+<a href="http://blog.selfshadow.com/publications/s2013-shading-course/">SIG&rsquo;13</a>, <a href="http://blog.selfshadow.com/publications/s2014-shading-course/">SIG&rsquo;14</a>, <a href="http://blog.selfshadow.com/publications/s2015-shading-course/">SIG&rsquo;15</a>, <a href="http://blog.selfshadow.com/publications/s2016-shading-course/">SIG&rsquo;16</a>, <a href="http://blog.selfshadow.com/publications/s2017-shading-course/">SIG&rsquo;17</a></li>
 </ul>
 
 <h1 id="light-transport">Light Transport</h1>
 
 <ul>
 <li><cite><a href="https://graphics.stanford.edu/papers/veach_thesis/">Robust Monte Carlo Methods for Light Transport Simulation</a></cite>. Eric Veach. 1997.</li>
-<li><cite><a href="http://cgg.mff.cuni.cz/~jaroslav/papers/mlcourse2012/">Optimizing Realistic Rendering with Many-Light Methods</a></cite>. SIG&rsquo;12</li>
-<li><cite><a href="http://cgg.mff.cuni.cz/~jaroslav/papers/2013-ltscourse/">Recent Advances in Light Transport Simulation: Theory &amp; Practice</a></cite>. SIG&rsquo;13</li>
-<li><cite><a href="http://cgg.mff.cuni.cz/~jaroslav/papers/2014-ltscourse/">Recent Advances in Light Transport Simulation: Some Theory and a Lot of Practice</a></cite>. SIG&rsquo;14</li>
+<li><cite><a href="http://cgg.mff.cuni.cz/~jaroslav/papers/mlcourse2012/">Optimizing Realistic Rendering with Many-Light Methods</a></cite>. SIG&rsquo;12.</li>
+<li><cite><a href="https://sites.google.com/site/raytracingcourse/">Ray Tracing is the Future and ever will be</a></cite>. SIG&rsquo;13.</li>
+<li><cite><a href="http://cgg.mff.cuni.cz/~jaroslav/papers/2013-ltscourse/">Recent Advances in Light Transport Simulation: Theory &amp; Practice</a></cite>. SIG&rsquo;13.</li>
+<li><cite><a href="http://cgg.mff.cuni.cz/~jaroslav/papers/2014-ltscourse/">Recent Advances in Light Transport Simulation: Some Theory and a Lot of Practice</a></cite>. SIG&rsquo;14.</li>
+<li><cite><a href="http://cgg.mff.cuni.cz/~jaroslav/papers/2014-ltstutorial/">Path Integral Methods for Light Transport Simulation: Theory &amp; Practice</a></cite>. EG&rsquo;14.</li>
 </ul>
 
-<h2 id="ray-tracing">Ray Tracing</h2>
+<h2 id="monte-carlo-sampling-analysis">Monte Carlo Sampling &amp; Analysis</h2>
 
 <ul>
 <li><cite><a href="http://www.cs.rutgers.edu/~decarlo/readings/mcrt-sg03c.pdf">Monte Carlo Ray Tracing</a></cite>. SIG&rsquo;03.</li>
-<li><cite><a href="https://sites.google.com/site/raytracingcourse/">Ray Tracing is the Future and ever will be</a></cite>. SIG&rsquo;13.</li>
-<li><cite><a href="http://cgg.mff.cuni.cz/~jaroslav/papers/2014-ltstutorial/">Path Integral Methods for Light Transport Simulation: Theory &amp; Practice</a></cite>. EG&rsquo;14.</li>
+<li><cite><a href="https://belcour.github.io/blog/siggraph-2016-course.html">Frequency Analysis of Light Transport</a></cite>. SIG&rsquo;16.</li>
+<li><cite><a href="https://www.cs.dartmouth.edu/~wjarosz/publications/subr16fourier.html">Fourier Analysis of Numerical Integration in Monte Carlo Rendering: Theory and Practice</a></cite>. SIG&rsquo;16.</li>
+<li><cite><a href="https://www.solidangle.com/research/dither_abstract.pdf">Blue-noise Dithered Sampling</a></cite>. SIG&rsquo;16.</li>
+<li><cite><a href="https://www.solidangle.com/research/egsr2017_spherical_ellipse.pdf">Area-Preserving Parameterizations for Spherical Ellipses</a></cite>. EGSR&rsquo;17.</li>
 </ul>
 
 <h2 id="importance-sampling">Importance Sampling</h2>
@@ -427,6 +434,13 @@
 <li><cite><a href="http://users-cs.au.dk/toshiya/starpm2012/">State of the Art in Photon Density Estimation</a></cite>. SIG&rsquo;12.</li>
 </ul>
 
+<h2 id="volume-rendering">Volume Rendering</h2>
+
+<ul>
+<li><cite><a href="https://www.solidangle.com/research/egsr2012_volume.pdf">Importance Sampling Techniques for Path Tracing in Participating Media</a></cite>. EGSR&rsquo;12.</li>
+<li><cite>Production Volume Rendering</cite>: <a href="http://magnuswrenninge.com/productionvolumerendering">SIG&rsquo;11</a>, <a href="http://graphics.pixar.com/library/ProductionVolumeRendering/index.html">SIG&rsquo;17</a>.</li>
+</ul>
+
 <h1 id="programming">Programming</h1>
 
 <p>Learning from coding!</p>
@@ -435,6 +449,7 @@
 <li><a href="https://github.com/mmp/pbrt-v3/">PBRT v3</a></li>
 <li><a href="https://www.mitsuba-renderer.org">Mitsuba</a></li>
 <li><a href="http://wjakob.github.io/nori/">Nori 2</a></li>
+<li><a href="https://benedikt-bitterli.me/tungsten.html">Tungsten</a></li>
 </ul>
 
 <h2 id="ray-tracing-engines">Ray Tracing Engines</h2>
