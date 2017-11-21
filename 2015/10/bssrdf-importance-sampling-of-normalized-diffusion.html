@@ -14,10 +14,10 @@
     
 
     
-    <link href="http://shihchin.com/css/bootstrap.css" rel="stylesheet">
+    <link href="http://shihchinw.github.io/css/bootstrap.css" rel="stylesheet">
 
     
-    <link href="http://shihchin.com/css/clean-blog.css" rel="stylesheet">
+    <link href="http://shihchinw.github.io/css/clean-blog.css" rel="stylesheet">
 
     
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -27,10 +27,10 @@
 
     
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="http://shihchin.com/css/prettyprint.css">
+    <link rel="stylesheet" href="http://shihchinw.github.io/css/prettyprint.css">
     
 
-    <link rel="stylesheet" href="http://shihchin.com/css/lightbox.css">
+    <link rel="stylesheet" href="http://shihchinw.github.io/css/lightbox.css">
 
     
     
@@ -57,10 +57,10 @@
     </script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
 
-    <link rel="stylesheet" type="text/css" href="http://shihchin.com/css/foundation.css">
-    <link rel="stylesheet" type="text/css" href="http://shihchin.com/css/twentytwenty.css">
-    <link rel="stylesheet" type="text/css" href="http://shihchin.com/css/header-anchor.css">
-    <link rel="shortcut icon" type="image/png" href="http://shihchin.com/favicon.png">
+    <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/foundation.css">
+    <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/twentytwenty.css">
+    <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/header-anchor.css">
+    <link rel="shortcut icon" type="image/png" href="http://shihchinw.github.io/favicon.png">
 
     <style>
     .intro-header .overlay {
@@ -262,38 +262,38 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="http://shihchin.com">Shih-Chin</a>
+                <a class="navbar-brand" href="http://shihchinw.github.io">Shih-Chin</a>
             </div>
             
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav navbar-right">
         
         <li>
-            <a href="http://shihchin.com/">home</a>
+            <a href="http://shihchinw.github.io/">home</a>
         </li>
         
         <li>
-            <a href="http://shihchin.com/page/computer-graphics.html">Computer Graphics</a>
+            <a href="http://shihchinw.github.io/page/computer-graphics.html">Computer Graphics</a>
         </li>
         
         <li>
-            <a href="http://shihchin.com/page/global-illumination.html">Global Illumination</a>
+            <a href="http://shihchinw.github.io/page/global-illumination.html">Global Illumination</a>
         </li>
         
         <li>
-            <a href="http://shihchin.com/page/arnold.html">Arnold</a>
+            <a href="http://shihchinw.github.io/page/arnold.html">Arnold</a>
         </li>
         
         <li>
-            <a href="http://shihchin.com/page/maya.html">Maya</a>
+            <a href="http://shihchinw.github.io/page/maya.html">Maya</a>
         </li>
         
         <li>
-            <a href="http://shihchin.com/post.html">Posts</a>
+            <a href="http://shihchinw.github.io/post.html">Posts</a>
         </li>
         
         <li>
-            <a href="http://shihchin.com/about/">About</a>
+            <a href="http://shihchinw.github.io/about/">About</a>
         </li>
         
       </ul>
@@ -307,7 +307,7 @@
 
     
     
-    <header class="intro-header" style="background-image: url('http://shihchin.com/images/header/posts/2015-10-27-bssrdf-importance-sampling-of-normalized-diffusion.jpg')">
+    <header class="intro-header" style="background-image: url('http://shihchinw.github.io/images/header/posts/2015-10-27-bssrdf-importance-sampling-of-normalized-diffusion.jpg')">
     
       <div class="overlay">
         <div class="container">
@@ -342,7 +342,7 @@ Posted by Shih-Chin on Tue, Oct 27, 2015
 
 <h1 id="bssrdf-diffusion-profile">BSSRDF &amp; Diffusion Profile</h1>
 
-<p><img src="http://shihchin.com/images/rlShaders/bssrdf_scatter.png" style="box-shadow: none;"></p>
+<p><img src="http://shihchinw.github.io/images/rlShaders/bssrdf_scatter.png" style="box-shadow: none;"></p>
 
 <p>BSSRDF is a function relates outgoing radiance to the incident flux at different points:</p>
 
@@ -372,7 +372,7 @@ Posted by Shih-Chin on Tue, Oct 27, 2015
 
 <p>To solve the subsurface light transport, two primary approaches are used in graphics community. One is a multi-pass technique, which uses point cloud over the surface to store the diffuse irradiance at each point in pre-processing stage, then utilize that irradiance cache to solve the light transport equation in second phase.</p>
 
-<p><img src="http://shihchin.com/images/rlShaders/bssrdf_sampling.png" style="box-shadow: none;"></p>
+<p><img src="http://shihchinw.github.io/images/rlShaders/bssrdf_sampling.png" style="box-shadow: none;"></p>
 
 <p>The other is to perform importance sampling of the diffusion profile directly. Without the needs of point cloud generation, this approach fits well in any path-tracer with probe tracing API. The state-of-the-art sampling method proposed by King et al. [<a href="#ref.4">4</a>] can be summarized to following steps:</p>
 
@@ -440,7 +440,7 @@ r=\log(1-\xi(1-e^{-R_{max}/d}))*-d$$</div>
 
 <h2 id="retrieve-correct-hit-states-from-aitraceprobe">Retrieve Correct Hit States from AiTraceProbe</h2>
 
-<p><img src="http://shihchin.com/images/rlShaders/ai_false_probe_trace.jpg"></p>
+<p><img src="http://shihchinw.github.io/images/rlShaders/ai_false_probe_trace.jpg"></p>
 
 <p>During surface shading computation, the shading context of sg is AI_CONTEXT_SURFACE, and I found <code>AiTraceProbe</code> would <span class="red">always return false when the probe ray hits an identical triangle to the one stored in previous sg.</span> To resolve this issue, at first I try to switch its shading context to AI_CONTEXT_DISPLACEMENT before each <code>AiTraceProbe</code>, then I found we could simply change <code>sg-&gt;fi</code> (the id of hit primitive) to UI_MAX to make it work properly.</p>
 
@@ -454,7 +454,7 @@ r=\log(1-\xi(1-e^{-R_{max}/d}))*-d$$</div>
 
 <p>Sometimes the energy from opposite faces would make the result too bright and need further reduction. For the consideration of surface cavity, I currently use $\cos{\theta/2}$ to fade out the incoming radiance. Where the $\theta$ is determined differently for front-facing ($x_{i1}$) and back-facing ($x_{i2}$) cases:</p>
 
-<p><img src="http://shihchin.com/images/rlShaders/bssrdf_cavity_affects_diffusion.png" style="box-shadow: none;"></p>
+<p><img src="http://shihchinw.github.io/images/rlShaders/bssrdf_cavity_affects_diffusion.png" style="box-shadow: none;"></p>
 
 <div>$$\theta = \left\{ \begin{array}{@{}ll@{}}
 \arccos(\vec{n_o}\cdot\vec{n_i}), & \text{if } \vec{v}\cdot\vec{n_o} \ge 0 \\
@@ -465,14 +465,14 @@ r=\log(1-\xi(1-e^{-R_{max}/d}))*-d$$</div>
 
 <h1 id="results">Results</h1>
 
-<p><a href="http://shihchin.com/images/rlShaders/rlSssNd_buddha.jpg" data-lightbox="results"><img src="http://shihchin.com/images/rlShaders/rlSssNd_buddha.jpg"></a></p>
+<p><a href="http://shihchinw.github.io/images/rlShaders/rlSssNd_buddha.jpg" data-lightbox="results"><img src="http://shihchinw.github.io/images/rlShaders/rlSssNd_buddha.jpg"></a></p>
 
 <figure class="figure">
-<a href="http://shihchin.com/images/rlShaders/rlSssNd_lucy.jpg" data-lightbox="results"><img src="http://shihchin.com/images/rlShaders/rlSssNd_lucy.jpg"></a>
+<a href="http://shihchinw.github.io/images/rlShaders/rlSssNd_lucy.jpg" data-lightbox="results"><img src="http://shihchinw.github.io/images/rlShaders/rlSssNd_lucy.jpg"></a>
 <figcaption>The influence of cavity.</figcaption>
 </figure>
 
-<p><a href="http://shihchin.com/images/rlShaders/rlSssNd_dragon.jpg" data-lightbox="results"><img src="http://shihchin.com/images/rlShaders/rlSssNd_dragon.jpg" style="max-width: 70%"></a></p>
+<p><a href="http://shihchinw.github.io/images/rlShaders/rlSssNd_dragon.jpg" data-lightbox="results"><img src="http://shihchinw.github.io/images/rlShaders/rlSssNd_dragon.jpg" style="max-width: 70%"></a></p>
 
 <h1 id="references">References</h1>
 
@@ -490,9 +490,9 @@ r=\log(1-\xi(1-e^{-R_{max}/d}))*-d$$</div>
     <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'shihchinw';
-    var disqus_identifier = 'http:\/\/shihchin.com\/2015\/10\/bssrdf-importance-sampling-of-normalized-diffusion.html';
+    var disqus_identifier = 'http:\/\/shihchinw.github.io\/2015\/10\/bssrdf-importance-sampling-of-normalized-diffusion.html';
     var disqus_title = 'BSSRDF Importance Sampling of Normalized Diffusion';
-    var disqus_url = 'http:\/\/shihchin.com\/2015\/10\/bssrdf-importance-sampling-of-normalized-diffusion.html';
+    var disqus_url = 'http:\/\/shihchinw.github.io\/2015\/10\/bssrdf-importance-sampling-of-normalized-diffusion.html';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -553,13 +553,13 @@ r=\log(1-\xi(1-e^{-R_{max}/d}))*-d$$</div>
     </footer>
 
     
-    <script src="http://shihchin.com/js/jquery.min.js"></script>
+    <script src="http://shihchinw.github.io/js/jquery.min.js"></script>
 
     
-    <script src="http://shihchin.com/js/bootstrap.min.js"></script>
+    <script src="http://shihchinw.github.io/js/bootstrap.min.js"></script>
 
     
-    <script src="http://shihchin.com/js/clean-blog.js"></script>
+    <script src="http://shihchinw.github.io/js/clean-blog.js"></script>
 
     
 <script>
@@ -573,10 +573,10 @@ ga('send', 'pageview');
 </script>
 
 
-    <script src="http://shihchin.com/js/lightbox.js"></script>
+    <script src="http://shihchinw.github.io/js/lightbox.js"></script>
 
-    <script src="http://shihchin.com/js/jquery.event.move.js"></script>
-    <script src="http://shihchin.com/js/jquery.twentytwenty.js"></script>
+    <script src="http://shihchinw.github.io/js/jquery.event.move.js"></script>
+    <script src="http://shihchinw.github.io/js/jquery.twentytwenty.js"></script>
     
 
     <script>

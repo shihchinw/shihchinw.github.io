@@ -14,10 +14,10 @@
     
 
     
-    <link href="http://shihchin.com/css/bootstrap.css" rel="stylesheet">
+    <link href="http://shihchinw.github.io/css/bootstrap.css" rel="stylesheet">
 
     
-    <link href="http://shihchin.com/css/clean-blog.css" rel="stylesheet">
+    <link href="http://shihchinw.github.io/css/clean-blog.css" rel="stylesheet">
 
     
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -27,10 +27,10 @@
 
     
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="http://shihchin.com/css/prettyprint.css">
+    <link rel="stylesheet" href="http://shihchinw.github.io/css/prettyprint.css">
     
 
-    <link rel="stylesheet" href="http://shihchin.com/css/lightbox.css">
+    <link rel="stylesheet" href="http://shihchinw.github.io/css/lightbox.css">
 
     
     
@@ -57,10 +57,10 @@
     </script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
 
-    <link rel="stylesheet" type="text/css" href="http://shihchin.com/css/foundation.css">
-    <link rel="stylesheet" type="text/css" href="http://shihchin.com/css/twentytwenty.css">
-    <link rel="stylesheet" type="text/css" href="http://shihchin.com/css/header-anchor.css">
-    <link rel="shortcut icon" type="image/png" href="http://shihchin.com/favicon.png">
+    <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/foundation.css">
+    <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/twentytwenty.css">
+    <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/header-anchor.css">
+    <link rel="shortcut icon" type="image/png" href="http://shihchinw.github.io/favicon.png">
 
     <style>
     .intro-header .overlay {
@@ -262,38 +262,38 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="http://shihchin.com">Shih-Chin</a>
+                <a class="navbar-brand" href="http://shihchinw.github.io">Shih-Chin</a>
             </div>
             
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav navbar-right">
         
         <li>
-            <a href="http://shihchin.com/">home</a>
+            <a href="http://shihchinw.github.io/">home</a>
         </li>
         
         <li>
-            <a href="http://shihchin.com/page/computer-graphics.html">Computer Graphics</a>
+            <a href="http://shihchinw.github.io/page/computer-graphics.html">Computer Graphics</a>
         </li>
         
         <li>
-            <a href="http://shihchin.com/page/global-illumination.html">Global Illumination</a>
+            <a href="http://shihchinw.github.io/page/global-illumination.html">Global Illumination</a>
         </li>
         
         <li>
-            <a href="http://shihchin.com/page/arnold.html">Arnold</a>
+            <a href="http://shihchinw.github.io/page/arnold.html">Arnold</a>
         </li>
         
         <li>
-            <a href="http://shihchin.com/page/maya.html">Maya</a>
+            <a href="http://shihchinw.github.io/page/maya.html">Maya</a>
         </li>
         
         <li>
-            <a href="http://shihchin.com/post.html">Posts</a>
+            <a href="http://shihchinw.github.io/post.html">Posts</a>
         </li>
         
         <li>
-            <a href="http://shihchin.com/about/">About</a>
+            <a href="http://shihchinw.github.io/about/">About</a>
         </li>
         
       </ul>
@@ -339,15 +339,15 @@ Posted by Shih-Chin on Thu, Sep 24, 2015
 <p>Keeping objects opaque makes Arnold render much faster. When we render a bunch of hairs, <code>min pixel width</code> is useful to make the hair look softer. However, if the <code>min pixel width</code> is not equal to zero, the opacity of hair ribbon would change subtly, and those ribbons are not always opaque anymore! Furthermore, according to the ribbon thickness measured in screen space at render time, we might surprisedly get different render results. Thus, special care should be taken to tweak this parameter under various circumstances.</p>
 
 <figure class="figure">
-<a href="http://shihchin.com/images/arnold/mtoa_hair_mpw_opaque_dist.jpg" data-lightbox="posts">
-<img src="http://shihchin.com/images/arnold/mtoa_hair_mpw_opaque_dist.jpg"></a>
+<a href="http://shihchinw.github.io/images/arnold/mtoa_hair_mpw_opaque_dist.jpg" data-lightbox="posts">
+<img src="http://shihchinw.github.io/images/arnold/mtoa_hair_mpw_opaque_dist.jpg"></a>
 <figcaption class="figure-caption">Opaque mode is switched based on the thickness measured in screen space.<br>Tiny distance changes would make different results.</figcaption></figure>
 
 <h1 id="min-pixel-width-opaque">Min Pixel Width &amp; Opaque</h1>
 
 <p><code>Min pixel width</code> is used to resolve aliasing problem by enlarging the ribbon thickness and decreasing its shading opacity at the same time.</p>
 
-<p><img src="http://shihchin.com/images/arnold/mtoa_opacity_with_min_pixel_width.jpg">
+<p><img src="http://shihchinw.github.io/images/arnold/mtoa_opacity_with_min_pixel_width.jpg">
 <figcaption class="figure-caption">Min pixel width enlarges hair thickness and decrease opacity at the same time.</figcaption></p>
 
 <p>The opaque mode of ribbon from Maya hair would be <span class="red"><strong>switched off</strong></span> when:</p>
@@ -358,7 +358,7 @@ Posted by Shih-Chin on Thu, Sep 24, 2015
 </ol>
 
 <figure>
-<img src="http://shihchin.com/images/arnold/mtoa_curve_opaque_switch.jpg">
+<img src="http://shihchinw.github.io/images/arnold/mtoa_curve_opaque_switch.jpg">
 <figcaption>Download: <a href="https://drive.google.com/file/d/0BzMAAU0MqqtQYjRmbVR0ZEJKR3c/view?usp=sharing">ai_curve_mpw_test.ma</a></figcaption></figure>
 
 <p>It&rsquo;s not recommended to enlarge thickness of opaque ribbons by <code>mix pixel width</code> directly, because this would not keep ribbons opaque all the time. Besides, there is a potential pitfall which would increase the &ldquo;depth complexity&rdquo; of each ray. Since when a ray traces toward semi-transparent objects, it has to trace all the way through the scene to accumulate the shading color <span class="blue">until the resultant opacity adds to one or the trace depth exceeds the transparent depth.</span></p>
@@ -368,19 +368,19 @@ Posted by Shih-Chin on Thu, Sep 24, 2015
 <p>Suppose there are three semi-transparent planes covering a single pixel and AA is set to 4 (16 camera rays per pixel). If we use <em>&ldquo;depth complexity&rdquo;</em> to describe the potential traced depth of each ray. The sample pattern within a pixel might look like this:</p>
 
 <figure>
-<img src="http://shihchin.com/images/arnold/transparent_depth_0-3.png">
+<img src="http://shihchinw.github.io/images/arnold/transparent_depth_0-3.png">
 <figcaption>Depth complexity = {gray: 0, blue: 1, green: 2, red: 3}</figcaption></figure>
 
 <p>If we set <code>min pixel width</code> to one, each ribbon would always cover one pixel width at least. Then the depth complexity for each sample becomes three. In this situation, the worst case is all rays are tracing through three planes to compute the resultant shading color.</p>
 
-<p><img src="http://shihchin.com/images/arnold/transparent_depth_3.png"></p>
+<p><img src="http://shihchinw.github.io/images/arnold/transparent_depth_3.png"></p>
 
 <p>For production rendering, there are hundreds of thousands ribbons at least. Imaging we have plenty of nearly transparent ribbons covering a single pixel. Most rays would exhaust their transparent depth, and need more time to render each frame. The most surprising case is presented by Jesse Andrewartha in <em>&ldquo;Establishing best practices in raytracing at Sony Pictures Imageworks, p.18&rdquo;</em> [<a href="#ref.1">1</a>]: <span class="red"><strong>5% pixels cost 99% render time!!</strong></span></p>
 
 <h1 id="test-results">Test Results</h1>
 
-<p><a href="http://shihchin.com/images/arnold/mtoa_hair_mpw_opaque_cmp.jpg" data-lightbox="results">
-<img src="http://shihchin.com/images/arnold/mtoa_hair_mpw_opaque_cmp.jpg"></a></p>
+<p><a href="http://shihchinw.github.io/images/arnold/mtoa_hair_mpw_opaque_cmp.jpg" data-lightbox="results">
+<img src="http://shihchinw.github.io/images/arnold/mtoa_hair_mpw_opaque_cmp.jpg"></a></p>
 
 <h4 id="image-size-512x512">Image Size: 512x512</h4>
 
@@ -427,7 +427,7 @@ Posted by Shih-Chin on Thu, Sep 24, 2015
 </table>
 
 <figure>
-<a href="http://shihchin.com/images/arnold/mtoa_hair_mpw_opaque_cmp_1k.jpg" data-lightbox="results"><img src="http://shihchin.com/images/arnold/mtoa_hair_mpw_opaque_cmp_1k.jpg"></a>
+<a href="http://shihchinw.github.io/images/arnold/mtoa_hair_mpw_opaque_cmp_1k.jpg" data-lightbox="results"><img src="http://shihchinw.github.io/images/arnold/mtoa_hair_mpw_opaque_cmp_1k.jpg"></a>
 <figcaption>Download: <a href="https://drive.google.com/file/d/0BzMAAU0MqqtQQUxTSDhNbzBIdjg/view?usp=sharing">ai_hair_mpw_test.ma</a></figcaption></figure>
 
 <h4 id="image-size-1k">Image Size: 1K</h4>
@@ -501,9 +501,9 @@ Posted by Shih-Chin on Thu, Sep 24, 2015
     <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'shihchinw';
-    var disqus_identifier = 'http:\/\/shihchin.com\/2015\/09\/using-min-pixel-width-with-care-in-arnold.html';
+    var disqus_identifier = 'http:\/\/shihchinw.github.io\/2015\/09\/using-min-pixel-width-with-care-in-arnold.html';
     var disqus_title = 'Using Min Pixel Width with Care in Arnold';
-    var disqus_url = 'http:\/\/shihchin.com\/2015\/09\/using-min-pixel-width-with-care-in-arnold.html';
+    var disqus_url = 'http:\/\/shihchinw.github.io\/2015\/09\/using-min-pixel-width-with-care-in-arnold.html';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -564,13 +564,13 @@ Posted by Shih-Chin on Thu, Sep 24, 2015
     </footer>
 
     
-    <script src="http://shihchin.com/js/jquery.min.js"></script>
+    <script src="http://shihchinw.github.io/js/jquery.min.js"></script>
 
     
-    <script src="http://shihchin.com/js/bootstrap.min.js"></script>
+    <script src="http://shihchinw.github.io/js/bootstrap.min.js"></script>
 
     
-    <script src="http://shihchin.com/js/clean-blog.js"></script>
+    <script src="http://shihchinw.github.io/js/clean-blog.js"></script>
 
     
 <script>
@@ -584,10 +584,10 @@ ga('send', 'pageview');
 </script>
 
 
-    <script src="http://shihchin.com/js/lightbox.js"></script>
+    <script src="http://shihchinw.github.io/js/lightbox.js"></script>
 
-    <script src="http://shihchin.com/js/jquery.event.move.js"></script>
-    <script src="http://shihchin.com/js/jquery.twentytwenty.js"></script>
+    <script src="http://shihchinw.github.io/js/jquery.event.move.js"></script>
+    <script src="http://shihchinw.github.io/js/jquery.twentytwenty.js"></script>
     
 
     <script>

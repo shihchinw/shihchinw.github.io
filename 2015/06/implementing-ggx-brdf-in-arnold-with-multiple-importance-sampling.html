@@ -14,10 +14,10 @@
     
 
     
-    <link href="http://shihchin.com/css/bootstrap.css" rel="stylesheet">
+    <link href="http://shihchinw.github.io/css/bootstrap.css" rel="stylesheet">
 
     
-    <link href="http://shihchin.com/css/clean-blog.css" rel="stylesheet">
+    <link href="http://shihchinw.github.io/css/clean-blog.css" rel="stylesheet">
 
     
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -27,10 +27,10 @@
 
     
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="http://shihchin.com/css/prettyprint.css">
+    <link rel="stylesheet" href="http://shihchinw.github.io/css/prettyprint.css">
     
 
-    <link rel="stylesheet" href="http://shihchin.com/css/lightbox.css">
+    <link rel="stylesheet" href="http://shihchinw.github.io/css/lightbox.css">
 
     
     
@@ -57,10 +57,10 @@
     </script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
 
-    <link rel="stylesheet" type="text/css" href="http://shihchin.com/css/foundation.css">
-    <link rel="stylesheet" type="text/css" href="http://shihchin.com/css/twentytwenty.css">
-    <link rel="stylesheet" type="text/css" href="http://shihchin.com/css/header-anchor.css">
-    <link rel="shortcut icon" type="image/png" href="http://shihchin.com/favicon.png">
+    <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/foundation.css">
+    <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/twentytwenty.css">
+    <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/header-anchor.css">
+    <link rel="shortcut icon" type="image/png" href="http://shihchinw.github.io/favicon.png">
 
     <style>
     .intro-header .overlay {
@@ -262,38 +262,38 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="http://shihchin.com">Shih-Chin</a>
+                <a class="navbar-brand" href="http://shihchinw.github.io">Shih-Chin</a>
             </div>
             
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav navbar-right">
         
         <li>
-            <a href="http://shihchin.com/">home</a>
+            <a href="http://shihchinw.github.io/">home</a>
         </li>
         
         <li>
-            <a href="http://shihchin.com/page/computer-graphics.html">Computer Graphics</a>
+            <a href="http://shihchinw.github.io/page/computer-graphics.html">Computer Graphics</a>
         </li>
         
         <li>
-            <a href="http://shihchin.com/page/global-illumination.html">Global Illumination</a>
+            <a href="http://shihchinw.github.io/page/global-illumination.html">Global Illumination</a>
         </li>
         
         <li>
-            <a href="http://shihchin.com/page/arnold.html">Arnold</a>
+            <a href="http://shihchinw.github.io/page/arnold.html">Arnold</a>
         </li>
         
         <li>
-            <a href="http://shihchin.com/page/maya.html">Maya</a>
+            <a href="http://shihchinw.github.io/page/maya.html">Maya</a>
         </li>
         
         <li>
-            <a href="http://shihchin.com/post.html">Posts</a>
+            <a href="http://shihchinw.github.io/post.html">Posts</a>
         </li>
         
         <li>
-            <a href="http://shihchin.com/about/">About</a>
+            <a href="http://shihchinw.github.io/about/">About</a>
         </li>
         
       </ul>
@@ -307,7 +307,7 @@
 
     
     
-    <header class="intro-header" style="background-image: url('http://shihchin.com/images/header/posts/2015-06-28-implementing-ggx-brdf-in-arnold-with.jpg')">
+    <header class="intro-header" style="background-image: url('http://shihchinw.github.io/images/header/posts/2015-06-28-implementing-ggx-brdf-in-arnold-with.jpg')">
     
       <div class="overlay">
         <div class="container">
@@ -338,7 +338,7 @@ Posted by Shih-Chin on Sun, Jun 28, 2015
 
 <p>Monte Carlo path tracing has a slow convergence rate close to $O(1/\sqrt n)$, it needs to quadruple the number of samples to halve the error. Many mainstream production renderers have deployed multiple importance sampling (MIS) technique to reduce the variance of sampling result (i.e. the noise in image). If we want to make our custom material shader efficiently execute along with the entire render scene in Arnold, we shall definitely consider exploiting the power of MIS.</p>
 
-<p><img src="http://shihchin.com/images/arnold/ai_mis_cmp.png" alt="MIS" /></p>
+<p><img src="http://shihchinw.github.io/images/arnold/ai_mis_cmp.png" alt="MIS" /></p>
 
 <h1 id="what-is-multiple-importance-sampling-mis">What is Multiple Importance Sampling (MIS)?</h1>
 
@@ -349,15 +349,15 @@ Posted by Shih-Chin on Sun, Jun 28, 2015
 <p>Monte Carlo sampling is to use random samples to compute this integral numerically. The idea of importance sampling is trying to generate the random samples proportional to some probability density function (PDF) which has similar shape of integrand.</p>
 
 <figure class="figure">
-<img src="http://shihchin.com/images/rendering/importance_sampling_concept.png">
+<img src="http://shihchinw.github.io/images/rendering/importance_sampling_concept.png">
 <figcaption class="figure-caption">Image from Simon Premoze, <a href="https://sites.google.com/site/isrendering/Simon.Presentation.pdf?attredirects=0">Practical Importance Sampling and Variance Reduction</a>, SIG'10 course note.</figcaption>
 </figure>
 
 <p>In other words, the ideal PDF for the integrand of direct illumination equation would be proportional to the product of incoming radiance $L_i(x,\vec{\omega_i})$ and BRDF $f_r(x,\vec{\omega_o},\vec{\omega_i})$. However, the product of these terms are too complicated to compute its PDF, but we might be able to find a suitable PDF for some of those terms individually. What we hope is to find a way to sample each term respectively and properly combine those samples to get a result with lower variance. This turns to the technique named <strong>multiple importance sampling</strong> demonstrated by Veach and Guibas [<a href="#ref.1">1</a>] in 1995:</p>
 
 <figure class="figure">
-<a href="http://shihchin.com/images/rendering/mis.png" data-lightbox="post">
-<img src="http://shihchin.com/images/rendering/mis.png"></a>
+<a href="http://shihchinw.github.io/images/rendering/mis.png" data-lightbox="post">
+<img src="http://shihchinw.github.io/images/rendering/mis.png"></a>
 <figcaption class="figure-caption">Images from Veach and Guibas [1]</figcaption></figure>
 
 <p>With MIS, we use following formula to compute the result:</p>
@@ -509,18 +509,18 @@ AtVector ggxEvalSample(const void *brdfData, float rx, float ry)
 <p>In comparison to aiStandard, GGX has stronger tails than Beckmann which is used in aiStandard.</p>
 
 <figure class="figure">
-<a href="http://shihchin.com/images/rlShaders/rlGgx_roughness_cmp.png" data-lightbox="results"><img src="http://shihchin.com/images/rlShaders/rlGgx_roughness_cmp.png"></a>
+<a href="http://shihchinw.github.io/images/rlShaders/rlGgx_roughness_cmp.png" data-lightbox="results"><img src="http://shihchinw.github.io/images/rlShaders/rlGgx_roughness_cmp.png"></a>
 <figcaption class="figure-caption">Roughness 0.0 to 1.0</figcaption>
 </figure>
 
-<p><a href="http://shihchin.com/images/rlShaders/rlGgx_buddha_cmp.jpg" data-lightbox="results">
-<img src="http://shihchin.com/images/rlShaders/rlGgx_buddha_cmp.jpg" alt="Buddha" /></a></p>
+<p><a href="http://shihchinw.github.io/images/rlShaders/rlGgx_buddha_cmp.jpg" data-lightbox="results">
+<img src="http://shihchinw.github.io/images/rlShaders/rlGgx_buddha_cmp.jpg" alt="Buddha" /></a></p>
 
 <p>The results of the custom BRDF composed of GGX for glossy and Oren Nayar for diffuse.</p>
 
-<p><a href="http://shihchin.com/images/rlShaders/rlGgx_lucy.jpg" data-lightbox="results"><img src="http://shihchin.com/images/rlShaders/rlGgx_lucy.jpg"></a></p>
+<p><a href="http://shihchinw.github.io/images/rlShaders/rlGgx_lucy.jpg" data-lightbox="results"><img src="http://shihchinw.github.io/images/rlShaders/rlGgx_lucy.jpg"></a></p>
 
-<p><a href="http://shihchin.com/images/rlShaders/rlGgx_lucy_in_grace_cathedral.jpg" data-lightbox="results"><img src="http://shihchin.com/images/rlShaders/rlGgx_lucy_in_grace_cathedral.jpg"></a></p>
+<p><a href="http://shihchinw.github.io/images/rlShaders/rlGgx_lucy_in_grace_cathedral.jpg" data-lightbox="results"><img src="http://shihchinw.github.io/images/rlShaders/rlGgx_lucy_in_grace_cathedral.jpg"></a></p>
 
 <h1 id="references">References</h1>
 
@@ -536,9 +536,9 @@ AtVector ggxEvalSample(const void *brdfData, float rx, float ry)
     <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'shihchinw';
-    var disqus_identifier = 'http:\/\/shihchin.com\/2015\/06\/implementing-ggx-brdf-in-arnold-with-multiple-importance-sampling.html';
+    var disqus_identifier = 'http:\/\/shihchinw.github.io\/2015\/06\/implementing-ggx-brdf-in-arnold-with-multiple-importance-sampling.html';
     var disqus_title = 'Implementing GGX BRDF in Arnold with Multiple Importance Sampling';
-    var disqus_url = 'http:\/\/shihchin.com\/2015\/06\/implementing-ggx-brdf-in-arnold-with-multiple-importance-sampling.html';
+    var disqus_url = 'http:\/\/shihchinw.github.io\/2015\/06\/implementing-ggx-brdf-in-arnold-with-multiple-importance-sampling.html';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -599,13 +599,13 @@ AtVector ggxEvalSample(const void *brdfData, float rx, float ry)
     </footer>
 
     
-    <script src="http://shihchin.com/js/jquery.min.js"></script>
+    <script src="http://shihchinw.github.io/js/jquery.min.js"></script>
 
     
-    <script src="http://shihchin.com/js/bootstrap.min.js"></script>
+    <script src="http://shihchinw.github.io/js/bootstrap.min.js"></script>
 
     
-    <script src="http://shihchin.com/js/clean-blog.js"></script>
+    <script src="http://shihchinw.github.io/js/clean-blog.js"></script>
 
     
 <script>
@@ -619,10 +619,10 @@ ga('send', 'pageview');
 </script>
 
 
-    <script src="http://shihchin.com/js/lightbox.js"></script>
+    <script src="http://shihchinw.github.io/js/lightbox.js"></script>
 
-    <script src="http://shihchin.com/js/jquery.event.move.js"></script>
-    <script src="http://shihchin.com/js/jquery.twentytwenty.js"></script>
+    <script src="http://shihchinw.github.io/js/jquery.event.move.js"></script>
+    <script src="http://shihchinw.github.io/js/jquery.twentytwenty.js"></script>
     
 
     <script>

@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Coding on Shih-Chin</title>
-    <link>http://shihchin.com/tags/coding.html</link>
+    <link>http://shihchinw.github.io/tags/coding.html</link>
     <description>Recent content in Coding on Shih-Chin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright © Shih-Chin</copyright>
     <lastBuildDate>Sat, 15 Dec 2012 12:15:00 +0000</lastBuildDate>
     
-	<atom:link href="http://shihchin.com/tags/coding/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://shihchinw.github.io/tags/coding/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Sorting is FUN</title>
-      <link>http://shihchin.com/2012/12/sorting-is-fun.html</link>
+      <link>http://shihchinw.github.io/2012/12/sorting-is-fun.html</link>
       <pubDate>Sat, 15 Dec 2012 12:15:00 +0000</pubDate>
       
-      <guid>http://shihchin.com/2012/12/sorting-is-fun.html</guid>
+      <guid>http://shihchinw.github.io/2012/12/sorting-is-fun.html</guid>
       <description>Since few artist friends of mine want to learn about computer programming, thus we formed a small python learning group, we call it PyClub, in our office. Recently at our PyClub, I introduced some sorting algorithms by demonstrating with poker cards. It&amp;rsquo;s especially fun for all of us to sort a deck of cards manually with quicksort algorithm, and we all felt the power of divide-and-conquer at that moment!</description>
     </item>
     

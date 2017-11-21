@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Abouts on Shih-Chin</title>
-    <link>http://shihchin.com/about.html</link>
+    <link>http://shihchinw.github.io/about.html</link>
     <description>Recent content in Abouts on Shih-Chin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright © Shih-Chin</copyright>
     
-	<atom:link href="http://shihchin.com/about/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://shihchinw.github.io/about/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>About</title>
-      <link>http://shihchin.com/about/</link>
+      <link>http://shihchinw.github.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://shihchin.com/about/</guid>
+      <guid>http://shihchinw.github.io/about/</guid>
       <description>Hi, I&amp;rsquo;m Shih-Chin. This website contains my study notes about computer graphics and rendering. The source code on my github is developed in my spare time just for learning purposes and not related to the production project I&amp;rsquo;ve been working on at my day job.
 I enjoy learning new things. I&amp;rsquo;m so lucky to live in this era, there are so many fantastic open courses on-line which make me appreciate the beauty of each subject.</description>
     </item>

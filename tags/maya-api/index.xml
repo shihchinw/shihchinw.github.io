@@ -2,41 +2,41 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Maya API on Shih-Chin</title>
-    <link>http://shihchin.com/tags/maya-api.html</link>
+    <link>http://shihchinw.github.io/tags/maya-api.html</link>
     <description>Recent content in Maya API on Shih-Chin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright © Shih-Chin</copyright>
     <lastBuildDate>Tue, 21 Apr 2015 23:01:00 +0000</lastBuildDate>
     
-	<atom:link href="http://shihchin.com/tags/maya-api/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://shihchinw.github.io/tags/maya-api/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Assign Custom Shapes&#39; Components to Sets in Maya</title>
-      <link>http://shihchin.com/2015/04/assign-custom-shapes-components-to-sets-in-maya.html</link>
+      <link>http://shihchinw.github.io/2015/04/assign-custom-shapes-components-to-sets-in-maya.html</link>
       <pubDate>Tue, 21 Apr 2015 23:01:00 +0000</pubDate>
       
-      <guid>http://shihchin.com/2015/04/assign-custom-shapes-components-to-sets-in-maya.html</guid>
+      <guid>http://shihchinw.github.io/2015/04/assign-custom-shapes-components-to-sets-in-maya.html</guid>
       <description>Recently, I tried to extend the functionalities of GPU cache in Maya with dag item selection and shader assignment. In order to achieve the seamless integration, the idea is to use face component to represent each dag item within the Alembic cache. Therefore, users can select the dag item from the cache in component mode and assign those components to a shader.
 This idea is pretty simple, but the implementation is not as easy as it sounds.</description>
     </item>
     
     <item>
       <title>Insert checking routine right before file opening in Maya</title>
-      <link>http://shihchin.com/2012/12/insert-checking-routine-right-before-file-opening-in-maya.html</link>
+      <link>http://shihchinw.github.io/2012/12/insert-checking-routine-right-before-file-opening-in-maya.html</link>
       <pubDate>Tue, 25 Dec 2012 22:58:00 +0000</pubDate>
       
-      <guid>http://shihchin.com/2012/12/insert-checking-routine-right-before-file-opening-in-maya.html</guid>
+      <guid>http://shihchinw.github.io/2012/12/insert-checking-routine-right-before-file-opening-in-maya.html</guid>
       <description>ScriptJob is a very convenient approach for us to register a routine for certain event. However, when we want to inject a check routine for an opened file and to be capable of canceling the open operation of the invalid file. We will find that ScriptJob only contains NewSceneOpened, PostSceneRead and SceneOpened, &amp;hellip;, and none of these events can abort the current operation within our registered routine. Fortunately, the MSceneMessage from API could help us achieve our purpose:</description>
     </item>
     
     <item>
       <title>How to select hard edges from a mesh in Maya?</title>
-      <link>http://shihchin.com/2011/10/how-to-select-hard-edges-from-a-mesh-in-maya.html</link>
+      <link>http://shihchinw.github.io/2011/10/how-to-select-hard-edges-from-a-mesh-in-maya.html</link>
       <pubDate>Sun, 23 Oct 2011 13:02:00 +0000</pubDate>
       
-      <guid>http://shihchin.com/2011/10/how-to-select-hard-edges-from-a-mesh-in-maya.html</guid>
+      <guid>http://shihchinw.github.io/2011/10/how-to-select-hard-edges-from-a-mesh-in-maya.html</guid>
       <description>A hard edge (aka crease edge or feature edge) is:
  shared by two polygons. and the dihedral angle (i.e the angle between two polygons) is above user-specified threshold.  To find these edges in Maya, the intuitive approach is to traverse all the edges by MItMeshEdge and examining the dot product of two adjacent faces&amp;rsquo; normals.
 Suppose we have MObject(s) of target mesh and edge components (optional) selected by user, and we want to replace current selection with the hard edges from these input.</description>
@@ -44,10 +44,10 @@ Suppose we have MObject(s) of target mesh and edge components (optional) selecte
     
     <item>
       <title>How to determine direct instances in Maya?</title>
-      <link>http://shihchin.com/2011/10/how-to-determine-direct-instances-in-maya.html</link>
+      <link>http://shihchinw.github.io/2011/10/how-to-determine-direct-instances-in-maya.html</link>
       <pubDate>Sun, 16 Oct 2011 14:47:00 +0000</pubDate>
       
-      <guid>http://shihchin.com/2011/10/how-to-determine-direct-instances-in-maya.html</guid>
+      <guid>http://shihchinw.github.io/2011/10/how-to-determine-direct-instances-in-maya.html</guid>
       <description>&lt;p&gt;Any instanced node in Maya has multiple parent transforms, therefore, the basic idea to determine the instanced node is to check the number of its parent nodes. However, if we have &lt;span class=&#34;blue&#34;&gt;&lt;em&gt;both instanced shapes and some other transform nodes from the same hierarchy&lt;/em&gt;&lt;/span&gt;, it gets a little harder to handle this situation just by MEL.&lt;/p&gt;</description>
     </item>
     

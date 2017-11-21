@@ -14,10 +14,10 @@
     
 
     
-    <link href="http://shihchin.com/css/bootstrap.css" rel="stylesheet">
+    <link href="http://shihchinw.github.io/css/bootstrap.css" rel="stylesheet">
 
     
-    <link href="http://shihchin.com/css/clean-blog.css" rel="stylesheet">
+    <link href="http://shihchinw.github.io/css/clean-blog.css" rel="stylesheet">
 
     
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -27,10 +27,10 @@
 
     
     <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
-    <link rel="stylesheet" href="http://shihchin.com/css/prettyprint.css">
+    <link rel="stylesheet" href="http://shihchinw.github.io/css/prettyprint.css">
     
 
-    <link rel="stylesheet" href="http://shihchin.com/css/lightbox.css">
+    <link rel="stylesheet" href="http://shihchinw.github.io/css/lightbox.css">
 
     
     
@@ -57,10 +57,10 @@
     </script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
 
-    <link rel="stylesheet" type="text/css" href="http://shihchin.com/css/foundation.css">
-    <link rel="stylesheet" type="text/css" href="http://shihchin.com/css/twentytwenty.css">
-    <link rel="stylesheet" type="text/css" href="http://shihchin.com/css/header-anchor.css">
-    <link rel="shortcut icon" type="image/png" href="http://shihchin.com/favicon.png">
+    <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/foundation.css">
+    <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/twentytwenty.css">
+    <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/header-anchor.css">
+    <link rel="shortcut icon" type="image/png" href="http://shihchinw.github.io/favicon.png">
 
     <style>
     .intro-header .overlay {
@@ -262,38 +262,38 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="http://shihchin.com">Shih-Chin</a>
+                <a class="navbar-brand" href="http://shihchinw.github.io">Shih-Chin</a>
             </div>
             
 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav navbar-right">
         
         <li>
-            <a href="http://shihchin.com/">home</a>
+            <a href="http://shihchinw.github.io/">home</a>
         </li>
         
         <li>
-            <a href="http://shihchin.com/page/computer-graphics.html">Computer Graphics</a>
+            <a href="http://shihchinw.github.io/page/computer-graphics.html">Computer Graphics</a>
         </li>
         
         <li>
-            <a href="http://shihchin.com/page/global-illumination.html">Global Illumination</a>
+            <a href="http://shihchinw.github.io/page/global-illumination.html">Global Illumination</a>
         </li>
         
         <li>
-            <a href="http://shihchin.com/page/arnold.html">Arnold</a>
+            <a href="http://shihchinw.github.io/page/arnold.html">Arnold</a>
         </li>
         
         <li>
-            <a href="http://shihchin.com/page/maya.html">Maya</a>
+            <a href="http://shihchinw.github.io/page/maya.html">Maya</a>
         </li>
         
         <li>
-            <a href="http://shihchin.com/post.html">Posts</a>
+            <a href="http://shihchinw.github.io/post.html">Posts</a>
         </li>
         
         <li>
-            <a href="http://shihchin.com/about/">About</a>
+            <a href="http://shihchinw.github.io/about/">About</a>
         </li>
         
       </ul>
@@ -307,7 +307,7 @@
 
     
     
-    <header class="intro-header" style="background-image: url('http://shihchin.com/images/header/posts/2015-07-19-implementing-disney-principled-brdf-in.jpg')">
+    <header class="intro-header" style="background-image: url('http://shihchinw.github.io/images/header/posts/2015-07-19-implementing-disney-principled-brdf-in.jpg')">
     
       <div class="overlay">
         <div class="container">
@@ -373,7 +373,7 @@ Posted by Shih-Chin on Sun, Jul 19, 2015
 <h2 id="diffuse">Diffuse</h2>
 
 <p>From BRDF explorer, we can see that the diffuse component is dominated by the $\cos{\theta_l}$ factor. Therefore the diffuse part could be sampled with the PDF proportional to cosine-weighted solid angle:
-<img src="http://shihchin.com/images/rlShaders/rlDisney_is_diffuse.jpg" alt="diffuse sample distribution" /></p>
+<img src="http://shihchinw.github.io/images/rlShaders/rlDisney_is_diffuse.jpg" alt="diffuse sample distribution" /></p>
 
 <h2 id="specular">Specular</h2>
 
@@ -443,19 +443,19 @@ float   evalSpecularPdf(const AtVector &i) const
 </pre>
 
 <figure class="figure">
-<img src="http://shihchin.com/images/rlShaders/rlDisney_is_specular_a.4_theta_10d.jpg">
+<img src="http://shihchinw.github.io/images/rlShaders/rlDisney_is_specular_a.4_theta_10d.jpg">
 <figcaption>roughness=0.4, $\theta_o=10^\circ$</figcaption></figure>
 
 <figure class="figure">
-<img src="http://shihchin.com/images/rlShaders/rlDisney_is_specular_a.4.jpg">
+<img src="http://shihchinw.github.io/images/rlShaders/rlDisney_is_specular_a.4.jpg">
 <figcaption>roughness=0.4, $\theta_o=45^\circ$</figcaption></figure>
 
 <figure class="figure">
-<img src="http://shihchin.com/images/rlShaders/rlDisney_is_specular_a.4_theta_80d.jpg">
+<img src="http://shihchinw.github.io/images/rlShaders/rlDisney_is_specular_a.4_theta_80d.jpg">
 <figcaption>roughness=0.4, $\theta_o=80^\circ$</figcaption></figure>
 
 <figure class="figure">
-<img src="http://shihchin.com/images/rlShaders/rlDisney_is_specular_a.8.jpg">
+<img src="http://shihchinw.github.io/images/rlShaders/rlDisney_is_specular_a.8.jpg">
 <figcaption>roughness=0.8, $\theta_o=45^\circ$</figcaption></figure>
 
 <p>The <span class="red">red dots</span> at bottom represent the invalid sample whose $\theta_m$ is greater than 90 degrees (i.e. $m \cdot n &lt; 0$). It might be able to get improved by importance sampling the <span class="orange"><strong>visible</strong></span> microfacet normals presented in Heitz and d&rsquo;Eon [<a href="#ref.3">3</a>].</p>
@@ -464,7 +464,7 @@ float   evalSpecularPdf(const AtVector &i) const
 
 <p>Current shading model is not energy conserved, sometimes the specular part would cause fireflies in indirect diffuse pass. The noise level can be reduced by using metallic parameter to blend the diffuse and GTR parts, but it would lost the clearcoating effect for non-metal material. Another possible approach is to skip specular evaluation for indirect ray samples (i.e. AI_RAY_DIFFUSE/AI_RAY_GLOSSY) like tutorial does with the price of missing reflection of metallic material.</p>
 
-<p><img src="http://shihchin.com/images/rlShaders/rlDisney_indirect.jpg" alt="indirect lighting" /></p>
+<p><img src="http://shihchinw.github.io/images/rlShaders/rlDisney_indirect.jpg" alt="indirect lighting" /></p>
 
 <p>After few trial and errors, I found the most intuitive way is to use extra weights to scale the diffuse/specular radiance for indirect ray samples:</p>
 
@@ -475,24 +475,24 @@ if (sg->Rt & (AI_RAY_DIFFUSE | AI_RAY_GLOSSY)) {
 }
 </pre>
 
-<p><a href="http://shihchin.com/images/rlShaders/rlDisney_indirect_scale_control.jpg" data-lightbox="results"><img src="http://shihchin.com/images/rlShaders/rlDisney_indirect_scale_control.jpg"></a></p>
+<p><a href="http://shihchinw.github.io/images/rlShaders/rlDisney_indirect_scale_control.jpg" data-lightbox="results"><img src="http://shihchinw.github.io/images/rlShaders/rlDisney_indirect_scale_control.jpg"></a></p>
 
 <h1 id="results">Results</h1>
 
 <figure class="figure">
-<a href="http://shihchin.com/images/rlShaders/rlDisney_metallic.jpg" data-lightbox="results"><img src="http://shihchin.com/images/rlShaders/rlDisney_metallic.jpg"></a>
+<a href="http://shihchinw.github.io/images/rlShaders/rlDisney_metallic.jpg" data-lightbox="results"><img src="http://shihchinw.github.io/images/rlShaders/rlDisney_metallic.jpg"></a>
 <figcaption>metallic 0 to 1</figcaption></figure>
 
 <figure class="figure">
-<a href="http://shihchin.com/images/rlShaders/rlDisney_roughness.jpg" data-lightbox="results"><img src="http://shihchin.com/images/rlShaders/rlDisney_roughness.jpg"></a>
+<a href="http://shihchinw.github.io/images/rlShaders/rlDisney_roughness.jpg" data-lightbox="results"><img src="http://shihchinw.github.io/images/rlShaders/rlDisney_roughness.jpg"></a>
 <figcaption>roughness 0 to 1</figcaption></figure>
 
 <figure class="figure">
-<a href="http://shihchin.com/images/rlShaders/rlDisney_test1.jpg" data-lightbox="results"><img src="http://shihchin.com/images/rlShaders/rlDisney_test1.jpg"></a>
-<a href="http://shihchin.com/images/rlShaders/rlDisney_test2.jpg" data-lightbox="results"><img src="http://shihchin.com/images/rlShaders/rlDisney_test2.jpg"></a></figure>
+<a href="http://shihchinw.github.io/images/rlShaders/rlDisney_test1.jpg" data-lightbox="results"><img src="http://shihchinw.github.io/images/rlShaders/rlDisney_test1.jpg"></a>
+<a href="http://shihchinw.github.io/images/rlShaders/rlDisney_test2.jpg" data-lightbox="results"><img src="http://shihchinw.github.io/images/rlShaders/rlDisney_test2.jpg"></a></figure>
 
-<p><a href="http://shihchin.com/images/rlShaders/rlDisney_bunny_row.jpg" data-lightbox="results"><img src="http://shihchin.com/images/rlShaders/rlDisney_bunny_row.jpg"></a>
-<a href="http://shihchin.com/images/rlShaders/rlDisney_lucy.jpg" data-lightbox="results"><img src="http://shihchin.com/images/rlShaders/rlDisney_lucy.jpg"></a></p>
+<p><a href="http://shihchinw.github.io/images/rlShaders/rlDisney_bunny_row.jpg" data-lightbox="results"><img src="http://shihchinw.github.io/images/rlShaders/rlDisney_bunny_row.jpg"></a>
+<a href="http://shihchinw.github.io/images/rlShaders/rlDisney_lucy.jpg" data-lightbox="results"><img src="http://shihchinw.github.io/images/rlShaders/rlDisney_lucy.jpg"></a></p>
 
 <p>The source code could be found <a href="https://github.com/shihchinw/rlShaders/blob/master/src/rlDisney.cpp">here</a>. If you have any idea or find any bug, please let me know in the comments.</p>
 
@@ -509,9 +509,9 @@ if (sg->Rt & (AI_RAY_DIFFUSE | AI_RAY_GLOSSY)) {
     <div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'shihchinw';
-    var disqus_identifier = 'http:\/\/shihchin.com\/2015\/07\/implementing-disney-principled-brdf-in-arnold.html';
+    var disqus_identifier = 'http:\/\/shihchinw.github.io\/2015\/07\/implementing-disney-principled-brdf-in-arnold.html';
     var disqus_title = 'Implementing Disney Principled BRDF in Arnold';
-    var disqus_url = 'http:\/\/shihchin.com\/2015\/07\/implementing-disney-principled-brdf-in-arnold.html';
+    var disqus_url = 'http:\/\/shihchinw.github.io\/2015\/07\/implementing-disney-principled-brdf-in-arnold.html';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -572,13 +572,13 @@ if (sg->Rt & (AI_RAY_DIFFUSE | AI_RAY_GLOSSY)) {
     </footer>
 
     
-    <script src="http://shihchin.com/js/jquery.min.js"></script>
+    <script src="http://shihchinw.github.io/js/jquery.min.js"></script>
 
     
-    <script src="http://shihchin.com/js/bootstrap.min.js"></script>
+    <script src="http://shihchinw.github.io/js/bootstrap.min.js"></script>
 
     
-    <script src="http://shihchin.com/js/clean-blog.js"></script>
+    <script src="http://shihchinw.github.io/js/clean-blog.js"></script>
 
     
 <script>
@@ -592,10 +592,10 @@ ga('send', 'pageview');
 </script>
 
 
-    <script src="http://shihchin.com/js/lightbox.js"></script>
+    <script src="http://shihchinw.github.io/js/lightbox.js"></script>
 
-    <script src="http://shihchin.com/js/jquery.event.move.js"></script>
-    <script src="http://shihchin.com/js/jquery.twentytwenty.js"></script>
+    <script src="http://shihchinw.github.io/js/jquery.event.move.js"></script>
+    <script src="http://shihchinw.github.io/js/jquery.twentytwenty.js"></script>
     
 
     <script>
