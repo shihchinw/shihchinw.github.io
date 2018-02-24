@@ -7,7 +7,6 @@ published: true
 tags:
 - Arnold
 - BRDF
-- Importance Sampling
 title: Implementing Disney Principled BRDF in Arnold
 ---
 
@@ -19,11 +18,11 @@ Disney "principled" BRDF [[1](#ref.1)] is a very interesting shading model. It c
 > 4. Parameters are __allowed to be pushed beyond__ their plausible range where it makes sense.
 > 5. All combinations of parameters should be as __robust and plausible__ as possible.
 
-These art-directable features make artists achieve the desired shading results more easily, it is one of the ultimate goals for software engineering in animation studio. Since it has been implemented within various frameworks like [Unreal Engine 4](http://blog.selfshadow.com/publications/s2013-shading-course/), [RenderMan](http://renderman.pixar.com/resources/current/RenderMan/PxrDisney.html), MPC's preview system [Dekko](http://on-demand-gtc.gputechconf.com/gtcnew/on-demand-gtc.php?searchByKeyword=mpc&searchItems=&sessionTopic=&sessionEvent=2&sessionYear=2015&sessionFormat=&submit=&select=), etc. So, let's make one for Arnold. :)
+These art-directable features make artists achieve the desired shading results more easily, it is one of the ultimate goals for software engineering in animation studio. Therefore, it has been implemented within various frameworks like [Unreal Engine 4](http://blog.selfshadow.com/publications/s2013-shading-course/), [RenderMan](http://renderman.pixar.com/resources/current/RenderMan/PxrDisney.html), MPC's preview system [Dekko](http://on-demand-gtc.gputechconf.com/gtcnew/on-demand-gtc.php?searchByKeyword=mpc&searchItems=&sessionTopic=&sessionEvent=2&sessionYear=2015&sessionFormat=&submit=&select=), etc. So, let's make one for Arnold. :)
 
 # Importance Sampling
 
-According to the source code from BRDF explorer, the shading components can be separated into two parts:
+According to the source code from BRDF explorer, the shading components of Disney BRDF can be separated into two parts:
 
 * diffuse
     * base diffuse
@@ -35,33 +34,35 @@ According to the source code from BRDF explorer, the shading components can be s
 
 ## Diffuse
 
-From BRDF explorer, we can see that the diffuse component is dominated by the $\cos{\theta_l}$ factor. Therefore the diffuse part could be sampled with the PDF proportional to cosine-weighted solid angle:
+From BRDF explorer, we can see that the diffuse component is dominated by the \\(\cos{\theta_l}\\) factor. Thus the diffuse part could be sampled with the PDF proportional to cosine-weighted solid angle:
 ![diffuse sample distribution](/images/rlShaders/rlDisney_is_diffuse.jpg)
 
 ## Specular
 
 Sheen is relatively small to primary specular (GTR2) and clearcoat (GTR1) and it is ignored in the importance sampling process in current implementation. The importance sampling approach for GTR is pretty much like we did for GGX previously, except for the anisotropic case which is a little complicated (I've not successfully derived the formula yet). Fortunately, Burley has kindly provided the details in the course notes [[1](#ref.1)], and we could simply follow those formulas to generate samples:
 
-$$\begin{eqnarray}
-aspect&=&\sqrt{1-0.9*anisotropic} \nonumber \\
-\alpha_x&=&\frac{roughness^2}{aspect},\ \alpha_y=roughness^2*aspect \nonumber \\
-\end{eqnarray}$$
+<div>$$\begin{aligned}
+aspect &= \sqrt{1 - 0.9 \times anisotropic} \\
+\alpha_x &= \frac{roughness^2}{aspect} \\
+\alpha_y &= roughness^2 \times aspect
+\end{aligned}$$</div>
 
-for primary anisotropic specular:
+For primary anisotropic specular:
 
-$$\begin{eqnarray}
-D_{GTR_2aniso}&=&\frac{1}{\pi}\frac{1}{\alpha_x\alpha_y}\frac{1}{(\sin^2{\theta_h}(\frac{\cos^2{\phi_h}}{\alpha_x^2}+\frac{\sin^2{\phi_h}}{\alpha_y^2})+\cos^2{\theta_h})^2} \nonumber \\
-h'&=&\sqrt{\frac{\xi_2}{1-\xi_2}}[\alpha_x\cos(2\pi\xi_1)\vec{u}+\alpha_y\sin(2\pi\xi_1)\vec{v}]+\vec{n},\ h=\frac{h'}{|h'|}
-\end{eqnarray}$$
+<div>$$\begin{aligned}
+D_{GTR_{2aniso}} &= \frac{1}{\pi}\frac{1}{\alpha_x\alpha_y}\frac{1}{(\sin^2{\theta_h}(\frac{\cos^2{\phi_h}}{\alpha_x^2}+\frac{\sin^2{\phi_h}}{\alpha_y^2})+\cos^2{\theta_h})^2} \\
+h' &= \sqrt{\frac{\xi_2}{1-\xi_2}}[\alpha_x\cos(2\pi\xi_1)\vec{u}+\alpha_y\sin(2\pi\xi_1)\vec{v}]+\vec{n} \\
+h &= \frac{h'}{|h'|}
+\end{aligned}$$</div>
 
-for clearcoat:
+For clearcoat:
 
-$$\begin{eqnarray}
-D_{GTR_1}&=&\frac{\alpha^2-1}{\pi\log\alpha^2}\frac{1}{(1+(\alpha^2-1)\cos^2\theta_h)} \nonumber \\
-\cos\theta_h&=&\sqrt{\frac{1-(\alpha^2)^{1-\xi_2}}{1-\alpha^2}},\ \phi_h=2\pi\xi_1
-\end{eqnarray}$$
+<div>$$\begin{aligned}
+D_{GTR_1} &= \frac{\alpha^2 - 1}{\pi \log \alpha^2} \frac{1}{(1+(\alpha^2 -1)\cos^2\theta_h)} \\
+\cos\theta_h &= \sqrt{\frac{1 - (\alpha^2)^{1 - \xi_2}}{1 - \alpha^2}},\ \phi_h=2\pi\xi_1
+\end{aligned}$$</div>
 
-The microfacet normal h is generated according to $D(\theta\_h)\cos\theta\_h$ which is already normalized over the hemisphere. Therefore, I tried to use the coefficents of $D\_{GTR_2}, D\_{GTR_1}$ as weights for lobe selection and PDF composition:
+The microfacet normal \\(h\\) is generated according to \\(D(\theta\_h)\cos\theta\_h\\) which is already normalized over the hemisphere. Therefore, I tried to use the coefficents of \\(D\_{GTR_2}, D\_{GTR_1}\\) as weights for lobe selection and PDF composition:
 
 <pre class="prettyprint linenums lang-cpp">
 AtVector    sampleSpecularDirection(float rx, float ry) const
@@ -121,7 +122,7 @@ float   evalSpecularPdf(const AtVector &i) const
 <img src="/images/rlShaders/rlDisney_is_specular_a.8.jpg">
 <figcaption>roughness=0.8, $\theta_o=45^\circ$</figcaption></figure>
 
-The <span class="red">red dots</span> at bottom represent the invalid sample whose $\theta_m$ is greater than 90 degrees (i.e. $m \cdot n < 0$). It might be able to get improved by importance sampling the <span class="orange">__visible__</span> microfacet normals presented in Heitz and d'Eon [[3](#ref.3)].
+The <span class="red">red dots</span> at bottom represent the invalid sample whose \\(\theta_m\\) is greater than 90 degrees (i.e. \\(m \cdot n < 0\\)). It might be able to get improved by <span class="blue">importance sampling the __visible__ microfacet normals</span> presented in Heitz and d'Eon [[3](#ref.3)].
 
 # Removing Fireflies
 

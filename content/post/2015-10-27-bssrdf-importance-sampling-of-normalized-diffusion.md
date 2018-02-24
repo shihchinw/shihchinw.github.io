@@ -23,13 +23,13 @@ BSSRDF is a function relates outgoing radiance to the incident flux at different
 
 $$S(x_i,\vec{\omega_i};x_o,\vec{\omega_o})=\frac{dL_0(x_o,\vec{\omega_o})}{d\phi_i(x_i,\vec{\omega_i})}$$
 
-For efficiency, $S$ can be decomposed into single-scattering and multiple-scattering terms. The multiple scatter term $S_d$ is too complex to solve directly, the common strategy is to use a `diffusion profile` to approximate the distribution of outgoing radiance. With the diffusion approximation to the _radiative transport equation_ (RTE), $S_d$ is represented by a product of two Fresnel refraction terms and a diffusion profile in BSSRDF:
+For efficiency, \\(S\\) can be decomposed into single-scattering and multiple-scattering terms. The multiple scatter term \\(S_d\\) is too complex to solve directly, the common strategy is to use a `diffusion profile` to approximate the distribution of outgoing radiance. With the diffusion approximation to the _radiative transport equation_ (RTE), \\(S_d\\) is represented by a product of two Fresnel refraction terms and a diffusion profile in BSSRDF:
 
 $$S_d(x_i,\vec{\omega_i};x_o,\vec{\omega_o})=\frac{1}{\pi}F_t(\eta,\vec{\omega_i})R_d(\vert x_i-x_o\vert)F_t(\eta,\vec{\omega_o})$$
 
 and the subsurface light transport is formulated as:
 
-<div>$$L_o(x_o,\vec{\omega_o})=\int_A{\int_\Omega{S(x_i,\vec{\omega_i};x_o,\vec{\omega_o}) L_i(x_i,\vec{\omega_i})(n\cdot\vec{\omega_i}) d\omega_i}dA(x_i)}$$</div>
+$$L_o(x_o,\vec{\omega_o}) = \int_A{ \int\_\Omega{ S(x_i,\vec{\omega_i};x_o,\vec{\omega_o}) L_i(x_i,\vec{\omega_i}) (n\cdot\vec{\omega_i}) d\omega_i } dA(x_i) }$$
 
 > There are many technical terms among the academic papers, such as fluence, mean free path, etc. I found the best introductory reading materials to understand the relevant details of sub-surface scattering approximation are:
 >
@@ -47,57 +47,64 @@ To solve the subsurface light transport, two primary approaches are used in grap
 
 The other is to perform importance sampling of the diffusion profile directly. Without the needs of point cloud generation, this approach fits well in any path-tracer with probe tracing API. The state-of-the-art sampling method proposed by King et al. [[4](#ref.4)] can be summarized to following steps:
 
-1. sample a point on disk with PDF in proportion to the diffusion profile $R(r\)$
-2. randomly select probe orientation with local basis U, V, N at $x_o$
-3. compute probe origin and direction from the selected orientation
-4. trace probe rays to shade all hit points within a range of max radius
-5. combine sample results with MIS (Multiple Importance Sampling):
+1. Sample a point on disk with PDF in proportion to the diffusion profile \\(R(r\)\\).
+2. Randomly select probe orientation with local basis U, V, N at \\(x_o\\).
+3. Compute probe origin and direction from the selected orientation.
+4. Trace probe rays to shade all hit points within a range of max radius.
+5. Combine sample results with MIS (Multiple Importance Sampling):
+    $$w_i = \frac{R_d(\|x_o-x_i\|)}{\sum_j{c_j\ pdf\_{disk}(r_j) |\vec{n_o}\cdot\vec{n_i}|}}\kern{2em}$$
+    where \\(c_j\\) is the sample weight of probe axis selection (N:0.5, U:0.25, V:0.25), and \\(r_j\\) is the projected radius on UV, NV, NU plane.
 
-    <div>$$w_i=\frac{R_d(\|x_o-x_i\|)}{\sum_j{c_j\ pdf_{disk}(r_j) |\vec{n_o}\cdot\vec{n_i}|}}$$</div>
-
-    where $c_j$ is the sample weight of probe axis selection (N:0.5, U:0.25, V:0.25), and $r_j$ is the projected radius on UV, NV, NU plane.
-
-Arnold SDK only provides APIs for Gaussian and cubic profile currently, for other profiles, we have to implement the sampling routine from scratch. The implementation details would be discussed in later section. Now, let's see how to sample the radius $r$ from the normalized diffusion profile $R(r\)$.
+Arnold SDK only provides APIs for Gaussian and cubic profile currently, for other profiles, we have to implement the sampling routine from scratch. The implementation details would be discussed in later section. Now, let's see how to sample the radius \\(r\\) from the normalized diffusion profile \\(R(r\)\\).
 
 # Importance Sampling of Normalized Diffusion
 
 _Normalized diffusion_ profile [[5](#ref.5)][[6](#ref.6)] is formulated by two exponential functions:
 
-<div>$$R(r)=\frac{e^{−r/d}+e^{−r/3d}}{8\pi dr}$$</div>
+$$R(r\)=\frac{e^{\frac{-r}{d}} + e^{\frac{-r}{3d}}}{8\pi dr}$$
 
-and the beauty of this model is that with <span class="green">__any positive value of $d$ the integration over the disk is always one:__</span>
+and the beauty of this model is that with <span class="green">__any positive value of \\(d\\) the integration over the disk is always one:__</span>
 
-<div>$$\int_0^\infty{\int_0^{2\pi}{R(r)r\ d\phi}\ dr}=\int_0^\infty{R(r)2\pi r\ dr}=1$$</div>
+$$\int_0^\infty{\int_0^{2\pi}{R(r\)r\ d\phi}\ dr}=\int_0^\infty{R(r\)2\pi r\ dr}=1$$
 
-(The parameter $d$ can be interpreted as the scattering distance for artistic control. For its relationship to other physical quantities like surface albedo and mean free path, please refer to [[6](#ref.6)])
+(The parameter \\(d\\) can be interpreted as the scattering distance for artistic control. For its relationship to other physical quantities like surface albedo and mean free path, please refer to [[6](#ref.6)])
 
-Although $R(r\)$ is surprising simple, but its CDF is not analytically invertible. Therefore, I try to randomly select one exponential and generate sample $r$ from it, then use MIS to combine the sample weights. Besides, in order to make probe tracing faster and to reduce the variance (noise), it's better to restrict the integration domain within a user defined max radius $R_{max}$.
+Although \\(R(r\)\\) is surprising simple, but its CDF is not analytically invertible. Therefore, I try to randomly select one exponential and generate sample \\(r\\) from it, then use MIS to combine the sample weights. Besides, in order to make probe tracing faster and to reduce the variance (noise), it's better to restrict the integration domain within a user defined max radius \\(R_{max}\\).
 
 ## Lobe selection
 
-There are two exponential functions and three distance values $d$ for R, G, B. In other words, there are <span class="orange">__six lobes__</span> to sample. Before sampling the radius $r$ on disk, we need to select a lobe in two steps:
+There are two exponential functions and three distance values \\(d\\) for R, G, B. In other words, there are <span class="blue">__six lobes__</span> to sample. Before sampling the radius \\(r\\) on disk, we need to select a lobe in two steps:
 
-1. choose the value of $d$ from R, G, B <span class="orange">__uniformly__</span>
-    * since every positive $d$ would always get one for the integral of $R(r )$
-2. given $d$, use the ratio of integration within $R_{max}$ to select the exponential function:
+1. Choose the value of \\(d\\) from R, G, B <span class="blue">__uniformly__</span>.
+    * Since every positive \\(d\\) would always get one for the integral of \\(R(r\)\\).
+2. Given \\(d\\), use the ratio of integration within \\(R_{max}\\) to select the exponential function:
 
-<div>$$w_1=1-e^{-R_{max}/d}, w_2=3(1-e^{-R_{max}/{3d}})$$</div>
+<div>
+$$\begin{aligned}
+w_1 &= 1 - e^{\frac{-R_{max}}{d}} \\
+w_2 &= 3 (1 - e^{\frac{-R_{max}}{3d}})
+\end{aligned}$$
+</div>
 
-## Sample $r$ from a lobe
+## Sample \\(r\\) from a lobe
 
-Suppose the PDF of the first exponential is $p\_1(r\)\propto \frac{e^{−r/d}}{8\pi dr}$, and it's normalized in range $[0, R_{max}]$
+Suppose the PDF of the first exponential is \\(p\_1(r\)\propto \frac{e^{-r/d}}{8\pi dr}\\), and it's normalized in range \\([0, R_{max}]\\)
 
-<div>$$\int{c\frac{e^{-r/d}}{8\pi dr}2\pi r\ dr}=\int{\frac{c}{4d}e^{-r/d}\ dr}=\frac{-c}{4}(e^{\frac{-R_{max}}{d}-1})=1 \\
-c=\frac{4}{1-e^{-R_{max}/d}},\ p_1(r)=\frac{e^{-r/d}}{2\pi dr}\frac{1}{1-e^{-R_{max}/d}}$$</div>
+<div>$$\int{c\ \frac{e^{-r/d}}{8\pi dr} 2\pi r\ dr} = \int{\frac{c}{4d}e^{-r/d}\ dr} = \frac{-c}{4}(e^{\frac{-R_{max}}{d}-1}) = 1$$
+$$c = \frac{4}{1-e^{\frac{-R_{max}}{d}}} \implies p_1(r)=\frac{e^{-r/d}}{2\pi dr}\frac{1}{1-e^{\frac{-R_{max}}{d}}}$$</div>
 
-then the CDF of $p_1(r\)$ and its inverse function are:
+Then the CDF of \\(p_1(r\)\\) and its inverse function are:
 
-<div>$$\int_0^{r'}{p_1(r)2\pi r\ dr}=\int_0^{r'}{\frac{e^{-r/d}}{d} \frac{1}{1-e^{-R_{max}/d}} dr}=\frac{-1}{1-e^{-R_{max}/d}}(e^{-r'/d -1}) \\
-r=\log(1-\xi(1-e^{-R_{max}/d}))*-d$$</div>
+<div>$$\begin{aligned}
+P_1(r) &= \int_0^r{p_1(r')2\pi r'\ dr'} \\
+&= \int_0^r{\frac{e^{-r'/d}}{d} \frac{1}{1-e^{\frac{-R_{max}}{d}}} dr'} \\
+&= \frac{-1}{1-e^{\frac{-R_{max}}{d}}}(e^{\frac{-r}{d}}-1)
+\end{aligned}$$
+$$r = \log(1-\xi(1-e^{\frac{-R_{max}}{d}})) \times -d$$</div>
 
 Likewise, we can get the following formulas for the second exponential:
 
-<div>$$p_2(r)=\frac{e^{-r/{3d}}}{2\pi dr}\frac{1}{3(1-e^{-R_{max}/{3d}})},\ r=\log(1-\xi(1-e^{-R_{max}/{3d}}))*{-3d}$$</div>
+<div>$$p_2(r)=\frac{e^{\frac{-r}{3d}}}{2\pi dr}\frac{1}{3(1-e^{\frac{-R_{max}}{3d}})},\ r = \log(1-\xi(1-e^{\frac{-R_{max}}{3d}})) \times -3d$$</div>
 
 # Implementation Details
 
@@ -115,14 +122,14 @@ To shade thin geometry correctly, we need to shade multiple hits along the probi
 
 ## Reduce Incoming Radiance From Opposite Faces
 
-Sometimes the energy from opposite faces would make the result too bright and need further reduction. For the consideration of surface cavity, I currently use $\cos{\theta/2}$ to fade out the incoming radiance. Where the $\theta$ is determined differently for front-facing ($x\_{i1}$) and back-facing ($x\_{i2}$) cases:
+Sometimes the energy from opposite faces would make the result too bright and need further reduction. For the consideration of surface cavity, I currently use \\(\cos{\theta/2}\\) to fade out the incoming radiance. Where the \\(\theta\\) is determined differently for front-facing (\\(x\_{i1}\\)) and back-facing (\\(x\_{i2}\\)) cases:
 
 <img src="/images/rlShaders/bssrdf_cavity_affects_diffusion.png" style="box-shadow: none;">
 
-<div>$$\theta = \left\{ \begin{array}{@{}ll@{}}
-\arccos(\vec{n_o}\cdot\vec{n_i}), & \text{if } \vec{v}\cdot\vec{n_o} \ge 0 \\
-\arccos(\vec{v}\cdot\vec{n_i}), & \text{otherwise}
-\end{array}\right. , where\ \vec{v}\ is\ \frac{x_i-x_o}{\vert x_i-x_o\vert}$$</div>
+<div>$$\theta = \begin{cases}
+\arccos(\vec{n_o}\cdot\vec{n_i}) &\text{if } \vec{v}\cdot\vec{n_o} \ge 0 \\
+\arccos(\vec{v}\cdot\vec{n_i}) & \text{otherwise}
+\end{cases}, where\ \vec{v}\ is\ \frac{x_i-x_o}{\vert x_i-x_o\vert}$$</div>
 
 The source code could be found [here](https://github.com/shihchinw/rlShaders/blob/master/src/rlSssND.cpp).
 

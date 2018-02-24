@@ -39,7 +39,7 @@ Other diffuse details, like wrinkles, pores, freckles, could be handled by regul
 
 The thin oily layer on top is an interesting one, its specular reflection is commonly modeled by physically based microfacet BRDF [[2](#ref.2), [3](#ref.3), [4](#ref.4), [5](#ref.5)] and it is sometimes decomposed into __sheen__ and __specular__ components in recent skin shader implementations. Now, the curious thing is why do we need two specular components to represent realistic reflection?
 
-To my best knowledge, two specular lobes might come from the astonishing work done by Graham et al. [[2](#ref.2)]. They found the specular reflection from their measured data could be approximated well by <span class="orange">__two lobes__ of a _Beckmann_ distribution</span> instead of one. And this principle is also adopted in another amazing real time domo by von der Pahlen et al. [[3](#ref.3)].
+To my best knowledge, two specular lobes might come from the astonishing work done by Graham et al. [[2](#ref.2)]. They found the specular reflection from their measured data could be approximated well by <span class="blue">__two lobes__ of a _Beckmann_ distribution</span> instead of one. And this principle is also adopted in another amazing real time domo by von der Pahlen et al. [[3](#ref.3)].
 
 # Layer Combination
 
@@ -52,17 +52,17 @@ In my skin shading experiment, two specular lobes are modeled with GGX BRDF with
 
 Another more accurate way is to compute the weight for SSS layer with the energy which is not reflected from top oily layer [[2](#ref.2), [4](#ref.4), [5](#ref.5)]. In other words, it uses one minus the average hemispherical diffuse reflectance as weights for linear interpolation:
 
-<div>$$\rho_{dt}(x,\vec{\omega_i})=1-\int_{2\pi}{f_r(x,\vec{\omega_o},\vec{\omega_i})(\vec{\omega_i}\cdot\vec{n}) d\vec{\omega_o}}$$</div>
+<div>$$\rho_{dt}(x,\vec{\omega_i}) = 1 - \int_{2\pi}{f_r(x,\vec{\omega_o},\vec{\omega_i})(\vec{\omega_i}\cdot\vec{n}) d\vec{\omega_o}}$$</div>
 
-where $f_r(x,\vec{\omega_o},\vec{\omega_i})$ is the microfacet BRDF
+where \\(f_r(x,\vec{\omega_o},\vec{\omega_i})\\) is the microfacet BRDF
 
-Although the average diffuse reflectance could be done at pre-processing stage (e.g. the node_initialize section), yet it would still affect the user experience of parameter tweaking in IPR mode. And just inspired by alSurface [[6](#ref.6)], I extract $F_t(\eta, \vec{\omega_i})$ out from the BSSRDF:
+Although the average diffuse reflectance could be done at pre-processing stage (e.g. the node_initialize section), yet it would still affect the user experience of parameter tweaking in IPR mode. And just inspired by alSurface [[6](#ref.6)], I extract \\(F_t(\eta, \vec{\omega_i})\\) out from the BSSRDF:
 
 $$S_d(x_i,\vec{\omega_i};x_o,\vec{\omega_o})=\frac{1}{\pi}F_t(\eta,\vec{\omega_i})R_d(\vert x_i-x_o\vert)F_t(\eta,\vec{\omega_o})$$
 
 and compute its average from GGX BRDF as blending weights:
 
-$$sssWeight=1−specularAvgFresnel∗(1−sheenAvgFresnel)$$
+$$\text{sssWeight} = 1 - \text{specularAvgFresnel} \times (1 - \text{sheenAvgFresnel})$$
 
 With such layer combination, the visual difference between one and two glossy lobes is:
 
@@ -100,12 +100,12 @@ Since the storage of the microstructure texture is quite large, the micro-displa
 
 <img src="/images/rlShaders/bssrdf_cavity_affects_diffusion.png" style="box-shadow: none;">
 
-The formula in my previous implementation was incorrect for back-facing diffusion. I've tweaked the formula a little bit, for back-facing diffusion, I use $\cos{\theta}$ as the weight for fadeout instead of $\cos{\theta/2}$. Where the $\theta$ is computed as:
+The formula in my previous implementation was incorrect for back-facing diffusion. I've tweaked the formula a little bit, for back-facing diffusion, I use \\(\cos{\theta}\\) as the weight for fadeout instead of \\(\cos{\theta/2}\\). Where the \\(\theta\\) is computed as:
 
-<div>$$\theta = \left\{ \begin{array}{@{}ll@{}}
-\arccos(\vec{n_o}\cdot\vec{n_i}), & \text{if } \vec{v}\cdot\vec{n_o} \ge 0 \\
-\arccos(\vec{v}\cdot\vec{n_i}), & \text{otherwise}
-\end{array}\right. , where\ \vec{v}\ is\ \frac{x_i-x_o}{\vert x_i-x_o\vert}$$</div>
+<div>$$\theta = \begin{cases}
+\arccos(\vec{n_o}\cdot\vec{n_i}) &\text{if } \vec{v}\cdot\vec{n_o} \ge 0 \\
+\arccos(\vec{v}\cdot\vec{n_i}) & \text{otherwise}
+\end{cases}, where\ \vec{v}\ is\ \frac{x_i-x_o}{\vert x_i-x_o\vert}$$</div>
 
 With the consideration of surface cavities, it would reduce the diffusion amount from the opposite faces at front:
 
@@ -137,7 +137,7 @@ If the scatter distance is smaller than the edge length of hit triangle, the pro
 
 I've tried to increase the probability of the probing along normal direction for this case, but it still can't eliminate such artifact completely. Because at the surface point with low geometry curvature within a range of max scattering radius, it would still potentially waste most samples along U, V axis.
 
-The other thing is about the scattering distance control. The normalized diffusion is _integrated to one for any positive distance $d$_, and current implementation distributes energy of each color channel among the given `scatterDist` components respectively.
+The other thing is about the scattering distance control. The normalized diffusion is _integrated to one for any positive distance \\(d\\)_, and current implementation distributes energy of each color channel among the given `scatterDist` components respectively.
 
 The scattering energy is decayed from hit point, due to normalization, the farther distance it scatters the less energy it contributes near the hit point. In other words, to get more reddish results, we need to make the `scatterDist.r` relatively smaller than `scatterDist.g` and `scatterDist.b`. This might be a little counterintuitive to users. (This is a problem of my current implementation, not related to the normalized diffusion model itself. It seems that the parameters used in the course note [[7](#ref.7)] don't have such problem)
 
