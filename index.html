@@ -2,7 +2,7 @@
 <html lang="en-us">
 
 <head>
-	<meta name="generator" content="Hugo 0.21" />
+	<meta name="generator" content="Hugo 0.36.1" />
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,27 +39,19 @@
     
     
     
-
     
-    <script type='text/x-mathjax-config'>
-        MathJax.Hub.Config({
-            tex2jax: {
-                inlineMath: [ ['$','$'], ['\\(','\\)'] ]
-            },
-            processEscapes: true,
-            processEnvironments: true,
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-            TeX: {
-                equationNumbers: { autoNumber: "AMS" },
-                extensions: ["AMSmath.js", "AMSsymbols.js"]
-            },
-            "HTML-CSS": {
-                preferredFont: "TEX",
-                scale : 85
-            }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js" integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js" integrity="sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body);
         });
     </script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+
+    
+    
 
     <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/foundation.css">
     <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/twentytwenty.css">
@@ -67,6 +59,8 @@
     <link rel="shortcut icon" type="image/png" href="http://shihchinw.github.io/favicon.png">
 
     <style>
+    .katex { font-size: 1.1em !important; }
+
     .intro-header .overlay {
         background: rgba(0, 0, 0, 0.47);
         z-index: 1;
@@ -220,8 +214,8 @@
         box-shadow: inset 0 -6px 0 #a6dcf3;
     }
     span.orange {
-        border-bottom: 1px solid #ffd8ae;
-        box-shadow: inset 0 -6px 0 #ffd8ae;
+        border-bottom: 1px solid #ffc672;
+        box-shadow: inset 0 -6px 0 #ffc672;
     }
     span.red { color: #dc1111; }
     span.green {
@@ -477,7 +471,7 @@ Posted by Shih-Chin on Sun, Aug 23, 2015
   <a href="http://shihchinw.github.io/2015/08/sampling-visible-normals-for-ggx-brdf.html"><img src="http://shihchinw.github.io/images/rlShaders/ggx_sampling_comparison.jpg" class="img-responsive"></a>
   
   <div class="summary-content">
-  The standard approach proposed by Walter et al. [1] for importance sampling of GGX BRDF is to use the PDF proportional to distribution of microfacet normal $D(\omega)$. However, $D(\omega)$ is not view-dependent, thus it would waste lots of samples when the incoming direction is near grazing angles In addition, the small value of $D(\omega)\vert m\cdot n\vert$ at grazing angle would make the sample value as high as hundreds to millions in some situations and cause fireflies in render results.
+  The standard approach proposed by Walter et al. [1] for importance sampling of GGX BRDF is to use the PDF proportional to distribution of microfacet normal \(D(\omega)\). However, \(D(\omega)\) is not view-dependent, thus it would waste lots of samples when the incoming direction is near grazing angles. In addition, the small value of \(D(\omega)\vert m\cdot n\vert\) at grazing angle would make the sample value as high as hundreds to millions in some situations and cause fireflies in render results.
   
   <a class="read-more-link" href="http://shihchinw.github.io/2015/08/sampling-visible-normals-for-ggx-brdf.html">»</a>
   
@@ -510,7 +504,85 @@ Posted by Shih-Chin on Sun, Jul 19, 2015
   
   </div>
   <small><span class="fa-stack fa-sm"><i class="fa fa-tags fa-stack-1x"></i></span></small>
+<a href="http://shihchinw.github.io/tags/arnold">Arnold</a>, <a href="http://shihchinw.github.io/tags/brdf">BRDF</a>
+</div>
+<hr>
+
+          
+          <div class="post-preview">
+  <a href="http://shihchinw.github.io/2015/06/implementing-ggx-brdf-in-arnold-with-multiple-importance-sampling.html">
+    <h2 class="post-title">Implementing GGX BRDF in Arnold with Multiple Importance Sampling</h2></a>
+      <div class="post-meta">
+        
+Posted by Shih-Chin on Sun, Jun 28, 2015
+
+
+      </div>
+  <h3 class="post-subtitle"></h3>
+
+  
+  <a href="http://shihchinw.github.io/2015/06/implementing-ggx-brdf-in-arnold-with-multiple-importance-sampling.html"><img src="http://shihchinw.github.io/images/rlShaders/rlGgx_lucy.jpg" class="img-responsive"></a>
+  
+  <div class="summary-content">
+  Monte Carlo path tracing has a slow convergence rate close to \(O(1/\sqrt n)\), it needs to quadruple the number of samples to halve the error. Many mainstream production renderers have deployed multiple importance sampling (MIS) technique to reduce the variance of sampling result (i.e. the noise in image). If we want to make our custom material shader efficiently executed along with the entire render scene in Arnold, we shall definitely consider exploiting the power of MIS.
+  
+  <a class="read-more-link" href="http://shihchinw.github.io/2015/06/implementing-ggx-brdf-in-arnold-with-multiple-importance-sampling.html">»</a>
+  
+  </div>
+  <small><span class="fa-stack fa-sm"><i class="fa fa-tags fa-stack-1x"></i></span></small>
 <a href="http://shihchinw.github.io/tags/arnold">Arnold</a>, <a href="http://shihchinw.github.io/tags/brdf">BRDF</a>, <a href="http://shihchinw.github.io/tags/importance-sampling">Importance Sampling</a>
+</div>
+<hr>
+
+          
+          <div class="post-preview">
+  <a href="http://shihchinw.github.io/2015/05/quick-start-guide-for-pyside-in-maya.html">
+    <h2 class="post-title">Quick Start Guide for PySide in Maya</h2></a>
+      <div class="post-meta">
+        
+Posted by Shih-Chin on Sat, May 2, 2015
+
+
+      </div>
+  <h3 class="post-subtitle"></h3>
+
+  
+  <a href="http://shihchinw.github.io/2015/05/quick-start-guide-for-pyside-in-maya.html"><img src="http://shihchinw.github.io/images/pyside/pyside_maya_workflow.png" class="img-responsive"></a>
+  
+  <div class="summary-content">
+  The goal of tool-making is to make users do certain works more efficiently. A functional tool with poor designed interface would not be fully utilized by users, because users aren&rsquo;t willing to use that tool if the interaction makes them feel frustrated.
+Developing is a Iterative Process Although there are a few principles about user interface design, but it doesn&rsquo;t mean that we can simply apply those principles and get our jobs done.
+  
+  <a class="read-more-link" href="http://shihchinw.github.io/2015/05/quick-start-guide-for-pyside-in-maya.html">»</a>
+  
+  </div>
+  <small><span class="fa-stack fa-sm"><i class="fa fa-tags fa-stack-1x"></i></span></small>
+<a href="http://shihchinw.github.io/tags/maya">Maya</a>, <a href="http://shihchinw.github.io/tags/python">Python</a>, <a href="http://shihchinw.github.io/tags/pyside">PySide</a>
+</div>
+<hr>
+
+          
+          <div class="post-preview">
+  <a href="http://shihchinw.github.io/2015/04/assign-custom-shapes-components-to-sets-in-maya.html">
+    <h2 class="post-title">Assign Custom Shapes&#39; Components to Sets in Maya</h2></a>
+      <div class="post-meta">
+        
+Posted by Shih-Chin on Tue, Apr 21, 2015
+
+
+      </div>
+  <h3 class="post-subtitle"></h3>
+
+  
+  <div class="summary-content">
+  Recently, I tried to extend the functionalities of GPU cache in Maya with dag item selection and shader assignment. In order to achieve the seamless integration, the idea is to use face component to represent each dag item within the Alembic cache. Therefore, users can select the dag item from the cache in component mode and assign those components to a shader.
+This idea is pretty simple, but the implementation is not as easy as it sounds.
+  
+  <a class="read-more-link" href="http://shihchinw.github.io/2015/04/assign-custom-shapes-components-to-sets-in-maya.html">»</a>
+  
+  </div>
+  <small><span class="fa-stack fa-sm"><i class="fa fa-tags fa-stack-1x"></i></span></small>
+<a href="http://shihchinw.github.io/tags/maya-api">Maya API</a>
 </div>
 <hr>
 

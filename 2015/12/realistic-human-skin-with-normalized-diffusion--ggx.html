@@ -35,27 +35,19 @@
     
     
     
-
     
-    <script type='text/x-mathjax-config'>
-        MathJax.Hub.Config({
-            tex2jax: {
-                inlineMath: [ ['$','$'], ['\\(','\\)'] ]
-            },
-            processEscapes: true,
-            processEnvironments: true,
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-            TeX: {
-                equationNumbers: { autoNumber: "AMS" },
-                extensions: ["AMSmath.js", "AMSsymbols.js"]
-            },
-            "HTML-CSS": {
-                preferredFont: "TEX",
-                scale : 85
-            }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js" integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js" integrity="sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body);
         });
     </script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+
+    
+    
 
     <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/foundation.css">
     <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/twentytwenty.css">
@@ -63,6 +55,8 @@
     <link rel="shortcut icon" type="image/png" href="http://shihchinw.github.io/favicon.png">
 
     <style>
+    .katex { font-size: 1.1em !important; }
+
     .intro-header .overlay {
         background: rgba(0, 0, 0, 0.47);
         z-index: 1;
@@ -216,8 +210,8 @@
         box-shadow: inset 0 -6px 0 #a6dcf3;
     }
     span.orange {
-        border-bottom: 1px solid #ffd8ae;
-        box-shadow: inset 0 -6px 0 #ffd8ae;
+        border-bottom: 1px solid #ffc672;
+        box-shadow: inset 0 -6px 0 #ffc672;
     }
     span.red { color: #dc1111; }
     span.green {
@@ -369,7 +363,7 @@ Posted by Shih-Chin on Fri, Dec 25, 2015
 
 <p>The thin oily layer on top is an interesting one, its specular reflection is commonly modeled by physically based microfacet BRDF [<a href="#ref.2">2</a>, <a href="#ref.3">3</a>, <a href="#ref.4">4</a>, <a href="#ref.5">5</a>] and it is sometimes decomposed into <strong>sheen</strong> and <strong>specular</strong> components in recent skin shader implementations. Now, the curious thing is why do we need two specular components to represent realistic reflection?</p>
 
-<p>To my best knowledge, two specular lobes might come from the astonishing work done by Graham et al. [<a href="#ref.2">2</a>]. They found the specular reflection from their measured data could be approximated well by <span class="orange"><strong>two lobes</strong> of a <em>Beckmann</em> distribution</span> instead of one. And this principle is also adopted in another amazing real time domo by von der Pahlen et al. [<a href="#ref.3">3</a>].</p>
+<p>To my best knowledge, two specular lobes might come from the astonishing work done by Graham et al. [<a href="#ref.2">2</a>]. They found the specular reflection from their measured data could be approximated well by <span class="blue"><strong>two lobes</strong> of a <em>Beckmann</em> distribution</span> instead of one. And this principle is also adopted in another amazing real time domo by von der Pahlen et al. [<a href="#ref.3">3</a>].</p>
 
 <h1 id="layer-combination">Layer Combination</h1>
 
@@ -382,17 +376,17 @@ Posted by Shih-Chin on Fri, Dec 25, 2015
 
 <p>Another more accurate way is to compute the weight for SSS layer with the energy which is not reflected from top oily layer [<a href="#ref.2">2</a>, <a href="#ref.4">4</a>, <a href="#ref.5">5</a>]. In other words, it uses one minus the average hemispherical diffuse reflectance as weights for linear interpolation:</p>
 
-<div>$$\rho_{dt}(x,\vec{\omega_i})=1-\int_{2\pi}{f_r(x,\vec{\omega_o},\vec{\omega_i})(\vec{\omega_i}\cdot\vec{n}) d\vec{\omega_o}}$$</div>
+<div>$$\rho_{dt}(x,\vec{\omega_i}) = 1 - \int_{2\pi}{f_r(x,\vec{\omega_o},\vec{\omega_i})(\vec{\omega_i}\cdot\vec{n}) d\vec{\omega_o}}$$</div>
 
-<p>where $f_r(x,\vec{\omega_o},\vec{\omega_i})$ is the microfacet BRDF</p>
+<p>where \(f_r(x,\vec{\omega_o},\vec{\omega_i})\) is the microfacet BRDF</p>
 
-<p>Although the average diffuse reflectance could be done at pre-processing stage (e.g. the node_initialize section), yet it would still affect the user experience of parameter tweaking in IPR mode. And just inspired by alSurface [<a href="#ref.6">6</a>], I extract $F_t(\eta, \vec{\omega_i})$ out from the BSSRDF:</p>
+<p>Although the average diffuse reflectance could be done at pre-processing stage (e.g. the node_initialize section), yet it would still affect the user experience of parameter tweaking in IPR mode. And just inspired by alSurface [<a href="#ref.6">6</a>], I extract \(F_t(\eta, \vec{\omega_i})\) out from the BSSRDF:</p>
 
 <p>$$S_d(x_i,\vec{\omega_i};x_o,\vec{\omega_o})=\frac{1}{\pi}F_t(\eta,\vec{\omega_i})R_d(\vert x_i-x_o\vert)F_t(\eta,\vec{\omega_o})$$</p>
 
 <p>and compute its average from GGX BRDF as blending weights:</p>
 
-<p>$$sssWeight=1−specularAvgFresnel∗(1−sheenAvgFresnel)$$</p>
+<p>$$\text{sssWeight} = 1 - \text{specularAvgFresnel} \times (1 - \text{sheenAvgFresnel})$$</p>
 
 <p>With such layer combination, the visual difference between one and two glossy lobes is:</p>
 
@@ -430,12 +424,12 @@ Posted by Shih-Chin on Fri, Dec 25, 2015
 
 <p><img src="http://shihchinw.github.io/images/rlShaders/bssrdf_cavity_affects_diffusion.png" style="box-shadow: none;"></p>
 
-<p>The formula in my previous implementation was incorrect for back-facing diffusion. I&rsquo;ve tweaked the formula a little bit, for back-facing diffusion, I use $\cos{\theta}$ as the weight for fadeout instead of $\cos{\theta/2}$. Where the $\theta$ is computed as:</p>
+<p>The formula in my previous implementation was incorrect for back-facing diffusion. I&rsquo;ve tweaked the formula a little bit, for back-facing diffusion, I use \(\cos{\theta}\) as the weight for fadeout instead of \(\cos{\theta/2}\). Where the \(\theta\) is computed as:</p>
 
-<div>$$\theta = \left\{ \begin{array}{@{}ll@{}}
-\arccos(\vec{n_o}\cdot\vec{n_i}), & \text{if } \vec{v}\cdot\vec{n_o} \ge 0 \\
-\arccos(\vec{v}\cdot\vec{n_i}), & \text{otherwise}
-\end{array}\right. , where\ \vec{v}\ is\ \frac{x_i-x_o}{\vert x_i-x_o\vert}$$</div>
+<div>$$\theta = \begin{cases}
+\arccos(\vec{n_o}\cdot\vec{n_i}) &\text{if } \vec{v}\cdot\vec{n_o} \ge 0 \\
+\arccos(\vec{v}\cdot\vec{n_i}) & \text{otherwise}
+\end{cases}, where\ \vec{v}\ is\ \frac{x_i-x_o}{\vert x_i-x_o\vert}$$</div>
 
 <p>With the consideration of surface cavities, it would reduce the diffusion amount from the opposite faces at front:</p>
 
@@ -469,7 +463,7 @@ Posted by Shih-Chin on Fri, Dec 25, 2015
 
 <p>I&rsquo;ve tried to increase the probability of the probing along normal direction for this case, but it still can&rsquo;t eliminate such artifact completely. Because at the surface point with low geometry curvature within a range of max scattering radius, it would still potentially waste most samples along U, V axis.</p>
 
-<p>The other thing is about the scattering distance control. The normalized diffusion is <em>integrated to one for any positive distance $d$</em>, and current implementation distributes energy of each color channel among the given <code>scatterDist</code> components respectively.</p>
+<p>The other thing is about the scattering distance control. The normalized diffusion is <em>integrated to one for any positive distance \(d\)</em>, and current implementation distributes energy of each color channel among the given <code>scatterDist</code> components respectively.</p>
 
 <p>The scattering energy is decayed from hit point, due to normalization, the farther distance it scatters the less energy it contributes near the hit point. In other words, to get more reddish results, we need to make the <code>scatterDist.r</code> relatively smaller than <code>scatterDist.g</code> and <code>scatterDist.b</code>. This might be a little counterintuitive to users. (This is a problem of my current implementation, not related to the normalized diffusion model itself. It seems that the parameters used in the course note [<a href="#ref.7">7</a>] don&rsquo;t have such problem)</p>
 
@@ -492,20 +486,25 @@ Posted by Shih-Chin on Fri, Dec 25, 2015
                   
     <hr>
     <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'shihchinw';
-    var disqus_identifier = 'http:\/\/shihchinw.github.io\/2015\/12\/realistic-human-skin-with-normalized-diffusion--ggx.html';
-    var disqus_title = 'Realistic Human Skin with Normalized Diffusion \x26 GGX';
-    var disqus_url = 'http:\/\/shihchinw.github.io\/2015\/12\/realistic-human-skin-with-normalized-diffusion--ggx.html';
-
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
     (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "shihchinw" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
                 </div>

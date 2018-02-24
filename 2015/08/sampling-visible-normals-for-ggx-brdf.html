@@ -35,27 +35,19 @@
     
     
     
-
     
-    <script type='text/x-mathjax-config'>
-        MathJax.Hub.Config({
-            tex2jax: {
-                inlineMath: [ ['$','$'], ['\\(','\\)'] ]
-            },
-            processEscapes: true,
-            processEnvironments: true,
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-            TeX: {
-                equationNumbers: { autoNumber: "AMS" },
-                extensions: ["AMSmath.js", "AMSsymbols.js"]
-            },
-            "HTML-CSS": {
-                preferredFont: "TEX",
-                scale : 85
-            }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js" integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js" integrity="sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body);
         });
     </script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+
+    
+    
 
     <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/foundation.css">
     <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/twentytwenty.css">
@@ -63,6 +55,8 @@
     <link rel="shortcut icon" type="image/png" href="http://shihchinw.github.io/favicon.png">
 
     <style>
+    .katex { font-size: 1.1em !important; }
+
     .intro-header .overlay {
         background: rgba(0, 0, 0, 0.47);
         z-index: 1;
@@ -216,8 +210,8 @@
         box-shadow: inset 0 -6px 0 #a6dcf3;
     }
     span.orange {
-        border-bottom: 1px solid #ffd8ae;
-        box-shadow: inset 0 -6px 0 #ffd8ae;
+        border-bottom: 1px solid #ffc672;
+        box-shadow: inset 0 -6px 0 #ffc672;
     }
     span.red { color: #dc1111; }
     span.green {
@@ -336,113 +330,113 @@ Posted by Shih-Chin on Sun, Aug 23, 2015
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                   
 
-<p>The standard approach proposed by Walter et al. [<a href="#ref.1">1</a>] for importance sampling of GGX BRDF is to use the PDF proportional to distribution of microfacet normal $D(\omega)$. However, $D(\omega)$ is not <strong>view-dependent</strong>, thus it would waste lots of samples when the incoming direction is near grazing angles In addition, the small value of $D(\omega)\vert m\cdot n\vert$ at grazing angle would make the sample value <em>as high as hundreds to millions</em> in some situations and cause fireflies in render results.</p>
+<p>The standard approach proposed by Walter et al. [<a href="#ref.1">1</a>] for importance sampling of GGX BRDF is to use the PDF proportional to distribution of microfacet normal \(D(\omega)\). However, \(D(\omega)\) is not <strong>view-dependent</strong>, thus it would waste lots of samples when the incoming direction is near grazing angles. In addition, <span class="blue">the small value of \(D(\omega)\vert m\cdot n\vert\) at grazing angle would make the sample value <em>as high as hundreds to millions</em></span> in some situations and cause fireflies in render results.</p>
 
-<p>In order to tackle these problems, Heitz and d&rsquo;Eon [<a href="#ref.3">3</a>] proposed a new method by sampling from the distribution of <span class="orange"><strong>visible</strong></span> normals. Due to the consideration of view direction, their approach can significantly reduce the amount of wasted samples and make the sample weight in proper range to avoid the fireflies.</p>
+<p>In order to tackle these problems, Heitz and d&rsquo;Eon [<a href="#ref.3">3</a>] proposed a new method by sampling from the distribution of <strong>visible</strong> normals. Due to the consideration of view direction, their approach can significantly reduce the amount of wasted samples and make the sample weight in proper range to avoid the fireflies.</p>
 
-<h1 id="revisit-the-distribution-of-normals-d-omega">Revisit the Distribution of Normals $D(\omega)$</h1>
+<h1 id="revisit-the-distribution-of-normals-d-omega">Revisit the Distribution of Normals \(D(\omega)\)</h1>
 
 <figure class="figure">
 <img src="http://shihchinw.github.io/images/rendering/microsurface.png">
 <figcaption class="figure-caption">Microsurface configuration. Image from Heitz [2]</figcaption>
 </figure>
 
-<p>Suppose the area of macro surface is $1m^2$ and its normal is $\omega_g$. The normal of each microfacet point $p_m$ on the micro-surface $\mathcal{M}$ is $\omega_m(p_m)$ and the distribution of normals is:</p>
+<p>Suppose the area of macro surface is \(1m^2\) and its normal is \(\omega_g\). The normal of each microfacet point \(p_m\) on the micro-surface \(\mathcal{M}\) is \(\omega_m(p_m)\) and the distribution of normals is:</p>
 
-<div>$$D(\omega)=\int_\mathcal{M}{\delta_\omega (\omega_m(p_m)) dp_m}$$</div>
+<p>$$D(\omega) = \int_\mathcal{M}{\delta_\omega (\omega_m(p_m)) dp_m}$$</p>
 
 <blockquote>
-<p>The unit stated in Heitz [<a href="#ref.2">2</a>] is $m^2/sr$ instead of $1/sr$, it&rsquo;s different from the one stated in Walter et al. [<a href="#ref.1">1</a>]</p>
+<p>The unit stated in Heitz [<a href="#ref.2">2</a>] is \(\frac{m^2}{sr}\) instead of \(\frac{1}{sr}\), it&rsquo;s different from the one stated in Walter et al. [<a href="#ref.1">1</a>]</p>
 </blockquote>
 
-<p>$D(\omega)$ describes the area of points $\mathcal{M}′⊂\mathcal{M}$ whose normals lie in the given solid angle $\omega$. Additionaly, it relates the integral from microsurface space to the space the normals which is the unit sphere $\omega$:</p>
+<p>\(D(\omega)\) describes the area of points \(\mathcal{M}^{\prime} \subset \mathcal{M}\) whose normals lie in the given solid angle \(\omega\). Additionaly, it relates the integral from microsurface space to the space the normals which is the unit sphere \(\omega\):</p>
 
-<div>$$microsurface\ area=\int_\mathcal{M}{dp_m}=\int_\Omega{D(\omega_m)d\omega_m}$$</div>
+<p>$$microsurface\ area = \int_\mathcal{M}{dp_m} = \int_\Omega{D(\omega_m)d\omega_m}$$</p>
 
-<p>and the projected area along the geometry normal $\omega_g$ is:</p>
+<p>and the projected area along the geometry normal \(\omega_g\) is:</p>
 
-<div>$$\int_\Omega{(\omega_m⋅\omega_g )D(\omega_m )d\omega_m}=\int_\mathcal{M}{(\omega_m (p_m )⋅\omega_g )dp_m}=1$$</div>
+<p>$$\int_\Omega{(\omega_m\cdot\omega_g) D(\omega_m )d\omega_m} = \int_\mathcal{M}{(\omega_m (p_m)\cdot\omega_g )dp_m}=1$$</p>
 
-<h1 id="the-distribution-of-visible-normals-d-omega-o-omega">The Distribution of Visible Normals $D_{\omega_o}(\omega)$</h1>
+<h1 id="the-distribution-of-visible-normals-d-omega-o-omega">The Distribution of Visible Normals \(D_{\omega_o}(\omega)\)</h1>
 
 <figure class="figure">
 <img src="http://shihchinw.github.io/images/rendering/distributtion_of_visible_normals.png">
 <figcaption class="figure-caption">Distribution of visible normals. Image from Heitz [2]</figcaption>
 </figure>
 
-<p>When we consider the projected area along the outgoing direction $\omega_o$, we have to add a <span style="color: #009933;"><strong>masking</strong></span> function $\color{#009933}{G_1(\omega_o, \omega_m)}$ to exclude the occlusion part (i.e. the black parts in the figure above):</p>
+<p>When we consider the projected area along the outgoing direction \(\omega_o\), we have to add a <span style="color: #009933;"><strong>masking</strong></span> function \(\color{#009933}{G_1(\omega_o, \omega_m)}\) to exclude the occlusion part (i.e. the black parts in the figure above):</p>
 
-<div>$$\int_\omega{\color{#009933}{G_1(\omega_o, \omega_m)}\langle\omega_o, \omega_m\rangle D(\omega_m)d\omega_m}=\color{#0099FF}{\cos{\theta_o}}$$</div>
+<p>$$\int_\omega{\textcolor{#009933}{G_1(\omega_o, \omega_m)}\langle\omega_o, \omega_m\rangle D(\omega_m)d\omega_m}=\textcolor{#0099FF}{\cos{\theta_o}}$$</p>
 
 <p>With these information, the outgoing radiance from the microsurface can be formulated as:</p>
 
-<div>$$\begin{eqnarray}
-L(\omega_o,\mathcal{M}) &=& \frac{\int_\mathcal{M}{projected\ area(p_m)L(\omega_o,p_m)dp_m}}{\color{#0099FF}{\int_\mathcal{M}{projected\ area(p_m)dp_m}}} \nonumber \\
-&=& \frac{1}{\color{#0099FF}{\cos{\theta_o}}}\int_\Omega{G_1(\omega_o,\omega_m)\langle\omega_o,\omega_m\rangle D(\omega_m)L(\omega_o, \omega_m)d\omega_m} \nonumber \\
-&=&\int_\Omega{\color{#FF3399}{D_{\omega_o}(\omega_m)}L(\omega_o, \omega_m)d\omega_m} \nonumber \\
-\end{eqnarray}$$</div>
+<div>$$\begin{aligned}
+L(\omega_o,\mathcal{M}) &= \frac{\int_\mathcal{M}{projected\ area(p_m)L(\omega_o,p_m)dp_m}}{\textcolor{#0099FF}{\int_\mathcal{M}{projected\ area(p_m)dp_m}}} \\
+&= \frac{1}{\textcolor{#0099FF}{\cos{\theta_o}}} \int_\Omega{G_1(\omega_o,\omega_m)\langle\omega_o,\omega_m\rangle D(\omega_m)L(\omega_o, \omega_m)d\omega_m} \\
+&= \int_\Omega{\textcolor{#FF3399}{D_{\omega_o}(\omega_m)}L(\omega_o, \omega_m)d\omega_m}
+\end{aligned}$$</div>
 
-<p>where the distribution of visible normals is $\color{#FF3399}{D_{\omega_o}(\omega_m)}=\frac{1}{\cos{\theta_o}}G_1(\omega_o,\omega_m)\langle\omega_o, \omega_m\rangle D(\omega_m)$.</p>
+<p>where the distribution of visible normals is \(\textcolor{#FF3399}{D_{\omega_o}(\omega_m)} = \frac{1}{\cos{\theta_o}}G_1(\omega_o,\omega_m)\langle\omega_o, \omega_m\rangle D(\omega_m)\).</p>
 
-<h1 id="importance-sampling-of-d-omega-o-omega">Importance Sampling of $D_{\omega_o}(\omega)$</h1>
+<h1 id="importance-sampling-of-d-omega-o-omega">Importance Sampling of \(D_{\omega_o}(\omega)\)</h1>
 
-<p>For the anisotropic case, the $D(\omega_m)$ should be replaced with $D(\omega_m,\alpha_x,\alpha_y)$ and the distribution of visible normals becomes:</p>
+<p>For the anisotropic case, the \(D(\omega_m)\) should be replaced with \(D(\omega_m,\alpha_x,\alpha_y)\) and the distribution of visible normals becomes:</p>
 
-<div>$$D_{\omega_o}(\omega_m,\alpha_x,\alpha_y)=\frac{1}{\cos{\theta_o}}G_1(\omega_o,\omega_m)\langle \omega_o, \omega_m \rangle D(\omega_m,\alpha_x,\alpha_y)$$</div>
+<p>$$D_{\omega_o}(\omega_m,\alpha_x,\alpha_y) = \frac{1}{\cos{\theta_o}} G_1(\omega_o,\omega_m)\langle \omega_o, \omega_m \rangle D(\omega_m,\alpha_x,\alpha_y)$$</p>
 
-<p>Since it&rsquo;s not easy to perform importance sampling with $D_{\omega_o}(\omega_m,\alpha_x,\alpha_y)$ directly, Heitz and d&rsquo;Eon [<a href="#ref.3">3</a>] proposed a novel technique based on Heitz&rsquo;s discovery [<a href="#ref.2">2</a>] of <span class="orange"><strong>stretch invariance property in slope space</strong></span> to accomplish the task.</p>
+<p>Since it&rsquo;s not easy to perform importance sampling with \(D_{\omega_o}(\omega_m,\alpha_x,\alpha_y)\) directly, Heitz and d&rsquo;Eon [<a href="#ref.3">3</a>] proposed a novel technique based on Heitz&rsquo;s discovery [<a href="#ref.2">2</a>] of <span class="blue"><strong>stretch invariance property in slope space</strong></span> to accomplish the task.</p>
 
 <h2 id="normal-vector-in-slope-space">Normal Vector in Slope Space</h2>
 
-<p>Suppose the microsurface is a heightfield, given a normal $\omega_m(x_m, y_m,z_m)$, its coordinate in slope space can be defined as:</p>
+<p>Suppose the microsurface is a heightfield, given a normal \(\omega_m(x_m, y_m,z_m)\), its coordinate in slope space can be defined as:</p>
 
-<div>$$\tilde{m}(\omega_m)=(x_\tilde{m},y_\tilde{m})=\left(−\frac{x_m}{z_m},−\frac{y_m}{z_m}\right)$$</div>
+<div>$$\tilde{m}(\omega_m) = (x_{\tilde{m}}, y_{\tilde{m}}) = \left(-\frac{x_m}{z_m}, -\frac{y_m}{z_m}\right)$$</div>
 
-<p>and the distribution of slopes $P^{22}(\tilde{m})$ is necessarily normalized (all the possibilities must sum to 1):</p>
+<p>and the distribution of slopes \(P^{22}(\tilde{m})\) is necessarily normalized (all the possibilities must sum to 1):</p>
 
-<div>$$\int_{−\infty}^\infty{\int_{−\infty}^\infty{P^{22}(\tilde{m})dx_\tilde{m}}dy_\tilde{m}}=1$$</div>
+<div>$$\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} P^{22}(\tilde{m}) \,dx_{\tilde{m}}\,dy_{\tilde{m}} = 1$$</div>
 
-<p>recall that $\int_\omega{(\omega_m\cdot\omega_g)D(\omega_m)d\omega_m}=1$, we get the following relationship:</p>
+<p>Recall that \(\int_\omega{(\omega_m\cdot\omega_g)D(\omega_m)d\omega_m} = 1\), we get the following relationship:</p>
 
-<div>$$\begin{eqnarray}
-(\omega_m⋅\omega_g)D(\omega_m)d\omega_m&=&P^{22}(\tilde{m})d\tilde{m} \nonumber \\
-(\omega_m⋅\omega_g)D(\omega_m)&=&\left\|\frac{\partial \tilde{m}}{\partial \omega_m}\right\| P^{22}(\tilde{m}) \nonumber \\
-\end{eqnarray}$$</div>
+<div>$$\begin{aligned}
+(\omega_m⋅\omega_g)D(\omega_m)d\omega_m &=P^{22}(\tilde{m})d\tilde{m} \\
+(\omega_m⋅\omega_g)D(\omega_m) &= \left\|\frac{\partial \tilde{m}}{\partial \omega_m}\right\| P^{22}(\tilde{m}) \\
+\end{aligned}$$</div>
 
-<p>likewise, the relationship involved with masking is (cf. Heitz [2] p.82):</p>
+<p>Likewise, the relationship involved with masking is (cf. Heitz [2] p.82):</p>
 
 <div>$$D_{\omega_i}(\omega_m)=\left\|\frac{\partial \tilde{m}}{\partial \omega_m}\right\| P_{\omega_i}^{22}(\tilde{m})$$</div>
 
-<p>where $P_{\omega_i}^{22}(\tilde{m})$ is the distribution of <span class="orange"><strong>visible</strong></span> slopes, and it shows that if we sample the slopes from $P_{\omega_i}^{22}(\tilde{m})$ and transform them to normal $\omega_m$, the resulting PDF is $D_{\omega_i}(\omega_m)$.</p>
+<p>where \(P_{\omega_i}^{22}(\tilde{m})\) is the distribution of <strong>visible</strong> slopes, and it shows that if we sample the slopes from \(P_{\omega_i}^{22}(\tilde{m})\) and transform them to normal \(\omega_m\), the resulting PDF is \(D_{\omega_i}(\omega_m)\).</p>
 
 <h2 id="stretch-invariance">Stretch Invariance</h2>
 
-<p>Suppose the distribution of slopes $P^{22}$ depends on the roughness $\alpha_x,\alpha_y$, Heitz calls $P^{22}$ is stretch invariant if changing its roughness would only stretch the distribution but keep its shape identical:</p>
+<p>Suppose the distribution of slopes \(P^{22}\) depends on the roughness \(\alpha_x,\alpha_y\), Heitz calls \(P^{22}\) is stretch invariant if changing its roughness would only stretch the distribution but keep its shape identical:</p>
 
 <figure class="figure">
 <img src="http://shihchinw.github.io/images/rendering/stretch_invariant.png">
 <figcaption class="figure-caption">Illustration of stretch invariance. Image from Heitz [2]</figcaption>
 </figure>
 
-<p>In 1D case, stretch x-axis by a factor of 2 would compress the distribution by 2 and also notice that the height of distribution has been scaled by 2. Suppose the distribution is $D(x, \alpha)$, the stretch invariance can be described as $D(x, \alpha)=\frac{1}{\lambda}D(\frac{x}{\lambda},\frac{\alpha}{\lambda})$.</p>
+<p>In 1D case, stretch x-axis by a factor of 2 would compress the distribution by 2 and also notice that the height of distribution has been scaled by 2. Suppose the distribution is \(D(x, \alpha)\), the stretch invariance can be described as \(D(x, \alpha) = \frac{1}{\lambda}D(\frac{x}{\lambda},\frac{\alpha}{\lambda})\).</p>
 
 <p>Extend this relationship to 2D, we get:</p>
 
-<div>$$P^{22}(x_\tilde{m},y_\tilde{m},\alpha_x,\alpha_y)=\frac{1}{\lambda_x \lambda_y} P^{22}\left(\frac{x_\tilde{m}}{\lambda_x},\frac{y_\tilde{m}}{\lambda_y},\frac{\alpha_x}{\lambda_x},\frac{\alpha_y}{\lambda_y}\right)$$</div>
+<div>$$P^{22}(x_{\tilde{m}},y_{\tilde{m}},\alpha_x,\alpha_y)=\frac{1}{\lambda_x \lambda_y} P^{22}\left(\frac{x_{\tilde{m}}}{\lambda_x},\frac{y_{\tilde{m}}}{\lambda_y},\frac{\alpha_x}{\lambda_x},\frac{\alpha_y}{\lambda_y}\right)$$</div>
 
 <p>In Heitz and d&rsquo;Eon [3], they showed that the distribution of visible slopes also has the following relationship:</p>
 
-<div>$$P_{\omega_i}^{22}(x_\tilde{m},y_\tilde{m},\alpha_x,\alpha_y)=\frac{1}{\lambda_x \lambda_y} P_{S^{\lambda_x \lambda_y} (\omega_i)}^{22}\left(\frac{x_\tilde{m}}{\lambda_x},\frac{y_\tilde{m}}{\lambda_y},\frac{\alpha_x}{\lambda_x},\frac{\alpha_y}{\lambda_y}\right)$$</div>
+<div>$$P_{\omega_i}^{22}(x_{\tilde{m}},y_{\tilde{m}},\alpha_x,\alpha_y)=\frac{1}{\lambda_x \lambda_y} P_{S^{\lambda_x \lambda_y} (\omega_i)}^{22}\left(\frac{x_{\tilde{m}}}{\lambda_x},\frac{y_{\tilde{m}}}{\lambda_y},\frac{\alpha_x}{\lambda_x},\frac{\alpha_y}{\lambda_y}\right)$$</div>
 
-<p>With stretch invariance property, any anisotropic distribution can be stretched into an isotropic one whose masking probability $G$ is the same. Then the samples can be generated with the help of the stretched isotropic distribution in following steps:</p>
+<p>With stretch invariance property, any anisotropic distribution can be stretched into an isotropic one whose masking probability \(G\) is the same. Then the samples can be generated with the help of the stretched isotropic distribution in following steps:</p>
 
 <ol>
-<li>apply stretch invariant property to make $P_{\omega_i}^{22}$ <span style="color: #FF3399;"><strong>isotropic</strong></span></li>
-<li>sample the slope coordinate $x_\tilde{m}$ according to the marginal PDF $P_{\omega_i}^{2−}(x_\tilde{m},\color{#FF3399}{1,1})$</li>
-<li>sample $y_\tilde{m}$ with given $x_\tilde{m}$ and conditional PDF $P_{\omega_i}^{2\vert 2}(y_\tilde{m}\vert x_\tilde{m},\color{#FF3399}{1,1})$</li>
-<li>rotate along the z axis by $\phi$ in canonical frame</li>
-<li>inversely stretch the slope coordinate $(x_m, y_m)$</li>
-<li>compute normal from slope coordinate $\omega_m=\frac{(−x_m,−y_m,1)}{\sqrt{x_m^2+y_m^2+1}}$</li>
+<li>Apply stretch invariant property to make \(P_{\omega_i}^{22}\) <span style="color: #FF3399;"><strong>isotropic</strong></span></li>
+<li>Sample the slope coordinate \(x_{\tilde{m}}\) according to the marginal PDF \(P_{\omega_i}^{2-}(x_{\tilde{m}},\textcolor{#FF3399}{1,1})\)</li>
+<li>Sample \(y_{\tilde{m}}\) with given \(x_{\tilde{m}}\) and conditional PDF \(P_{\omega_i}^{2|2}(y_{\tilde{m}}|x_{\tilde{m}},\textcolor{#FF3399}{1,1})\)</li>
+<li>Rotate along the z axis by \(\phi\) in canonical frame</li>
+<li>Inversely stretch the slope coordinate \((x_m, y_m)\)</li>
+<li>Compute normal from slope coordinate \(\omega_m = \frac{(-x_m, -y_m, 1)}{\sqrt{x_m^2 + y_m^2 + 1}}\)</li>
 </ol>
 
 <blockquote>
@@ -458,7 +452,7 @@ L(\omega_o,\mathcal{M}) &=& \frac{\int_\mathcal{M}{projected\ area(p_m)L(\omega_
 
 <p><img src="http://shihchinw.github.io/images/rlShaders/ggx_ndf_sample_cmp2.jpg" alt="Comparison" /></p>
 
-<p>When $\cos{\theta_o}=1.5 (\theta_o\approx 85.94^\circ)$, the new method saves 310 wasted samples! The remaining 61 back-facing samples are about $1\sim3^\circ$ below the macrosurface. However, the mysterious situation happens at $\cos{\theta_o}=\pi/4$. In current implementation, there still are 52 invalid samples whose maximum $\theta_i$ is about $3\pi/4$!! From the debugging traces, I found all those invalid samples come with a random number <code>rx</code> that is near to 0 or 1. To my best guess, this weird result may be caused by numerical errors and needs further investigation.</p>
+<p>When \(\cos{\theta_o}=1.5 (\theta_o\approx 85.94^\circ)\), the new method saves 310 wasted samples! The remaining 61 back-facing samples are about \(1\sim3\degree\) below the macrosurface. However, the mysterious situation happens at \(\cos{\theta_o}=\pi/4\). In current implementation, there still are 52 invalid samples whose maximum \(\theta_i\) is about \(3\pi/4\)!! From the debugging traces, I found all those invalid samples come with a random number <code>rx</code> that is near to 0 or 1. To my best guess, this weird result may be caused by numerical errors and needs further investigation.</p>
 
 <p>As usual, the implementation can be found on my <a href="https://github.com/shihchinw/rlShaders/blob/master/src/rlDisney.cpp">github</a>.</p>
 
@@ -473,20 +467,25 @@ L(\omega_o,\mathcal{M}) &=& \frac{\int_\mathcal{M}{projected\ area(p_m)L(\omega_
                   
     <hr>
     <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'shihchinw';
-    var disqus_identifier = 'http:\/\/shihchinw.github.io\/2015\/08\/sampling-visible-normals-for-ggx-brdf.html';
-    var disqus_title = 'Sampling Visible Normals for GGX BRDF';
-    var disqus_url = 'http:\/\/shihchinw.github.io\/2015\/08\/sampling-visible-normals-for-ggx-brdf.html';
-
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
     (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "shihchinw" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
                 </div>

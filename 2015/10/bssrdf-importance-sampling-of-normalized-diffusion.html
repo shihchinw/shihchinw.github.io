@@ -35,27 +35,19 @@
     
     
     
-
     
-    <script type='text/x-mathjax-config'>
-        MathJax.Hub.Config({
-            tex2jax: {
-                inlineMath: [ ['$','$'], ['\\(','\\)'] ]
-            },
-            processEscapes: true,
-            processEnvironments: true,
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-            TeX: {
-                equationNumbers: { autoNumber: "AMS" },
-                extensions: ["AMSmath.js", "AMSsymbols.js"]
-            },
-            "HTML-CSS": {
-                preferredFont: "TEX",
-                scale : 85
-            }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js" integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js" integrity="sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body);
         });
     </script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+
+    
+    
 
     <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/foundation.css">
     <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/twentytwenty.css">
@@ -63,6 +55,8 @@
     <link rel="shortcut icon" type="image/png" href="http://shihchinw.github.io/favicon.png">
 
     <style>
+    .katex { font-size: 1.1em !important; }
+
     .intro-header .overlay {
         background: rgba(0, 0, 0, 0.47);
         z-index: 1;
@@ -216,8 +210,8 @@
         box-shadow: inset 0 -6px 0 #a6dcf3;
     }
     span.orange {
-        border-bottom: 1px solid #ffd8ae;
-        box-shadow: inset 0 -6px 0 #ffd8ae;
+        border-bottom: 1px solid #ffc672;
+        box-shadow: inset 0 -6px 0 #ffc672;
     }
     span.red { color: #dc1111; }
     span.green {
@@ -348,13 +342,13 @@ Posted by Shih-Chin on Tue, Oct 27, 2015
 
 <p>$$S(x_i,\vec{\omega_i};x_o,\vec{\omega_o})=\frac{dL_0(x_o,\vec{\omega_o})}{d\phi_i(x_i,\vec{\omega_i})}$$</p>
 
-<p>For efficiency, $S$ can be decomposed into single-scattering and multiple-scattering terms. The multiple scatter term $S_d$ is too complex to solve directly, the common strategy is to use a <code>diffusion profile</code> to approximate the distribution of outgoing radiance. With the diffusion approximation to the <em>radiative transport equation</em> (RTE), $S_d$ is represented by a product of two Fresnel refraction terms and a diffusion profile in BSSRDF:</p>
+<p>For efficiency, \(S\) can be decomposed into single-scattering and multiple-scattering terms. The multiple scatter term \(S_d\) is too complex to solve directly, the common strategy is to use a <code>diffusion profile</code> to approximate the distribution of outgoing radiance. With the diffusion approximation to the <em>radiative transport equation</em> (RTE), \(S_d\) is represented by a product of two Fresnel refraction terms and a diffusion profile in BSSRDF:</p>
 
 <p>$$S_d(x_i,\vec{\omega_i};x_o,\vec{\omega_o})=\frac{1}{\pi}F_t(\eta,\vec{\omega_i})R_d(\vert x_i-x_o\vert)F_t(\eta,\vec{\omega_o})$$</p>
 
 <p>and the subsurface light transport is formulated as:</p>
 
-<div>$$L_o(x_o,\vec{\omega_o})=\int_A{\int_\Omega{S(x_i,\vec{\omega_i};x_o,\vec{\omega_o}) L_i(x_i,\vec{\omega_i})(n\cdot\vec{\omega_i}) d\omega_i}dA(x_i)}$$</div>
+<p>$$L_o(x_o,\vec{\omega_o}) = \int_A{ \int_\Omega{ S(x_i,\vec{\omega_i};x_o,\vec{\omega_o}) L_i(x_i,\vec{\omega_i}) (n\cdot\vec{\omega_i}) d\omega_i } dA(x_i) }$$</p>
 
 <blockquote>
 <p>There are many technical terms among the academic papers, such as fluence, mean free path, etc. I found the best introductory reading materials to understand the relevant details of sub-surface scattering approximation are:</p>
@@ -377,64 +371,70 @@ Posted by Shih-Chin on Tue, Oct 27, 2015
 <p>The other is to perform importance sampling of the diffusion profile directly. Without the needs of point cloud generation, this approach fits well in any path-tracer with probe tracing API. The state-of-the-art sampling method proposed by King et al. [<a href="#ref.4">4</a>] can be summarized to following steps:</p>
 
 <ol>
-<li>sample a point on disk with PDF in proportion to the diffusion profile $R(r)$</li>
-<li>randomly select probe orientation with local basis U, V, N at $x_o$</li>
-<li>compute probe origin and direction from the selected orientation</li>
-<li>trace probe rays to shade all hit points within a range of max radius</li>
-
-<li><p>combine sample results with MIS (Multiple Importance Sampling):</p>
-
-<div>$$w_i=\frac{R_d(\|x_o-x_i\|)}{\sum_j{c_j\ pdf_{disk}(r_j) |\vec{n_o}\cdot\vec{n_i}|}}$$</div>
-
-<p>where $c_j$ is the sample weight of probe axis selection (N:0.5, U:0.25, V:0.25), and $r_j$ is the projected radius on UV, NV, NU plane.</p></li>
+<li>Sample a point on disk with PDF in proportion to the diffusion profile \(R(r)\).</li>
+<li>Randomly select probe orientation with local basis U, V, N at \(x_o\).</li>
+<li>Compute probe origin and direction from the selected orientation.</li>
+<li>Trace probe rays to shade all hit points within a range of max radius.</li>
+<li>Combine sample results with MIS (Multiple Importance Sampling):
+$$w_i = \frac{R_d(|x_o-x_i|)}{\sum_j{c_j\ pdf_{disk}(r_j) |\vec{n_o}\cdot\vec{n_i}|}}\kern{2em}$$
+where \(c_j\) is the sample weight of probe axis selection (N:0.5, U:0.25, V:0.25), and \(r_j\) is the projected radius on UV, NV, NU plane.</li>
 </ol>
 
-<p>Arnold SDK only provides APIs for Gaussian and cubic profile currently, for other profiles, we have to implement the sampling routine from scratch. The implementation details would be discussed in later section. Now, let&rsquo;s see how to sample the radius $r$ from the normalized diffusion profile $R(r)$.</p>
+<p>Arnold SDK only provides APIs for Gaussian and cubic profile currently, for other profiles, we have to implement the sampling routine from scratch. The implementation details would be discussed in later section. Now, let&rsquo;s see how to sample the radius \(r\) from the normalized diffusion profile \(R(r)\).</p>
 
 <h1 id="importance-sampling-of-normalized-diffusion">Importance Sampling of Normalized Diffusion</h1>
 
 <p><em>Normalized diffusion</em> profile [<a href="#ref.5">5</a>][<a href="#ref.6">6</a>] is formulated by two exponential functions:</p>
 
-<div>$$R(r)=\frac{e^{−r/d}+e^{−r/3d}}{8\pi dr}$$</div>
+<p>$$R(r)=\frac{e^{\frac{-r}{d}} + e^{\frac{-r}{3d}}}{8\pi dr}$$</p>
 
-<p>and the beauty of this model is that with <span class="green"><strong>any positive value of $d$ the integration over the disk is always one:</strong></span></p>
+<p>and the beauty of this model is that with <span class="green"><strong>any positive value of \(d\) the integration over the disk is always one:</strong></span></p>
 
-<div>$$\int_0^\infty{\int_0^{2\pi}{R(r)r\ d\phi}\ dr}=\int_0^\infty{R(r)2\pi r\ dr}=1$$</div>
+<p>$$\int_0^\infty{\int_0^{2\pi}{R(r)r\ d\phi}\ dr}=\int_0^\infty{R(r)2\pi r\ dr}=1$$</p>
 
-<p>(The parameter $d$ can be interpreted as the scattering distance for artistic control. For its relationship to other physical quantities like surface albedo and mean free path, please refer to [<a href="#ref.6">6</a>])</p>
+<p>(The parameter \(d\) can be interpreted as the scattering distance for artistic control. For its relationship to other physical quantities like surface albedo and mean free path, please refer to [<a href="#ref.6">6</a>])</p>
 
-<p>Although $R(r)$ is surprising simple, but its CDF is not analytically invertible. Therefore, I try to randomly select one exponential and generate sample $r$ from it, then use MIS to combine the sample weights. Besides, in order to make probe tracing faster and to reduce the variance (noise), it&rsquo;s better to restrict the integration domain within a user defined max radius $R_{max}$.</p>
+<p>Although \(R(r)\) is surprising simple, but its CDF is not analytically invertible. Therefore, I try to randomly select one exponential and generate sample \(r\) from it, then use MIS to combine the sample weights. Besides, in order to make probe tracing faster and to reduce the variance (noise), it&rsquo;s better to restrict the integration domain within a user defined max radius \(R_{max}\).</p>
 
 <h2 id="lobe-selection">Lobe selection</h2>
 
-<p>There are two exponential functions and three distance values $d$ for R, G, B. In other words, there are <span class="orange"><strong>six lobes</strong></span> to sample. Before sampling the radius $r$ on disk, we need to select a lobe in two steps:</p>
+<p>There are two exponential functions and three distance values \(d\) for R, G, B. In other words, there are <span class="blue"><strong>six lobes</strong></span> to sample. Before sampling the radius \(r\) on disk, we need to select a lobe in two steps:</p>
 
 <ol>
-<li>choose the value of $d$ from R, G, B <span class="orange"><strong>uniformly</strong></span>
+<li>Choose the value of \(d\) from R, G, B <span class="blue"><strong>uniformly</strong></span>.
 
 <ul>
-<li>since every positive $d$ would always get one for the integral of $R(r )$</li>
+<li>Since every positive \(d\) would always get one for the integral of \(R(r)\).</li>
 </ul></li>
-<li>given $d$, use the ratio of integration within $R_{max}$ to select the exponential function:</li>
+<li>Given \(d\), use the ratio of integration within \(R_{max}\) to select the exponential function:</li>
 </ol>
 
-<div>$$w_1=1-e^{-R_{max}/d}, w_2=3(1-e^{-R_{max}/{3d}})$$</div>
+<div>
+$$\begin{aligned}
+w_1 &= 1 - e^{\frac{-R_{max}}{d}} \\
+w_2 &= 3 (1 - e^{\frac{-R_{max}}{3d}})
+\end{aligned}$$
+</div>
 
-<h2 id="sample-r-from-a-lobe">Sample $r$ from a lobe</h2>
+<h2 id="sample-r-from-a-lobe">Sample \(r\) from a lobe</h2>
 
-<p>Suppose the PDF of the first exponential is $p_1(r)\propto \frac{e^{−r/d}}{8\pi dr}$, and it&rsquo;s normalized in range $[0, R_{max}]$</p>
+<p>Suppose the PDF of the first exponential is \(p_1(r)\propto \frac{e^{-r/d}}{8\pi dr}\), and it&rsquo;s normalized in range \([0, R_{max}]\)</p>
 
-<div>$$\int{c\frac{e^{-r/d}}{8\pi dr}2\pi r\ dr}=\int{\frac{c}{4d}e^{-r/d}\ dr}=\frac{-c}{4}(e^{\frac{-R_{max}}{d}-1})=1 \\
-c=\frac{4}{1-e^{-R_{max}/d}},\ p_1(r)=\frac{e^{-r/d}}{2\pi dr}\frac{1}{1-e^{-R_{max}/d}}$$</div>
+<div>$$\int{c\ \frac{e^{-r/d}}{8\pi dr} 2\pi r\ dr} = \int{\frac{c}{4d}e^{-r/d}\ dr} = \frac{-c}{4}(e^{\frac{-R_{max}}{d}-1}) = 1$$
+$$c = \frac{4}{1-e^{\frac{-R_{max}}{d}}} \implies p_1(r)=\frac{e^{-r/d}}{2\pi dr}\frac{1}{1-e^{\frac{-R_{max}}{d}}}$$</div>
 
-<p>then the CDF of $p_1(r)$ and its inverse function are:</p>
+<p>Then the CDF of \(p_1(r)\) and its inverse function are:</p>
 
-<div>$$\int_0^{r'}{p_1(r)2\pi r\ dr}=\int_0^{r'}{\frac{e^{-r/d}}{d} \frac{1}{1-e^{-R_{max}/d}} dr}=\frac{-1}{1-e^{-R_{max}/d}}(e^{-r'/d -1}) \\
-r=\log(1-\xi(1-e^{-R_{max}/d}))*-d$$</div>
+<div>$$\begin{aligned}
+P_1(r) &= \int_0^r{p_1(r')2\pi r'\ dr'} \\
+&= \int_0^r{\frac{e^{-r'/d}}{d} \frac{1}{1-e^{\frac{-R_{max}}{d}}} dr'} \\
+&= \frac{-1}{1-e^{\frac{-R_{max}}{d}}}(e^{\frac{-r}{d}}-1)
+\end{aligned}$$
+$$r = \log(1-\xi(1-e^{\frac{-R_{max}}{d}})) \times -d$$</div>
 
 <p>Likewise, we can get the following formulas for the second exponential:</p>
 
-<div>$$p_2(r)=\frac{e^{-r/{3d}}}{2\pi dr}\frac{1}{3(1-e^{-R_{max}/{3d}})},\ r=\log(1-\xi(1-e^{-R_{max}/{3d}}))*{-3d}$$</div>
+<div>$$p_2(r)=\frac{e^{\frac{-r}{3d}}}{2\pi dr}\frac{1}{3(1-e^{\frac{-R_{max}}{3d}})},\ r = \log(1-\xi(1-e^{\frac{-R_{max}}{3d}})) \times -3d$$</div>
 
 <h1 id="implementation-details">Implementation Details</h1>
 
@@ -452,14 +452,14 @@ r=\log(1-\xi(1-e^{-R_{max}/d}))*-d$$</div>
 
 <h2 id="reduce-incoming-radiance-from-opposite-faces">Reduce Incoming Radiance From Opposite Faces</h2>
 
-<p>Sometimes the energy from opposite faces would make the result too bright and need further reduction. For the consideration of surface cavity, I currently use $\cos{\theta/2}$ to fade out the incoming radiance. Where the $\theta$ is determined differently for front-facing ($x_{i1}$) and back-facing ($x_{i2}$) cases:</p>
+<p>Sometimes the energy from opposite faces would make the result too bright and need further reduction. For the consideration of surface cavity, I currently use \(\cos{\theta/2}\) to fade out the incoming radiance. Where the \(\theta\) is determined differently for front-facing (\(x_{i1}\)) and back-facing (\(x_{i2}\)) cases:</p>
 
 <p><img src="http://shihchinw.github.io/images/rlShaders/bssrdf_cavity_affects_diffusion.png" style="box-shadow: none;"></p>
 
-<div>$$\theta = \left\{ \begin{array}{@{}ll@{}}
-\arccos(\vec{n_o}\cdot\vec{n_i}), & \text{if } \vec{v}\cdot\vec{n_o} \ge 0 \\
-\arccos(\vec{v}\cdot\vec{n_i}), & \text{otherwise}
-\end{array}\right. , where\ \vec{v}\ is\ \frac{x_i-x_o}{\vert x_i-x_o\vert}$$</div>
+<div>$$\theta = \begin{cases}
+\arccos(\vec{n_o}\cdot\vec{n_i}) &\text{if } \vec{v}\cdot\vec{n_o} \ge 0 \\
+\arccos(\vec{v}\cdot\vec{n_i}) & \text{otherwise}
+\end{cases}, where\ \vec{v}\ is\ \frac{x_i-x_o}{\vert x_i-x_o\vert}$$</div>
 
 <p>The source code could be found <a href="https://github.com/shihchinw/rlShaders/blob/master/src/rlSssND.cpp">here</a>.</p>
 
@@ -488,20 +488,25 @@ r=\log(1-\xi(1-e^{-R_{max}/d}))*-d$$</div>
                   
     <hr>
     <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'shihchinw';
-    var disqus_identifier = 'http:\/\/shihchinw.github.io\/2015\/10\/bssrdf-importance-sampling-of-normalized-diffusion.html';
-    var disqus_title = 'BSSRDF Importance Sampling of Normalized Diffusion';
-    var disqus_url = 'http:\/\/shihchinw.github.io\/2015\/10\/bssrdf-importance-sampling-of-normalized-diffusion.html';
-
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
     (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "shihchinw" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
                 </div>

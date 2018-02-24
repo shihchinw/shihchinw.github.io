@@ -38,27 +38,19 @@
     
     
     
-
     
-    <script type='text/x-mathjax-config'>
-        MathJax.Hub.Config({
-            tex2jax: {
-                inlineMath: [ ['$','$'], ['\\(','\\)'] ]
-            },
-            processEscapes: true,
-            processEnvironments: true,
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-            TeX: {
-                equationNumbers: { autoNumber: "AMS" },
-                extensions: ["AMSmath.js", "AMSsymbols.js"]
-            },
-            "HTML-CSS": {
-                preferredFont: "TEX",
-                scale : 85
-            }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js" integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js" integrity="sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body);
         });
     </script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+
+    
+    
 
     <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/foundation.css">
     <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/twentytwenty.css">
@@ -66,6 +58,8 @@
     <link rel="shortcut icon" type="image/png" href="http://shihchinw.github.io/favicon.png">
 
     <style>
+    .katex { font-size: 1.1em !important; }
+
     .intro-header .overlay {
         background: rgba(0, 0, 0, 0.47);
         z-index: 1;
@@ -219,8 +213,8 @@
         box-shadow: inset 0 -6px 0 #a6dcf3;
     }
     span.orange {
-        border-bottom: 1px solid #ffd8ae;
-        box-shadow: inset 0 -6px 0 #ffd8ae;
+        border-bottom: 1px solid #ffc672;
+        box-shadow: inset 0 -6px 0 #ffc672;
     }
     span.red { color: #dc1111; }
     span.green {
@@ -375,7 +369,7 @@
       <br />
       
       <small><span class="fa-stack fa-sm"><i class="fa fa-tags fa-stack-1x"></i></span></small>
-<a href="http://shihchinw.github.io/tags/arnold">Arnold</a>, <a href="http://shihchinw.github.io/tags/brdf">BRDF</a>, <a href="http://shihchinw.github.io/tags/importance-sampling">Importance Sampling</a>
+<a href="http://shihchinw.github.io/tags/arnold">Arnold</a>, <a href="http://shihchinw.github.io/tags/brdf">BRDF</a>
     </p>
  </div>
 

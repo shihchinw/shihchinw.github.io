@@ -35,27 +35,19 @@
     
     
     
-
     
-    <script type='text/x-mathjax-config'>
-        MathJax.Hub.Config({
-            tex2jax: {
-                inlineMath: [ ['$','$'], ['\\(','\\)'] ]
-            },
-            processEscapes: true,
-            processEnvironments: true,
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-            TeX: {
-                equationNumbers: { autoNumber: "AMS" },
-                extensions: ["AMSmath.js", "AMSsymbols.js"]
-            },
-            "HTML-CSS": {
-                preferredFont: "TEX",
-                scale : 85
-            }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js" integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js" integrity="sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body);
         });
     </script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+
+    
+    
 
     <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/foundation.css">
     <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/twentytwenty.css">
@@ -63,6 +55,8 @@
     <link rel="shortcut icon" type="image/png" href="http://shihchinw.github.io/favicon.png">
 
     <style>
+    .katex { font-size: 1.1em !important; }
+
     .intro-header .overlay {
         background: rgba(0, 0, 0, 0.47);
         z-index: 1;
@@ -216,8 +210,8 @@
         box-shadow: inset 0 -6px 0 #a6dcf3;
     }
     span.orange {
-        border-bottom: 1px solid #ffd8ae;
-        box-shadow: inset 0 -6px 0 #ffd8ae;
+        border-bottom: 1px solid #ffc672;
+        box-shadow: inset 0 -6px 0 #ffc672;
     }
     span.red { color: #dc1111; }
     span.green {
@@ -336,7 +330,7 @@ Posted by Shih-Chin on Sun, Jun 28, 2015
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                   
 
-<p>Monte Carlo path tracing has a slow convergence rate close to $O(1/\sqrt n)$, it needs to quadruple the number of samples to halve the error. Many mainstream production renderers have deployed multiple importance sampling (MIS) technique to reduce the variance of sampling result (i.e. the noise in image). If we want to make our custom material shader efficiently execute along with the entire render scene in Arnold, we shall definitely consider exploiting the power of MIS.</p>
+<p>Monte Carlo path tracing has a slow convergence rate close to \(O(1/\sqrt n)\), it needs to quadruple the number of samples to halve the error. Many mainstream production renderers have deployed multiple importance sampling (MIS) technique to reduce the variance of sampling result (i.e. the noise in image). If we want to make our custom material shader efficiently executed along with the entire render scene in Arnold, we shall definitely consider exploiting the power of MIS.</p>
 
 <p><img src="http://shihchinw.github.io/images/arnold/ai_mis_cmp.png" alt="MIS" /></p>
 
@@ -344,16 +338,16 @@ Posted by Shih-Chin on Sun, Jun 28, 2015
 
 <p>Suppose we want to solve the direct illumination equation:</p>
 
-<div>$$L_o(x,\vec{\omega_o})=\int_\Omega L_i(x, \vec{\omega_i})f_r(x, \vec{\omega_o},\vec{\omega_i})\cos\theta_i d\omega_i$$</div>
+<div>$$L_o(x,\vec{\omega_o}) = \int_\Omega L_i(x, \vec{\omega_i}) f_r(x, \vec{\omega_o},\vec{\omega_i}) \cos\theta_i\, d\omega_i$$</div>
 
-<p>Monte Carlo sampling is to use random samples to compute this integral numerically. The idea of importance sampling is trying to generate the random samples proportional to some probability density function (PDF) which has similar shape of integrand.</p>
+<p>Monte Carlo sampling uses random samples to compute this integral numerically. The idea of importance sampling is trying to generate the random samples proportional to some probability density function (PDF) which has similar shape of the integrand.</p>
 
 <figure class="figure">
 <img src="http://shihchinw.github.io/images/rendering/importance_sampling_concept.png">
-<figcaption class="figure-caption">Image from Simon Premoze, <a href="https://sites.google.com/site/isrendering/Simon.Presentation.pdf?attredirects=0">Practical Importance Sampling and Variance Reduction</a>, SIG'10 course note.</figcaption>
+<figcaption class="figure-caption">Image from Simon Premoze, <a href="https://sites.google.com/site/isrendering/Simon.Presentation.pdf?attredirects=0">Practical Importance Sampling and Variance Reduction</a>, SIGGRAPH Course Notes, 2010.</figcaption>
 </figure>
 
-<p>In other words, the ideal PDF for the integrand of direct illumination equation would be proportional to the product of incoming radiance $L_i(x,\vec{\omega_i})$ and BRDF $f_r(x,\vec{\omega_o},\vec{\omega_i})$. However, the product of these terms are too complicated to compute its PDF, but we might be able to find a suitable PDF for some of those terms individually. What we hope is to find a way to sample each term respectively and properly combine those samples to get a result with lower variance. This turns to the technique named <strong>multiple importance sampling</strong> demonstrated by Veach and Guibas [<a href="#ref.1">1</a>] in 1995:</p>
+<p>In other words, the ideal PDF for the integrand of direct illumination equation would be proportional to the product of incoming radiance \(L_i(x,\vec{\omega_i})\) and BRDF \(f_r(x,\vec{\omega_o}, \vec{\omega_i})\). However, the product of these terms are too complicated to compute its PDF, but we might be able to find a suitable PDF for some of those terms individually. What we hope is to find a way to sample each term respectively and properly combine those samples to get a result with lower variance. This turns to the technique named <strong>Multiple Importance Sampling</strong> (MIS) demonstrated by Veach and Guibas [<a href="#ref.1">1</a>] in 1995:</p>
 
 <figure class="figure">
 <a href="http://shihchinw.github.io/images/rendering/mis.png" data-lightbox="post">
@@ -362,20 +356,12 @@ Posted by Shih-Chin on Sun, Jun 28, 2015
 
 <p>With MIS, we use following formula to compute the result:</p>
 
-<div>
-\begin{equation}
-\frac{1}{n_f}\sum_{i=1}^{n_f}\frac{f(X_i)g(X_i)w_f(X_i)}{p_f(X_i)}+\frac{1}{n_g}\sum_{j=1}^{n_g}\frac{f(Y_j)g(Y_j)w_g(Y_j)}{p_g(Y_j)}
-\label{mis}
-\end{equation}
-</div>
+<div>$$\begin{gathered}
+\kern{5em} \frac{1}{n_f}\sum_{i=1}^{n_f}\frac{f(X_i)g(X_i)w_f(X_i)}{p_f(X_i)}+\frac{1}{n_g}\sum_{j=1}^{n_g}\frac{f(Y_j)g(Y_j)w_g(Y_j)}{p_g(Y_j)}\kern{5em} (1)
+\end{gathered}$$</div>
 
-<ul>
-<li>$n_k$ is the number of samples taken from the $p_k$</li>
-<li>the weighting functions $w_k$ take all of the different ways that a sample could have been generated</li>
-<li>the weight $w_k$ can be computed by <em>power heuristic</em>:</li>
-</ul>
-
-<p>$$w_k(x)=\frac{(n_s p_s(x))^\beta}{\sum_i{(n_i p_i(x))^\beta}}$$</p>
+<p>Where \(n_k\) is the number of samples taken from certain PDF \(p_k\). The weighting functions \(w_k\) takes all the different ways that a sample could have been generated, and \(w_k\) could be computed by <em>power heuristic</em>:
+$$w_k(x)=\frac{(n_s p_s(x))^\beta}{\sum_i{(n_i p_i(x))^\beta}}$$</p>
 
 <h1 id="the-mis-api-in-arnold">The MIS API in Arnold</h1>
 
@@ -387,17 +373,20 @@ Posted by Shih-Chin on Sun, Jun 28, 2015
 <li><span style="color:#0099FF">AtBRDFEval<strong>Brdf</strong>Func</span></li>
 </ol>
 
-<p>For getting better understanding of the task of these functions. Recall that our goal is to use MIS to combine the samples generated from light&rsquo;s PDF and BRDF&rsquo;s PDF. Let BRDF as $f(X)$ and lighting function as $g(Y)$ in equation \eqref{mis}, then the unknown entities to Arnold are:</p>
+<p>For getting better understanding of the task of these functions. Recall that our goal is to use MIS to combine the samples generated from both PDFs of lights and BRDF. Let BRDF as \(f(X)\) and lighting function as \(g(Y)\) in equation (1), then the unknown entities to Arnold are:</p>
 
 <ul>
-<li>$\color{#FF3399}{p_f}$ (AtBRDFEvalPdfFunc): the PDF of BRDF</li>
-<li>$\color{#009933}{X_i}$ (AtBRDFEvalSampleFunc): the sample direction generated according to $p_f$</li>
-<li>$\color{#0099FF}{f}$ (AtBRDFEvalBrdfFunc): the BRDF evaulated with sampled incoming direction and fixed outgoing direction (i.e. -sg-&gt;Rd)</li>
+<li>\(\textcolor{#FF3399}{p_f}\) (AtBRDFEvalPdfFunc): the PDF of BRDF</li>
+<li>\(\textcolor{#009933}{X_i}\) (AtBRDFEvalSampleFunc): the sample direction generated according to \(\textcolor{#FF3399}{p_f}\)</li>
+<li>\(\textcolor{#0099FF}{f}\) (AtBRDFEvalBrdfFunc): the BRDF evaulated with sampled incoming direction and fixed outgoing direction (i.e. -sg-&gt;Rd)</li>
 </ul>
 
-<p>With these information, $w_f(X_i)$ and $w_g(Y_j)$ can be computed with power heuristic:</p>
+<p>With these information, \(w_f(X_i)\) and \(w_g(Y_j)\) can be computed with <em>power heuristic</em>:</p>
 
-<p>$$w_f(\color{#009933}{X_i})=\frac{(n_f \color{#FF3399}{p_f}(\color{#009933}{X_i}))^\beta}{(n_f \color{#FF3399}{p_f}(\color{#009933}{X_i})+n_g p_g(\color{#009933}{X_i}))^\beta}, w_g(Y_j)=\frac{(n_g p_g(Y_j))^\beta}{(n_f \color{#FF3399}{p_f}(Y_j)+n_g p_g(Y_j))^\beta}$$</p>
+<div>$$\begin{aligned}
+w_f(\textcolor{#009933}{X_i}) &= \frac{(n_f \textcolor{#FF3399}{p_f}(\textcolor{#009933}{X_i}))^\beta}{(n_f \textcolor{#FF3399}{p_f}(\textcolor{#009933}{X_i})+n_g p_g(\textcolor{#009933}{X_i}))^\beta} \\
+w_g(Y_j) &= \frac{(n_g p_g(Y_j))^\beta}{(n_f \textcolor{#FF3399}{p_f}(Y_j)+n_g p_g(Y_j))^\beta}
+\end{aligned}$$</div>
 
 <p>Now suppose we want to use GGX for glossy component, the shading structure would like this:</p>
 
@@ -423,15 +412,15 @@ auto indirectGlossy = sg->Rr > 0
 
 <h2 id="brdf-evaluation">BRDF Evaluation</h2>
 
-<p>The content of <code>ggxEvalBrdf</code> is the formula of microfacet BRDF</p>
+<p>The content of <code>ggxEvalBrdf</code> is the formula of microfacet BRDF:</p>
 
 <p>$$f_r(i,o,n)=\frac{F(i, h_r)G(i, o, h_r)D(h_r)}{4|i⋅n||o⋅n|}$$</p>
 
 <ul>
-<li>$i, o$ are the incoming and outgoing direction</li>
-<li>$h_r$  is the normalized half vector</li>
-<li>$n$ is the macro-surface normal</li>
-<li>$F$ is Fresnel term, $G$ is masking/shadowing term and $D$ is the microfacet normal distribution</li>
+<li>\(i, o\) are the incoming and outgoing direction</li>
+<li>\(h_r\)  is the normalized half vector</li>
+<li>\(n\) is the macro-surface normal</li>
+<li>\(F\) is Fresnel term, \(G\) is masking/shadowing term and \(D\) is the microfacet normal distribution</li>
 </ul>
 
 <blockquote>
@@ -440,7 +429,7 @@ auto indirectGlossy = sg->Rr > 0
 
 <h2 id="evaluate-the-pdf-for-direction-sampling">Evaluate the PDF for direction sampling</h2>
 
-<p>The job of <code>ggxEvalPdf</code> is to evaluate the PDF for given direction and <strong>it must match the density</strong> of samples generated by <code>ggxEvalSample</code>. The strategy suggested by Walter et al. [<a href="#ref.2">2</a>] is to sample the microfacet normal m according to $p_m(m)=D(m)\vert m\cdot n \vert$, and then transform the PDF from microfacet to macro-surface:</p>
+<p>The job of <code>ggxEvalPdf</code> is to evaluate the PDF for given direction and <strong>it must match the density</strong> of samples generated by <code>ggxEvalSample</code>. The strategy suggested by Walter et al. [<a href="#ref.2">2</a>] is to sample the microfacet normal \(m\) according to \(p_m(m)=D(m)\vert m\cdot n \vert\), and then transform the PDF from microfacet to macro-surface:</p>
 
 <p>$$p_o(o)=p_m(m)\left|\frac{\partial\omega_h}{\partial\omega_o}\right|=\frac{D(m)|m⋅n|}{4|i⋅m|}$$</p>
 
@@ -463,23 +452,30 @@ float ggxEvalPdf(const void *brdfData, const AtVector *indir)
 
 <p>$$p_m (m)=D(m)|m⋅n|\text{, where }D(m)=\frac{\alpha_g^2}{\pi\cos^4{\theta_m}(\alpha_g^2+\tan^2{\theta_m})^2}$$</p>
 
-<p>With the distribution transformation from $\omega$ to $\theta, \phi$:</p>
+<p>With the distribution transformation from \(\omega_m\) to \(\theta_m, \phi_m\):</p>
 
-<p>$$p(\theta,\phi)=\sin{\theta}\ p_m(m)$$</p>
+<p>$$p_m(\theta_m, \phi_m)=\sin{\theta_m}\ p_m(m)$$</p>
 
-<p>We can compute the marginal probability of $p(\theta)$ and conditional probability $p(\phi\vert\theta)$</p>
+<p>We can compute the marginal probability of \(p_m(\theta_m)\) and conditional probability \(p_m(\phi_m\vert\theta_m)\)</p>
 
-<p>$$p(\theta)=\int_0^{2\pi}{D(m)\cos{\theta}\sin{\theta}\ d\phi}=\frac{2\alpha_g^2\sin\theta}{\cos^3{\theta}(\alpha_g^2+\tan^2{\theta_m})^2}$$</p>
+<p>$$p_m(\theta_m)=\int_0^{2\pi}{D(m)\cos{\theta_m} \sin{\theta_m}\ d\phi_m} = \frac{2\alpha_g^2\sin\theta_m}{\cos^3{\theta_m}(\alpha_g^2+\tan^2{\theta_m})^2}$$</p>
 
-<p>$$p(\phi\vert\theta)=\frac{p(\theta,\phi)}{p(\theta)}=\frac{1}{2\pi}$$</p>
+<p>$$p_m(\phi_m\vert\theta_m) = \frac{p_m(\theta_m, \phi_m)}{p_m(\theta_m)} = \frac{1}{2\pi}$$</p>
 
-<p>Then, we compute the corresponding CDFs and their inverse function to get $\theta,\phi$ from two canonial random variable $\xi_1, \xi_2 \in [0, 1)$</p>
+<p>Then, we compute the corresponding CDFs and their inverse functions to get \(\theta_m, \phi_m\) from two canonial random variable \(\xi_1, \xi_2 \in [0, 1)\)</p>
 
-<p>$$P(\theta)=\int_0^\theta{\frac{2\alpha_g^2\sin\theta′}{\cos^3{\theta′}(\alpha_g^2+\tan^2{\theta′})^2}d\theta′}=−\frac{\alpha_g^2}{\alpha_g^2+\tan^2{\theta′}}\Big|_0^\theta=\frac{1−\alpha_g^2}{\alpha_g^2+\tan^2{\theta}},  \theta=\arctan\left(\alpha_g\sqrt{\frac{ξ_1}{1−ξ_1}}\right)$$</p>
+<div>
+$$\begin{aligned}
+P_m(\theta_m) &= \int_0^{\theta_m} \frac{2 \alpha_g^2 \sin \theta'}{\cos^3{\theta'}(\alpha_g^2+\tan^2{\theta'})^2}\, d\theta' \\
+&= -\frac{\alpha_g^2}{\alpha_g^2+\tan^2{\theta'}} \Big|_0^{\theta_m}\\
+&= \frac{\tan^2{\theta_m}}{\alpha_g^2 + \tan^2{\theta_m}} \\
+\theta_m &= \arctan \left( \alpha_g \sqrt{\frac{\xi_1}{1 - \xi_1}} \right)
+\end{aligned}$$
 
-<p>$$P(\phi│\theta)=\int_0^\phi{\frac{1}{2\pi}d\phi′}=\frac{\phi}{2\pi}, \phi=2\piξ_2$$</p>
+$$P_m(\phi_m|\theta_m) = \int_0^{\phi_m} \frac{1}{2\pi} d\phi' = \frac{\phi_m}{2\pi}, \kern{1em} \phi_m = 2\pi \xi_2$$
+</div>
 
-<p>Finally, we generate the sample direction with spherical coordinate $\theta, \phi$ and transform the vector from local frame of shading point U, V, Nf(face-forward shading normal) into world space:</p>
+<p>Finally, we generate a sample direction with spherical coordinate \(\theta_m, \phi_m\) and transform the vector from local frame of shading point U, V, Nf(face-forward shading normal) into world space:</p>
 
 <pre class="prettyprint linenums lang-cpp">
 AtVector ggxEvalSample(const void *brdfData, float rx, float ry)
@@ -534,20 +530,25 @@ AtVector ggxEvalSample(const void *brdfData, float rx, float ry)
                   
     <hr>
     <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'shihchinw';
-    var disqus_identifier = 'http:\/\/shihchinw.github.io\/2015\/06\/implementing-ggx-brdf-in-arnold-with-multiple-importance-sampling.html';
-    var disqus_title = 'Implementing GGX BRDF in Arnold with Multiple Importance Sampling';
-    var disqus_url = 'http:\/\/shihchinw.github.io\/2015\/06\/implementing-ggx-brdf-in-arnold-with-multiple-importance-sampling.html';
-
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
     (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "shihchinw" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
                 </div>

@@ -35,27 +35,19 @@
     
     
     
-
     
-    <script type='text/x-mathjax-config'>
-        MathJax.Hub.Config({
-            tex2jax: {
-                inlineMath: [ ['$','$'], ['\\(','\\)'] ]
-            },
-            processEscapes: true,
-            processEnvironments: true,
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-            TeX: {
-                equationNumbers: { autoNumber: "AMS" },
-                extensions: ["AMSmath.js", "AMSsymbols.js"]
-            },
-            "HTML-CSS": {
-                preferredFont: "TEX",
-                scale : 85
-            }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js" integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js" integrity="sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body);
         });
     </script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+
+    
+    
 
     <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/foundation.css">
     <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/twentytwenty.css">
@@ -63,6 +55,8 @@
     <link rel="shortcut icon" type="image/png" href="http://shihchinw.github.io/favicon.png">
 
     <style>
+    .katex { font-size: 1.1em !important; }
+
     .intro-header .overlay {
         background: rgba(0, 0, 0, 0.47);
         z-index: 1;
@@ -216,8 +210,8 @@
         box-shadow: inset 0 -6px 0 #a6dcf3;
     }
     span.orange {
-        border-bottom: 1px solid #ffd8ae;
-        box-shadow: inset 0 -6px 0 #ffd8ae;
+        border-bottom: 1px solid #ffc672;
+        box-shadow: inset 0 -6px 0 #ffc672;
     }
     span.red { color: #dc1111; }
     span.green {
@@ -348,11 +342,11 @@ Posted by Shih-Chin on Sun, Jul 19, 2015
 </ol>
 </blockquote>
 
-<p>These art-directable features make artists achieve the desired shading results more easily, it is one of the ultimate goals for software engineering in animation studio. Since it has been implemented within various frameworks like <a href="http://blog.selfshadow.com/publications/s2013-shading-course/">Unreal Engine 4</a>, <a href="http://renderman.pixar.com/resources/current/RenderMan/PxrDisney.html">RenderMan</a>, MPC&rsquo;s preview system <a href="http://on-demand-gtc.gputechconf.com/gtcnew/on-demand-gtc.php?searchByKeyword=mpc&amp;searchItems=&amp;sessionTopic=&amp;sessionEvent=2&amp;sessionYear=2015&amp;sessionFormat=&amp;submit=&amp;select=">Dekko</a>, etc. So, let&rsquo;s make one for Arnold. :)</p>
+<p>These art-directable features make artists achieve the desired shading results more easily, it is one of the ultimate goals for software engineering in animation studio. Therefore, it has been implemented within various frameworks like <a href="http://blog.selfshadow.com/publications/s2013-shading-course/">Unreal Engine 4</a>, <a href="http://renderman.pixar.com/resources/current/RenderMan/PxrDisney.html">RenderMan</a>, MPC&rsquo;s preview system <a href="http://on-demand-gtc.gputechconf.com/gtcnew/on-demand-gtc.php?searchByKeyword=mpc&amp;searchItems=&amp;sessionTopic=&amp;sessionEvent=2&amp;sessionYear=2015&amp;sessionFormat=&amp;submit=&amp;select=">Dekko</a>, etc. So, let&rsquo;s make one for Arnold. :)</p>
 
 <h1 id="importance-sampling">Importance Sampling</h1>
 
-<p>According to the source code from BRDF explorer, the shading components can be separated into two parts:</p>
+<p>According to the source code from BRDF explorer, the shading components of Disney BRDF can be separated into two parts:</p>
 
 <ul>
 <li>diffuse
@@ -372,33 +366,35 @@ Posted by Shih-Chin on Sun, Jul 19, 2015
 
 <h2 id="diffuse">Diffuse</h2>
 
-<p>From BRDF explorer, we can see that the diffuse component is dominated by the $\cos{\theta_l}$ factor. Therefore the diffuse part could be sampled with the PDF proportional to cosine-weighted solid angle:
+<p>From BRDF explorer, we can see that the diffuse component is dominated by the \(\cos{\theta_l}\) factor. Thus the diffuse part could be sampled with the PDF proportional to cosine-weighted solid angle:
 <img src="http://shihchinw.github.io/images/rlShaders/rlDisney_is_diffuse.jpg" alt="diffuse sample distribution" /></p>
 
 <h2 id="specular">Specular</h2>
 
 <p>Sheen is relatively small to primary specular (GTR2) and clearcoat (GTR1) and it is ignored in the importance sampling process in current implementation. The importance sampling approach for GTR is pretty much like we did for GGX previously, except for the anisotropic case which is a little complicated (I&rsquo;ve not successfully derived the formula yet). Fortunately, Burley has kindly provided the details in the course notes [<a href="#ref.1">1</a>], and we could simply follow those formulas to generate samples:</p>
 
-<p>$$\begin{eqnarray}
-aspect&amp;=&amp;\sqrt{1-0.9*anisotropic} \nonumber <br />
-\alpha_x&amp;=&amp;\frac{roughness^2}{aspect},\ \alpha_y=roughness^2*aspect \nonumber <br />
-\end{eqnarray}$$</p>
+<div>$$\begin{aligned}
+aspect &= \sqrt{1 - 0.9 \times anisotropic} \\
+\alpha_x &= \frac{roughness^2}{aspect} \\
+\alpha_y &= roughness^2 \times aspect
+\end{aligned}$$</div>
 
-<p>for primary anisotropic specular:</p>
+<p>For primary anisotropic specular:</p>
 
-<p>$$\begin{eqnarray}
-D_{GTR_2aniso}&amp;=&amp;\frac{1}{\pi}\frac{1}{\alpha_x\alpha_y}\frac{1}{(\sin^2{\theta_h}(\frac{\cos^2{\phi_h}}{\alpha_x^2}+\frac{\sin^2{\phi_h}}{\alpha_y^2})+\cos^2{\theta_h})^2} \nonumber <br />
-h&rsquo;&amp;=&amp;\sqrt{\frac{\xi_2}{1-\xi_2}}[\alpha_x\cos(2\pi\xi_1)\vec{u}+\alpha_y\sin(2\pi\xi_1)\vec{v}]+\vec{n},\ h=\frac{h&rsquo;}{|h&rsquo;|}
-\end{eqnarray}$$</p>
+<div>$$\begin{aligned}
+D_{GTR_{2aniso}} &= \frac{1}{\pi}\frac{1}{\alpha_x\alpha_y}\frac{1}{(\sin^2{\theta_h}(\frac{\cos^2{\phi_h}}{\alpha_x^2}+\frac{\sin^2{\phi_h}}{\alpha_y^2})+\cos^2{\theta_h})^2} \\
+h' &= \sqrt{\frac{\xi_2}{1-\xi_2}}[\alpha_x\cos(2\pi\xi_1)\vec{u}+\alpha_y\sin(2\pi\xi_1)\vec{v}]+\vec{n} \\
+h &= \frac{h'}{|h'|}
+\end{aligned}$$</div>
 
-<p>for clearcoat:</p>
+<p>For clearcoat:</p>
 
-<p>$$\begin{eqnarray}
-D_{GTR_1}&amp;=&amp;\frac{\alpha^2-1}{\pi\log\alpha^2}\frac{1}{(1+(\alpha^2-1)\cos^2\theta_h)} \nonumber <br />
-\cos\theta_h&amp;=&amp;\sqrt{\frac{1-(\alpha^2)^{1-\xi_2}}{1-\alpha^2}},\ \phi_h=2\pi\xi_1
-\end{eqnarray}$$</p>
+<div>$$\begin{aligned}
+D_{GTR_1} &= \frac{\alpha^2 - 1}{\pi \log \alpha^2} \frac{1}{(1+(\alpha^2 -1)\cos^2\theta_h)} \\
+\cos\theta_h &= \sqrt{\frac{1 - (\alpha^2)^{1 - \xi_2}}{1 - \alpha^2}},\ \phi_h=2\pi\xi_1
+\end{aligned}$$</div>
 
-<p>The microfacet normal h is generated according to $D(\theta_h)\cos\theta_h$ which is already normalized over the hemisphere. Therefore, I tried to use the coefficents of $D_{GTR_2}, D_{GTR_1}$ as weights for lobe selection and PDF composition:</p>
+<p>The microfacet normal \(h\) is generated according to \(D(\theta_h)\cos\theta_h\) which is already normalized over the hemisphere. Therefore, I tried to use the coefficents of \(D_{GTR_2}, D_{GTR_1}\) as weights for lobe selection and PDF composition:</p>
 
 <pre class="prettyprint linenums lang-cpp">
 AtVector    sampleSpecularDirection(float rx, float ry) const
@@ -458,7 +454,7 @@ float   evalSpecularPdf(const AtVector &i) const
 <img src="http://shihchinw.github.io/images/rlShaders/rlDisney_is_specular_a.8.jpg">
 <figcaption>roughness=0.8, $\theta_o=45^\circ$</figcaption></figure>
 
-<p>The <span class="red">red dots</span> at bottom represent the invalid sample whose $\theta_m$ is greater than 90 degrees (i.e. $m \cdot n &lt; 0$). It might be able to get improved by importance sampling the <span class="orange"><strong>visible</strong></span> microfacet normals presented in Heitz and d&rsquo;Eon [<a href="#ref.3">3</a>].</p>
+<p>The <span class="red">red dots</span> at bottom represent the invalid sample whose \(\theta_m\) is greater than 90 degrees (i.e. \(m \cdot n &lt; 0\)). It might be able to get improved by <span class="blue">importance sampling the <strong>visible</strong> microfacet normals</span> presented in Heitz and d&rsquo;Eon [<a href="#ref.3">3</a>].</p>
 
 <h1 id="removing-fireflies">Removing Fireflies</h1>
 
@@ -507,20 +503,25 @@ if (sg->Rt & (AI_RAY_DIFFUSE | AI_RAY_GLOSSY)) {
                   
     <hr>
     <div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'shihchinw';
-    var disqus_identifier = 'http:\/\/shihchinw.github.io\/2015\/07\/implementing-disney-principled-brdf-in-arnold.html';
-    var disqus_title = 'Implementing Disney Principled BRDF in Arnold';
-    var disqus_url = 'http:\/\/shihchinw.github.io\/2015\/07\/implementing-disney-principled-brdf-in-arnold.html';
-
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
     (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "shihchinw" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
                 </div>
