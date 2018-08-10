@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Shih-Chin</title>
-    <link>http://shihchinw.github.io/post.html</link>
-    <description>Recent content in Posts on Shih-Chin</description>
+    <title>Shih-Chin</title>
+    <link>http://shihchinw.github.io/</link>
+    <description>Recent content on Shih-Chin</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright © Shih-Chin</copyright>
     <lastBuildDate>Fri, 10 Aug 2018 08:23:35 +0800</lastBuildDate>
     
-	<atom:link href="http://shihchinw.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://shihchinw.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -194,6 +194,53 @@ Suppose we have MObject(s) of target mesh and edge components (optional) selecte
       <guid>http://shihchinw.github.io/2011/09/retrieve-file-list-from-a-directory-tree.html</guid>
       <description>&lt;p&gt;There is a simple way to traverse a directory tree with python - &lt;code&gt;os.walk&lt;/code&gt; (os.path.walk is deprecated in 3.0, therefore, we had better avoid to use it!)
 &lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>http://shihchinw.github.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://shihchinw.github.io/about/</guid>
+      <description>Hi, I&amp;rsquo;m Shih-Chin. This website contains my study notes about computer graphics and rendering. The source code on my github is developed in my spare time just for learning purposes and not related to the production project I&amp;rsquo;ve been working on at my day job.
+I enjoy learning new things. I&amp;rsquo;m so lucky to live in this era, there are so many fantastic open courses on-line which make me appreciate the beauty of each subject.</description>
+    </item>
+    
+    <item>
+      <title>Arnold</title>
+      <link>http://shihchinw.github.io/page/arnold.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://shihchinw.github.io/page/arnold.html</guid>
+      <description>General Resources  SolidAngle.com Arnold Support Corner SolidAngle @YouTube alShaders [source code]  Wonderful 3rd party physically-based shaders developed by Anders Langlands.   Maya to Arnold  User Guide Tutorial Video Tutorials  Tips &amp;amp; Tricks  Render Tips for MtoA Using &amp;ldquo;Min Pixel Width&amp;rdquo; with Care for Hair/Fur Rendering Removing Noise  Articles &amp;amp; Interviews  &amp;ldquo;Marcos and Arnold&amp;rdquo;, by Eric Haines and Marcos Fajardo. Ray Tracing News, July 20, 2010 &amp;ldquo;The State of Rendering Part2.</description>
+    </item>
+    
+    <item>
+      <title>Computer Graphics</title>
+      <link>http://shihchinw.github.io/page/computer-graphics.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://shihchinw.github.io/page/computer-graphics.html</guid>
+      <description>General Resources  fxguide  lots of comprehensive &amp;amp; in-depth articles about VFX production!  Real-Time Rendering Resources  from the classic textbook &amp;ldquo;Real-Time Rendering&amp;rdquo;  Quasi Complete Online SIGGRAPH Course Notes (99-07) Computer Graphics Research Software flipcode  Researching  Ke-Sen Huang&amp;rsquo;s Home Page  Looking for SIGGRAPH papers? Check out this web site!  Autodesk Research How to Create a Graphics Research Paper by Morgan McGuire. Common mistakes in technical writing by Wojciech Jarosz.</description>
+    </item>
+    
+    <item>
+      <title>Global Illumination</title>
+      <link>http://shihchinw.github.io/page/global-illumination.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://shihchinw.github.io/page/global-illumination.html</guid>
+      <description>General Resources  Equation: Quantifying Light = Great 3-D Animation @WIRED The State of Rendering @fxguide. Part1, Part2.  Comprehensive introduction for current state of rendering research.  ompf2  Wonderful forum about ray tracing implementation and researching.   GI in Production Great materials for artists, TDs and R&amp;amp;D engineers.
+ The Comprehensive PBR Guide Vol 1 &amp;amp; 2, from allegorithmic. Global Illumination Across Industries. SIG&amp;rsquo;10. Raytracers and workflow: a production perspective.</description>
+    </item>
+    
+    <item>
+      <title>Maya</title>
+      <link>http://shihchinw.github.io/page/maya.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://shihchinw.github.io/page/maya.html</guid>
+      <description>General Resources  Autodesk Developer Center Maya Knowledge Network Maya Documentation Maya Learning Channel @YouTube Duncan&amp;rsquo;s Corner  Forums  CG-Society Autodesk AREA Creative Crash  Programming  &amp;ldquo;New To The Api? Then Read This!&amp;rdquo; by Robert Bateman &amp;ldquo;Maya API: Where to start!?!??!?&amp;rdquo; @ Maya Station Maya How-To&amp;rsquo;s by Bryan Ewert  A comprehensive collection of the tips for MEL &amp;amp; API.  Rob The Bloke (Robert Bateman)  There are many examples about Maya API!</description>
     </item>
     
   </channel>

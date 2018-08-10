@@ -2,7 +2,6 @@
 <html lang="en-us">
 
 <head>
-	<meta name="generator" content="Hugo 0.36.1" />
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,11 +9,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Shih-Chin</title>
+    <title>PBR</title>
 
     
-    <link href="http://shihchinw.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Shih-Chin" />
-    <link href="http://shihchinw.github.io/index.xml" rel="feed" type="application/rss+xml" title="Shih-Chin" />
+    <link href="http://shihchinw.github.io/tags/pbr/index.xml" rel="alternate" type="application/rss+xml" title="Shih-Chin" />
+    <link href="http://shihchinw.github.io/tags/pbr/index.xml" rel="feed" type="application/rss+xml" title="Shih-Chin" />
     
 
     
@@ -304,16 +303,15 @@
 
 
     
-    
-    <header class="intro-header" style="background-image: url('http://shihchinw.github.io/images/header/index.jpg')">
-    
+    <header class="intro-header">
       <div class="overlay">
         <div class="container">
           <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
               <div class="site-heading">
-                <h1>Shih-Chin</h1>
-                <hr class="small"> <span class="subheading">Study Notes about Computer Graphics</span>
+                <h1>PBR</h1>
+                <hr class="small">
+                <span class="subheading"></span>
               </div>
             </div>
           </div>
@@ -326,241 +324,18 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           
-          
-          <div class="post-preview">
-  <a href="http://shihchinw.github.io/2015/04/assign-custom-shapes-components-to-sets-in-maya.html">
-    <h2 class="post-title">Assign Custom Shapes&#39; Components to Sets in Maya</h2></a>
-      <div class="post-meta">
-        
-Posted by Shih-Chin on Tue, Apr 21, 2015
-
-
-      </div>
-  <h3 class="post-subtitle"></h3>
-
-  
-  <div class="summary-content">
-  Recently, I tried to extend the functionalities of GPU cache in Maya with dag item selection and shader assignment. In order to achieve the seamless integration, the idea is to use face component to represent each dag item within the Alembic cache. Therefore, users can select the dag item from the cache in component mode and assign those components to a shader.
-This idea is pretty simple, but the implementation is not as easy as it sounds.
-  
-  <a class="read-more-link" href="http://shihchinw.github.io/2015/04/assign-custom-shapes-components-to-sets-in-maya.html">»</a>
-  
-  </div>
-  <small><span class="fa-stack fa-sm"><i class="fa fa-tags fa-stack-1x"></i></span></small>
-<a href="http://shihchinw.github.io/tags/maya-api">Maya API</a>
-</div>
-<hr>
+               <div class="post-preview">
+    <p class="post-meta"><a href="http://shihchinw.github.io/2018/08/aperture--f-number.html">Aperture &amp; f-number</a> on Fri, Aug 10, 2018
+      <br />
+      
+      <small><span class="fa-stack fa-sm"><i class="fa fa-tags fa-stack-1x"></i></span></small>
+<a href="http://shihchinw.github.io/tags/photography">Photography</a>, <a href="http://shihchinw.github.io/tags/pbr">PBR</a>
+    </p>
+ </div>
 
           
-          <div class="post-preview">
-  <a href="http://shihchinw.github.io/2015/02/render-tips-for-arnold-in-maya.html">
-    <h2 class="post-title">Render Tips for Arnold in Maya</h2></a>
-      <div class="post-meta">
-        
-Posted by Shih-Chin on Sun, Feb 22, 2015
-
-
-      </div>
-  <h3 class="post-subtitle"></h3>
-
-  
-  <a href="http://shihchinw.github.io/2015/02/render-tips-for-arnold-in-maya.html"><img src="http://shihchinw.github.io/images/arnold/mtoa_tips.png" class="img-responsive"></a>
-  
-  <div class="summary-content">
-  All photo-realistic ray-tracers are trying to solve the rendering equation. Although they are all categorized as ray-tracer instead of rasterizer, the infrastructure of each implementations are quite different (i.e. uni-directional vs. bi-directional, pure path tracing vs. works with photon-map or irradiance caching, etc).
-Arnold is an un-bias uni-directional path tracer with a remarkable importance sampling mechanism and great memory management to achieve amazing performance excellence. However, if we blindly increase the number of ray samples for every render scene, we would not always get a cleaner imagery.
-  
-  <a class="read-more-link" href="http://shihchinw.github.io/2015/02/render-tips-for-arnold-in-maya.html">»</a>
-  
-  </div>
-  <small><span class="fa-stack fa-sm"><i class="fa fa-tags fa-stack-1x"></i></span></small>
-<a href="http://shihchinw.github.io/tags/arnold">Arnold</a>, <a href="http://shihchinw.github.io/tags/maya">Maya</a>
-</div>
-<hr>
-
           
-          <div class="post-preview">
-  <a href="http://shihchinw.github.io/2013/06/building-abcexport/abcimport-on-windows.html">
-    <h2 class="post-title">Building AbcExport/AbcImport on Windows</h2></a>
-      <div class="post-meta">
-        
-Posted by Shih-Chin on Sat, Jun 1, 2013
 
-
-      </div>
-  <h3 class="post-subtitle"></h3>
-
-  
-  <div class="summary-content">
-  Alembic is a popular data format for geometry cache nowadays, however, there are no simple workflow to build the AbcImport/AbcExport on windows. In this post, I tried to demonstrate a building flow as simple as possible.
-Here is the pre-built binaries for Maya 2013 x64.
-Prerequisites  Boost  open vc10 command prompt cd c:\boost\boost_1_xx_00 bootstrap.bat b2 toolset=msvc-10.0 address-model=64 link=static threading=multi &ndash;with-program_options &ndash;with-thread  HDF5 Ilmbase Zlib glut (optional)  Since I usually build maya plugin with /MD, thus all the static third-party libraries I used are built with /MD.
-  
-  <a class="read-more-link" href="http://shihchinw.github.io/2013/06/building-abcexport/abcimport-on-windows.html">»</a>
-  
-  </div>
-  <small><span class="fa-stack fa-sm"><i class="fa fa-tags fa-stack-1x"></i></span></small>
-<a href="http://shihchinw.github.io/tags/cmake">CMake</a>, <a href="http://shihchinw.github.io/tags/maya">Maya</a>
-</div>
-<hr>
-
-          
-          <div class="post-preview">
-  <a href="http://shihchinw.github.io/2012/12/insert-checking-routine-right-before-file-opening-in-maya.html">
-    <h2 class="post-title">Insert checking routine right before file opening in Maya</h2></a>
-      <div class="post-meta">
-        
-Posted by Shih-Chin on Tue, Dec 25, 2012
-
-
-      </div>
-  <h3 class="post-subtitle"></h3>
-
-  
-  <div class="summary-content">
-  ScriptJob is a very convenient approach for us to register a routine for certain event. However, when we want to inject a check routine for an opened file and to be capable of canceling the open operation of the invalid file. We will find that ScriptJob only contains NewSceneOpened, PostSceneRead and SceneOpened, &hellip;, and none of these events can abort the current operation within our registered routine. Fortunately, the MSceneMessage from API could help us achieve our purpose:
-  
-  <a class="read-more-link" href="http://shihchinw.github.io/2012/12/insert-checking-routine-right-before-file-opening-in-maya.html">»</a>
-  
-  </div>
-  <small><span class="fa-stack fa-sm"><i class="fa fa-tags fa-stack-1x"></i></span></small>
-<a href="http://shihchinw.github.io/tags/maya-api">Maya API</a>, <a href="http://shihchinw.github.io/tags/python">Python</a>
-</div>
-<hr>
-
-          
-          <div class="post-preview">
-  <a href="http://shihchinw.github.io/2012/12/sorting-is-fun.html">
-    <h2 class="post-title">Sorting is FUN</h2></a>
-      <div class="post-meta">
-        
-Posted by Shih-Chin on Sat, Dec 15, 2012
-
-
-      </div>
-  <h3 class="post-subtitle"></h3>
-
-  
-  <div class="summary-content">
-  Since few artist friends of mine want to learn about computer programming, thus we formed a small python learning group, we call it PyClub, in our office. Recently at our PyClub, I introduced some sorting algorithms by demonstrating with poker cards. It&rsquo;s especially fun for all of us to sort a deck of cards manually with quicksort algorithm, and we all felt the power of divide-and-conquer at that moment!
-  
-  <a class="read-more-link" href="http://shihchinw.github.io/2012/12/sorting-is-fun.html">»</a>
-  
-  </div>
-  <small><span class="fa-stack fa-sm"><i class="fa fa-tags fa-stack-1x"></i></span></small>
-<a href="http://shihchinw.github.io/tags/coding">Coding</a>
-</div>
-<hr>
-
-          
-          <div class="post-preview">
-  <a href="http://shihchinw.github.io/2012/05/building-pyside-for-maya-2012-on-windows.html">
-    <h2 class="post-title">Building PySide for Maya 2012 on Windows</h2></a>
-      <div class="post-meta">
-        
-Posted by Shih-Chin on Sun, May 27, 2012
-
-
-      </div>
-  <h3 class="post-subtitle"></h3>
-
-  
-  <div class="summary-content">
-  <p>One of my friend received some tools developed in PySide for Maya recently. He tried to copy the latest pre-built binaries of PySide into Maya&rsquo;s site-packages but got an import error. Therefore, we have to build the PySide for Maya from the ground up and this post is about the entire building process we&rsquo;ve been through. Hope this note might be helpful for people who want to use PySide in Maya. :)</p>
-
-<p>BTW, the PySide for Maya 2012 built by vc9 can be downloaded <a href="https://docs.google.com/open?id=0BwFItFJF_4j3Wm1kMDVXcWIxbW8">here</a>, enjoy it!
-</p>
-  
-  <a class="read-more-link" href="http://shihchinw.github.io/2012/05/building-pyside-for-maya-2012-on-windows.html">»</a>
-  
-  </div>
-  <small><span class="fa-stack fa-sm"><i class="fa fa-tags fa-stack-1x"></i></span></small>
-<a href="http://shihchinw.github.io/tags/maya">Maya</a>, <a href="http://shihchinw.github.io/tags/pyside">PySide</a>, <a href="http://shihchinw.github.io/tags/cmake">CMake</a>
-</div>
-<hr>
-
-          
-          <div class="post-preview">
-  <a href="http://shihchinw.github.io/2011/10/how-to-select-hard-edges-from-a-mesh-in-maya.html">
-    <h2 class="post-title">How to select hard edges from a mesh in Maya?</h2></a>
-      <div class="post-meta">
-        
-Posted by Shih-Chin on Sun, Oct 23, 2011
-
-
-      </div>
-  <h3 class="post-subtitle"></h3>
-
-  
-  <div class="summary-content">
-  A hard edge (aka crease edge or feature edge) is:
- shared by two polygons. and the dihedral angle (i.e the angle between two polygons) is above user-specified threshold.  To find these edges in Maya, the intuitive approach is to traverse all the edges by MItMeshEdge and examining the dot product of two adjacent faces&rsquo; normals.
-Suppose we have MObject(s) of target mesh and edge components (optional) selected by user, and we want to replace current selection with the hard edges from these input.
-  
-  <a class="read-more-link" href="http://shihchinw.github.io/2011/10/how-to-select-hard-edges-from-a-mesh-in-maya.html">»</a>
-  
-  </div>
-  <small><span class="fa-stack fa-sm"><i class="fa fa-tags fa-stack-1x"></i></span></small>
-<a href="http://shihchinw.github.io/tags/maya-api">Maya API</a>, <a href="http://shihchinw.github.io/tags/python">Python</a>
-</div>
-<hr>
-
-          
-          <div class="post-preview">
-  <a href="http://shihchinw.github.io/2011/10/how-to-determine-direct-instances-in-maya.html">
-    <h2 class="post-title">How to determine direct instances in Maya?</h2></a>
-      <div class="post-meta">
-        
-Posted by Shih-Chin on Sun, Oct 16, 2011
-
-
-      </div>
-  <h3 class="post-subtitle"></h3>
-
-  
-  <div class="summary-content">
-  <p>Any instanced node in Maya has multiple parent transforms, therefore, the basic idea to determine the instanced node is to check the number of its parent nodes. However, if we have <span class="blue"><em>both instanced shapes and some other transform nodes from the same hierarchy</em></span>, it gets a little harder to handle this situation just by MEL.</p>
-  
-  <a class="read-more-link" href="http://shihchinw.github.io/2011/10/how-to-determine-direct-instances-in-maya.html">»</a>
-  
-  </div>
-  <small><span class="fa-stack fa-sm"><i class="fa fa-tags fa-stack-1x"></i></span></small>
-<a href="http://shihchinw.github.io/tags/maya-api">Maya API</a>, <a href="http://shihchinw.github.io/tags/python">Python</a>
-</div>
-<hr>
-
-          
-          <div class="post-preview">
-  <a href="http://shihchinw.github.io/2011/09/retrieve-file-list-from-a-directory-tree.html">
-    <h2 class="post-title">Retrieve file list from a directory tree</h2></a>
-      <div class="post-meta">
-        
-Posted by Shih-Chin on Mon, Sep 19, 2011
-
-
-      </div>
-  <h3 class="post-subtitle"></h3>
-
-  
-  <div class="summary-content">
-  <p>There is a simple way to traverse a directory tree with python - <code>os.walk</code> (os.path.walk is deprecated in 3.0, therefore, we had better avoid to use it!)
-</p>
-  
-  <a class="read-more-link" href="http://shihchinw.github.io/2011/09/retrieve-file-list-from-a-directory-tree.html">»</a>
-  
-  </div>
-  <small><span class="fa-stack fa-sm"><i class="fa fa-tags fa-stack-1x"></i></span></small>
-<a href="http://shihchinw.github.io/tags/python">Python</a>
-</div>
-<hr>
-
-          
-          <ul class="pager">
-            
-            <li class="previous"><a href="http://shihchinw.github.io/" class="prev">&larr; Newer Posts</a></li>
-            
-            
-          </ul>
         </div>
       </div>
     </div>

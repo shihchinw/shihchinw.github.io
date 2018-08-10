@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Photography on Shih-Chin</title>
+    <link>http://shihchinw.github.io/tags/photography.html</link>
+    <description>Recent content in Photography on Shih-Chin</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright © Shih-Chin</copyright>
+    <lastBuildDate>Fri, 10 Aug 2018 08:23:35 +0800</lastBuildDate>
+    
+	<atom:link href="http://shihchinw.github.io/tags/photography/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Aperture &amp; f-number</title>
+      <link>http://shihchinw.github.io/2018/08/aperture--f-number.html</link>
+      <pubDate>Fri, 10 Aug 2018 08:23:35 +0800</pubDate>
+      
+      <guid>http://shihchinw.github.io/2018/08/aperture--f-number.html</guid>
+      <description>I have been using DSLR for over 10 years, I thought I knew few knowledge about photography. But after I watched a wonderful online course of digital photography by Prof. Marc Levoy [1], I just found there were so many details I weren&amp;rsquo;t aware before. The thing embarrassed me the most was that I incorrectly related f-number to lens aperture size. This post is trying to introduce the idea of f-number starting from scene radiance.</description>
+    </item>
+    
+  </channel>
+</rss>

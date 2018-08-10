@@ -9,11 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Tags</title>
+    <title>Aperture &amp; f-number</title>
 
-    
-    <link href="http://shihchinw.github.io/tags/index.xml" rel="alternate" type="application/rss+xml" title="Shih-Chin" />
-    <link href="http://shihchinw.github.io/tags/index.xml" rel="feed" type="application/rss+xml" title="Shih-Chin" />
     
 
     
@@ -303,57 +300,160 @@
 
 
     
-    <header class="intro-header" style="background-image: url('http://shihchinw.github.io/img/home-bg.jpg')">
-     <div class="container">
-       <div class="row">
-         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-           <div class="site-heading">
-             <h1>Tags</h1>
-             <hr class="small">
-             <span class="subheading">Tags</span>
-           </div>
-         </div>
-       </div>
-     </div>
+    
+    <header class="intro-header">
+    
+      <div class="overlay">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="post-heading">
+                <h1>Aperture &amp; f-number</h1>
+                <h2 class="subheading"></h2>
+                <span class="meta">
+                 
+Posted by Shih-Chin on Fri, Aug 10, 2018
+
+
+               </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </header>
 
     
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-          <ul>
-            
-            
-            <li><a href="http://shihchinw.github.io/tags/arnold">Arnold</a> 7</li>
-            
-            <li><a href="http://shihchinw.github.io/tags/python">Python</a> 5</li>
-            
-            <li><a href="http://shihchinw.github.io/tags/maya">Maya</a> 4</li>
-            
-            <li><a href="http://shihchinw.github.io/tags/maya-api">Maya API</a> 4</li>
-            
-            <li><a href="http://shihchinw.github.io/tags/brdf">BRDF</a> 3</li>
-            
-            <li><a href="http://shihchinw.github.io/tags/importance-sampling">Importance Sampling</a> 3</li>
-            
-            <li><a href="http://shihchinw.github.io/tags/bssrdf">BSSRDF</a> 2</li>
-            
-            <li><a href="http://shihchinw.github.io/tags/cmake">CMake</a> 2</li>
-            
-            <li><a href="http://shihchinw.github.io/tags/pyside">PySide</a> 2</li>
-            
-            <li><a href="http://shihchinw.github.io/tags/study">Study</a> 2</li>
-            
-            <li><a href="http://shihchinw.github.io/tags/coding">Coding</a> 1</li>
-            
-            <li><a href="http://shihchinw.github.io/tags/pbr">PBR</a> 1</li>
-            
-            <li><a href="http://shihchinw.github.io/tags/photography">Photography</a> 1</li>
-            
-          </ul>
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  
+
+<p>I have been using DSLR for over 10 years, I thought I knew few knowledge about photography. But after I watched a wonderful online course of digital photography by Prof. Marc Levoy [<a href="#ref.1">1</a>], I just found there were so many details I weren&rsquo;t aware before. The thing embarrassed me the most was that I incorrectly related f-number to lens aperture size. This post is trying to introduce the idea of f-number starting from scene radiance.</p>
+
+<h1 id="radiance-invariance">Radiance Invariance</h1>
+
+<p>Radiance [<a href="#ref.5">5</a>] is a very important quantity in light transport. It is the radiant flux emitted, reflected, transmitted or received by a given surface, per unit projected area per unit solid angle. In other words, it measures the density of photons passing <em>near a position \(\mathbf{x}\) and travelling in directions in \(\omega\)</em>:</p>
+
+<p>$$L(\mathbf{x}, \omega) = \frac{d^2 \Phi}{d\omega dA \cos{\theta}}$$</p>
+
+<p><span class="blue">Radiance is <strong>invariant</strong> as it propagates along a line in empty space.</span> That is, for two patches x, y in empty space, the radiance measured from x to y is identical to the one from y to x. This could be derived from the conservation of flux</p>
+
+<p><img src="http://shihchinw.github.io/images/rendering/radiance_invariance_1.png" style="box-shadow: none;" alt="radiance invariance of two stationary patches"/></p>
+
+<p>The radiance from y to x is</p>
+
+<p>$$L_{y\rightarrow x} = \frac{d^2 \Phi}{\textcolor{#1eb8c1}{d\omega_y} dA_x \cos{\theta_x}} = \frac{\textcolor{#1eb8c1}{r^2}d^2 \Phi}{\textcolor{#1eb8c1}{dA_y\cos{\theta_y}} dA_x \cos{\theta_x}}$$</p>
+
+<p>where \(d\omega_y = \frac{dA_y \cos{\theta_y}}{r^2}\). Likewise, the radiance from x to y is</p>
+
+<p>$$L_{x\rightarrow y} = \frac{d^2 \Phi}{d\omega_x dA_y \cos{\theta_y}} = \frac{r^2 d^2 \Phi}{dA_x \cos{\theta_x} dA_y \cos{\theta_y}} = L_{y\rightarrow x}$$</p>
+
+<p>This shows that the radiance interchanged between two patches is the same. But when the patch y goes farther at the distance \(r^\prime\) away from x, the solid angle \(d\omega_y^\prime\) would become \(\frac{r^2}{r^{\prime2}} d\omega_y\)</p>
+
+<p><img src="http://shihchinw.github.io/images/rendering/radiance_invariance_2.png" style="box-shadow: none;" alt="radiance invariance as the distance changes"/></p>
+
+<p>$$L^\prime_{y\rightarrow x} = \frac{d^2 \Phi^\prime}{d\omega^\prime_y dA_x \cos{\theta_x}} = \frac{d^2 \Phi^\prime}{d\omega_y dA_x \cos{\theta_x}} \frac{r^{\prime2}}{r^2}$$</p>
+
+<p>From <strong>the inverse square law</strong> [<a href="#ref.7">7</a>], the density of flux is inversely proportional to the square of the distance in between \(\Phi^\prime = \frac{r^2}{r^{\prime2}} \Phi\), therefore</p>
+
+<p>$$L^\prime_{y\rightarrow x} = \frac{d^2 \textcolor{#1eb8c1}{\Phi^\prime}}{d\omega_y dA_x \cos{\theta_x}} \frac{r^{\prime2}}{r^2} = \frac{d^2  \textcolor{#1eb8c1}{\Phi}}{d\omega_y dA_x \cos{\theta_x}} \cancel{\frac{r^{\prime2}}{r^2}} \cancel{\textcolor{#1eb8c1}{\frac{r^2}{r^{\prime2}}}} = L_{y\rightarrow x}$$</p>
+
+<p>Surprisingly, no matter how far the two patches are apart, the radiance is also <strong>constant</strong> as they moving along the same line. These two cases demonstrate the invariance of radiance.</p>
+
+<h1 id="scene-radiance-to-image-irradiance">Scene Radiance to Image Irradiance</h1>
+
+<p>Now, let&rsquo;s consider a radiance transport from surface patch \(dA_o\) through a thin convex lens whose diameter is \(D\) onto the image patch \(dA_i\).</p>
+
+<p><img src="http://shihchinw.github.io/images/rendering/scene_radiance_to_image_irradiance.png" style="box-shadow: none;" alt="radiance transport"/></p>
+
+<p>Suppose both surface patch and image plane are in the air (i.e. the refractive index is \(\approx 1\)). The irradiance of image patch is \(E_i = L_d\ d\omega_d \cos{\alpha}\), where \(L_d\) is the radiance from lens to \(dA_i\) in directions \(d\omega_d\). Since <span class="blue">all radiances from the patch \(dA_o\) through the thin convex lens would converge on the image patch \(dA_i\)</span>, and with the radiance invariance property, we could associate the radiance from surface patch to image patch \(L_d = L_o\). Therefore</p>
+
+<p>$$E_i = L_d \frac{\pi(\frac{D}{2})^2 \cos{\alpha}}{(\frac{s_i}{\cos{\alpha}})^2} \cos{\alpha} = L_o \frac{\pi}{4} \Big(\frac{D}{s_i}\Big)^2 \cos^4{\alpha}$$</p>
+
+<p>This shows the image irradiance \(E_i\) is in linear proportion to scene radiance \(L_o\), and the factor \(\cos^4{\alpha}\) is the cause of  vignetting. To relate with lens focal length \(f\), \(s_i\) could be substituted by \(\frac{f s_o}{s_o - f}\) from Gaussian lens formula:</p>
+
+<p>$$\frac{1}{f} = \frac{1}{s_i} + \frac{1}{s_o} \Rightarrow s_i = \frac{f s_o}{s_o - f}$$</p>
+
+<p>Thus the <em>fundamental radiometric relation</em> between the scene radiance \(L_o\) and the irradiance \(E_i\) on image plane is</p>
+
+<p>$$E_i = L_d \frac{\pi}{4} \Big(\frac{(s_o - f)D}{f s_o}\Big)^2 \cos^4{\alpha}$$</p>
+
+<blockquote>
+<p>Be careful about the differences whether the focus is at infinity or not. By definition, the focal point is the converge point of <strong>parallel</strong> rays.</p>
+
+<p>If the surface patch and image plane are in different medium, we should take the refractive index of both space into account. For more details, please refer to &ldquo;Fundamental optical formulae&rdquo; by Andy Rowlands [<a href="#ref.2">2</a>].</p>
+</blockquote>
+
+<p>Here we could see the image irradiance \(E_i\) changes w.r.t. focal length \(f\). It surprised me a lot, since I haven&rsquo;t noticed the changes of exposure when I changed the focal length of a zoom lens. What&rsquo;s happened underneath?</p>
+
+<h1 id="f-number">f-number</h1>
+
+<p>When focus is set at <em>infinity</em> (i.e. \(s_i \approx f, s_o = \infty\)), the irradiance \(E_i\) on image plane is</p>
+
+<p>$$E_i = L_d \frac{\pi}{4} \Big(\frac{D}{f}\Big)^2 \cos^4{\alpha}$$</p>
+
+<p>To make such relation numerically convenient, <strong>f-number</strong> \(N\) is defined as the ratio of focal length to the diameter of the aperture:</p>
+
+<p>$$N = \frac{f}{D}$$</p>
+
+<p>This means, for f/2.0 (i.e. \(N=2\)) lens, the aperture size is 25mm when the focal length is 50mm; while the aperture size is 50mm as the focal length is changed to 100mm. Additionally, the aperture size is</p>
+
+<p>$$D = \frac{f}{N}$$</p>
+
+<p>If \(f\) is fixed, doubling \(N\) would halve the size of aperture, therefore the exposure would reduce to <sup>1</sup>&frasl;<sub>4</sub> (\(N^\prime = 2N \rightarrow D^\prime = D/2 \rightarrow E^\prime = E/4\)). Likewise, if we want to double the exposure, we have to increase \(N\) by \(\sqrt{2}\). This is why the sequence of \(N\) is</p>
+
+<p>$$1.4, 2, 2.8, 4, 5.6, 8, 11, 16, 22, 32, &hellip;$$</p>
+
+<p>When the focus is not at infinity, the apertal ratio \(\frac{(s_o - f)D}{f s_o}\) is called <strong>working f-number</strong>. <span class="blue">For any fixed f-number, the aperture size would change along with the lens focal length.</span> Therefore, the exposure is nearly constant with camera zoom.</p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>I had accidentally mixed the definitions of aperture and f-number for a long time. The most embarrassing thing is that I&rsquo;ve never noticed the difference of them myself, and spread my incorrect knowledge to people around me. I should study more thoroughly and should not take everything for granted. Always be aware of the knowledge gaps and review fundamental things more often to see if I have misunderstood something.</p>
+
+<p>As always, if there are any mistakes in this post, please let me know. Thanks for your reading.</p>
+
+<h1 id="references">References</h1>
+
+<ol>
+<li>Marc Levoy. <cite id="ref.1"><a href="https://sites.google.com/site/marclevoylectures/schedule">Lectures on Digital Photography</a>, 2016.</li>
+<li>Andy Rowlands. <cite id="ref.2"><a href="http://iopscience.iop.org/book/978-0-7503-1242-4/chapter/bk978-0-7503-1242-4ch1">Fundamental optical formulae</a>, 2017.</li>
+<li>John P. Hess. <a href="https://www.youtube.com/watch?v=CGGUXAMliqM">The Properties of Camera Lenses</a>, Filmmaker IQ.</li>
+<li>CS6475. <a href="https://www.udacity.com/course/computational-photography--ud955">Computational Photography</a>, Georgia Tech.</li>
+<li>Wikipedia. <cite id="ref.5"><a href="https://en.wikipedia.org/wiki/Radiance">Radiance</a>.</li>
+<li>Wikipedia. <a href="https://en.wikipedia.org/wiki/F-number">f-number</a>.</li>
+<li>Wikipedia. <cite id="ref.7"><a href="https://en.wikipedia.org/wiki/Inverse-square_law">Inverse square law</a>.</li>
+</ol>
+
+                  
+    <hr>
+    <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "shihchinw" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
+    </article>
 
     <hr>
     
