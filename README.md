@@ -8,3 +8,9 @@ It uses following open resources:
 * [TwentyTwenty](https://github.com/zurb/twentytwenty)
 * [MathJax](https://www.mathjax.org)
 * [code-prettify](https://github.com/google/code-prettify)
+
+# Instructions
+
+1. Download [hogo](https://github.com/gohugoio/hugo/releases)
+2. Execute `hugo serve -Dw -t bootstrap -d dev` for development
+3. Execute `hugo -t bootstrap` to build contents to *public* folder
