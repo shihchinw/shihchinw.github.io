@@ -4,6 +4,7 @@ description: Hi, I'm Shih-Chin.
 image: "images/header/about.jpg"
 published: true
 comments: false
+type: about
 ---
 
 Hi, I'm Shih-Chin. This website contains my study notes about computer graphics and rendering. The source code on my [github](https://github.com/shihchinw) is developed in my spare time just for learning purposes and not related to the production project I've been working on at my day job.
