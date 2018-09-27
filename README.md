@@ -14,3 +14,10 @@ It uses following open resources:
 1. Download [hogo](https://github.com/gohugoio/hugo/releases)
 2. Execute `hugo serve -Dw -t bootstrap -d dev` for development
 3. Execute `hugo -t bootstrap` to build contents to *public* folder
+
+# Deployment
+
+1. `git worktree add public master`
+2. `hugo -t bootstrap`
+3. `cd public`
+4. `git push origin master`
