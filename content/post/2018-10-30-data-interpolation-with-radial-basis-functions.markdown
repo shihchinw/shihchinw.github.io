@@ -144,6 +144,7 @@ I recently used RBFs for color calibration (matches color patches in ColorChecke
 
 When dealing with data interpolation in high dimension, RBFs is a nice choice to generate smooth interpolation with low oscillation. Moreover, we could also add polynomial terms to increase the capacity of interplant and apply regularization to avoid data overfitting.
 
+The python script that creates all figures in this post could be found [here](https://github.com/shihchinw/numex/blob/master/exercises/scattered_data_interpolation.py).
 
 # References
 
