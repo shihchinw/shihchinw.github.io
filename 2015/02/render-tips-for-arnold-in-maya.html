@@ -35,19 +35,18 @@
     
     
     
+
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js" integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js" integrity="sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css" integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js" integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js" integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body);
         });
     </script>
-
-    
-    
 
     <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/foundation.css">
     <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/twentytwenty.css">
@@ -75,8 +74,7 @@
     }
 
     a.read-more-link {
-        text-decoration: none;
-        color: #FF9800;
+        color: #f44336;
         font-weight: bolder;
         margin-left: 5px;
     }
@@ -94,9 +92,9 @@
     .container .img-responsive {
         padding: 5px;
         margin: auto;
-        -moz-box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-        -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-        box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        -moz-box-shadow: 0 0 5px rgba(0, 0, 0, .15);
+        -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .15);
+        box-shadow: 0 0 5px rgba(0, 0, 0, .15);
         -moz-border-radius: 5px;
         -webkit-border-radius: 5px;
         border-radius: 5px;
@@ -328,11 +326,10 @@ Posted by Shih-Chin on Sun, Feb 22, 2015
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                  
+                  <p>All photo-realistic ray-tracers are trying to solve the <a href="http://www.wired.com/2010/07/st_equation_3danimation/">rendering equation</a>. Although they are all categorized as ray-tracer instead of rasterizer, the infrastructure of each implementations are quite different (i.e. uni-directional vs. bi-directional, pure path tracing vs. works with photon-map or <a href="http://cgg.mff.cuni.cz/~jaroslav/papers/2008-irradiance_caching_class/">irradiance caching</a>, etc).</p>
 
-<p>All photo-realistic ray-tracers are trying to solve the <a href="http://www.wired.com/2010/07/st_equation_3danimation/">rendering equation</a>. Although they are all categorized as ray-tracer instead of rasterizer, the infrastructure of each implementations are quite different (i.e. uni-directional vs. bi-directional, pure path tracing vs. works with photon-map or <a href="http://cgg.mff.cuni.cz/~jaroslav/papers/2008-irradiance_caching_class/">irradiance caching</a>, etc).</p>
-
-<p>Arnold is an <em>un-bias uni-directional path tracer</em> with a remarkable importance sampling mechanism and great memory management to achieve amazing performance excellence. However, if we blindly increase the number of ray samples for every render scene, we would not always get a cleaner imagery. Which means that when we switch from one ray-tracer to another, we had better use different strategies to adjust render settings. Here is the summary about what I&rsquo;ve learned from experience, hope it would help any Arnold user. :)</p>
+<p>Arnold is an <em>un-bias uni-directional path tracer</em> with a remarkable importance sampling mechanism and great memory management to achieve amazing performance excellence. However, if we blindly increase the number of ray samples for every render scene, we would not always get a cleaner imagery. Which means that when we switch from one ray-tracer to another, we had better use different strategies to adjust render settings. Here is the summary about what I&rsquo;ve learned from experience, hope it would help any Arnold user. :)
+</p>
 
 <h1 id="general">General</h1>
 
@@ -476,7 +473,6 @@ In terms of scanline thing, I assume this post is to old, because Nuke 9 is fine
 <li><a href="http://blog.animationmentor.com/vfx-tiger-and-tips-using-the-arnold-renderer/">VFX Tiger and Tips Using The Arnold Renderer</a> by Animation Mentor</li>
 <li>Repasky, Zachary, et al. <cite id="ref.4"><a href="http://graphics.pixar.com/library/VisibilityCulling/">Large Scale Geometric Visibility Culling on Brave</a></cite>. PIXAR Technical Report. 2013.</li>
 </ol>
-
                   
     <hr>
     <div id="disqus_thread"></div>

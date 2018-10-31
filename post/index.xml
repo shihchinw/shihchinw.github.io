@@ -7,18 +7,31 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright © Shih-Chin</copyright>
-    <lastBuildDate>Fri, 10 Aug 2018 08:23:35 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 30 Oct 2018 22:48:23 +0800</lastBuildDate>
     
 	<atom:link href="http://shihchinw.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Data Interpolation with Radial Basis Functions (RBFs)</title>
+      <link>http://shihchinw.github.io/2018/10/data-interpolation-with-radial-basis-functions-rbfs.html</link>
+      <pubDate>Tue, 30 Oct 2018 22:48:23 +0800</pubDate>
+      
+      <guid>http://shihchinw.github.io/2018/10/data-interpolation-with-radial-basis-functions-rbfs.html</guid>
+      <description>&lt;p&gt;Radial Basis Functions (RBFs) is one of the commonly used methods to interpolate multi-dimensional data. RBFs creates smooth and less oscillating interpolation than inverse distance weighting (IDW) does. It has many applications in Computer Graphics, such as surface reconstruction [&lt;a href=&#34;#ref.3&#34;&gt;3&lt;/a&gt;], animation blending [&lt;a href=&#34;#ref.1&#34;&gt;1&lt;/a&gt;], facial retargeting, color calibration [&lt;a href=&#34;#ref.4&#34;&gt;4&lt;/a&gt;], and etc. Despite of the variety of its applications, those applications all have a common theme called &lt;em&gt;scattered data interpolation&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Aperture &amp; f-number</title>
-      <link>http://shihchinw.github.io/2018/08/aperture--f-number.html</link>
+      <link>http://shihchinw.github.io/2018/08/aperture-f-number.html</link>
       <pubDate>Fri, 10 Aug 2018 08:23:35 +0800</pubDate>
       
-      <guid>http://shihchinw.github.io/2018/08/aperture--f-number.html</guid>
-      <description>I have been using DSLR for over 10 years, I thought I knew few knowledge about photography. But after I watched a wonderful online course of digital photography by Prof. Marc Levoy [1], I just found there were so many details I weren&amp;rsquo;t aware before. The thing embarrassed me the most was that I incorrectly related f-number to lens aperture size. This post is trying to introduce the idea of f-number starting from scene radiance.</description>
+      <guid>http://shihchinw.github.io/2018/08/aperture-f-number.html</guid>
+      <description>&lt;p&gt;I have been using DSLR for over 10 years, I thought I knew few knowledge about photography. But after I watched a wonderful online course of digital photography by Prof. Marc Levoy [&lt;a href=&#34;#ref.1&#34;&gt;1&lt;/a&gt;], I just found there were so many details I weren&amp;rsquo;t aware before. The thing embarrassed me the most was that I incorrectly related f-number to lens aperture size. This post is trying to introduce the idea of f-number starting from scene radiance.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -27,7 +40,8 @@
       <pubDate>Tue, 24 Jan 2017 00:00:00 +0000</pubDate>
       
       <guid>http://shihchinw.github.io/2017/01/self-study-tips.html</guid>
-      <description>When I decided to be a guest lecturer at NCKU last year, I kept asking myself what is the most important thing I wish I&amp;rsquo;d learned in school. I carefully reviewed my current skill sets and found most of my skills were developed at work. Besides sharing knowledge about Computer Graphics, I think there is a more fundamental competency we need to develop in school, that is continuous learning.</description>
+      <description>&lt;p&gt;When I decided to be a guest lecturer at NCKU last year, I kept asking myself what is the most important thing I wish I&amp;rsquo;d learned in school. I carefully reviewed my current skill sets and found most of my skills were developed at work. Besides sharing knowledge about Computer Graphics, I think there is a more fundamental competency we need to develop in school, that is &lt;span class=&#34;green&#34;&gt;&lt;strong&gt;continuous learning&lt;/strong&gt;&lt;/span&gt;.
+&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -36,15 +50,16 @@
       <pubDate>Sat, 31 Dec 2016 00:00:00 +0000</pubDate>
       
       <guid>http://shihchinw.github.io/2016/12/learning-by-teaching-as-a-guest-lecturer.html</guid>
-      <description>I was privileged to be a guest lecturer to give five lectures about Computer Graphics at National Cheng Kung University (NCKU) in Taiwan. When I prepared the course materials, I deeply realized again that the best way to learn a topic is to teach someone else (especially to a person who never heard about Computer Graphics before). In order to avoid teaching wrong ideas, I had carefully reviewed what I known from ground up and derived each mathematical equation in the textbooks.</description>
+      <description>&lt;p&gt;I was privileged to be a guest lecturer to give five lectures about Computer Graphics at National Cheng Kung University (NCKU) in Taiwan. When I prepared the course materials, I deeply realized again that the best way to learn a topic is to teach someone else (especially to a person who never heard about Computer Graphics before). In order to avoid teaching wrong ideas, I had carefully reviewed what I known from ground up and derived each mathematical equation in the textbooks. This post is about what I&amp;rsquo;ve learned in those few months.
+&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Realistic Human Skin with Normalized Diffusion &amp; GGX</title>
-      <link>http://shihchinw.github.io/2015/12/realistic-human-skin-with-normalized-diffusion--ggx.html</link>
+      <link>http://shihchinw.github.io/2015/12/realistic-human-skin-with-normalized-diffusion-ggx.html</link>
       <pubDate>Fri, 25 Dec 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://shihchinw.github.io/2015/12/realistic-human-skin-with-normalized-diffusion--ggx.html</guid>
+      <guid>http://shihchinw.github.io/2015/12/realistic-human-skin-with-normalized-diffusion-ggx.html</guid>
       <description>After implementing BSSRDF importance sampling for Normalized Diffusion and GGX BRDF, I started wondering how realistic could the appearance of human skin be achieved with the combination of these two models. The whole development process is quite interesting, because it&amp;rsquo;s a perfect combination of my two interests: programming and photography. With only one diffusion layer and two specular layers on top, I tried to find the way to make it as realistic as possible.</description>
     </item>
     
@@ -101,8 +116,8 @@ To solve subsurface light transport efficiently, there are several approaches to
       <pubDate>Sat, 02 May 2015 18:34:00 +0000</pubDate>
       
       <guid>http://shihchinw.github.io/2015/05/quick-start-guide-for-pyside-in-maya.html</guid>
-      <description>The goal of tool-making is to make users do certain works more efficiently. A functional tool with poor designed interface would not be fully utilized by users, because users aren&amp;rsquo;t willing to use that tool if the interaction makes them feel frustrated.
-Developing is a Iterative Process Although there are a few principles about user interface design, but it doesn&amp;rsquo;t mean that we can simply apply those principles and get our jobs done.</description>
+      <description>&lt;p&gt;The goal of tool-making is to make users do certain works more efficiently. A functional tool with poor designed interface would not be fully utilized by users, because users aren&amp;rsquo;t willing to use that tool if the interaction makes them feel frustrated.
+&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -121,19 +136,22 @@ This idea is pretty simple, but the implementation is not as easy as it sounds.<
       <pubDate>Sun, 22 Feb 2015 16:39:00 +0000</pubDate>
       
       <guid>http://shihchinw.github.io/2015/02/render-tips-for-arnold-in-maya.html</guid>
-      <description>All photo-realistic ray-tracers are trying to solve the rendering equation. Although they are all categorized as ray-tracer instead of rasterizer, the infrastructure of each implementations are quite different (i.e. uni-directional vs. bi-directional, pure path tracing vs. works with photon-map or irradiance caching, etc).
-Arnold is an un-bias uni-directional path tracer with a remarkable importance sampling mechanism and great memory management to achieve amazing performance excellence. However, if we blindly increase the number of ray samples for every render scene, we would not always get a cleaner imagery.</description>
+      <description>&lt;p&gt;All photo-realistic ray-tracers are trying to solve the &lt;a href=&#34;http://www.wired.com/2010/07/st_equation_3danimation/&#34;&gt;rendering equation&lt;/a&gt;. Although they are all categorized as ray-tracer instead of rasterizer, the infrastructure of each implementations are quite different (i.e. uni-directional vs. bi-directional, pure path tracing vs. works with photon-map or &lt;a href=&#34;http://cgg.mff.cuni.cz/~jaroslav/papers/2008-irradiance_caching_class/&#34;&gt;irradiance caching&lt;/a&gt;, etc).&lt;/p&gt;
+
+&lt;p&gt;Arnold is an &lt;em&gt;un-bias uni-directional path tracer&lt;/em&gt; with a remarkable importance sampling mechanism and great memory management to achieve amazing performance excellence. However, if we blindly increase the number of ray samples for every render scene, we would not always get a cleaner imagery. Which means that when we switch from one ray-tracer to another, we had better use different strategies to adjust render settings. Here is the summary about what I&amp;rsquo;ve learned from experience, hope it would help any Arnold user. :)
+&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Building AbcExport/AbcImport on Windows</title>
-      <link>http://shihchinw.github.io/2013/06/building-abcexport/abcimport-on-windows.html</link>
+      <link>http://shihchinw.github.io/2013/06/building-abcexport-abcimport-on-windows.html</link>
       <pubDate>Sat, 01 Jun 2013 10:25:00 +0000</pubDate>
       
-      <guid>http://shihchinw.github.io/2013/06/building-abcexport/abcimport-on-windows.html</guid>
-      <description>Alembic is a popular data format for geometry cache nowadays, however, there are no simple workflow to build the AbcImport/AbcExport on windows. In this post, I tried to demonstrate a building flow as simple as possible.
-Here is the pre-built binaries for Maya 2013 x64.
-Prerequisites  Boost  open vc10 command prompt cd c:\boost\boost_1_xx_00 bootstrap.bat b2 toolset=msvc-10.0 address-model=64 link=static threading=multi &amp;ndash;with-program_options &amp;ndash;with-thread  HDF5 Ilmbase Zlib glut (optional)  Since I usually build maya plugin with /MD, thus all the static third-party libraries I used are built with /MD.</description>
+      <guid>http://shihchinw.github.io/2013/06/building-abcexport-abcimport-on-windows.html</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://code.google.com/p/alembic/&#34;&gt;Alembic&lt;/a&gt; is a popular data format for geometry cache nowadays, however, there are no simple workflow to build the AbcImport/AbcExport on windows. In this post, I tried to demonstrate a building flow as simple as possible.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://docs.google.com/file/d/0B3FnMqIdd-iLN0czVE1mTl9oWUE/edit?usp=sharing&#34;&gt;Here&lt;/a&gt; is the pre-built binaries for Maya 2013 x64.
+&lt;/p&gt;</description>
     </item>
     
     <item>

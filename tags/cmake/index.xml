@@ -14,13 +14,14 @@
     
     <item>
       <title>Building AbcExport/AbcImport on Windows</title>
-      <link>http://shihchinw.github.io/2013/06/building-abcexport/abcimport-on-windows.html</link>
+      <link>http://shihchinw.github.io/2013/06/building-abcexport-abcimport-on-windows.html</link>
       <pubDate>Sat, 01 Jun 2013 10:25:00 +0000</pubDate>
       
-      <guid>http://shihchinw.github.io/2013/06/building-abcexport/abcimport-on-windows.html</guid>
-      <description>Alembic is a popular data format for geometry cache nowadays, however, there are no simple workflow to build the AbcImport/AbcExport on windows. In this post, I tried to demonstrate a building flow as simple as possible.
-Here is the pre-built binaries for Maya 2013 x64.
-Prerequisites  Boost  open vc10 command prompt cd c:\boost\boost_1_xx_00 bootstrap.bat b2 toolset=msvc-10.0 address-model=64 link=static threading=multi &amp;ndash;with-program_options &amp;ndash;with-thread  HDF5 Ilmbase Zlib glut (optional)  Since I usually build maya plugin with /MD, thus all the static third-party libraries I used are built with /MD.</description>
+      <guid>http://shihchinw.github.io/2013/06/building-abcexport-abcimport-on-windows.html</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://code.google.com/p/alembic/&#34;&gt;Alembic&lt;/a&gt; is a popular data format for geometry cache nowadays, however, there are no simple workflow to build the AbcImport/AbcExport on windows. In this post, I tried to demonstrate a building flow as simple as possible.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://docs.google.com/file/d/0B3FnMqIdd-iLN0czVE1mTl9oWUE/edit?usp=sharing&#34;&gt;Here&lt;/a&gt; is the pre-built binaries for Maya 2013 x64.
+&lt;/p&gt;</description>
     </item>
     
     <item>

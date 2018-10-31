@@ -14,10 +14,10 @@
     
     <item>
       <title>Realistic Human Skin with Normalized Diffusion &amp; GGX</title>
-      <link>http://shihchinw.github.io/2015/12/realistic-human-skin-with-normalized-diffusion--ggx.html</link>
+      <link>http://shihchinw.github.io/2015/12/realistic-human-skin-with-normalized-diffusion-ggx.html</link>
       <pubDate>Fri, 25 Dec 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://shihchinw.github.io/2015/12/realistic-human-skin-with-normalized-diffusion--ggx.html</guid>
+      <guid>http://shihchinw.github.io/2015/12/realistic-human-skin-with-normalized-diffusion-ggx.html</guid>
       <description>After implementing BSSRDF importance sampling for Normalized Diffusion and GGX BRDF, I started wondering how realistic could the appearance of human skin be achieved with the combination of these two models. The whole development process is quite interesting, because it&amp;rsquo;s a perfect combination of my two interests: programming and photography. With only one diffusion layer and two specular layers on top, I tried to find the way to make it as realistic as possible.</description>
     </item>
     

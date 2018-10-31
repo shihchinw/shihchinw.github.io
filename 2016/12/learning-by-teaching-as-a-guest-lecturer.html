@@ -35,19 +35,18 @@
     
     
     
+
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js" integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js" integrity="sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css" integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js" integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js" integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body);
         });
     </script>
-
-    
-    
 
     <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/foundation.css">
     <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/twentytwenty.css">
@@ -75,8 +74,7 @@
     }
 
     a.read-more-link {
-        text-decoration: none;
-        color: #FF9800;
+        color: #f44336;
         font-weight: bolder;
         margin-left: 5px;
     }
@@ -94,9 +92,9 @@
     .container .img-responsive {
         padding: 5px;
         margin: auto;
-        -moz-box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-        -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-        box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        -moz-box-shadow: 0 0 5px rgba(0, 0, 0, .15);
+        -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .15);
+        box-shadow: 0 0 5px rgba(0, 0, 0, .15);
         -moz-border-radius: 5px;
         -webkit-border-radius: 5px;
         border-radius: 5px;
@@ -328,10 +326,8 @@ Posted by Shih-Chin on Sat, Dec 31, 2016
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                  
-
-<p>I was privileged to be a guest lecturer to give five lectures about Computer Graphics at National Cheng Kung University (NCKU) in Taiwan. When I prepared
-the course materials, I deeply realized again that the best way to learn a topic is to teach someone else (especially to a person who never heard about Computer Graphics before). In order to avoid teaching wrong ideas, I had carefully reviewed what I known from ground up and derived each mathematical equation in the textbooks. This post is about what I&rsquo;ve learned in those few months.</p>
+                  <p>I was privileged to be a guest lecturer to give five lectures about Computer Graphics at National Cheng Kung University (NCKU) in Taiwan. When I prepared the course materials, I deeply realized again that the best way to learn a topic is to teach someone else (especially to a person who never heard about Computer Graphics before). In order to avoid teaching wrong ideas, I had carefully reviewed what I known from ground up and derived each mathematical equation in the textbooks. This post is about what I&rsquo;ve learned in those few months.
+</p>
 
 <h1 id="blind-spots">Blind Spots</h1>
 
@@ -370,12 +366,12 @@ the course materials, I deeply realized again that the best way to learn a topic
 <p>As a guest lecturer with production experiences, I think the most valuable things I could provide is the connections between research papers and production software developments. In spite of lots mathematical equations or theories, I showed several demo reels of cutting-edge CG software and explained the difficulties behind the implementations. One of the most interesting things came from our dialog in class:</p>
 
 <blockquote>
-<p>Me: Why is this software or demo awesome?
-Students: &hellip; (silence)
-Me: Please raise your hand if you can&rsquo;t find any awesomeness at all.
-(more than half of class students raised their hands)
-Me: Please let me explain why it is awesome. The devil is in the details!!
-(after few minutes&hellip;)
+<p>Me: Why is this software or demo awesome?<br>
+Students: &hellip; (silence)<br>
+Me: Please raise your hand if you can&rsquo;t find any awesomeness at all.<br>
+(more than half of class students raised their hands)<br>
+Me: Please let me explain why it is awesome. The devil is in the details!!<br>
+(after few minutes&hellip;)<br>
 Students: WOW~ WOW~!!</p>
 </blockquote>
 
@@ -400,7 +396,6 @@ Students: WOW~ WOW~!!</p>
 <li><a href="http://shihchinw.github.io/slides/2016_CG@NCKU/2016.06.07-Global_Illumination_PartII.pdf">Global Illumination Part 2</a></li>
 <li><a href="http://shihchinw.github.io/slides/2016_CG@NCKU/2016.05.10-Self-Study_Tips.pdf">Self-Study Tips</a></li>
 </ol>
-
                   
     <hr>
     <div id="disqus_thread"></div>

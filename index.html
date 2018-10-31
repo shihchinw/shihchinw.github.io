@@ -2,7 +2,7 @@
 <html lang="en-us">
 
 <head>
-	<meta name="generator" content="Hugo 0.49" />
+	<meta name="generator" content="Hugo 0.50" />
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,19 +39,18 @@
     
     
     
+
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css" integrity="sha384-TEMocfGvRuD1rIAacqrknm5BQZ7W7uWitoih+jMNFXQIbNl16bO8OZmylH/Vi/Ei" crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js" integrity="sha384-jmxIlussZWB7qCuB+PgKG1uLjjxbVVIayPJwi6cG6Zb4YKq0JIw+OMnkkEC7kYCq" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/contrib/auto-render.min.js" integrity="sha384-IiI65aU9ZYub2MY9zhtKd1H2ps7xxf+eb2YFG9lX6uRqpXCvBTOidPRCXCrQ++Uc" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css" integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js" integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js" integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
           renderMathInElement(document.body);
         });
     </script>
-
-    
-    
 
     <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/foundation.css">
     <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/twentytwenty.css">
@@ -79,8 +78,7 @@
     }
 
     a.read-more-link {
-        text-decoration: none;
-        color: #FF9800;
+        color: #f44336;
         font-weight: bolder;
         margin-left: 5px;
     }
@@ -98,9 +96,9 @@
     .container .img-responsive {
         padding: 5px;
         margin: auto;
-        -moz-box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-        -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-        box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        -moz-box-shadow: 0 0 5px rgba(0, 0, 0, .15);
+        -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .15);
+        box-shadow: 0 0 5px rgba(0, 0, 0, .15);
         -moz-border-radius: 5px;
         -webkit-border-radius: 5px;
         border-radius: 5px;
@@ -328,7 +326,36 @@
           
           
           <div class="post-preview">
-  <a href="http://shihchinw.github.io/2018/08/aperture--f-number.html">
+  <a href="http://shihchinw.github.io/2018/10/data-interpolation-with-radial-basis-functions-rbfs.html">
+    <h2 class="post-title">Data Interpolation with Radial Basis Functions (RBFs)</h2></a>
+      <div class="post-meta">
+        
+Posted by Shih-Chin on Tue, Oct 30, 2018
+
+
+      </div>
+  <h3 class="post-subtitle"></h3>
+  
+  <a href="http://shihchinw.github.io/2018/10/data-interpolation-with-radial-basis-functions-rbfs.html"><img src="http://shihchinw.github.io/images/math/rbf_with_various_kernels.png" class="img-responsive"></a>
+  
+  <div class="summary-content">
+    <p>Radial Basis Functions (RBFs) is one of the commonly used methods to interpolate multi-dimensional data. RBFs creates smooth and less oscillating interpolation than inverse distance weighting (IDW) does. It has many applications in Computer Graphics, such as surface reconstruction [<a href="#ref.3">3</a>], animation blending [<a href="#ref.1">1</a>], facial retargeting, color calibration [<a href="#ref.4">4</a>], and etc. Despite of the variety of its applications, those applications all have a common theme called <em>scattered data interpolation</em>.</p>
+
+<p></p>
+    
+    <a class="read-more-link" href="http://shihchinw.github.io/2018/10/data-interpolation-with-radial-basis-functions-rbfs.html">» read more »</a>
+    
+  </div>
+  <small><span class="fa-stack fa-sm"><i class="fa fa-tags fa-stack-1x"></i></span></small>
+
+  <small><a href="http://shihchinw.github.io/tags/math">Math</a></small>
+
+</div>
+<hr>
+
+          
+          <div class="post-preview">
+  <a href="http://shihchinw.github.io/2018/08/aperture-f-number.html">
     <h2 class="post-title">Aperture &amp; f-number</h2></a>
       <div class="post-meta">
         
@@ -337,16 +364,23 @@ Posted by Shih-Chin on Fri, Aug 10, 2018
 
       </div>
   <h3 class="post-subtitle"></h3>
-
+  
+  <a href="http://shihchinw.github.io/2018/08/aperture-f-number.html"><img src="http://shihchinw.github.io/images/rendering/scene_radiance_to_image_irradiance.png" class="img-responsive"></a>
   
   <div class="summary-content">
-  I have been using DSLR for over 10 years, I thought I knew few knowledge about photography. But after I watched a wonderful online course of digital photography by Prof. Marc Levoy [1], I just found there were so many details I weren&rsquo;t aware before. The thing embarrassed me the most was that I incorrectly related f-number to lens aperture size. This post is trying to introduce the idea of f-number starting from scene radiance.
-  
-  <a class="read-more-link" href="http://shihchinw.github.io/2018/08/aperture--f-number.html">»</a>
-  
+    <p>I have been using DSLR for over 10 years, I thought I knew few knowledge about photography. But after I watched a wonderful online course of digital photography by Prof. Marc Levoy [<a href="#ref.1">1</a>], I just found there were so many details I weren&rsquo;t aware before. The thing embarrassed me the most was that I incorrectly related f-number to lens aperture size. This post is trying to introduce the idea of f-number starting from scene radiance.</p>
+
+<p></p>
+    
+    <a class="read-more-link" href="http://shihchinw.github.io/2018/08/aperture-f-number.html">» read more »</a>
+    
   </div>
   <small><span class="fa-stack fa-sm"><i class="fa fa-tags fa-stack-1x"></i></span></small>
-<a href="http://shihchinw.github.io/tags/photography">Photography</a>, <a href="http://shihchinw.github.io/tags/pbr">PBR</a>
+
+  <small><a href="http://shihchinw.github.io/tags/photography">Photography</a></small>
+
+  <small>, <a href="http://shihchinw.github.io/tags/pbr">PBR</a></small>
+
 </div>
 <hr>
 
@@ -361,18 +395,20 @@ Posted by Shih-Chin on Tue, Jan 24, 2017
 
       </div>
   <h3 class="post-subtitle"></h3>
-
   
   <a href="http://shihchinw.github.io/2017/01/self-study-tips.html"><img src="http://shihchinw.github.io/images/self-study/study_workflow.jpg" class="img-responsive"></a>
   
   <div class="summary-content">
-  When I decided to be a guest lecturer at NCKU last year, I kept asking myself what is the most important thing I wish I&rsquo;d learned in school. I carefully reviewed my current skill sets and found most of my skills were developed at work. Besides sharing knowledge about Computer Graphics, I think there is a more fundamental competency we need to develop in school, that is continuous learning.
-  
-  <a class="read-more-link" href="http://shihchinw.github.io/2017/01/self-study-tips.html">»</a>
-  
+    <p>When I decided to be a guest lecturer at NCKU last year, I kept asking myself what is the most important thing I wish I&rsquo;d learned in school. I carefully reviewed my current skill sets and found most of my skills were developed at work. Besides sharing knowledge about Computer Graphics, I think there is a more fundamental competency we need to develop in school, that is <span class="green"><strong>continuous learning</strong></span>.
+</p>
+    
+    <a class="read-more-link" href="http://shihchinw.github.io/2017/01/self-study-tips.html">» read more »</a>
+    
   </div>
   <small><span class="fa-stack fa-sm"><i class="fa fa-tags fa-stack-1x"></i></span></small>
-<a href="http://shihchinw.github.io/tags/study">Study</a>
+
+  <small><a href="http://shihchinw.github.io/tags/study">Study</a></small>
+
 </div>
 <hr>
 
@@ -387,22 +423,24 @@ Posted by Shih-Chin on Sat, Dec 31, 2016
 
       </div>
   <h3 class="post-subtitle"></h3>
-
   
   <div class="summary-content">
-  I was privileged to be a guest lecturer to give five lectures about Computer Graphics at National Cheng Kung University (NCKU) in Taiwan. When I prepared the course materials, I deeply realized again that the best way to learn a topic is to teach someone else (especially to a person who never heard about Computer Graphics before). In order to avoid teaching wrong ideas, I had carefully reviewed what I known from ground up and derived each mathematical equation in the textbooks.
-  
-  <a class="read-more-link" href="http://shihchinw.github.io/2016/12/learning-by-teaching-as-a-guest-lecturer.html">»</a>
-  
+    <p>I was privileged to be a guest lecturer to give five lectures about Computer Graphics at National Cheng Kung University (NCKU) in Taiwan. When I prepared the course materials, I deeply realized again that the best way to learn a topic is to teach someone else (especially to a person who never heard about Computer Graphics before). In order to avoid teaching wrong ideas, I had carefully reviewed what I known from ground up and derived each mathematical equation in the textbooks. This post is about what I&rsquo;ve learned in those few months.
+</p>
+    
+    <a class="read-more-link" href="http://shihchinw.github.io/2016/12/learning-by-teaching-as-a-guest-lecturer.html">» read more »</a>
+    
   </div>
   <small><span class="fa-stack fa-sm"><i class="fa fa-tags fa-stack-1x"></i></span></small>
-<a href="http://shihchinw.github.io/tags/study">Study</a>
+
+  <small><a href="http://shihchinw.github.io/tags/study">Study</a></small>
+
 </div>
 <hr>
 
           
           <div class="post-preview">
-  <a href="http://shihchinw.github.io/2015/12/realistic-human-skin-with-normalized-diffusion--ggx.html">
+  <a href="http://shihchinw.github.io/2015/12/realistic-human-skin-with-normalized-diffusion-ggx.html">
     <h2 class="post-title">Realistic Human Skin with Normalized Diffusion &amp; GGX</h2></a>
       <div class="post-meta">
         
@@ -411,18 +449,21 @@ Posted by Shih-Chin on Fri, Dec 25, 2015
 
       </div>
   <h3 class="post-subtitle"></h3>
-
   
-  <a href="http://shihchinw.github.io/2015/12/realistic-human-skin-with-normalized-diffusion--ggx.html"><img src="http://shihchinw.github.io/images/rlShaders/rlSkin_inf_head_uffizi.jpg" class="img-responsive"></a>
+  <a href="http://shihchinw.github.io/2015/12/realistic-human-skin-with-normalized-diffusion-ggx.html"><img src="http://shihchinw.github.io/images/rlShaders/rlSkin_inf_head_uffizi.jpg" class="img-responsive"></a>
   
   <div class="summary-content">
-  After implementing BSSRDF importance sampling for Normalized Diffusion and GGX BRDF, I started wondering how realistic could the appearance of human skin be achieved with the combination of these two models. The whole development process is quite interesting, because it&rsquo;s a perfect combination of my two interests: programming and photography. With only one diffusion layer and two specular layers on top, I tried to find the way to make it as realistic as possible.
-  
-  <a class="read-more-link" href="http://shihchinw.github.io/2015/12/realistic-human-skin-with-normalized-diffusion--ggx.html">»</a>
-  
+    After implementing BSSRDF importance sampling for Normalized Diffusion and GGX BRDF, I started wondering how realistic could the appearance of human skin be achieved with the combination of these two models. The whole development process is quite interesting, because it&rsquo;s a perfect combination of my two interests: programming and photography. With only one diffusion layer and two specular layers on top, I tried to find the way to make it as realistic as possible.
+    
+    <a class="read-more-link" href="http://shihchinw.github.io/2015/12/realistic-human-skin-with-normalized-diffusion-ggx.html">» read more »</a>
+    
   </div>
   <small><span class="fa-stack fa-sm"><i class="fa fa-tags fa-stack-1x"></i></span></small>
-<a href="http://shihchinw.github.io/tags/arnold">Arnold</a>, <a href="http://shihchinw.github.io/tags/bssrdf">BSSRDF</a>
+
+  <small><a href="http://shihchinw.github.io/tags/arnold">Arnold</a></small>
+
+  <small>, <a href="http://shihchinw.github.io/tags/bssrdf">BSSRDF</a></small>
+
 </div>
 <hr>
 
@@ -437,19 +478,24 @@ Posted by Shih-Chin on Tue, Oct 27, 2015
 
       </div>
   <h3 class="post-subtitle"></h3>
-
   
   <a href="http://shihchinw.github.io/2015/10/bssrdf-importance-sampling-of-normalized-diffusion.html"><img src="http://shihchinw.github.io/images/rlShaders/rlSssNd_buddha.jpg" class="img-responsive"></a>
   
   <div class="summary-content">
-  Highly scattering materials like milk or skin can&rsquo;t be precisely modeled by BRDF only, because light would scatter multiple times before exiting the material at different locations. Bidirectional surface scattering distribution function (BSSRDF) is used to describe radiance transfer across the surface boundary with diffusion profile for multiple scattering events.
+    Highly scattering materials like milk or skin can&rsquo;t be precisely modeled by BRDF only, because light would scatter multiple times before exiting the material at different locations. Bidirectional surface scattering distribution function (BSSRDF) is used to describe radiance transfer across the surface boundary with diffusion profile for multiple scattering events.
 To solve subsurface light transport efficiently, there are several approaches to model and evaluate the diffusion profile. Recently, Burley [5] has proposed an artist-friendly diffusion profile with only two exponential functions and the most attracting thing is that it&rsquo;s not only intuitive for artists to use but also faster to evaluate.
-  
-  <a class="read-more-link" href="http://shihchinw.github.io/2015/10/bssrdf-importance-sampling-of-normalized-diffusion.html">»</a>
-  
+    
+    <a class="read-more-link" href="http://shihchinw.github.io/2015/10/bssrdf-importance-sampling-of-normalized-diffusion.html">» read more »</a>
+    
   </div>
   <small><span class="fa-stack fa-sm"><i class="fa fa-tags fa-stack-1x"></i></span></small>
-<a href="http://shihchinw.github.io/tags/arnold">Arnold</a>, <a href="http://shihchinw.github.io/tags/bssrdf">BSSRDF</a>, <a href="http://shihchinw.github.io/tags/importance-sampling">Importance Sampling</a>
+
+  <small><a href="http://shihchinw.github.io/tags/arnold">Arnold</a></small>
+
+  <small>, <a href="http://shihchinw.github.io/tags/bssrdf">BSSRDF</a></small>
+
+  <small>, <a href="http://shihchinw.github.io/tags/importance-sampling">Importance Sampling</a></small>
+
 </div>
 <hr>
 
@@ -464,18 +510,19 @@ Posted by Shih-Chin on Thu, Sep 24, 2015
 
       </div>
   <h3 class="post-subtitle"></h3>
-
   
   <a href="http://shihchinw.github.io/2015/09/using-min-pixel-width-with-care-in-arnold.html"><img src="http://shihchinw.github.io/images/arnold/mtoa_hair_mpw_opaque_cmp_1k.jpg" class="img-responsive"></a>
   
   <div class="summary-content">
-  Keeping objects opaque makes Arnold render much faster. When we render a bunch of hairs, min pixel width is useful to make the hair look softer. However, if the min pixel width is not equal to zero, the opacity of hair ribbon would change subtly, and those ribbons are not always opaque anymore! Furthermore, according to the ribbon thickness measured in screen space at render time, we might surprisedly get different render results.
-  
-  <a class="read-more-link" href="http://shihchinw.github.io/2015/09/using-min-pixel-width-with-care-in-arnold.html">»</a>
-  
+    Keeping objects opaque makes Arnold render much faster. When we render a bunch of hairs, min pixel width is useful to make the hair look softer. However, if the min pixel width is not equal to zero, the opacity of hair ribbon would change subtly, and those ribbons are not always opaque anymore! Furthermore, according to the ribbon thickness measured in screen space at render time, we might surprisedly get different render results.
+    
+    <a class="read-more-link" href="http://shihchinw.github.io/2015/09/using-min-pixel-width-with-care-in-arnold.html">» read more »</a>
+    
   </div>
   <small><span class="fa-stack fa-sm"><i class="fa fa-tags fa-stack-1x"></i></span></small>
-<a href="http://shihchinw.github.io/tags/arnold">Arnold</a>
+
+  <small><a href="http://shihchinw.github.io/tags/arnold">Arnold</a></small>
+
 </div>
 <hr>
 
@@ -490,18 +537,23 @@ Posted by Shih-Chin on Sun, Aug 23, 2015
 
       </div>
   <h3 class="post-subtitle"></h3>
-
   
   <a href="http://shihchinw.github.io/2015/08/sampling-visible-normals-for-ggx-brdf.html"><img src="http://shihchinw.github.io/images/rlShaders/ggx_sampling_comparison.jpg" class="img-responsive"></a>
   
   <div class="summary-content">
-  The standard approach proposed by Walter et al. [1] for importance sampling of GGX BRDF is to use the PDF proportional to distribution of microfacet normal \(D(\omega)\). However, \(D(\omega)\) is not view-dependent, thus it would waste lots of samples when the incoming direction is near grazing angles. In addition, the small value of \(D(\omega)\vert m\cdot n\vert\) at grazing angle would make the sample value as high as hundreds to millions in some situations and cause fireflies in render results.
-  
-  <a class="read-more-link" href="http://shihchinw.github.io/2015/08/sampling-visible-normals-for-ggx-brdf.html">»</a>
-  
+    The standard approach proposed by Walter et al. [1] for importance sampling of GGX BRDF is to use the PDF proportional to distribution of microfacet normal \(D(\omega)\). However, \(D(\omega)\) is not view-dependent, thus it would waste lots of samples when the incoming direction is near grazing angles. In addition, the small value of \(D(\omega)\vert m\cdot n\vert\) at grazing angle would make the sample value as high as hundreds to millions in some situations and cause fireflies in render results.
+    
+    <a class="read-more-link" href="http://shihchinw.github.io/2015/08/sampling-visible-normals-for-ggx-brdf.html">» read more »</a>
+    
   </div>
   <small><span class="fa-stack fa-sm"><i class="fa fa-tags fa-stack-1x"></i></span></small>
-<a href="http://shihchinw.github.io/tags/arnold">Arnold</a>, <a href="http://shihchinw.github.io/tags/brdf">BRDF</a>, <a href="http://shihchinw.github.io/tags/importance-sampling">Importance Sampling</a>
+
+  <small><a href="http://shihchinw.github.io/tags/arnold">Arnold</a></small>
+
+  <small>, <a href="http://shihchinw.github.io/tags/brdf">BRDF</a></small>
+
+  <small>, <a href="http://shihchinw.github.io/tags/importance-sampling">Importance Sampling</a></small>
+
 </div>
 <hr>
 
@@ -516,19 +568,22 @@ Posted by Shih-Chin on Sun, Jul 19, 2015
 
       </div>
   <h3 class="post-subtitle"></h3>
-
   
   <a href="http://shihchinw.github.io/2015/07/implementing-disney-principled-brdf-in-arnold.html"><img src="http://shihchinw.github.io/images/rlShaders/rlDisney_bunny_row.jpg" class="img-responsive"></a>
   
   <div class="summary-content">
-  Disney &ldquo;principled&rdquo; BRDF [1] is a very interesting shading model. It can achieve various physically plausible appearances with only one color parameter and ten scalar parameters! This shading model is designed not only to catch most of the measured data from MERL, but also to follow the principles below:
+    Disney &ldquo;principled&rdquo; BRDF [1] is a very interesting shading model. It can achieve various physically plausible appearances with only one color parameter and ten scalar parameters! This shading model is designed not only to catch most of the measured data from MERL, but also to follow the principles below:
   Intuitive rather than physical. As few parameters as possible. Parameters are zero to one over their plausible range. Parameters are allowed to be pushed beyond their plausible range where it makes sense.
-  
-  <a class="read-more-link" href="http://shihchinw.github.io/2015/07/implementing-disney-principled-brdf-in-arnold.html">»</a>
-  
+    
+    <a class="read-more-link" href="http://shihchinw.github.io/2015/07/implementing-disney-principled-brdf-in-arnold.html">» read more »</a>
+    
   </div>
   <small><span class="fa-stack fa-sm"><i class="fa fa-tags fa-stack-1x"></i></span></small>
-<a href="http://shihchinw.github.io/tags/arnold">Arnold</a>, <a href="http://shihchinw.github.io/tags/brdf">BRDF</a>
+
+  <small><a href="http://shihchinw.github.io/tags/arnold">Arnold</a></small>
+
+  <small>, <a href="http://shihchinw.github.io/tags/brdf">BRDF</a></small>
+
 </div>
 <hr>
 
@@ -543,45 +598,23 @@ Posted by Shih-Chin on Sun, Jun 28, 2015
 
       </div>
   <h3 class="post-subtitle"></h3>
-
   
   <a href="http://shihchinw.github.io/2015/06/implementing-ggx-brdf-in-arnold-with-multiple-importance-sampling.html"><img src="http://shihchinw.github.io/images/rlShaders/rlGgx_lucy.jpg" class="img-responsive"></a>
   
   <div class="summary-content">
-  Monte Carlo path tracing has a slow convergence rate close to \(O(1/\sqrt n)\), it needs to quadruple the number of samples to halve the error. Many mainstream production renderers have deployed multiple importance sampling (MIS) technique to reduce the variance of sampling result (i.e. the noise in image). If we want to make our custom material shader efficiently executed along with the entire render scene in Arnold, we shall definitely consider exploiting the power of MIS.
-  
-  <a class="read-more-link" href="http://shihchinw.github.io/2015/06/implementing-ggx-brdf-in-arnold-with-multiple-importance-sampling.html">»</a>
-  
+    Monte Carlo path tracing has a slow convergence rate close to \(O(1/\sqrt n)\), it needs to quadruple the number of samples to halve the error. Many mainstream production renderers have deployed multiple importance sampling (MIS) technique to reduce the variance of sampling result (i.e. the noise in image). If we want to make our custom material shader efficiently executed along with the entire render scene in Arnold, we shall definitely consider exploiting the power of MIS.
+    
+    <a class="read-more-link" href="http://shihchinw.github.io/2015/06/implementing-ggx-brdf-in-arnold-with-multiple-importance-sampling.html">» read more »</a>
+    
   </div>
   <small><span class="fa-stack fa-sm"><i class="fa fa-tags fa-stack-1x"></i></span></small>
-<a href="http://shihchinw.github.io/tags/arnold">Arnold</a>, <a href="http://shihchinw.github.io/tags/brdf">BRDF</a>, <a href="http://shihchinw.github.io/tags/importance-sampling">Importance Sampling</a>
-</div>
-<hr>
 
-          
-          <div class="post-preview">
-  <a href="http://shihchinw.github.io/2015/05/quick-start-guide-for-pyside-in-maya.html">
-    <h2 class="post-title">Quick Start Guide for PySide in Maya</h2></a>
-      <div class="post-meta">
-        
-Posted by Shih-Chin on Sat, May 2, 2015
+  <small><a href="http://shihchinw.github.io/tags/arnold">Arnold</a></small>
 
+  <small>, <a href="http://shihchinw.github.io/tags/brdf">BRDF</a></small>
 
-      </div>
-  <h3 class="post-subtitle"></h3>
+  <small>, <a href="http://shihchinw.github.io/tags/importance-sampling">Importance Sampling</a></small>
 
-  
-  <a href="http://shihchinw.github.io/2015/05/quick-start-guide-for-pyside-in-maya.html"><img src="http://shihchinw.github.io/images/pyside/pyside_maya_workflow.png" class="img-responsive"></a>
-  
-  <div class="summary-content">
-  The goal of tool-making is to make users do certain works more efficiently. A functional tool with poor designed interface would not be fully utilized by users, because users aren&rsquo;t willing to use that tool if the interaction makes them feel frustrated.
-Developing is a Iterative Process Although there are a few principles about user interface design, but it doesn&rsquo;t mean that we can simply apply those principles and get our jobs done.
-  
-  <a class="read-more-link" href="http://shihchinw.github.io/2015/05/quick-start-guide-for-pyside-in-maya.html">»</a>
-  
-  </div>
-  <small><span class="fa-stack fa-sm"><i class="fa fa-tags fa-stack-1x"></i></span></small>
-<a href="http://shihchinw.github.io/tags/maya">Maya</a>, <a href="http://shihchinw.github.io/tags/python">Python</a>, <a href="http://shihchinw.github.io/tags/pyside">PySide</a>
 </div>
 <hr>
 

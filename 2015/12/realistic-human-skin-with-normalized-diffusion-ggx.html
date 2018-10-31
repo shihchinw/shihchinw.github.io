@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Realistic Human Skin with Normalized Diffusion &amp; GGX</title>
+
+    
+
+    
+    <link href="http://shihchinw.github.io/css/bootstrap.css" rel="stylesheet">
+
+    
+    <link href="http://shihchinw.github.io/css/clean-blog.css" rel="stylesheet">
+
+    
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:400,400italic|Open+Sans:400italic,600italic,400,600|Coda:800)' media='screen' rel='stylesheet' type='text/css'/>
+
+    
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+    <link rel="stylesheet" href="http://shihchinw.github.io/css/prettyprint.css">
+    
+
+    <link rel="stylesheet" href="http://shihchinw.github.io/css/lightbox.css">
+
+    
+    
+    
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css" integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js" integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js" integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body);
+        });
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/foundation.css">
+    <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/twentytwenty.css">
+    <link rel="stylesheet" type="text/css" href="http://shihchinw.github.io/css/header-anchor.css">
+    <link rel="shortcut icon" type="image/png" href="http://shihchinw.github.io/favicon.png">
+
+    <style>
+    .katex { font-size: 1.1em !important; }
+
+    .intro-header .overlay {
+        background: rgba(0, 0, 0, 0.47);
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        top: 0;
+    }
+
+    p + ul { margin-top: -24px; }
+    p + ol { margin-top: -24px; }
+    h1 + p, h2 + p, h3 + p { margin-top: 15px; }
+
+    .summary-content {
+        text-align: justify;
+        margin: 5px 0px 5px 0px;
+    }
+
+    a.read-more-link {
+        color: #f44336;
+        font-weight: bolder;
+        margin-left: 5px;
+    }
+
+    code > div > .table {
+        margin-bottom: 0px;
+        padding: 0px;
+    }
+
+    code > div > .table > tbody > tr > td {
+        border-top: none;
+        padding: 0px;
+    }
+
+    .container .img-responsive {
+        padding: 5px;
+        margin: auto;
+        -moz-box-shadow: 0 0 5px rgba(0, 0, 0, .15);
+        -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .15);
+        box-shadow: 0 0 5px rgba(0, 0, 0, .15);
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .twentytwenty-container .img-responsive {
+        padding: 0px;
+        margin: 0px auto;
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-radius: 0px;
+    }
+
+    .figure .img-responsive {
+        padding: 0px;
+        margin: auto;
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-radius: 0px;
+        margin-top: 0px;
+        margin-bottom: 5px;
+    }
+
+    .figure {
+        padding: 5px;
+        margin: auto;
+        -moz-box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        display: table;
+    }
+
+    figure figcaption {
+         
+        text-align: center;
+        font-size: 14px;
+         
+        color: #808080;
+    }
+
+    .container li a {
+        text-decoration: underline;
+    }
+
+    .container a:hover, a:focus {
+         
+        background: #A6DCF3;
+        text-decoration: none;
+    }
+
+    samp {
+        display: block;
+        background-color: rgba(0, 55, 0, 1);
+        font-size: 0.8em;
+        text-align: left;
+        color: rgba(0, 255, 0, 1);
+        padding: 5px;
+        white-space: pre-wrap;
+        border-radius: 5px;
+        margin: 10px 0px;
+    }
+
+    samp.error {
+        color: red;
+    }
+
+    blockquote p:first-child, blockquote ul:first-child, blockquote ol:first-child {
+        margin-top: 0;
+    }
+
+    .container blockquote {
+         
+        background: #FFF1E5;
+        padding: 8px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+         
+        text-align: justify;
+        line-height: 1.5;
+        border: dashed;
+        border-color: rgb(228, 201, 196);
+    }
+
+    .container blockquote.feedback {
+        white-space: pre-wrap;
+    }
+
+    blockquote time {
+        font-size: 80%;
+    }
+
+    blockquote {
+        color: #806565;
+    }
+
+    blockquote a {
+        color: #337ab7;
+    }
+
+    span.blue {
+        border-bottom: 1px solid #a6dcf3;
+        box-shadow: inset 0 -6px 0 #a6dcf3;
+    }
+    span.orange {
+        border-bottom: 1px solid #ffc672;
+        box-shadow: inset 0 -6px 0 #ffc672;
+    }
+    span.red { color: #dc1111; }
+    span.green {
+        border-bottom: 1px solid #cdf9bb;
+        box-shadow: inset 0 -6px 0 #cdf9bb;
+    }
+
+    .tag-box {
+        list-style: none;
+        margin: 0;
+        padding: 4px 0;
+        overflow: hidden;
+    }
+    .tag-box.inline li {
+        float: left;
+    }
+    .tag-box li {
+        padding: 4px 6px;
+        margin: 2px;
+        background-color: #e6e6e6;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+    }
+    .tag-box li a {
+        text-decoration: none;
+    }
+    </style>
+
+</head>
+
+<body onload="PR.prettyPrint()">
+
+    
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://shihchinw.github.io">Shih-Chin</a>
+            </div>
+            
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-right">
+        
+        <li>
+            <a href="http://shihchinw.github.io/">home</a>
+        </li>
+        
+        <li>
+            <a href="http://shihchinw.github.io/page/computer-graphics.html">Computer Graphics</a>
+        </li>
+        
+        <li>
+            <a href="http://shihchinw.github.io/page/global-illumination.html">Global Illumination</a>
+        </li>
+        
+        <li>
+            <a href="http://shihchinw.github.io/page/arnold.html">Arnold</a>
+        </li>
+        
+        <li>
+            <a href="http://shihchinw.github.io/page/maya.html">Maya</a>
+        </li>
+        
+        <li>
+            <a href="http://shihchinw.github.io/post.html">Posts</a>
+        </li>
+        
+        <li>
+            <a href="http://shihchinw.github.io/about/">About</a>
+        </li>
+        
+      </ul>
+</div>
+
+
+        </div>
+        
+    </nav>
+
+
+    
+    
+    <header class="intro-header" style="background-image: url('http://shihchinw.github.io/images/header/posts/2015-12-25-realistic-human-skin-with-normalized-diffusion--ggx.jpg')">
+    
+      <div class="overlay">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="post-heading">
+                <h1>Realistic Human Skin with Normalized Diffusion &amp; GGX</h1>
+                <h2 class="subheading"></h2>
+                <span class="meta">
+                 
+Posted by Shih-Chin on Fri, Dec 25, 2015
+
+
+               </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  
+
+<p>After implementing <a href="http://shihchinw.github.io/2015/10/bssrdf-importance-sampling-of-normalized-diffusion.html">BSSRDF importance sampling</a> for <em>Normalized Diffusion</em> and <em>GGX BRDF</em>, I started wondering how realistic could the appearance of human skin be achieved with the combination of these two models. The whole development process is quite interesting, because it&rsquo;s a perfect combination of my two interests: programming and photography. With only one diffusion layer and two specular layers on top, I tried to find the way to make it as realistic as possible.</p>
+
+<h1 id="visual-components-of-realistic-human-skin">Visual Components of Realistic Human Skin</h1>
+
+<p>Before even write any code, we need to know the key ingredients of the realistic human skin at first. Based on <cite>&ldquo;The Appearance of Human Skin&rdquo;</cite> by Takanori Igarashi et al. [<a href="#ref.1">1</a>], the visual details observed by naked eye could be classified as:</p>
+
+<ul>
+<li>soft color diffusion from skin layers (i.e. epidermis, dermis and subcutis)</li>
+<li>glossy reflection caused by skin surface lipids</li>
+<li>fine wrinkles and hair</li>
+<li>wrinkles, creases, pores, freckles, spots</li>
+</ul>
+
+<figure>
+<a href="https://en.wikipedia.org/wiki/Skin"><img src="http://shihchinw.github.io/images/rendering/skin_layers.png"></a>
+<figcaption>Skin structures. Image from <a href="https://en.wikipedia.org/wiki/Skin">wiki</a>.</figcaption>
+</figure>
+
+<p>While the common layout of skin shader is modeled as (from top to bottom):</p>
+
+<ul>
+<li>skin surface lipids (thin oily layer)</li>
+<li>epidermis</li>
+<li>dermis</li>
+<li>subcutis</li>
+</ul>
+
+<p>In this framework, the epidermis, dermis and subcutis are often referred to as shallow, mid and deep scattering. Among different renderers, the scattering layer is modeled by BSSRDF with various diffusion profile: <a href="http://www.eugenedeon.com/project/qd/">Quantized-Diffusion</a> (Weta), Cubic/Gaussian (<a href="https://sites.google.com/site/ckulla/home/bssrdf-importance-sampling">Arnold</a>, <a href="https://www.blender.org/manual/render/cycles/nodes/shaders.html?#subsurface-scattering">Cycles</a>), <a href="http://blog.selfshadow.com/publications/s2015-shading-course/">Normalized Diffusion</a> (<a href="http://renderman.pixar.com/resources/current/RenderMan/PxrSkin.html">RenderMan</a>, Disney), and so on.</p>
+
+<p>Other diffuse details, like wrinkles, pores, freckles, could be handled by regular approaches with color texture and normal/bump/displacement mapping.</p>
+
+<p>The thin oily layer on top is an interesting one, its specular reflection is commonly modeled by physically based microfacet BRDF [<a href="#ref.2">2</a>, <a href="#ref.3">3</a>, <a href="#ref.4">4</a>, <a href="#ref.5">5</a>] and it is sometimes decomposed into <strong>sheen</strong> and <strong>specular</strong> components in recent skin shader implementations. Now, the curious thing is why do we need two specular components to represent realistic reflection?</p>
+
+<p>To my best knowledge, two specular lobes might come from the astonishing work done by Graham et al. [<a href="#ref.2">2</a>]. They found the specular reflection from their measured data could be approximated well by <span class="blue"><strong>two lobes</strong> of a <em>Beckmann</em> distribution</span> instead of one. And this principle is also adopted in another amazing real time domo by von der Pahlen et al. [<a href="#ref.3">3</a>].</p>
+
+<h1 id="layer-combination">Layer Combination</h1>
+
+<figure class="figure">
+<a href="http://shihchinw.github.io/images/rlShaders/rlSkin_aov.jpg" data-lightbox="results"><img src="http://shihchinw.github.io/images/rlShaders/rlSkin_aov.jpg"></a>
+<figcaption>Skin Shader AOVs</figcaption>
+</figure>
+
+<p>In my skin shading experiment, two specular lobes are modeled with GGX BRDF with different roughness, while the sub-surface scattering is computed with the Normalized Diffusion profile. For the combination of these shading layers, the naïve way is simply to accumulate each shading result, but this would look a little <em>glow</em> near the silhouettes [<a href="#ref.4">4</a>]. The other way is to use the out-scattering Fresnel terms of given viewing direction to weight each layers, but this would make the silhouettes too dark [<a href="#ref.6">6</a>].</p>
+
+<p>Another more accurate way is to compute the weight for SSS layer with the energy which is not reflected from top oily layer [<a href="#ref.2">2</a>, <a href="#ref.4">4</a>, <a href="#ref.5">5</a>]. In other words, it uses one minus the average hemispherical diffuse reflectance as weights for linear interpolation:</p>
+
+<div>$$\rho_{dt}(x,\vec{\omega_i}) = 1 - \int_{2\pi}{f_r(x,\vec{\omega_o},\vec{\omega_i})(\vec{\omega_i}\cdot\vec{n}) d\vec{\omega_o}}$$</div>
+
+<p>where \(f_r(x,\vec{\omega_o},\vec{\omega_i})\) is the microfacet BRDF</p>
+
+<p>Although the average diffuse reflectance could be done at pre-processing stage (e.g. the node_initialize section), yet it would still affect the user experience of parameter tweaking in IPR mode. And just inspired by alSurface [<a href="#ref.6">6</a>], I extract \(F_t(\eta, \vec{\omega_i})\) out from the BSSRDF:</p>
+
+<p>$$S_d(x_i,\vec{\omega_i};x_o,\vec{\omega_o})=\frac{1}{\pi}F_t(\eta,\vec{\omega_i})R_d(\vert x_i-x_o\vert)F_t(\eta,\vec{\omega_o})$$</p>
+
+<p>and compute its average from GGX BRDF as blending weights:</p>
+
+<p>$$\text{sssWeight} = 1 - \text{specularAvgFresnel} \times (1 - \text{sheenAvgFresnel})$$</p>
+
+<p>With such layer combination, the visual difference between one and two glossy lobes is:</p>
+
+<div class="twentytwenty-container">
+<img alt="One Lobe" src="http://shihchinw.github.io/images/rlShaders/rlSkin_glossy_lobe1.jpg" />
+<img alt="Two Lobes" src="http://shihchinw.github.io/images/rlShaders/rlSkin_glossy_lobe2.jpg" />
+</div>
+
+<p>and the influence of avgFresnel weighting is near the silhouette of cheek and nose:</p>
+
+<div class="twentytwenty-container">
+<img alt="w/o avgFresnel" src="http://shihchinw.github.io/images/rlShaders/rlSkin_glossy_lobe2_no_fresnel.jpg" />
+<img alt="w/- avgFresnel" src="http://shihchinw.github.io/images/rlShaders/rlSkin_glossy_lobe2.jpg" />
+</div>
+
+<h1 id="microstructure-details">Microstructure Details</h1>
+
+<figure style="margin-top: 20px;">
+<img src="http://shihchinw.github.io/images/rendering/skin_microstructure.jpg">
+<figcaption>Image form Graham et al. [2]</figcaption>
+</figure>
+
+<p>As mentioned by Graham et al. [<a href="#ref.2">2</a>], current face scanning techniques only provide mesostructure details like wrinkles, pores and creases. Hence they proposed a texture synthesis method to compute the high-resolution texture of microstructure bumps for more realistic reflection in close-ups.</p>
+
+<p>In contrast, instead of using high-res synthesized texture, Jimenez and von der Pahlen [<a href="#ref.2">3</a>] has demonstrated that the microstructure can be approximated with simple sinusoidal noise in real time context.</p>
+
+<p>Since the storage of the microstructure texture is quite large, the micro-displacement map from <a href="http://gl.ict.usc.edu/Research/DigitalEmily2/">Digital Emily 2</a> is about 298MB (and its tx file consumes 1.1GB!). Thus, I tried to follow the concept of second approach to blend a solid fractal noise with bump map texture to break the specular highlight:</p>
+
+<div class="twentytwenty-container">
+<img alt="w/o noise" src="http://shihchinw.github.io/images/rlShaders/rlSkin_glossy_lobe2.jpg" />
+<img alt="w/- noise" src="http://shihchinw.github.io/images/rlShaders/rlSkin_glossy_lobe2_noise.jpg" />
+</div>
+
+<h1 id="fading-out-diffusion-by-surface-cavities">Fading Out Diffusion by Surface Cavities</h1>
+
+<p><img src="http://shihchinw.github.io/images/rlShaders/bssrdf_cavity_affects_diffusion.png" style="box-shadow: none;"></p>
+
+<p>The formula in my previous implementation was incorrect for back-facing diffusion. I&rsquo;ve tweaked the formula a little bit, for back-facing diffusion, I use \(\cos{\theta}\) as the weight for fadeout instead of \(\cos{\theta/2}\). Where the \(\theta\) is computed as:</p>
+
+<div>$$\theta = \begin{cases}
+\arccos(\vec{n_o}\cdot\vec{n_i}) &\text{if } \vec{v}\cdot\vec{n_o} \ge 0 \\
+\arccos(\vec{v}\cdot\vec{n_i}) & \text{otherwise}
+\end{cases}, where\ \vec{v}\ is\ \frac{x_i-x_o}{\vert x_i-x_o\vert}$$</div>
+
+<p>With the consideration of surface cavities, it would reduce the diffusion amount from the opposite faces at front:</p>
+
+<div class="twentytwenty-container">
+<img alt="w/o cavity" src="http://shihchinw.github.io/images/rlShaders/rlSkin_cavity_off.jpg" />
+<img alt="w/- cavity" src="http://shihchinw.github.io/images/rlShaders/rlSkin_cavity_on.jpg" />
+</div>
+
+<h1 id="results">Results</h1>
+
+<p><a href="http://shihchinw.github.io/images/rlShaders/rlSkin_inf_head_uffizi.jpg" data-lightbox="results"><img src="http://shihchinw.github.io/images/rlShaders/rlSkin_inf_head_uffizi.jpg"></a>
+<a href="http://shihchinw.github.io/images/rlShaders/rlSkin_inf_head_stpeters.jpg" data-lightbox="results"><img src="http://shihchinw.github.io/images/rlShaders/rlSkin_inf_head_stpeters.jpg"></a>
+<a href="http://shihchinw.github.io/images/rlShaders/rlSkin_inf_head_grace.jpg" data-lightbox="results"><img src="http://shihchinw.github.io/images/rlShaders/rlSkin_inf_head_grace.jpg"></a></p>
+
+<iframe src="https://player.vimeo.com/video/149999712" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+<p>As usual, the source code could be found <a href="https://github.com/shihchinw/rlShaders/blob/master/src/rlSkin.cpp">here</a>.</p>
+
+<p>Graphics data sources:</p>
+
+<ul>
+<li>Model/textures: <a href="http://ir-ltd.net/#cbp=http://ir-ltd.net/portfolio/infinite/">Infinite Realistic Head Scan</a></li>
+<li>Light probes: <a href="http://gl.ict.usc.edu/Data/HighResProbes/">High-Resolution Light Probe Image Gallery</a> from USC ICT</li>
+</ul>
+
+<h1 id="limitations-of-my-current-implementation">Limitations of My Current Implementation</h1>
+
+<p>If the scatter distance is smaller than the edge length of hit triangle, the probe samples along U, V axis would totally lost, which would cause following artifact:</p>
+
+<p><img src="http://shihchinw.github.io/images/rlShaders/rlSkin_artifact.jpg" alt="Sample artifact" /></p>
+
+<p>I&rsquo;ve tried to increase the probability of the probing along normal direction for this case, but it still can&rsquo;t eliminate such artifact completely. Because at the surface point with low geometry curvature within a range of max scattering radius, it would still potentially waste most samples along U, V axis.</p>
+
+<p>The other thing is about the scattering distance control. The normalized diffusion is <em>integrated to one for any positive distance \(d\)</em>, and current implementation distributes energy of each color channel among the given <code>scatterDist</code> components respectively.</p>
+
+<p>The scattering energy is decayed from hit point, due to normalization, the farther distance it scatters the less energy it contributes near the hit point. In other words, to get more reddish results, we need to make the <code>scatterDist.r</code> relatively smaller than <code>scatterDist.g</code> and <code>scatterDist.b</code>. This might be a little counterintuitive to users. (This is a problem of my current implementation, not related to the normalized diffusion model itself. It seems that the parameters used in the course note [<a href="#ref.7">7</a>] don&rsquo;t have such problem)</p>
+
+<p>The last thing is about <em>energy conservation</em> of layer combination, the layer blending so far is an ad-hoc solution. The new layer framework proposed by Jakob et al. [<a href="#ref.8">8</a>] is an interesting direction for further studying. Besides, my GGX BRDF implementation would lost energy with high roughness values, this might be resolved with a new technique from Heitz et al. [<a href="#ref.9">9</a>] which handles the multiple-scattering case within microfacet model.</p>
+
+<h1 id="references">References</h1>
+
+<ol>
+<li>Igarashi, Takanori, Ko Nishino, and Shree K. Nayar. <cite id="ref.1"><a href="http://www1.cs.columbia.edu/CAVE/publications/pdfs/Igarashi_CUTR05.pdf">&ldquo;The appearance of human skin: A survey.&rdquo;</a></cite> Technical Report. 2005.</li>
+<li>Graham, Paul, et al. <cite id="ref.2"><a href="http://gl.ict.usc.edu/Research/Microgeometry/">&ldquo;Measurement‐Based Synthesis of Facial Microgeometry.&rdquo;</a></cite> Eurographics. 2013.</li>
+<li>Jimenez, Jorge. and Javier von der Pahlen. <cite id="ref.3"><a href="http://www.iryoku.com/stare-into-the-future">&ldquo;Next Generation Character Rendering&rdquo;</a></cite> [<a href="https://www.youtube.com/watch?v=l6R6N4Vy0nE&amp;feature=youtu.be">demo</a>]. GDC&rsquo;13.</li>
+<li>d&rsquo;Eon, Eugene, and David Luebke. <cite id="ref.4"><a href="http://http.developer.nvidia.com/GPUGems3/gpugems3_ch14.html">&ldquo;Advanced Techniques for Realistic Real-Time Skin Rendering&rdquo;.</a></cite> GPU Gems 3 Ch. 14. 2007.</li>
+<li>Donner, Craig, and Henrik Wann Jensen. <cite id="ref.5"><a href="http://www.cs.virginia.edu/~jdl/bib/appearance/subsurface/donner05.pdf">&ldquo;Light diffusion in multi-layered translucent materials.&rdquo;</a></cite> SIGGRAPH. 2005.</li>
+<li>Langlands, Anders. <cite id="ref.6"><a href="http://blog.selfshadow.com/publications/s2014-shading-course/">&ldquo;Physically Based Shader Design in Arnold.&rdquo;</a></cite> SIGGRAPH Course Notes. 2014</li>
+<li>Burley, Brent. <cite id="ref.7"><a href="http://blog.selfshadow.com/publications/s2015-shading-course/">&ldquo;Extending the Disney BRDF to a BSDF with Integrated Subsurface Scattering.&rdquo;</a></cite> SIGGRAPH Course Notes, 2015.</li>
+<li>Jakob, Wenzel. <cite id="ref.8"><a href="http://blog.selfshadow.com/publications/s2015-shading-course/">&ldquo;layerlab: A computational toolbox for layered materials.&rdquo;</a></cite> SIGGRAPH Course Notes, 2015.</li>
+<li>Heitz, Eric, Johannes Hanika, Eugene d’Eon, and Carsten Dachsbacher. <cite id="ref.9"><a href="https://eheitzresearch.wordpress.com/240-2/">&ldquo;Multiple-Scattering Microfacet BSDFs with the Smith Model.&rdquo;</a></cite> Technical Report. 2015.</li>
+</ol>
+
+                  
+    <hr>
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "shihchinw" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <hr>
+    
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  <ul class="list-inline text-center">
+                    
+                      <li>
+                        <a href="mailto:shihchin.weng@gmail.com">
+                          <span class="fa-stack fa-lg">
+                            <i class="fa fa-circle fa-stack-2x"></i>
+                            <i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
+                          </span>
+                        </a>
+                      </li>
+                    
+                    
+                    <li>
+                      <a href="https://twitter.com/shihchinw">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                    <li>
+                      <a href="https://github.com/shihchinw">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle fa-stack-2x"></i>
+                          <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                        </span>
+                      </a>
+                    </li>
+                    
+                  </ul>
+                  <p class="copyright text-muted">Copyright © Shih-Chin</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="http://shihchinw.github.io/js/jquery.min.js"></script>
+
+    
+    <script src="http://shihchinw.github.io/js/bootstrap.min.js"></script>
+
+    
+    <script src="http://shihchinw.github.io/js/clean-blog.js"></script>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-71352938-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+    <script src="http://shihchinw.github.io/js/lightbox.js"></script>
+
+    <script src="http://shihchinw.github.io/js/jquery.event.move.js"></script>
+    <script src="http://shihchinw.github.io/js/jquery.twentytwenty.js"></script>
+    
+
+    <script>
+        $(window).load(function(){
+          $(".twentytwenty-container[data-orientation!='vertical']").twentytwenty({default_offset_pct: 0.7});
+          $(".twentytwenty-container[data-orientation='vertical']").twentytwenty({default_offset_pct: 0.3, orientation: 'vertical'});
+        });
+
+        
+        $(function() {
+          return $("h1, h2, h3, h4, h5, h6").each(function(i, el) {
+            var $el, icon, id;
+            $el = $(el);
+            id = $el.attr('id');
+            icon = '<i class="fa fa-link"></i>';
+            if (id) {
+              return $el.append($("<a />").addClass("header-link").attr("href", "#" + id).html(icon));
+            }
+          });
+        });
+    </script>
+</body>
+
+</html>
+
