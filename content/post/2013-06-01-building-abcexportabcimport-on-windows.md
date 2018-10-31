@@ -11,6 +11,7 @@ title: Building AbcExport/AbcImport on Windows
 [Alembic](http://code.google.com/p/alembic/) is a popular data format for geometry cache nowadays, however, there are no simple workflow to build the AbcImport/AbcExport on windows. In this post, I tried to demonstrate a building flow as simple as possible.
 
 [Here](https://docs.google.com/file/d/0B3FnMqIdd-iLN0czVE1mTl9oWUE/edit?usp=sharing) is the pre-built binaries for Maya 2013 x64.
+<!--more-->
 
 # Prerequisites
 

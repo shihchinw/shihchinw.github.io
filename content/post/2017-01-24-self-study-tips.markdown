@@ -8,6 +8,7 @@ title: Self-Study Tips
 ---
 
 When I decided to be a guest lecturer at NCKU last year, I kept asking myself what is the most important thing I wish I'd learned in school. I carefully reviewed my current skill sets and found most of my skills were developed at work. Besides sharing knowledge about Computer Graphics, I think there is a more fundamental competency we need to develop in school, that is <span class="green">__continuous learning__</span>.
+<!--more-->
 
 However, when we graduate from school, there is no longer a teacher around us showing how to resolve our problems at hand. Most of the time, we have to learn new things on our own, we need to learn <span class="green">__self-study__</span>.
 

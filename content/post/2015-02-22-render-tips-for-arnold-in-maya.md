@@ -13,6 +13,7 @@ title: Render Tips for Arnold in Maya
 All photo-realistic ray-tracers are trying to solve the [rendering equation](http://www.wired.com/2010/07/st_equation_3danimation/). Although they are all categorized as ray-tracer instead of rasterizer, the infrastructure of each implementations are quite different (i.e. uni-directional vs. bi-directional, pure path tracing vs. works with photon-map or [irradiance caching](http://cgg.mff.cuni.cz/~jaroslav/papers/2008-irradiance_caching_class/), etc).
 
 Arnold is an _un-bias uni-directional path tracer_ with a remarkable importance sampling mechanism and great memory management to achieve amazing performance excellence. However, if we blindly increase the number of ray samples for every render scene, we would not always get a cleaner imagery. Which means that when we switch from one ray-tracer to another, we had better use different strategies to adjust render settings. Here is the summary about what I've learned from experience, hope it would help any Arnold user. :)
+<!--more-->
 
 # General
 

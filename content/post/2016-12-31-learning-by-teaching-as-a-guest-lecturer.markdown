@@ -7,8 +7,8 @@ tags:
 title: Learning by Teaching, as a Guest Lecturer
 ---
 
-I was privileged to be a guest lecturer to give five lectures about Computer Graphics at National Cheng Kung University (NCKU) in Taiwan. When I prepared
-the course materials, I deeply realized again that the best way to learn a topic is to teach someone else (especially to a person who never heard about Computer Graphics before). In order to avoid teaching wrong ideas, I had carefully reviewed what I known from ground up and derived each mathematical equation in the textbooks. This post is about what I've learned in those few months.
+I was privileged to be a guest lecturer to give five lectures about Computer Graphics at National Cheng Kung University (NCKU) in Taiwan. When I prepared the course materials, I deeply realized again that the best way to learn a topic is to teach someone else (especially to a person who never heard about Computer Graphics before). In order to avoid teaching wrong ideas, I had carefully reviewed what I known from ground up and derived each mathematical equation in the textbooks. This post is about what I've learned in those few months.
+<!--more-->
 
 # Blind Spots
 
@@ -42,12 +42,12 @@ For PBR & GI, I chose to introduce following subjects:
 
 As a guest lecturer with production experiences, I think the most valuable things I could provide is the connections between research papers and production software developments. In spite of lots mathematical equations or theories, I showed several demo reels of cutting-edge CG software and explained the difficulties behind the implementations. One of the most interesting things came from our dialog in class:
 
->Me: Why is this software or demo awesome?
->Students: ... (silence)
->Me: Please raise your hand if you can't find any awesomeness at all.
->(more than half of class students raised their hands)
->Me: Please let me explain why it is awesome. The devil is in the details!!
->(after few minutes...)
+>Me: Why is this software or demo awesome?<br>
+>Students: ... (silence)<br>
+>Me: Please raise your hand if you can't find any awesomeness at all.<br>
+>(more than half of class students raised their hands)<br>
+>Me: Please let me explain why it is awesome. The devil is in the details!!<br>
+>(after few minutes...)<br>
 >Students: WOW~ WOW~!!
 
 There is a gap from research papers to production tools. To implement a production software we need to take more care of a lot things such as parallelism, memory footprint, maintenance, etc. Additionally, since most of our software are used by artists, we definitely need to pay attention to their requirements. _Soft skills are really matters_. Before diving into actual development, we have to make sure we truly understand what artists want.

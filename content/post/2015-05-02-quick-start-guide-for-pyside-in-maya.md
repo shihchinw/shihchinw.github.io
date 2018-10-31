@@ -11,6 +11,7 @@ title: Quick Start Guide for PySide in Maya
 ---
 
 The goal of tool-making is to make users do certain works more efficiently. A functional tool with poor designed interface would not be fully utilized by users, because users aren't willing to use that tool if the interaction makes them feel frustrated.
+<!--more-->
 
 # Developing is a Iterative Process
 

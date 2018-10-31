@@ -1,6 +1,7 @@
 ---
 title: "Data Interpolation with Radial Basis Functions (RBFs)"
 date: 2018-10-30T22:48:23+08:00
+coverImage: images/math/rbf_with_various_kernels.png
 published: true
 tags:
 - Math

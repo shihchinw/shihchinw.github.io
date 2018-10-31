@@ -1,12 +1,15 @@
 ---
 title: "Aperture & f-number"
 date: 2018-08-10T08:23:35+08:00
+coverImage: images/rendering/scene_radiance_to_image_irradiance.png
 tags:
 - Photography
 - PBR
 ---
 
 I have been using DSLR for over 10 years, I thought I knew few knowledge about photography. But after I watched a wonderful online course of digital photography by Prof. Marc Levoy [[1](#ref.1)], I just found there were so many details I weren't aware before. The thing embarrassed me the most was that I incorrectly related f-number to lens aperture size. This post is trying to introduce the idea of f-number starting from scene radiance.
+
+<!--more-->
 
 # Radiance Invariance
 
@@ -48,7 +51,7 @@ Suppose both surface patch and image plane are in the air (i.e. the refractive i
 
 $$E_i = L_d \frac{\pi(\frac{D}{2})^2 \cos{\alpha}}{(\frac{s_i}{\cos{\alpha}})^2} \cos{\alpha} = L_o \frac{\pi}{4} \Big(\frac{D}{s_i}\Big)^2 \cos^4{\alpha}$$
 
-This shows the image irradiance \\(E_i\\) is in linear proportion to scene radiance \\(L_o\\), and the factor \\(\cos^4{\alpha}\\) is the cause of  vignetting. To relate with lens focal length \\(f\\), \\(s_i\\) could be substituted by \\(\frac{f s_o}{s_o - f}\\) from Gaussian lens formula:
+This shows the image irradiance \\(E_i\\) is in linear proportion to scene radiance \\(L_o\\), and the factor \\(\cos^4{\alpha}\\) is the cause of vignette. To relate with lens focal length \\(f\\), \\(s_i\\) could be substituted by \\(\frac{f s_o}{s_o - f}\\) from Gaussian lens formula:
 
 $$\frac{1}{f} = \frac{1}{s_i} + \frac{1}{s_o} \Rightarrow s_i = \frac{f s_o}{s_o - f}$$
 
