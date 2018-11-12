@@ -4,7 +4,7 @@ coverImage: images/pyside/pyside_maya_workflow.png
 date: 2015-05-02T18:34:00Z
 published: true
 tags:
-- Maya
+- Maya API
 - Python
 - PySide
 title: Quick Start Guide for PySide in Maya
