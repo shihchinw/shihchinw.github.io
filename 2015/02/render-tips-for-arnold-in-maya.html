@@ -208,8 +208,8 @@
         box-shadow: inset 0 -6px 0 #a6dcf3;
     }
     span.orange {
-        border-bottom: 1px solid #ffc672;
-        box-shadow: inset 0 -6px 0 #ffc672;
+        border-bottom: 1px solid #ffd18c;
+        box-shadow: inset 0 -6px 0 #ffd699;
     }
     span.red { color: #dc1111; }
     span.green {
@@ -328,8 +328,7 @@ Posted by Shih-Chin on Sun, Feb 22, 2015
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                   <p>All photo-realistic ray-tracers are trying to solve the <a href="http://www.wired.com/2010/07/st_equation_3danimation/">rendering equation</a>. Although they are all categorized as ray-tracer instead of rasterizer, the infrastructure of each implementations are quite different (i.e. uni-directional vs. bi-directional, pure path tracing vs. works with photon-map or <a href="http://cgg.mff.cuni.cz/~jaroslav/papers/2008-irradiance_caching_class/">irradiance caching</a>, etc).</p>
 
-<p>Arnold is an <em>un-bias uni-directional path tracer</em> with a remarkable importance sampling mechanism and great memory management to achieve amazing performance excellence. However, if we blindly increase the number of ray samples for every render scene, we would not always get a cleaner imagery. Which means that when we switch from one ray-tracer to another, we had better use different strategies to adjust render settings. Here is the summary about what I&rsquo;ve learned from experience, hope it would help any Arnold user. :)
-</p>
+<p>Arnold is an <em>un-bias uni-directional path tracer</em> with a remarkable importance sampling mechanism and great memory management to achieve amazing performance excellence. However, if we blindly increase the number of ray samples for every render scene, we would not always get a cleaner imagery. Which means that when we switch from one ray-tracer to another, we had better use different strategies to adjust render settings. Here is the summary about what I&rsquo;ve learned from experience, hope it would help any Arnold user. :)</p>
 
 <h1 id="general">General</h1>
 

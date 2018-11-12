@@ -18,8 +18,7 @@
       <pubDate>Sat, 02 May 2015 18:34:00 +0000</pubDate>
       
       <guid>http://shihchinw.github.io/2015/05/quick-start-guide-for-pyside-in-maya.html</guid>
-      <description>&lt;p&gt;The goal of tool-making is to make users do certain works more efficiently. A functional tool with poor designed interface would not be fully utilized by users, because users aren&amp;rsquo;t willing to use that tool if the interaction makes them feel frustrated.
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;The goal of tool-making is to make users do certain works more efficiently. A functional tool with poor designed interface would not be fully utilized by users, because users aren&amp;rsquo;t willing to use that tool if the interaction makes them feel frustrated.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -57,8 +56,7 @@ Suppose we have MObject(s) of target mesh and edge components (optional) selecte
       <pubDate>Mon, 19 Sep 2011 14:53:00 +0000</pubDate>
       
       <guid>http://shihchinw.github.io/2011/09/retrieve-file-list-from-a-directory-tree.html</guid>
-      <description>&lt;p&gt;There is a simple way to traverse a directory tree with python - &lt;code&gt;os.walk&lt;/code&gt; (os.path.walk is deprecated in 3.0, therefore, we had better avoid to use it!)
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;There is a simple way to traverse a directory tree with python - &lt;code&gt;os.walk&lt;/code&gt; (os.path.walk is deprecated in 3.0, therefore, we had better avoid to use it!)&lt;/p&gt;</description>
     </item>
     
   </channel>

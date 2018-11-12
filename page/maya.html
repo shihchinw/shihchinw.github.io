@@ -208,8 +208,8 @@
         box-shadow: inset 0 -6px 0 #a6dcf3;
     }
     span.orange {
-        border-bottom: 1px solid #ffc672;
-        box-shadow: inset 0 -6px 0 #ffc672;
+        border-bottom: 1px solid #ffd18c;
+        box-shadow: inset 0 -6px 0 #ffd699;
     }
     span.red { color: #dc1111; }
     span.green {
@@ -326,7 +326,7 @@
 <ul>
 <li><a href="#general-resources">General Resources</a>
 <ul>
-<li><a href="#forums">Forums</a></li>
+<li><a href="#maya-programming-forums">Maya Programming Forums</a></li>
 </ul></li>
 <li><a href="#programming">Programming</a>
 <ul>
@@ -341,30 +341,32 @@
 <h1 id="general-resources">General Resources</h1>
 
 <ul>
-<li><a href="http://usa.autodesk.com/adsk/servlet/index?siteID=123112&amp;id=9469002">Autodesk Developer Center</a></li>
-<li><a href="http://usa.autodesk.com/adsk/servlet/index?id=16075355&amp;siteID=123112&amp;linkID=10809894">Maya Knowledge Network</a></li>
+<li><a href="https://www.autodesk.com/developer-network/platform-technologies/maya">Maya Developer Center</a></li>
 <li><a href="http://knowledge.autodesk.com/support/maya/learn-explore/caas/CloudHelp/cloudhelp/ENU/123112/files/maya-documentation-html.html">Maya Documentation</a></li>
 <li><a href="https://www.youtube.com/user/MayaHowTos">Maya Learning Channel</a> @YouTube</li>
+<li><a href="https://github.com/ADN-DevTech/Maya-Training-Material">Maya Training Material</a> (a little outdated, but still useful)</li>
 <li><a href="http://area.autodesk.com/blogs/duncan">Duncan&rsquo;s Corner</a></li>
+<li><a href="http://zurbrigg.com/tutorials/">Maya Python programming for production</a> by Chris Zurbrigg.</li>
 </ul>
 
-<h2 id="forums">Forums</h2>
+<h2 id="maya-programming-forums">Maya Programming Forums</h2>
 
 <ul>
-<li><a href="http://forums.cgsociety.org/forumdisplay.php?f=89">CG-Society</a></li>
 <li><a href="http://forums.autodesk.com/t5/programming/bd-p/area-b50">Autodesk AREA</a></li>
-<li><a href="http://www.creativecrash.com/forums/api/topics">Creative Crash</a></li>
+<li><a href="http://forums.cgsociety.org/forumdisplay.php?f=89">CG-Society</a></li>
+<li><a href="http://www.creativecrash.com/forums/api/topics">Highend3D</a></li>
 </ul>
 
 <h1 id="programming">Programming</h1>
 
 <ul>
-<li><cite><a href="http://www.creativecrash.com/forums/api/topics/new-to-the-api-then-read-this-33">&ldquo;New To The Api? Then Read This!&rdquo;</a></cite> by Robert Bateman</li>
-<li><cite><a href="http://mayastation.typepad.com/maya-station/2009/12/maya-api-where-to-start.html">&ldquo;Maya API: Where to start!?!??!?&rdquo;</a></cite> @ Maya Station</li>
-<li><a href="http://ewertb.soundlinker.com/maya.php">Maya How-To&rsquo;s</a> by Bryan Ewert
+<li><a href="http://shihchinw.github.io/2018/11/maya-scripting-primer.html">Maya Scripting Primer</a>.</li>
+<li><a href="http://www.creativecrash.com/forums/api/topics/new-to-the-api-then-read-this-33">New To The Api? Then Read This!</a> by Robert Bateman.</li>
+<li><a href="http://mayastation.typepad.com/maya-station/2009/12/maya-api-where-to-start.html">Maya API: Where to start!?!??!?</a> at Maya Station.</li>
+<li><a href="http://ewertb.soundlinker.com/maya.php">Maya How-To&rsquo;s</a> by Bryan Ewert.
 
 <ul>
-<li>A comprehensive collection of the tips for MEL &amp; API.</li>
+<li>A comprehensive collection of the tips for MEL &amp; API!! (Don&rsquo;t miss it!)</li>
 </ul></li>
 <li><a href="http://nccastaff.bournemouth.ac.uk/jmacey/RobTheBloke/www/">Rob The Bloke</a> (Robert Bateman)
 
@@ -381,23 +383,24 @@
 <ul>
 <li><a href="http://download.autodesk.com/media/adn/DevTV_Introduction_to_Maya_Dependency_Graph_Programming/DevTV%20-%20Introduction%20to%20Maya%20Dependency%20Graph%20Programming.html">DevTV: Introduction to Maya Dependency Graph Programming</a></li>
 <li><a href="http://www.gdcvault.com/play/1014524/Introduction-to-Maya-Dependency-Graph">Introduction to Maya Dependency Graph Programming.</a> Naiqi Weng. GDC&rsquo;11.</li>
+<li><a href="http://help.autodesk.com/view/MAYAUL/2018/ENU/?guid=__files_GUID_A9070270_9B5D_4511_8012_BC948149884D_htm">Dependency Graph Plug-in Basics</a></li>
 </ul>
 
 <p>In the evaluation framework before Maya 2015, as a plug-in developer, we only can do <code>per-node</code> parallelism, which is not an optimal solution to expolit all computing resources. Since Maya 2016, there is a new evaluation mode named <strong>&ldquo;Parallel&rdquo;</strong>, it outperforms the rigging evaluation by using <code>per-subgraph</code> parallelism.</p>
 
 <ul>
 <li><a href="https://www.youtube.com/watch?v=KKC7A9bbUuk">Supercharged Animation Performance in Maya 2016.</a> Video tutorial from Autodesk. <span class="orange"><strong>Highly recommended!</strong></span></li>
-<li><a href="http://static-dc.autodesk.net/content/dam/autodesk/www/Company/files/Parallel_Maya.pdf">Using Parallel Maya.</a> Technical white paper from Autodesk.</li>
+<li><a href="http://download.autodesk.com/us/company/files/2018/UsingParallelMaya.html">Using Parallel Maya.</a> Technical white paper from Autodesk.</li>
 <li><a href="https://knowledge.autodesk.com/support/maya/learn-explore/caas/CloudHelp/cloudhelp/2016/ENU/Maya/files/GUID-B1D67D2A-1283-488D-90EB-B7F16E26A118-htm.html">Locate Animation Bottlenecks In The Profiler.</a></li>
 </ul>
 
 <h1 id="3rd-party-plug-ins">3rd Party Plug-ins</h1>
 
 <ul>
-<li><a href="http://labs.autodesk.com/utilities/ADN_plugins">ADN plugins</a></li>
 <li><a href="http://www.nico-rehberg.de/shader.html">HOT</a> (Houdini Ocean Toolkit) for Maya.</li>
 <li><a href="http://www.soup-dev.com">SOuP</a>.</li>
 <li><a href="http://www.djx.com.au/blog/2015/05/09/comet-posedeformer-for-maya-2016/">Pose Space Deformer</a>. Originally developed by <a href="http://www.comet-cartoons.com/">Michael Comet</a>, now maintained by <a href="http://www.djx.com.au/blog/downloads/">David Johnson (djx)</a>.</li>
+<li><a href="https://www.highend3d.com/maya/scripts-plugins/c/downloads">Free scripts/plug-ins</a> @Highend3D</li>
 </ul>
 
                 

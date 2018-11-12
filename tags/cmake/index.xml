@@ -20,8 +20,7 @@
       <guid>http://shihchinw.github.io/2013/06/building-abcexport-abcimport-on-windows.html</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://code.google.com/p/alembic/&#34;&gt;Alembic&lt;/a&gt; is a popular data format for geometry cache nowadays, however, there are no simple workflow to build the AbcImport/AbcExport on windows. In this post, I tried to demonstrate a building flow as simple as possible.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://docs.google.com/file/d/0B3FnMqIdd-iLN0czVE1mTl9oWUE/edit?usp=sharing&#34;&gt;Here&lt;/a&gt; is the pre-built binaries for Maya 2013 x64.
-&lt;/p&gt;</description>
+&lt;p&gt;&lt;a href=&#34;https://docs.google.com/file/d/0B3FnMqIdd-iLN0czVE1mTl9oWUE/edit?usp=sharing&#34;&gt;Here&lt;/a&gt; is the pre-built binaries for Maya 2013 x64.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -32,8 +31,7 @@
       <guid>http://shihchinw.github.io/2012/05/building-pyside-for-maya-2012-on-windows.html</guid>
       <description>&lt;p&gt;One of my friend received some tools developed in PySide for Maya recently. He tried to copy the latest pre-built binaries of PySide into Maya&amp;rsquo;s site-packages but got an import error. Therefore, we have to build the PySide for Maya from the ground up and this post is about the entire building process we&amp;rsquo;ve been through. Hope this note might be helpful for people who want to use PySide in Maya. :)&lt;/p&gt;
 
-&lt;p&gt;BTW, the PySide for Maya 2012 built by vc9 can be downloaded &lt;a href=&#34;https://docs.google.com/open?id=0BwFItFJF_4j3Wm1kMDVXcWIxbW8&#34;&gt;here&lt;/a&gt;, enjoy it!
-&lt;/p&gt;</description>
+&lt;p&gt;BTW, the PySide for Maya 2012 built by vc9 can be downloaded &lt;a href=&#34;https://docs.google.com/open?id=0BwFItFJF_4j3Wm1kMDVXcWIxbW8&#34;&gt;here&lt;/a&gt;, enjoy it!&lt;/p&gt;</description>
     </item>
     
   </channel>

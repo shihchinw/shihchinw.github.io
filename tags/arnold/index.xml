@@ -76,8 +76,7 @@ To solve subsurface light transport efficiently, there are several approaches to
       <guid>http://shihchinw.github.io/2015/02/render-tips-for-arnold-in-maya.html</guid>
       <description>&lt;p&gt;All photo-realistic ray-tracers are trying to solve the &lt;a href=&#34;http://www.wired.com/2010/07/st_equation_3danimation/&#34;&gt;rendering equation&lt;/a&gt;. Although they are all categorized as ray-tracer instead of rasterizer, the infrastructure of each implementations are quite different (i.e. uni-directional vs. bi-directional, pure path tracing vs. works with photon-map or &lt;a href=&#34;http://cgg.mff.cuni.cz/~jaroslav/papers/2008-irradiance_caching_class/&#34;&gt;irradiance caching&lt;/a&gt;, etc).&lt;/p&gt;
 
-&lt;p&gt;Arnold is an &lt;em&gt;un-bias uni-directional path tracer&lt;/em&gt; with a remarkable importance sampling mechanism and great memory management to achieve amazing performance excellence. However, if we blindly increase the number of ray samples for every render scene, we would not always get a cleaner imagery. Which means that when we switch from one ray-tracer to another, we had better use different strategies to adjust render settings. Here is the summary about what I&amp;rsquo;ve learned from experience, hope it would help any Arnold user. :)
-&lt;/p&gt;</description>
+&lt;p&gt;Arnold is an &lt;em&gt;un-bias uni-directional path tracer&lt;/em&gt; with a remarkable importance sampling mechanism and great memory management to achieve amazing performance excellence. However, if we blindly increase the number of ray samples for every render scene, we would not always get a cleaner imagery. Which means that when we switch from one ray-tracer to another, we had better use different strategies to adjust render settings. Here is the summary about what I&amp;rsquo;ve learned from experience, hope it would help any Arnold user. :)&lt;/p&gt;</description>
     </item>
     
   </channel>

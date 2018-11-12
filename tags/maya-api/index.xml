@@ -7,10 +7,28 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright © Shih-Chin</copyright>
-    <lastBuildDate>Tue, 21 Apr 2015 23:01:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 12 Nov 2018 20:59:06 +0800</lastBuildDate>
     
 	<atom:link href="http://shihchinw.github.io/tags/maya-api/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Maya Scripting Primer</title>
+      <link>http://shihchinw.github.io/2018/11/maya-scripting-primer.html</link>
+      <pubDate>Mon, 12 Nov 2018 20:59:06 +0800</pubDate>
+      
+      <guid>http://shihchinw.github.io/2018/11/maya-scripting-primer.html</guid>
+      <description>&lt;p&gt;For many of my artist colleagues who want to learn scripting in Maya, one of their motivations is mostly to automate repetitive or time-consuming manual tasks. Since Maya can show all command history of our user interactions in Script Editor. Therefore, if we know how to perform target instructions manually, we could write a script of all corresponding commands. But finding the equivalent commands is not straightforward in some situations. Besides looking up documentation, we need other strategies.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Quick Start Guide for PySide in Maya</title>
+      <link>http://shihchinw.github.io/2015/05/quick-start-guide-for-pyside-in-maya.html</link>
+      <pubDate>Sat, 02 May 2015 18:34:00 +0000</pubDate>
+      
+      <guid>http://shihchinw.github.io/2015/05/quick-start-guide-for-pyside-in-maya.html</guid>
+      <description>&lt;p&gt;The goal of tool-making is to make users do certain works more efficiently. A functional tool with poor designed interface would not be fully utilized by users, because users aren&amp;rsquo;t willing to use that tool if the interaction makes them feel frustrated.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Assign Custom Shapes&#39; Components to Sets in Maya</title>

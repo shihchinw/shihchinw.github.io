@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://shihchinw.github.io/2018/11/maya-scripting-primer.html</loc>
+    <lastmod>2018-11-12T20:59:06+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://shihchinw.github.io/2018/10/data-interpolation-with-radial-basis-functions-rbfs.html</loc>
     <lastmod>2018-10-30T22:48:23+08:00</lastmod>
   </url>
@@ -162,7 +167,7 @@
   
   <url>
     <loc>http://shihchinw.github.io/tags/maya.html</loc>
-    <lastmod>2015-05-02T18:34:00+00:00</lastmod>
+    <lastmod>2015-02-22T16:39:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -172,7 +177,7 @@
   
   <url>
     <loc>http://shihchinw.github.io/tags/maya-api.html</loc>
-    <lastmod>2015-04-21T23:01:00+00:00</lastmod>
+    <lastmod>2018-11-12T20:59:06+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -195,7 +200,7 @@
   
   <url>
     <loc>http://shihchinw.github.io/post.html</loc>
-    <lastmod>2018-10-30T22:48:23+08:00</lastmod>
+    <lastmod>2018-11-12T20:59:06+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -213,7 +218,7 @@
   
   <url>
     <loc>http://shihchinw.github.io/</loc>
-    <lastmod>2018-10-30T22:48:23+08:00</lastmod>
+    <lastmod>2018-11-12T20:59:06+08:00</lastmod>
     <priority>0</priority>
   </url>
   

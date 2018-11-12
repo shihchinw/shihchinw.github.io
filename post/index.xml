@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright © Shih-Chin</copyright>
-    <lastBuildDate>Tue, 30 Oct 2018 22:48:23 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 12 Nov 2018 20:59:06 +0800</lastBuildDate>
     
 	<atom:link href="http://shihchinw.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Maya Scripting Primer</title>
+      <link>http://shihchinw.github.io/2018/11/maya-scripting-primer.html</link>
+      <pubDate>Mon, 12 Nov 2018 20:59:06 +0800</pubDate>
+      
+      <guid>http://shihchinw.github.io/2018/11/maya-scripting-primer.html</guid>
+      <description>&lt;p&gt;For many of my artist colleagues who want to learn scripting in Maya, one of their motivations is mostly to automate repetitive or time-consuming manual tasks. Since Maya can show all command history of our user interactions in Script Editor. Therefore, if we know how to perform target instructions manually, we could write a script of all corresponding commands. But finding the equivalent commands is not straightforward in some situations. Besides looking up documentation, we need other strategies.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Data Interpolation with Radial Basis Functions (RBFs)</title>
@@ -18,9 +27,7 @@
       <pubDate>Tue, 30 Oct 2018 22:48:23 +0800</pubDate>
       
       <guid>http://shihchinw.github.io/2018/10/data-interpolation-with-radial-basis-functions-rbfs.html</guid>
-      <description>&lt;p&gt;Radial Basis Functions (RBFs) is one of the commonly used methods to interpolate multi-dimensional data. RBFs creates smooth and less oscillating interpolation than inverse distance weighting (IDW) does. It has many applications in Computer Graphics, such as surface reconstruction [&lt;a href=&#34;#ref.3&#34;&gt;3&lt;/a&gt;], animation blending [&lt;a href=&#34;#ref.1&#34;&gt;1&lt;/a&gt;], facial retargeting, color calibration [&lt;a href=&#34;#ref.4&#34;&gt;4&lt;/a&gt;], and etc. Despite of the variety of its applications, those applications all have a common theme called &lt;em&gt;scattered data interpolation&lt;/em&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;Radial Basis Functions (RBFs) is one of the commonly used methods to interpolate multi-dimensional data. RBFs creates smooth and less oscillating interpolation than inverse distance weighting (IDW) does. It has many applications in Computer Graphics, such as surface reconstruction [&lt;a href=&#34;#ref.3&#34;&gt;3&lt;/a&gt;], animation blending [&lt;a href=&#34;#ref.1&#34;&gt;1&lt;/a&gt;], facial retargeting, color calibration [&lt;a href=&#34;#ref.4&#34;&gt;4&lt;/a&gt;], and etc. Despite of the variety of its applications, those applications all have a common theme called &lt;em&gt;scattered data interpolation&lt;/em&gt;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -29,9 +36,7 @@
       <pubDate>Fri, 10 Aug 2018 08:23:35 +0800</pubDate>
       
       <guid>http://shihchinw.github.io/2018/08/aperture-f-number.html</guid>
-      <description>&lt;p&gt;I have been using DSLR for over 10 years, I thought I knew few knowledge about photography. But after I watched a wonderful online course of digital photography by Prof. Marc Levoy [&lt;a href=&#34;#ref.1&#34;&gt;1&lt;/a&gt;], I just found there were so many details I weren&amp;rsquo;t aware before. The thing embarrassed me the most was that I incorrectly related f-number to lens aperture size. This post is trying to introduce the idea of f-number starting from scene radiance.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;I have been using DSLR for over 10 years, I thought I knew few knowledge about photography. But after I watched a wonderful online course of digital photography by Prof. Marc Levoy [&lt;a href=&#34;#ref.1&#34;&gt;1&lt;/a&gt;], I just found there were so many details I weren&amp;rsquo;t aware before. The thing embarrassed me the most was that I incorrectly related f-number to lens aperture size. This post is trying to introduce the idea of f-number starting from scene radiance.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -40,8 +45,7 @@
       <pubDate>Tue, 24 Jan 2017 00:00:00 +0000</pubDate>
       
       <guid>http://shihchinw.github.io/2017/01/self-study-tips.html</guid>
-      <description>&lt;p&gt;When I decided to be a guest lecturer at NCKU last year, I kept asking myself what is the most important thing I wish I&amp;rsquo;d learned in school. I carefully reviewed my current skill sets and found most of my skills were developed at work. Besides sharing knowledge about Computer Graphics, I think there is a more fundamental competency we need to develop in school, that is &lt;span class=&#34;green&#34;&gt;&lt;strong&gt;continuous learning&lt;/strong&gt;&lt;/span&gt;.
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;When I decided to be a guest lecturer at NCKU last year, I kept asking myself what is the most important thing I wish I&amp;rsquo;d learned in school. I carefully reviewed my current skill sets and found most of my skills were developed at work. Besides sharing knowledge about Computer Graphics, I think there is a more fundamental competency we need to develop in school, that is &lt;span class=&#34;green&#34;&gt;&lt;strong&gt;continuous learning&lt;/strong&gt;&lt;/span&gt;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -50,8 +54,7 @@
       <pubDate>Sat, 31 Dec 2016 00:00:00 +0000</pubDate>
       
       <guid>http://shihchinw.github.io/2016/12/learning-by-teaching-as-a-guest-lecturer.html</guid>
-      <description>&lt;p&gt;I was privileged to be a guest lecturer to give five lectures about Computer Graphics at National Cheng Kung University (NCKU) in Taiwan. When I prepared the course materials, I deeply realized again that the best way to learn a topic is to teach someone else (especially to a person who never heard about Computer Graphics before). In order to avoid teaching wrong ideas, I had carefully reviewed what I known from ground up and derived each mathematical equation in the textbooks. This post is about what I&amp;rsquo;ve learned in those few months.
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;I was privileged to be a guest lecturer to give five lectures about Computer Graphics at National Cheng Kung University (NCKU) in Taiwan. When I prepared the course materials, I deeply realized again that the best way to learn a topic is to teach someone else (especially to a person who never heard about Computer Graphics before). In order to avoid teaching wrong ideas, I had carefully reviewed what I known from ground up and derived each mathematical equation in the textbooks. This post is about what I&amp;rsquo;ve learned in those few months.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -116,8 +119,7 @@ To solve subsurface light transport efficiently, there are several approaches to
       <pubDate>Sat, 02 May 2015 18:34:00 +0000</pubDate>
       
       <guid>http://shihchinw.github.io/2015/05/quick-start-guide-for-pyside-in-maya.html</guid>
-      <description>&lt;p&gt;The goal of tool-making is to make users do certain works more efficiently. A functional tool with poor designed interface would not be fully utilized by users, because users aren&amp;rsquo;t willing to use that tool if the interaction makes them feel frustrated.
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;The goal of tool-making is to make users do certain works more efficiently. A functional tool with poor designed interface would not be fully utilized by users, because users aren&amp;rsquo;t willing to use that tool if the interaction makes them feel frustrated.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -138,8 +140,7 @@ This idea is pretty simple, but the implementation is not as easy as it sounds.<
       <guid>http://shihchinw.github.io/2015/02/render-tips-for-arnold-in-maya.html</guid>
       <description>&lt;p&gt;All photo-realistic ray-tracers are trying to solve the &lt;a href=&#34;http://www.wired.com/2010/07/st_equation_3danimation/&#34;&gt;rendering equation&lt;/a&gt;. Although they are all categorized as ray-tracer instead of rasterizer, the infrastructure of each implementations are quite different (i.e. uni-directional vs. bi-directional, pure path tracing vs. works with photon-map or &lt;a href=&#34;http://cgg.mff.cuni.cz/~jaroslav/papers/2008-irradiance_caching_class/&#34;&gt;irradiance caching&lt;/a&gt;, etc).&lt;/p&gt;
 
-&lt;p&gt;Arnold is an &lt;em&gt;un-bias uni-directional path tracer&lt;/em&gt; with a remarkable importance sampling mechanism and great memory management to achieve amazing performance excellence. However, if we blindly increase the number of ray samples for every render scene, we would not always get a cleaner imagery. Which means that when we switch from one ray-tracer to another, we had better use different strategies to adjust render settings. Here is the summary about what I&amp;rsquo;ve learned from experience, hope it would help any Arnold user. :)
-&lt;/p&gt;</description>
+&lt;p&gt;Arnold is an &lt;em&gt;un-bias uni-directional path tracer&lt;/em&gt; with a remarkable importance sampling mechanism and great memory management to achieve amazing performance excellence. However, if we blindly increase the number of ray samples for every render scene, we would not always get a cleaner imagery. Which means that when we switch from one ray-tracer to another, we had better use different strategies to adjust render settings. Here is the summary about what I&amp;rsquo;ve learned from experience, hope it would help any Arnold user. :)&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -150,8 +151,7 @@ This idea is pretty simple, but the implementation is not as easy as it sounds.<
       <guid>http://shihchinw.github.io/2013/06/building-abcexport-abcimport-on-windows.html</guid>
       <description>&lt;p&gt;&lt;a href=&#34;http://code.google.com/p/alembic/&#34;&gt;Alembic&lt;/a&gt; is a popular data format for geometry cache nowadays, however, there are no simple workflow to build the AbcImport/AbcExport on windows. In this post, I tried to demonstrate a building flow as simple as possible.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;https://docs.google.com/file/d/0B3FnMqIdd-iLN0czVE1mTl9oWUE/edit?usp=sharing&#34;&gt;Here&lt;/a&gt; is the pre-built binaries for Maya 2013 x64.
-&lt;/p&gt;</description>
+&lt;p&gt;&lt;a href=&#34;https://docs.google.com/file/d/0B3FnMqIdd-iLN0czVE1mTl9oWUE/edit?usp=sharing&#34;&gt;Here&lt;/a&gt; is the pre-built binaries for Maya 2013 x64.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -180,8 +180,7 @@ This idea is pretty simple, but the implementation is not as easy as it sounds.<
       <guid>http://shihchinw.github.io/2012/05/building-pyside-for-maya-2012-on-windows.html</guid>
       <description>&lt;p&gt;One of my friend received some tools developed in PySide for Maya recently. He tried to copy the latest pre-built binaries of PySide into Maya&amp;rsquo;s site-packages but got an import error. Therefore, we have to build the PySide for Maya from the ground up and this post is about the entire building process we&amp;rsquo;ve been through. Hope this note might be helpful for people who want to use PySide in Maya. :)&lt;/p&gt;
 
-&lt;p&gt;BTW, the PySide for Maya 2012 built by vc9 can be downloaded &lt;a href=&#34;https://docs.google.com/open?id=0BwFItFJF_4j3Wm1kMDVXcWIxbW8&#34;&gt;here&lt;/a&gt;, enjoy it!
-&lt;/p&gt;</description>
+&lt;p&gt;BTW, the PySide for Maya 2012 built by vc9 can be downloaded &lt;a href=&#34;https://docs.google.com/open?id=0BwFItFJF_4j3Wm1kMDVXcWIxbW8&#34;&gt;here&lt;/a&gt;, enjoy it!&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -210,8 +209,7 @@ Suppose we have MObject(s) of target mesh and edge components (optional) selecte
       <pubDate>Mon, 19 Sep 2011 14:53:00 +0000</pubDate>
       
       <guid>http://shihchinw.github.io/2011/09/retrieve-file-list-from-a-directory-tree.html</guid>
-      <description>&lt;p&gt;There is a simple way to traverse a directory tree with python - &lt;code&gt;os.walk&lt;/code&gt; (os.path.walk is deprecated in 3.0, therefore, we had better avoid to use it!)
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;There is a simple way to traverse a directory tree with python - &lt;code&gt;os.walk&lt;/code&gt; (os.path.walk is deprecated in 3.0, therefore, we had better avoid to use it!)&lt;/p&gt;</description>
     </item>
     
   </channel>

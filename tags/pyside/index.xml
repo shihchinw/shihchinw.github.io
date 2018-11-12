@@ -18,8 +18,7 @@
       <pubDate>Sat, 02 May 2015 18:34:00 +0000</pubDate>
       
       <guid>http://shihchinw.github.io/2015/05/quick-start-guide-for-pyside-in-maya.html</guid>
-      <description>&lt;p&gt;The goal of tool-making is to make users do certain works more efficiently. A functional tool with poor designed interface would not be fully utilized by users, because users aren&amp;rsquo;t willing to use that tool if the interaction makes them feel frustrated.
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;The goal of tool-making is to make users do certain works more efficiently. A functional tool with poor designed interface would not be fully utilized by users, because users aren&amp;rsquo;t willing to use that tool if the interaction makes them feel frustrated.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -30,8 +29,7 @@
       <guid>http://shihchinw.github.io/2012/05/building-pyside-for-maya-2012-on-windows.html</guid>
       <description>&lt;p&gt;One of my friend received some tools developed in PySide for Maya recently. He tried to copy the latest pre-built binaries of PySide into Maya&amp;rsquo;s site-packages but got an import error. Therefore, we have to build the PySide for Maya from the ground up and this post is about the entire building process we&amp;rsquo;ve been through. Hope this note might be helpful for people who want to use PySide in Maya. :)&lt;/p&gt;
 
-&lt;p&gt;BTW, the PySide for Maya 2012 built by vc9 can be downloaded &lt;a href=&#34;https://docs.google.com/open?id=0BwFItFJF_4j3Wm1kMDVXcWIxbW8&#34;&gt;here&lt;/a&gt;, enjoy it!
-&lt;/p&gt;</description>
+&lt;p&gt;BTW, the PySide for Maya 2012 built by vc9 can be downloaded &lt;a href=&#34;https://docs.google.com/open?id=0BwFItFJF_4j3Wm1kMDVXcWIxbW8&#34;&gt;here&lt;/a&gt;, enjoy it!&lt;/p&gt;</description>
     </item>
     
   </channel>
