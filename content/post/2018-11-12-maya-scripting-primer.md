@@ -11,7 +11,7 @@ For many of my artist colleagues who want to learn scripting in Maya, one of the
 
 # MEL or Python?
 
-![Maya programming interfaces](/images/maya/maya_programming_interfaces.png)
+![Maya programming interfaces](/images/maya/maya_api.png)
 
 There are two interfaces can be used to manipulate Maya internal state: *Maya Commands* and *Maya API*. On the top of that, Maya provides three programming language options: [MEL (Maya Embedded Language)](http://help.autodesk.com/view/MAYAUL/2018/ENU/?guid=GUID-E151A15C-BA1D-4E60-8DB6-9D92C6202170), [Python](https://www.python.org/) and [C++](https://isocpp.org/tour).
 
