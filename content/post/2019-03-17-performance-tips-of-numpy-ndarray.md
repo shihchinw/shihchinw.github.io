@@ -1,6 +1,7 @@
 ---
 title: "Performance Tips of NumPy ndarray"
 date: 2019-03-17T12:10:34+08:00
+coverImage: images/numpy/numpy_L2_perf_cmp_wide_y.png
 tags:
 - Python
 - NumPy
