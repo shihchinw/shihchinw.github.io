@@ -21,7 +21,7 @@ To solve subsurface light transport efficiently, there are several approaches to
 
 BSSRDF is a function relates outgoing radiance to the incident flux at different points:
 
-$$S(x_i,\vec{\omega_i};x_o,\vec{\omega_o})=\frac{dL_0(x_o,\vec{\omega_o})}{d\phi_i(x_i,\vec{\omega_i})}$$
+$$S(x_i,\vec{\omega_i};x_o,\vec{\omega_o})=\frac{dL_o(x_o,\vec{\omega_o})}{d\phi_i(x_i,\vec{\omega_i})}$$
 
 For efficiency, \\(S\\) can be decomposed into single-scattering and multiple-scattering terms. The multiple scatter term \\(S_d\\) is too complex to solve directly, the common strategy is to use a `diffusion profile` to approximate the distribution of outgoing radiance. With the diffusion approximation to the _radiative transport equation_ (RTE), \\(S_d\\) is represented by a product of two Fresnel refraction terms and a diffusion profile in BSSRDF:
 
@@ -61,11 +61,11 @@ Arnold SDK only provides APIs for Gaussian and cubic profile currently, for othe
 
 _Normalized diffusion_ profile [[5](#ref.5)][[6](#ref.6)] is formulated by two exponential functions:
 
-$$R(r\)=\frac{e^{\frac{-r}{d}} + e^{\frac{-r}{3d}}}{8\pi dr}$$
+$$R(r\)=\frac{e^{\frac{-r}{d}} + e^{\frac{-r}{3d}}}{8\pi\ d\ r}$$
 
-and the beauty of this model is that with <span class="green">__any positive value of \\(d\\) the integration over the disk is always one:__</span>
+and the beauty of this model is that when evaluating the diffusion contribution with <span class="green">__any positive value of \\(d\\), the integration over the disk is always one:__</span>
 
-$$\int_0^\infty{\int_0^{2\pi}{R(r\)r\ d\phi}\ dr}=\int_0^\infty{R(r\)2\pi r\ dr}=1$$
+$$\int_0^\infty{\int_0^{2\pi}{R(r\)\ r\ d\phi}\ dr}=\int_0^\infty{R(r\)\ 2\pi r\ dr}=1$$
 
 (The parameter \\(d\\) can be interpreted as the scattering distance for artistic control. For its relationship to other physical quantities like surface albedo and mean free path, please refer to [[6](#ref.6)])
 
@@ -88,23 +88,27 @@ w_2 &= 3 (1 - e^{\frac{-R_{max}}{3d}})
 
 ## Sample \\(r\\) from a lobe
 
-Suppose the PDF of the first exponential is \\(p\_1(r\)\propto \frac{e^{-r/d}}{8\pi dr}\\), and it's normalized in range \\([0, R_{max}]\\)
+Suppose the PDF of the first exponential is \\(p\_1(r\) \propto \frac{e^{-r/d}}{8\pi\ d\ r}\\), and it's normalized in range \\([0, R_{max}]\\). To get \\(p_1 (r )\\), let \\(p_1 (r ) = c \times \frac{e^{-r/d}}{8\pi\ d\ r}, c \in \R \\) and set its integral equal to one for solving the specific constant \\(c\\) makes \\(p_1( r )\\) normalized:
 
-<div>$$\int{c\ \frac{e^{-r/d}}{8\pi dr} 2\pi r\ dr} = \int{\frac{c}{4d}e^{-r/d}\ dr} = \frac{-c}{4}(e^{\frac{-R_{max}}{d}-1}) = 1$$
-$$c = \frac{4}{1-e^{\frac{-R_{max}}{d}}} \implies p_1(r)=\frac{e^{-r/d}}{2\pi dr}\frac{1}{1-e^{\frac{-R_{max}}{d}}}$$</div>
+<div>$$\int_0^{R_{max}}{p_1(r )\ 2\pi\ r\ dr} = 1 $$
+$$\int_{0}^{R_{max}}{c\ \frac{e^{-r/d}}{8\pi\ d\ r} 2\pi\ r\ dr} = \int_{0}^{R_{max}}{\frac{c}{4d}e^{-r/d}\ dr} = \frac{-c}{4}(e^{\frac{-R_{max}}{d}} - 1) = 1$$
+$$c = \frac{4}{1-e^{\frac{-R_{max}}{d}}} \implies p_1(r) = \frac{4}{1-e^{\frac{-R_{max}}{d}}} \frac{e^{-r/d}}{8\pi\ d\ r} = \frac{1}{1-e^{\frac{-R_{max}}{d}}} \frac{e^{-r/d}}{2\pi\ d\ r}  $$</div>
 
-Then the CDF of \\(p_1(r\)\\) and its inverse function are:
+After we get \\(p_1\\), we could perform the integral in \\([0, r]\\) to get its CDF \\(P_1(r )\\):
 
 <div>$$\begin{aligned}
-P_1(r) &= \int_0^r{p_1(r')2\pi r'\ dr'} \\
-&= \int_0^r{\frac{e^{-r'/d}}{d} \frac{1}{1-e^{\frac{-R_{max}}{d}}} dr'} \\
+P_1(r) &= \int_0^r{p_1(r')\ 2\pi\ r'\ dr'} \\
+&= \int_0^r{ \frac{1}{1-e^{\frac{-R_{max}}{d}}} \frac{e^{-r'/d}}{d} dr' } \\
 &= \frac{-1}{1-e^{\frac{-R_{max}}{d}}}(e^{\frac{-r}{d}}-1)
-\end{aligned}$$
-$$r = \log(1-\xi(1-e^{\frac{-R_{max}}{d}})) \times -d$$</div>
+\end{aligned}$$</div>
+
+Then we could get the inverse function \\(P_1^{-1}(\xi)\\) which maps \\(\xi \in [0, 1]\\) to distance r in \\(\[0, R\_{max}\]\\):
+
+$$r = \log(1-\xi(1-e^{\frac{-R_{max}}{d}})) \times -d$$
 
 Likewise, we can get the following formulas for the second exponential:
 
-<div>$$p_2(r)=\frac{e^{\frac{-r}{3d}}}{2\pi dr}\frac{1}{3(1-e^{\frac{-R_{max}}{3d}})},\ r = \log(1-\xi(1-e^{\frac{-R_{max}}{3d}})) \times -3d$$</div>
+<div>$$p_2(r)=\frac{e^{\frac{-r}{3d}}}{2\pi\ d\ r}\frac{1}{3(1-e^{\frac{-R_{max}}{3d}})},\ r = \log(1-\xi(1-e^{\frac{-R_{max}}{3d}})) \times -3d$$</div>
 
 # Implementation Details
 
