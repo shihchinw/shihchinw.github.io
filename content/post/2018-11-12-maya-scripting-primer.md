@@ -186,7 +186,7 @@ Writing scripts to automate repetitive and time-consuming manual tasks can great
 
 1. Bryan Ewert. 2006. [How do you find out all these things about MEL? I can't find some things in the documentation!](http://ewertb.soundlinker.com/mel/mel.001.php)
 2. Kristine Middlemiss. 2009. [Maya API: Where to start!?!??!?](https://mayastation.typepad.com/maya-station/2009/12/maya-api-where-to-start.html)
-3. [Maya programming resources.]({{< ref "maya.md" >}})
+3. [Maya programming resources.]({{< ref "/page/maya.md" >}})
 
 <!-- 1. [Remote Debugging with ptvsd](https://donjayamanne.iimigithub.io/pythonVSCodeDocs/docs/debugging_remote-debugging/)
 2. [VSCodeからMaya上をリモートデバッグする](https://qiita.com/takumi_akashiro/items/5e18dd96b7af942cefbc) -->

@@ -3,7 +3,7 @@ title = "Shih-Chin"
 
 languageCode = "en-us"
 copyright = "Copyright © Shih-Chin"
-googleAnalytics = "UA-71352938-1"
+googleAnalytics = "G-336629647"
 disqusShortname = "shihchinw"
 
 contentDir = "content"
@@ -31,6 +31,12 @@ uglyurls = true
 
 [taxonomies]
   tag = "tags"
+
+# https://gohugo.io/getting-started/configuration-markup/#goldmark
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+    unsafe = true # Allow HTML in md files
 
 [[params.social]]
   title = "twitter"
@@ -72,5 +78,5 @@ uglyurls = true
 
 [[menu.main]]
   name = "About"
-  url = "/about/"
+  url = "/about.html"
   weight = -100
