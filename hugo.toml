@@ -32,11 +32,15 @@ uglyurls = true
 [taxonomies]
   tag = "tags"
 
-# https://gohugo.io/getting-started/configuration-markup/#goldmark
 [markup]
   [markup.goldmark]
+    # https://gohugo.io/getting-started/configuration-markup/#goldmark
     [markup.goldmark.renderer]
     unsafe = true # Allow HTML in md files
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 1
 
 [[params.social]]
   title = "twitter"
